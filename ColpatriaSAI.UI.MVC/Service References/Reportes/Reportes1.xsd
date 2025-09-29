@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2090/Reportes.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" />
+  <xs:import schemaLocation="http://localhost:2090/Reportes.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetReporteBeneficiarios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="año" type="xs:int" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="ClavesAsesor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IdDirector" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IdGerente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CanalVentasId" type="xs:int" />
+        <xs:element minOccurs="0" name="SubCanalId" type="xs:int" />
+        <xs:element minOccurs="0" name="TipoPlan" type="xs:int" />
+        <xs:element minOccurs="0" name="TipoContrato" type="xs:int" />
+        <xs:element minOccurs="0" name="modelo" type="xs:int" />
+        <xs:element minOccurs="0" name="sucursal" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteBeneficiariosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" minOccurs="0" name="GetReporteBeneficiariosResult" nillable="true" type="q1:ArrayOfReporteBeneficiarioClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteDetalleBeneficiarios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="anio" type="xs:int" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="ClavesAsesor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IdDirector" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IdGerente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CanalVentasId" type="xs:int" />
+        <xs:element minOccurs="0" name="SubCanalId" type="xs:int" />
+        <xs:element minOccurs="0" name="TipoPlan" type="xs:int" />
+        <xs:element minOccurs="0" name="TipoContrato" type="xs:int" />
+        <xs:element minOccurs="0" name="modelo" type="xs:int" />
+        <xs:element minOccurs="0" name="sucursal" type="xs:int" />
+        <xs:element minOccurs="0" name="numerocontrato" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estadoBeneficiario" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteDetalleBeneficiariosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" minOccurs="0" name="GetReporteDetalleBeneficiariosResult" nillable="true" type="q2:ArrayOfReporteDetalleBeneficiariosClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteTransferencias">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pFechaPeriodo" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="pAsesorInicial" type="xs:int" />
+        <xs:element minOccurs="0" name="pAsesorFinal" type="xs:int" />
+        <xs:element minOccurs="0" name="pCanalVentas" type="xs:int" />
+        <xs:element minOccurs="0" name="pSubCanal" type="xs:int" />
+        <xs:element minOccurs="0" name="pDirector" type="xs:int" />
+        <xs:element minOccurs="0" name="pGerOfic" type="xs:int" />
+        <xs:element minOccurs="0" name="pGerReg" type="xs:int" />
+        <xs:element minOccurs="0" name="pNumeroContrato" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pSubContrato" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pTipoPlan" type="xs:int" />
+        <xs:element minOccurs="0" name="pTipoContrato" type="xs:int" />
+        <xs:element minOccurs="0" name="pTipoTransferencia" type="xs:int" />
+        <xs:element minOccurs="0" name="modelo" type="xs:int" />
+        <xs:element minOccurs="0" name="sucursal" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteTransferenciasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" minOccurs="0" name="GetReporteTransferenciasResult" nillable="true" type="q3:ArrayOfReporteTrasnferenciasClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+   <xs:element name="GetReportBHDeferred">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="0" name="DateIni" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="DateFin" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Format" type="xs:int" />
+        <xs:element minOccurs="0" name="ProcessType" type="xs:int" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+     
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+	<xs:element name="GetReportBHDeferredResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" minOccurs="0" name="GetReportBHDeferredResult" nillable="true" type="q4:ArrayOfReportBHDeferredClass" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetReportBHAccrued">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="DateIni" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="DateFin" type="xs:dateTime" />
+				<xs:element minOccurs="0" name="Format" type="xs:int" />
+				<xs:element minOccurs="0" name="ProcessType" type="xs:int" />
+				<xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetReportBHAccruedResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" minOccurs="0" name="GetReportBHAccruedResult" nillable="true" type="q4:ArrayOfReportBHAccruedClass" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+  <xs:element name="GetReporteAsesores">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="año" type="xs:int" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="pClavesAsesor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pCanalVenta" type="xs:int" />
+        <xs:element minOccurs="0" name="pSubCanal" type="xs:int" />
+        <xs:element minOccurs="0" name="IdGerente" type="xs:int" />
+        <xs:element minOccurs="0" name="IdDirector" type="xs:int" />
+        <xs:element minOccurs="0" name="modelo" type="xs:int" />
+        <xs:element minOccurs="0" name="sucursal" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteAsesoresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" minOccurs="0" name="GetReporteAsesoresResult" nillable="true" type="q4:ArrayOfReporteAsesoresClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteLiderComercial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="año" type="xs:int" />
+        <xs:element minOccurs="0" name="mes" type="xs:int" />
+        <xs:element minOccurs="0" name="pClavesAsesor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pCanalVenta" type="xs:int" />
+        <xs:element minOccurs="0" name="pSubCanal" type="xs:int" />
+        <xs:element minOccurs="0" name="IdGerente" type="xs:int" />
+        <xs:element minOccurs="0" name="IdDirector" type="xs:int" />
+        <xs:element minOccurs="0" name="modelo" type="xs:int" />
+        <xs:element minOccurs="0" name="sucursal" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReporteLiderComercialResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" minOccurs="0" name="GetReporteLiderComercialResult" nillable="true" type="q5:ArrayOfReporteAsesoresClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaDirector">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IdDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaDirectorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidaDirectorResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInfoPagoAsesorPortal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idLiquidacion" type="xs:int" />
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInfoPagoAsesorPortalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetInfoPagoAsesorPortalResult" nillable="true" type="q6:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiquidacionesPortalAsesor">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiquidacionesPortalAsesorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLiquidacionesPortalAsesorResult" nillable="true" type="q7:ArrayOfKeyValueOfintstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvaliablePeriodsBH">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvaliablePeriodsBHResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAvaliablePeriodsBHResult" nillable="true" type="q7:ArrayOfKeyValueOfintstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1B93B4E0-1850-4966-ABC2-412801DFC4A0}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ColpatriaSAI.UI.MVC</RootNamespace>
+    <AssemblyName>ColpatriaSAI.UI.MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <UseIISExpress>true</UseIISExpress>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Pruebas|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\ColpatriaSAI.UI.MVC.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <PublishDatabases>true</PublishDatabases>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ColpatriaSAI.Datos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ColpatriaSAI.Datos.dll</HintPath>
+    </Reference>
+    <Reference Include="ColpatriaSAI.Negocio.Componentes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Negocio.Componentes\bin\Release\ColpatriaSAI.Negocio.Componentes.dll</HintPath>
+    </Reference>
+    <Reference Include="ColpatriaSAI.Negocio.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Negocio.Entidades\bin\Release\ColpatriaSAI.Negocio.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="ColpatriaSAI.Seguridad.Encripcion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Seguridad.Encripcion\bin\Release\ColpatriaSAI.Seguridad.Encripcion.dll</HintPath>
+    </Reference>
+    <Reference Include="ColpatriaSAI.Seguridad.Proveedores, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Seguridad.Proveedores\bin\Release\ColpatriaSAI.Seguridad.Proveedores.dll</HintPath>
+    </Reference>
+    <Reference Include="Encrypt1_1">
+      <HintPath>..\Librerias\Encrypt1_1.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\Librerias\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="FlimFlan.WebControls, Version=1.2.624.2006, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\FliaHernandezCast\Downloads\Desktop\FlimFlan.WebControls.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToExcel">
+      <HintPath>..\Librerias\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerias\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MVC Foolproof Validation">
+      <HintPath>..\packages\foolproof.0.9.4517\lib\MVC Foolproof Validation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcMembership, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ColpatriaSAI.Libraries\MvcMembership\bin\Release\MvcMembership.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\Librerias\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\Librerias\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\Librerias\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ColpatriaSAI.Libraries\Librerias\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ColpatriaSAI.Libraries\Librerias\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SAI fuentes2023 Validar\Fuentes 27032023\SAI\ColpatriaSAI.UI.MVC\bin\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SAI_1\MAC\ColpatriaSAI.UI.MVC\bin\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\SAI fuentes2023 Validar\Fuentes 27032023\SAI\ColpatriaSAI.UI.MVC\bin\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Trirand.Web.Mvc, Version=4.6.0.0, Culture=neutral, PublicKeyToken=e2819dc449af3295, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Trirand.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Comisiones\ComisionesAreaRegistration.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\AdminComisionController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\AsesoresController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\CalculoComisionController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\CalculoUsuariosController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ComisionFijaController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ComisionVariableController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ConsultaParametrizacionController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ConsultasController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ExcepcionesComisionController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ReportesController.cs" />
+    <Compile Include="Areas\Comisiones\CustomModelBinders\CustomNumericModelBinders.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ExtraccionController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\InicioController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\MatrizComisionVariableController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ModelosController.cs" />
+    <Compile Include="Areas\Comisiones\Controllers\ParametrizacionController.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\BitacoraComisionCalculada.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\CalculoComisionViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\ConfigParametros.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\ConsultaParametrizacionViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\DetalleCalculosNetosViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\DetalleFactoresComisionFijaViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\DetalleFactoresNetosComisionVariableViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\DetalleFactoresNuevosComisionVariableViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\Enums.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\ExcepcionesViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\InvocacionProcesosModelosVista.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\LogProcesoBHViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\MatrizComisionVariableViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\ModeloViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\ParametrosAplicacionViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\ReporteBeneficiarioViewModel.cs" />
+    <Compile Include="Areas\Comisiones\Models\ViewModels\ReporteDetalleBeneficiarioViewModel.cs" />
+    <Compile Include="Areas\SiteMapAdministration\Controllers\SiteMapAdministrationController.cs" />
+    <Compile Include="Areas\SiteMapAdministration\SiteMapAdministrationAreaRegistration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\UserAdministration\Controllers\UserAdministrationController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\UserAdministration\Models\UserAdministration\DetailsViewModel.cs" />
+    <Compile Include="Areas\UserAdministration\Models\UserAdministration\IndexViewModel.cs" />
+    <Compile Include="Areas\UserAdministration\Models\UserAdministration\RoleViewModel.cs" />
+    <Compile Include="Areas\UserAdministration\UserAdministrationAreaRegistration.cs" />
+    <Compile Include="Comun\Auditoria.cs" />
+    <Compile Include="Comun\ETL.cs" />
+    <Compile Include="Controllers\ActividadEconomicaController.cs" />
+    <Compile Include="Controllers\actualizaClaveController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\AdministracionController.cs" />
+    <Compile Include="Controllers\AjustesController.cs" />
+    <Compile Include="Controllers\AmparoController.cs" />
+    <Compile Include="Controllers\AnticiposFranquiciasController.cs" />
+    <Compile Include="Controllers\AntiguedadxNivelController.cs" />
+    <Compile Include="Controllers\AuditoriaController.cs" />
+    <Compile Include="Controllers\AuditoriaSeguimientoController.cs" />
+    <Compile Include="Controllers\AuthorizaciondeCuentaAttribute.cs" />
+    <Compile Include="Controllers\BancoController.cs" />
+    <Compile Include="Controllers\BaseMonedaController.cs" />
+    <Compile Include="Controllers\BasexParticipanteController.cs" />
+    <Compile Include="Controllers\BeneficiarioController.cs" />
+    <Compile Include="Controllers\CanalController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CategoriaxReglaController.cs" />
+    <Compile Include="Controllers\CoberturaController.cs" />
+    <Compile Include="Controllers\CompaniaxEtapaController.cs" />
+    <Compile Include="Controllers\CompañiaController.cs" />
+    <Compile Include="Controllers\ConcursosController.cs" />
+    <Compile Include="Controllers\CondicionAgrupadaController.cs" />
+    <Compile Include="Controllers\CondicionController.cs" />
+    <Compile Include="Controllers\CondicionxPremioSubReglaController.cs" />
+    <Compile Include="Controllers\ContratacionController.cs" />
+    <Compile Include="Controllers\ControladorBase.cs" />
+    <Compile Include="Controllers\ComboController.cs" />
+    <Compile Include="Controllers\CuadroPagFranquicias.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
+    <Compile Include="Controllers\DetallePartFranquiciaController.cs" />
+    <Compile Include="Controllers\EjecucionController.cs" />
+    <Compile Include="Controllers\ErroresController.cs" />
+    <Compile Include="Controllers\EscalaNotaController.cs" />
+    <Compile Include="Controllers\EstadisticasController.cs" />
+    <Compile Include="Controllers\ExcepcionesController.cs" />
+    <Compile Include="Controllers\EtapaProductoController.cs" />
+    <Compile Include="Controllers\ExcepcionesJerarquiaController.cs" />
+    <Compile Include="Controllers\FactorVariableController.cs" />
+    <Compile Include="Controllers\FactorxNotaController.cs" />
+    <Compile Include="Controllers\FiltroSessionExpiraAttribute.cs" />
+    <Compile Include="Controllers\FranquiciasController.cs" />
+    <Compile Include="Controllers\GrupoEndosoController.cs" />
+    <Compile Include="Controllers\GrupoTipoEndosoController.cs" />
+    <Compile Include="Controllers\HistoricosController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngresoLocalidadController.cs" />
+    <Compile Include="Controllers\JerarquiaComercialController.cs" />
+    <Compile Include="Controllers\JerarquiaController.cs" />
+    <Compile Include="Controllers\LineaNegocioController.cs" />
+    <Compile Include="Controllers\LiquidacionConcursoController.cs" />
+    <Compile Include="Controllers\LiquidacionContratController.cs" />
+    <Compile Include="Controllers\LiquidacionFranquiController.cs" />
+    <Compile Include="Controllers\LiquidacionMonedaController.cs" />
+    <Compile Include="Controllers\LocalidadController.cs" />
+    <Compile Include="Controllers\LogIntegracionBzController.cs" />
+    <Compile Include="Controllers\LogIntegracionController.cs" />
+    <Compile Include="Controllers\MaestroMonedaxnegocioController.cs" />
+    <Compile Include="Controllers\MetaController.cs" />
+    <Compile Include="Controllers\ModeloController.cs" />
+    <Compile Include="Controllers\MonedaController.cs" />
+    <Compile Include="Controllers\MonedaxNegocioController.cs" />
+    <Compile Include="Controllers\NivelController.cs" />
+    <Compile Include="Controllers\ParametrizacionEficienciaARLController.cs" />
+    <Compile Include="Controllers\ParametrosAppController.cs" />
+    <Compile Include="Controllers\ParticipacionController.cs" />
+    <Compile Include="Controllers\ParticipacionFranquiciasController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ParticipanteConcursoController.cs" />
+    <Compile Include="Controllers\ParticipanteController.cs" />
+    <Compile Include="Controllers\PeriodoCierreController.cs" />
+    <Compile Include="Controllers\PersistenciaCAPIDetalleController.cs" />
+    <Compile Include="Controllers\PersistenciaEsperadaController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\ParticipacionDirectorController.cs" />
+    <Compile Include="Controllers\PremioController.cs" />
+    <Compile Include="Controllers\PremiosAnterioresController.cs" />
+    <Compile Include="Controllers\PremioxSubReglaController.cs" />
+    <Compile Include="Controllers\PresupuestoController.cs" />
+    <Compile Include="Controllers\ProcesoAutomaticoController.cs" />
+    <Compile Include="Controllers\ProductoConcursoController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\P_P_VidaController.cs" />
+    <Compile Include="Controllers\RamoController.cs" />
+    <Compile Include="Controllers\RamoDetalleController.cs" />
+    <Compile Include="Controllers\RedController.cs" />
+    <Compile Include="Controllers\ReglaController.cs" />
+    <Compile Include="Controllers\ReglaxConceptoDescuentoController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
+    <Compile Include="Controllers\ReportesSAIController.cs" />
+    <Compile Include="Controllers\ResumenConcursoController.cs" />
+    <Compile Include="Controllers\RptFranquiciasController.cs" />
+    <Compile Include="Controllers\SalarioMinimoController.cs" />
+    <Compile Include="Controllers\SegmentoController.cs" />
+    <Compile Include="Controllers\SessionLessController.cs" />
+    <Compile Include="Controllers\SiniestralidadEsperadaController.cs" />
+    <Compile Include="Controllers\SubReglaController.cs" />
+    <Compile Include="Controllers\TipoEndosoController.cs" />
+    <Compile Include="Controllers\TipoPremioController.cs" />
+    <Compile Include="Controllers\TipoUnidadMedidaController.cs" />
+    <Compile Include="Controllers\TopeMonedaController.cs" />
+    <Compile Include="Controllers\TopexEdadController.cs" />
+    <Compile Include="Controllers\UnidadMedidaController.cs" />
+    <Compile Include="Controllers\VariableController.cs" />
+    <Compile Include="Controllers\ZonaController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ComboAniosExtensions.cs" />
+    <Compile Include="Helpers\ComboMesesExtensions.cs" />
+    <Compile Include="Helpers\RouteReportsExtensions.cs" />
+    <Compile Include="Models\ISmtpClient.cs" />
+    <Compile Include="Models\Localidad.cs" />
+    <Compile Include="Models\ModelosVista.cs" />
+    <Compile Include="Models\SmtpClientProxy.cs" />
+    <Compile Include="Models\Zona.cs" />
+    <Compile Include="Comun\NoCacheFilterAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Pruebas.aspx.cs">
+      <DependentUpon>Pruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pruebas.aspx.designer.cs">
+      <DependentUpon>Pruebas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\CReportViewerCustomMessages.cs" />
+    <Compile Include="Reportes\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Reportes.Master.cs">
+      <DependentUpon>Reportes.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reportes.Master.designer.cs">
+      <DependentUpon>Reportes.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\SAIReportServerCredentials.cs" />
+    <Compile Include="Reportes\Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\verReporte.aspx.cs">
+      <DependentUpon>verReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\verReporte.aspx.designer.cs">
+      <DependentUpon>verReporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AdministracionSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Autenticacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Utilidades.cs" />
+    <Compile Include="Service References\CalculosTalentosComision\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ComisionesSVC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ConsultasComisionesSVC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EjecucionETLs\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LoggingSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ModeloComisionSVC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Reportes\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wsAutenticacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Views\ParticipacionDirector\Directores.ascx.cs">
+      <DependentUpon>Directores.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ParticipacionDirector\Directores.ascx.designer.cs">
+      <DependentUpon>Directores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ContentMenuUserControl.ascx.cs">
+      <DependentUpon>ContentMenuUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\ContentMenuUserControl.ascx.designer.cs">
+      <DependentUpon>ContentMenuUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ExcelController.cs" />
+    <Compile Include="Views\Shared\Logging.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Mensajes.cs" />
+    <Compile Include="Views\Shared\MenuUserControl.ascx.cs">
+      <DependentUpon>MenuUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\MenuUserControl.ascx.designer.cs">
+      <DependentUpon>MenuUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Sesion.cs" />
+    <Compile Include="Views\Shared\SiteMapPathUserControl.ascx.cs">
+      <DependentUpon>SiteMapPathUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\SiteMapPathUserControl.ascx.designer.cs">
+      <DependentUpon>SiteMapPathUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\WebPage.cs" />
+    <Compile Include="Views\Shared\WebServiceProxyFactory.cs" />
+    <Compile Include="Views\TipoUnidadMedida\Editar.ascx.cs">
+      <DependentUpon>Editar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TipoUnidadMedida\Editar.ascx.designer.cs">
+      <DependentUpon>Editar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TipoUnidadMedida\Eliminar.ascx.cs">
+      <DependentUpon>Eliminar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TipoUnidadMedida\Eliminar.ascx.designer.cs">
+      <DependentUpon>Eliminar.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\SAI.Estilo\estilos\AccessControl.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\context-menu.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_diagonals-small_15_b22222_40x40.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_flat_0_333333_40x100.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_flat_100_efefef_40x100.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_glass_55_cbc3b3_1x400.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_gloss-wave_65_cbc3b3_500x100.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-bg_highlight-hard_100_efefef_1x100.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-icons_004276_256x240.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-icons_b22222_256x240.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\custom-theme\jquery-ui-1.8.2.custom.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\demo_table.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\demo_table_jui.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\drag-drop-folder-tree.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\jNotify.jquery.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\jquery.toChecklist.min.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\jTPS.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\Reportes.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\styles.css" />
+    <Content Include="App_Themes\SAI.Estilo\estilos\ui.flatfields.css" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\ajax-loader.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\ajax-loader_2.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\ajax-loader_black.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\arrows-ffffff.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\Avisado.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\back.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\Background_Titulos.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\back_disabled.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\back_enabled.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\back_sub.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\banner_cons_col.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-Aceptar.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_cancelar.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_Consultar.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_Descargar.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_Editar_Reg.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_GeneraCapitacion.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_guardar.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_guardar_excel.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_IniciarSesion.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_Login.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_n.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_NewConsulta.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_NotesNovelity.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_Registro.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-buttom_reinicia_pws.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg-regresar_.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bg.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\border_left.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\border_right.PNG" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\btnVerificar.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bt_menu.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bt_menu2.GIF" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\bt_pro_a_personas.GIF" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\buscador.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\buttomDetails.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\buttomResumen.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\Calendar.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\clock.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\Close.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\Colpatria.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\colpatriaGrande.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\colpatriaPequeno.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\colpatria_firma_correo.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\control.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\delete.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\EnEstudio.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\error.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\estadisticas.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\Exclamation.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\forward_disabled.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\forward_enabled.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_Acordion.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_brd_de_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_brd_inf_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_brd_iz_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_brd_sup_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_buttom_red.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_caja_arriba_2.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_degrade.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_inf_de.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_inf_de_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_inf_iz.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_inf_iz_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_sup_de.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_sup_de_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_sup_iz.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_esq_sup_iz_g.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_fondo_caja.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_horizontal_larga.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\im_imprimir.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\info.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\left.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\logo.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\logo.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\LogoColpatriaGrande.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\LogoColpatriaSolo.JPG" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\middle.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\pbar-ani.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\proceso.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\red2whiteline.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\red_footer.PNG" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\Resultado.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\right.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\SaludColpatria.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\shadow.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\SolicitudDctos.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\sort_asc.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\sort_asc_disabled.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\sort_both.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\sort_desc.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\sort_desc_disabled.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\success.png" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\ti_fondo.jpg" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\context-menu-gradient.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\dhtmlgoodies_folder.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\dhtmlgoodies_minus.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\dhtmlgoodies_plus.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\dhtmlgoodies_sheet.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\dragDrop_ind1.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\dragDrop_ind2.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\folder_close.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\folder_dots.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\folder_folder.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\folder_lastsub.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\folder_open.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\TreeView\folder_sub.gif" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\UIColpatria.ico" />
+    <Content Include="App_Themes\SAI.Estilo\Imagenes\xls.gif" />
+    <Content Include="Areas\Comisiones\Views\Extraccion\Index.aspx" />
+    <Content Include="Areas\Comisiones\Views\Extraccion\Programar.aspx" />
+    <Content Include="Areas\Comisiones\Views\Inicio\Excepciones.aspx" />
+    <Content Include="Areas\Comisiones\Views\Inicio\Index.aspx" />
+    <Content Include="Areas\Comisiones\Views\Parametrizacion\Index.aspx" />
+    <Content Include="Areas\Comisiones\Views\Reportes\ReportViewer.ascx" />
+    <Content Include="Areas\SiteMapAdministration\Views\SiteMapAdministration\Create.aspx" />
+    <Content Include="Areas\SiteMapAdministration\Views\SiteMapAdministration\Edit.aspx" />
+    <Content Include="Areas\SiteMapAdministration\Views\SiteMapAdministration\Index.aspx" />
+    <Content Include="Areas\SiteMapAdministration\Views\Web.config" />
+    <Content Include="Areas\UserAdministration\Views\UserAdministration\Details.aspx" />
+    <Content Include="Areas\UserAdministration\Views\UserAdministration\Index.aspx" />
+    <Content Include="Areas\UserAdministration\Views\UserAdministration\Role.aspx" />
+    <Content Include="bin\ColpatriaSAI.UI.MVC.DLL" />
+    <Content Include="bin\ColpatriaSAI.UI.MVC.pdb" />
+    <Content Include="bin\FlimFlan.WebControls.dll" />
+    <Content Include="bin\Microsoft.Web.Mvc.dll" />
+    <Content Include="Content\boostrap.3.3.6\css\bootstrap-theme.css" />
+    <Content Include="Content\boostrap.3.3.6\css\bootstrap-theme.min.css" />
+    <Content Include="Content\boostrap.3.3.6\css\bootstrap.css" />
+    <Content Include="Content\boostrap.3.3.6\css\bootstrap.min.css" />
+    <Content Include="Content\boostrap.3.3.6\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\comisiones\common.css" />
+    <Content Include="Content\css\comisiones\MatrizComisionVariable.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\AutoFill\media\css\AutoFill.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\AutoFill\media\images\filler.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\ColReorder\media\css\ColReorder.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\ColReorder\media\images\insert.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\ColVis\media\css\ColVis.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\ColVis\media\css\ColVisAlt.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\ColVis\media\images\button.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\FixedColumns\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\FixedColumns\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\FixedColumns\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\FixedColumns\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.8.1\extras\FixedColumns\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\Scroller\media\docs\media\css\doc.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\Scroller\media\docs\media\css\shCore.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\Scroller\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\Scroller\media\docs\media\images\arrow.jpg" />
+    <Content Include="Content\DataTables-1.8.1\extras\Scroller\media\docs\media\images\extended.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\css\TableTools.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\css\TableTools_JUI.css" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\background.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\collection.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\collection_hover.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\copy.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\copy_hover.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\csv.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\csv_hover.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\pdf.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\pdf_hover.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\print.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\print_hover.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\xls.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\images\xls_hover.png" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\swf\copy_cvs_xls.swf" />
+    <Content Include="Content\DataTables-1.8.1\extras\TableTools\media\swf\copy_cvs_xls_pdf.swf" />
+    <Content Include="Content\DataTables-1.8.1\media\css\demo_page.css" />
+    <Content Include="Content\DataTables-1.8.1\media\css\demo_table.css" />
+    <Content Include="Content\DataTables-1.8.1\media\css\demo_table_jui.css" />
+    <Content Include="Content\DataTables-1.8.1\media\images\back_disabled.jpg" />
+    <Content Include="Content\DataTables-1.8.1\media\images\back_enabled.jpg" />
+    <Content Include="Content\DataTables-1.8.1\media\images\favicon.ico" />
+    <Content Include="Content\DataTables-1.8.1\media\images\forward_disabled.jpg" />
+    <Content Include="Content\DataTables-1.8.1\media\images\forward_enabled.jpg" />
+    <Content Include="Content\DataTables-1.8.1\media\images\sort_asc.png" />
+    <Content Include="Content\DataTables-1.8.1\media\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables-1.8.1\media\images\sort_both.png" />
+    <Content Include="Content\DataTables-1.8.1\media\images\sort_desc.png" />
+    <Content Include="Content\DataTables-1.8.1\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\jqueryui\1.11.4\jquery-ui.css" />
+    <Content Include="Content\jqueryui\1.11.4\jquery-ui.min.css" />
+    <Content Include="Content\jqueryui\1.11.4\jquery-ui.structure.min.css" />
+    <Content Include="Content\jqueryui\1.11.4\jquery-ui.theme.css" />
+    <Content Include="Content\jqueryui\1.11.4\jquery-ui.theme.min.css" />
+    <Content Include="Content\JsTree\jquery.jstree.js" />
+    <Content Include="Content\JsTree\themes\apple\bg.jpg" />
+    <Content Include="Content\JsTree\themes\apple\d.png" />
+    <Content Include="Content\JsTree\themes\apple\dot_for_ie.gif" />
+    <Content Include="Content\JsTree\themes\apple\style.css" />
+    <Content Include="Content\JsTree\themes\apple\throbber.gif" />
+    <Content Include="Content\JsTree\themes\classic\d.gif" />
+    <Content Include="Content\JsTree\themes\classic\d.png" />
+    <Content Include="Content\JsTree\themes\classic\dot_for_ie.gif" />
+    <Content Include="Content\JsTree\themes\classic\style.css" />
+    <Content Include="Content\JsTree\themes\classic\throbber.gif" />
+    <Content Include="Content\JsTree\themes\default-rtl\d.gif" />
+    <Content Include="Content\JsTree\themes\default-rtl\d.png" />
+    <Content Include="Content\JsTree\themes\default-rtl\dots.gif" />
+    <Content Include="Content\JsTree\themes\default-rtl\style.css" />
+    <Content Include="Content\JsTree\themes\default-rtl\throbber.gif" />
+    <Content Include="Content\JsTree\themes\default\asesor.png" />
+    <Content Include="Content\JsTree\themes\default\d.gif" />
+    <Content Include="Content\JsTree\themes\default\d.png" />
+    <Content Include="Content\JsTree\themes\default\director.png" />
+    <Content Include="Content\JsTree\themes\default\gerente.png" />
+    <Content Include="Content\JsTree\themes\default\organigram.png" />
+    <Content Include="Content\JsTree\themes\default\style.css" />
+    <Content Include="Content\JsTree\themes\default\throbber.gif" />
+    <Content Include="Content\JsTree\themes\default\vice.png" />
+    <Content Include="Content\JsTree\_lib\jquery.cookie.js" />
+    <Content Include="Content\JsTree\_lib\jquery.hotkeys.js" />
+    <Content Include="Content\MvcMembership.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\toolkit\css\axa_icons.css" />
+    <Content Include="Content\toolkit\css\bootstrap\bootstrap-ie7.css" />
+    <Content Include="Content\toolkit\css\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\toolkit\css\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\toolkit\css\bootstrap\bootstrap.css" />
+    <Content Include="Content\toolkit\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\toolkit\css\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\toolkit\css\fonts.css" />
+    <Content Include="Content\toolkit\css\fonts\03d3fbf1-6049-49f3-b39c-2894d7dd99cc.svg" />
+    <Content Include="Content\toolkit\css\fonts\125eafff-7b5a-4c56-8a3a-d3fe11d8c3cc.svg" />
+    <Content Include="Content\toolkit\css\fonts\14981380-0a21-4949-924f-2b19d122f185.svg" />
+    <Content Include="Content\toolkit\css\fonts\2cfbad6a-2ec6-4afa-b42a-a969efd29c2d.svg" />
+    <Content Include="Content\toolkit\css\fonts\329fefa7-d703-49cf-b2cf-00063765c30f.svg" />
+    <Content Include="Content\toolkit\css\fonts\3b330c74-12e3-423e-9785-d817a41a9a24.svg" />
+    <Content Include="Content\toolkit\css\fonts\3d855152-df90-4b54-92f2-14070998cba8.svg" />
+    <Content Include="Content\toolkit\css\fonts\426ce955-d5bd-4a77-b077-402088f77e65.svg" />
+    <Content Include="Content\toolkit\css\fonts\427cca04-e0ee-4395-a5d3-b7d45feeff62.svg" />
+    <Content Include="Content\toolkit\css\fonts\4d0943db-1dc2-4618-8b52-c08fc0e76611.svg" />
+    <Content Include="Content\toolkit\css\fonts\52fb29fb-5147-4a42-b308-e24daf6ec3b6.svg" />
+    <Content Include="Content\toolkit\css\fonts\73d7155c-f1ff-4a6d-939e-8830a266016e.svg" />
+    <Content Include="Content\toolkit\css\fonts\82ffbb5c-0b67-49c2-8b95-7a395bde55bc.svg" />
+    <Content Include="Content\toolkit\css\fonts\8cdd992f-b574-4529-b237-4a0ab066d8f5.svg" />
+    <Content Include="Content\toolkit\css\fonts\a7d47205-7be9-48ab-bf9d-db13411bebb6.svg" />
+    <Content Include="Content\toolkit\css\fonts\axa.svg" />
+    <Content Include="Content\toolkit\css\fonts\c168602c-6e5b-408d-a51c-ca4ddb8fe8e4.svg" />
+    <Content Include="Content\toolkit\css\fonts\c806ee51-6432-4bcb-8cba-574e9cfb5709.svg" />
+    <Content Include="Content\toolkit\css\fonts\cd77c402-802a-44c5-9837-f69eeb282447.svg" />
+    <Content Include="Content\toolkit\css\fonts\d2919fbf-50f9-4403-b41a-12044cdefede.svg" />
+    <Content Include="Content\toolkit\css\fonts\d37d19b9-0a14-43cf-b788-08f0a6b5c33e.svg" />
+    <Content Include="Content\toolkit\css\fonts\ecdd9a12-d591-4438-98f6-21f24e095086.svg" />
+    <Content Include="Content\toolkit\css\fonts\edb011f7-44ad-4c0d-b81a-c97c3ad6be6f.svg" />
+    <Content Include="Content\toolkit\css\fonts\slick.svg" />
+    <Content Include="Content\toolkit\css\fonts\toolkit.svg" />
+    <Content Include="Content\toolkit\css\icons.css" />
+    <Content Include="Content\toolkit\css\ie\ie7.css" />
+    <Content Include="Content\toolkit\css\login.css" />
+    <Content Include="Content\toolkit\css\normalize.css" />
+    <Content Include="Content\toolkit\css\site\autos.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker.min.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker3.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\toolkit\css\site\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\toolkit\css\site\login.css" />
+    <Content Include="Content\toolkit\css\slick\slick-theme.css" />
+    <Content Include="Content\toolkit\css\slick\slick.css" />
+    <Content Include="Content\toolkit\css\toolkit.css" />
+    <Content Include="Content\toolkit\js\bootstrap\bootstrap-datepicker.js" />
+    <Content Include="Content\toolkit\js\bootstrap\bootstrap-datepicker.min.js" />
+    <Content Include="Content\toolkit\js\bootstrap\bootstrap-datetimepicker.js" />
+    <Content Include="Content\toolkit\js\bootstrap\bootstrap.js" />
+    <Content Include="Content\toolkit\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\toolkit\js\bootstrap\matchmedia.addListener.js" />
+    <Content Include="Content\toolkit\js\bootstrap\matchmedia.polyfill.js" />
+    <Content Include="Content\toolkit\js\bootstrap\moment.js" />
+    <Content Include="Content\toolkit\js\bootstrap\moment.min.js" />
+    <Content Include="Content\toolkit\js\bootstrap\respond.js" />
+    <Content Include="Content\toolkit\js\bootstrap\respond.matchmedia.addListener.min.js" />
+    <Content Include="Content\toolkit\js\bootstrap\respond.matchmedia.addListener.src.js" />
+    <Content Include="Content\toolkit\js\bootstrap\respond.min.js" />
+    <Content Include="Content\toolkit\js\bootstrap\respond.src.js" />
+    <Content Include="Content\toolkit\js\bootstrap\validator.js" />
+    <Content Include="Content\toolkit\js\bootstrap\validator.min.js" />
+    <Content Include="Content\toolkit\js\ie\css3-mediaqueries.js" />
+    <Content Include="Content\toolkit\js\ie\html5shiv.min.js" />
+    <Content Include="Content\toolkit\js\ie\ie7.js" />
+    <Content Include="Content\toolkit\js\jquery\jquery-1.11.3.js" />
+    <Content Include="Content\toolkit\js\jquery\jquery-ui.js" />
+    <Content Include="Content\toolkit\js\modernizr.js" />
+    <Content Include="Content\toolkit\js\site\autos.js" />
+    <Content Include="Content\toolkit\js\site\classie.js" />
+    <Content Include="Content\toolkit\js\site\selectFx.js" />
+    <Content Include="Content\toolkit\js\slick\slick.js" />
+    <Content Include="Content\toolkit\js\slick\slick.min.js" />
+    <Content Include="Content\toolkit\js\toolkit.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Areas\UserAdministration\Views\Web.config" />
+    <Content Include="App_Themes\SAI.Estilo\paginas\Publico.master" />
+    <Content Include="App_Themes\SAI.Estilo\paginas\VirtualServices\ServiciosVirtuales.master" />
+    <None Include="App_Themes\SAI.Estilo\Imagenes\Sorting icons.psd" />
+    <Content Include="Areas\Comisiones\Views\Web.config" />
+    <Content Include="Areas\Comisiones\Views\Shared\_comisionesLayoutPage.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Extraccion\Manual.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ComisionFija\Detalle.cshtml" />
+    <Content Include="Areas\UserAdministration\Views\UserAdministration\_UsersPagedList.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ComisionVariable\FactoresNuevos.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ComisionVariable\FactoresNetos.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Modelos\ModeloComision.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Parametrizacion\VencimientoHistoricos.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Asesores\_BuscarAsesores.cshtml" />
+    <Content Include="Areas\Comisiones\Views\CalculoUsuarios\CalcNuevosTalentos.cshtml" />
+    <Content Include="Areas\Comisiones\Views\CalculoUsuarios\CalculosTalentos.cshtml" />
+    <Content Include="Areas\Comisiones\Views\MatrizComisionVariable\Index.cshtml" />
+    <Content Include="Areas\Comisiones\Views\MatrizComisionVariable\ConfigurarEjes.cshtml" />
+    <Content Include="Areas\Comisiones\Views\MatrizComisionVariable\ConfigurarFactores.cshtml" />
+    <Content Include="Areas\Comisiones\Views\CalculoUsuarios\CalculosNetos.cshtml" />
+    <Content Include="Areas\Comisiones\Views\CalculoUsuarios\CalcNetos.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Shared\_encabezadoModelo.cshtml" />
+    <Content Include="Areas\Comisiones\Views\CalculoComision\CalculoComision.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Shared\_errorMessage.cshtml" />
+    <Content Include="Areas\Comisiones\Views\CalculoComision\_visualizacionComisiones.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Reportes\ReportesBeneficiario.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Reportes\ReporteTransferencias.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Reportes\ReporteAsesores.cshtml" />
+    <Content Include="Areas\Comisiones\Views\CalculoComision\Historico.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ConsultaParametrizacion\ConsultaParametrizacion.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Consultas\bitacoraPorCalculo.cshtml" />
+    <Content Include="Areas\Comisiones\Views\AdminComision\Parametros.cshtml" />
+    <Content Include="Areas\Comisiones\Views\AdminComision\NovedadesUsuarios.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Reportes\ReporteComercial.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ExcepcionesComision\CargueExcepcionFijaVariable.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ExcepcionesComision\CargueExcepcionPenalizacion.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ExcepcionesComision\ExcepcionFijaVariable.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ExcepcionesComision\ExcepcionPenalizacion.cshtml" />
+    <Content Include="Areas\Comisiones\Views\ExcepcionesComision\ResultCargue.cshtml" />
+    <Content Include="Areas\Comisiones\Views\Reportes\ReportsBH.cshtml" />
+    <None Include="CargueSAI\Colquines\Colquines_23-12-2011 9 1.xlsx" />
+    <None Include="CargueSAI\Colquines\Colquines_23-12-2011 9 3.xlsx" />
+    <None Include="CargueSAI\FormatosCarga\FormatoCargaEjecucionManual.xlsx" />
+    <None Include="CargueSAI\FormatosCarga\FormatoCargaManualColquines.xlsx" />
+    <None Include="CargueSAI\FormatosCarga\FormatoCargaParticipantes.xlsx" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Content\boostrap.3.3.6\css\bootstrap-theme.css.map" />
+    <None Include="Content\boostrap.3.3.6\css\bootstrap-theme.min.css.map" />
+    <None Include="Content\boostrap.3.3.6\css\bootstrap.css.map" />
+    <None Include="Content\boostrap.3.3.6\css\bootstrap.min.css.map" />
+    <None Include="Content\boostrap.3.3.6\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\boostrap.3.3.6\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\boostrap.3.3.6\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\boostrap.3.3.6\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Content\DataTables-1.8.1\extras\TableTools\media\images\psd\collection.psd" />
+    <None Include="Content\DataTables-1.8.1\extras\TableTools\media\images\psd\copy document.psd" />
+    <None Include="Content\DataTables-1.8.1\extras\TableTools\media\images\psd\file_types.psd" />
+    <None Include="Content\DataTables-1.8.1\extras\TableTools\media\images\psd\printer.psd" />
+    <None Include="Content\DataTables-1.8.1\media\images\Sorting icons.psd" />
+    <None Include="Content\Formato de carga masiva de excepciones a la comision.xls" />
+    <None Include="Content\Formato de carga masiva de excepciones a la comision.xlsx" />
+    <None Include="Content\toolkit\css\bootstrap\bootstrap-theme.css.map" />
+    <None Include="Content\toolkit\css\bootstrap\bootstrap.css.map" />
+    <None Include="Content\toolkit\css\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\toolkit\css\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\toolkit\css\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\toolkit\css\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Content\toolkit\css\fonts\0217968f-fe47-452d-bf4a-64f4fb60de07.woff" />
+    <None Include="Content\toolkit\css\fonts\023d36f1-a203-482f-bb69-f448692d32f5.eot" />
+    <None Include="Content\toolkit\css\fonts\02baf074-eef5-4bdf-bf8a-c7d5c525e5b5.ttf" />
+    <None Include="Content\toolkit\css\fonts\02c46bc9-b252-4936-9788-4d7a7dab5011.eot" />
+    <None Include="Content\toolkit\css\fonts\03dda592-ab39-4f26-9535-fdea194854cf.eot" />
+    <None Include="Content\toolkit\css\fonts\05bfbc51-0c0b-440a-8a25-45b86f0289d5.eot" />
+    <None Include="Content\toolkit\css\fonts\060031a3-ab11-4f91-9dd4-6b39458f5109.woff" />
+    <None Include="Content\toolkit\css\fonts\06d99598-12aa-461b-b57e-81a137da1b9f.ttf" />
+    <None Include="Content\toolkit\css\fonts\086332e2-4c15-41b9-8e05-a0fa1976886c.woff" />
+    <None Include="Content\toolkit\css\fonts\08fe22ab-0517-4203-bcc9-1ba2ca45f40c.woff" />
+    <None Include="Content\toolkit\css\fonts\09d2e7ad-9e0a-4031-95b6-0278e51fb444.eot" />
+    <None Include="Content\toolkit\css\fonts\1012b297-24ec-4293-b3e6-4418211cf09d.ttf" />
+    <None Include="Content\toolkit\css\fonts\10ab5970-5726-4843-82b1-912faa9307ff.woff" />
+    <None Include="Content\toolkit\css\fonts\132d4613-12a3-4b27-8823-b55187a646b5.ttf" />
+    <None Include="Content\toolkit\css\fonts\180188d0-d301-4887-9896-d5360db2815f.woff" />
+    <None Include="Content\toolkit\css\fonts\1a5c81ae-d22c-42b1-8b90-5493842fbcdd.eot" />
+    <None Include="Content\toolkit\css\fonts\25b07660-96a5-4eed-bcfd-fc4f0e97098a.eot" />
+    <None Include="Content\toolkit\css\fonts\29efa8aa-9c14-47a3-bc87-fefc803189e0.ttf" />
+    <None Include="Content\toolkit\css\fonts\2A39F8_1_0.eot" />
+    <None Include="Content\toolkit\css\fonts\2c00b410-b1ca-4cab-af43-413b2c9a006e.eot" />
+    <None Include="Content\toolkit\css\fonts\309e275f-1390-4fe1-84c8-2c57ee140fec.eot" />
+    <None Include="Content\toolkit\css\fonts\3e93a250-0c01-4de3-a34f-07ad006f324c.woff" />
+    <None Include="Content\toolkit\css\fonts\40c25844-afae-464c-b2e8-e22dfe775019.eot" />
+    <None Include="Content\toolkit\css\fonts\41c174b1-68c1-41b7-a19f-5ec80929b115.woff" />
+    <None Include="Content\toolkit\css\fonts\4464b53d-fa4f-4571-bc60-bf9125b77517.woff" />
+    <None Include="Content\toolkit\css\fonts\498d8f5c-6dfe-4a07-9fdf-321bcc11909c.eot" />
+    <None Include="Content\toolkit\css\fonts\4dde81fc-4a1d-4a49-86ec-1c8e3cc6a263.ttf" />
+    <None Include="Content\toolkit\css\fonts\52aab9ca-1732-4980-9f86-87543a225241.woff" />
+    <None Include="Content\toolkit\css\fonts\56049f78-3d2e-4f58-9aee-76015748f2a1.ttf" />
+    <None Include="Content\toolkit\css\fonts\61509a4a-55a0-4207-a78b-902f7a2cc685.woff" />
+    <None Include="Content\toolkit\css\fonts\69d4ecb9-769b-472b-a120-c3c3e1e3748e.ttf" />
+    <None Include="Content\toolkit\css\fonts\6adc2e3a-d0c4-4c48-ba68-91b4107515d7.ttf" />
+    <None Include="Content\toolkit\css\fonts\6c1059a5-93a4-4c07-8464-8ee5df381c36.woff" />
+    <None Include="Content\toolkit\css\fonts\6f4c1ba3-f552-416e-bec0-331f087fc0f0.eot" />
+    <None Include="Content\toolkit\css\fonts\70a26d03-0393-410a-a98c-e35dc876c3cb.ttf" />
+    <None Include="Content\toolkit\css\fonts\721c755e-eb3b-4ca0-b709-17464d40b416.eot" />
+    <None Include="Content\toolkit\css\fonts\7306de32-c033-4beb-935b-9450a69833ce.eot" />
+    <None Include="Content\toolkit\css\fonts\74bfc732-8944-48e4-af03-b3d2373ff97f.woff" />
+    <None Include="Content\toolkit\css\fonts\7762c169-a387-4399-b8a3-d43373d60c3e.eot" />
+    <None Include="Content\toolkit\css\fonts\8e90e5d2-659a-4b9f-b68a-8ae72539e7b4.ttf" />
+    <None Include="Content\toolkit\css\fonts\905c1a7c-f018-4815-b4a9-6bd6f4c7e768.eot" />
+    <None Include="Content\toolkit\css\fonts\9920e0c0-07ac-4a1b-befd-fa76960969b8.ttf" />
+    <None Include="Content\toolkit\css\fonts\a10e2fb8-a2fd-452f-9128-de2d550c69d6.ttf" />
+    <None Include="Content\toolkit\css\fonts\a2f0aafb-c051-4bc8-bcbb-d702f2e0c93d.ttf" />
+    <None Include="Content\toolkit\css\fonts\a619c765-b1f3-4beb-9e53-6dcb7b51f7c6.woff" />
+    <None Include="Content\toolkit\css\fonts\ad3568fc-e8d1-4f2a-991a-73b2c1579d2d.woff" />
+    <None Include="Content\toolkit\css\fonts\ada81e8e-40ce-44e0-afeb-dfe3f22137bf.woff" />
+    <None Include="Content\toolkit\css\fonts\axa.eot" />
+    <None Include="Content\toolkit\css\fonts\axa.ttf" />
+    <None Include="Content\toolkit\css\fonts\axa.woff" />
+    <None Include="Content\toolkit\css\fonts\b137a889-41c6-4578-84a4-aa00ea0cf371.eot" />
+    <None Include="Content\toolkit\css\fonts\b2ef0f06-9dd1-4e8d-b49b-75293b3c8521.woff" />
+    <None Include="Content\toolkit\css\fonts\b42b1756-b19e-43bc-adf8-a91bc339a1f0.eot" />
+    <None Include="Content\toolkit\css\fonts\b547d31d-69fc-40d6-8013-e9b6f0b38df0.woff" />
+    <None Include="Content\toolkit\css\fonts\b85b033c-203b-4ea7-8053-d98683a67652.ttf" />
+    <None Include="Content\toolkit\css\fonts\b8e027ee-2673-4c27-94d0-54595a427ab2.ttf" />
+    <None Include="Content\toolkit\css\fonts\baf80ba3-29ee-4bd1-af03-28d25bd3beeb.ttf" />
+    <None Include="Content\toolkit\css\fonts\bddaa752-b0b5-47d2-95c5-c577f9447c57.eot" />
+    <None Include="Content\toolkit\css\fonts\c7eb9d8d-6dea-4484-b775-9542a1571a8a.woff" />
+    <None Include="Content\toolkit\css\fonts\cf9edf3c-d563-4fc3-aa74-9cf7d79c4666.woff" />
+    <None Include="Content\toolkit\css\fonts\d22fab2a-12ce-4fde-a9c4-257dec15b6e6.eot" />
+    <None Include="Content\toolkit\css\fonts\de902d7e-9849-4880-b8fe-966b186b110c.woff" />
+    <None Include="Content\toolkit\css\fonts\e1ab3288-7287-4732-b338-08f7ba152f8a.ttf" />
+    <None Include="Content\toolkit\css\fonts\e23d0896-e215-461d-9e11-8a06743a9dbe.woff" />
+    <None Include="Content\toolkit\css\fonts\e6b4a953-394c-489c-81c4-1d9660573404.ttf" />
+    <None Include="Content\toolkit\css\fonts\e70351f1-aa0a-4aea-8164-6c50d40da854.ttf" />
+    <None Include="Content\toolkit\css\fonts\e81b60a7-faa6-43b1-9a18-ec1f4a7941d5.ttf" />
+    <None Include="Content\toolkit\css\fonts\e87a0fc1-a470-4e66-b5d3-1f5e104c80be.eot" />
+    <None Include="Content\toolkit\css\fonts\fb5ba253-3e6d-4ab2-9048-ca7f4f053257.eot" />
+    <None Include="Content\toolkit\css\fonts\fdec17bc-6f6c-4b7c-bbc1-8f2ec6c7931c.ttf" />
+    <None Include="Content\toolkit\css\fonts\slick.eot" />
+    <None Include="Content\toolkit\css\fonts\slick.ttf" />
+    <None Include="Content\toolkit\css\fonts\slick.woff" />
+    <None Include="Content\toolkit\css\fonts\toolkit.eot" />
+    <None Include="Content\toolkit\css\fonts\toolkit.ttf" />
+    <None Include="Content\toolkit\css\fonts\toolkit.woff" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
+    <None Include="obj\Release\build.force" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="packages.config" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Beneficiario.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Compania1.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Concurso1.datasource" />
+    <Content Include="Areas\SiteMapAdministration\Views\Web.config" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.BasexParticipante.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Categoria.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.AntiguedadxNivel.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.BaseMoneda.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.BasexParticipante.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Categoria.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Compania.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Concurso.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.EscalaNota.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.FactorVariable.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.FactorxNota.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.GrupoEndoso.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Localidad.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Moneda.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Nivel.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Participante.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Red.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.SiteMap.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.EscalaNota.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.FactorVariable.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.FactorxNota.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.GrupoEndoso.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Localidad1.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.SiteMap.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.TipoConcurso.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.TipoEscala.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.UnidadMedida.datasource" />
+    <None Include="Properties\DataSources\ColpatriaSAI.Negocio.Entidades.Zona.datasource" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="obj\Debug\ColpatriaSAI.UI.MVC.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\ColpatriaSAI.UI.MVC.dll" />
+    <Content Include="obj\Debug\TempPE\Service References.AdministracionSvc.Reference.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Service References.Autenticacion.Reference.cs.dll" />
+    <Content Include="Pruebas.aspx" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reportes\Default.aspx" />
+    <Content Include="Reportes\Site1.Master" />
+    <Content Include="Reportes\Reportes.Master" />
+    <None Include="Scripts\DataTables-1.8.1\extras\AutoFill\media\js\AutoFill.min.js.gz" />
+    <None Include="Scripts\DataTables-1.8.1\extras\ColReorder\media\js\ColReorder.min.js.gz" />
+    <None Include="Scripts\DataTables-1.8.1\extras\ColVis\media\js\ColVis.min.js.gz" />
+    <None Include="Scripts\DataTables-1.8.1\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
+    <None Include="Scripts\DataTables-1.8.1\extras\Scroller\media\js\Scroller.min.js.gz" />
+    <None Include="Scripts\DataTables-1.8.1\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <None Include="Scripts\DataTables-1.8.1\media\js\jquery.dataTables.min.js.gz" />
+    <Content Include="Reportes\Reportes.aspx" />
+    <Content Include="Reportes\verReporte.aspx" />
+    <Content Include="Rutas.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Scripts\jquery-1.11.2.min.map" />
+    <None Include="Scripts\jquery-2.1.3.min.map" />
+    <None Include="Service References\AdministracionSvc\Administracion.wsdl" />
+    <None Include="Service References\AdministracionSvc\Administracion.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdministracionSvc\Administracion1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdministracionSvc\Administracion2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdministracionSvc\Administracion3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdministracionSvc\Administracion4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdministracionSvc\Administracion51.xsd" />
+    <None Include="Service References\Autenticacion\Autenticacion.xsd" />
+    <None Include="Service References\Autenticacion\Autenticacion1.xsd" />
+    <None Include="Service References\Autenticacion\Autenticacion2.xsd" />
+    <None Include="Service References\Autenticacion\Autenticacion4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Autenticacion\Autenticacion5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Autenticacion\Autenticacion6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Autenticacion\ColpatriaSAI.UI.MVC.Autenticacion.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Autenticacion\configuration91.svcinfo" />
+    <None Include="Service References\Autenticacion\configuration.svcinfo" />
+    <None Include="Service References\Autenticacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\aes.js" />
+    <Content Include="Scripts\ajax.js" />
+    <Content Include="Scripts\bootstrap.3.3.6.js" />
+    <Content Include="Scripts\bootstrap.min.3.3.6.js" />
+    <Content Include="Scripts\comisiones\common.js" />
+    <Content Include="Scripts\context-menu.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\AutoFill\media\js\AutoFill.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\AutoFill\media\js\AutoFill.min.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\ColReorder\media\js\ColReorder.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\ColReorder\media\js\ColReorder.min.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\ColVis\media\js\ColVis.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\ColVis\media\js\ColVis.min.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Edit\jquery-ui.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Edit\jquery.dataTables.editable.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Edit\jquery.jeditable.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\FixedColumns\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\FixedColumns\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\FixedColumns\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\FixedColumns\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\FixedColumns\media\js\FixedColumns.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\FixedColumns\media\js\FixedColumns.min.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Scroller\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Scroller\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Scroller\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Scroller\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Scroller\media\js\Scroller.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\Scroller\media\js\Scroller.min.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\TableTools\media\js\TableTools.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\TableTools\media\js\TableTools.min.js" />
+    <Content Include="Scripts\DataTables-1.8.1\extras\TableTools\media\js\ZeroClipboard.js" />
+    <Content Include="Scripts\DataTables-1.8.1\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables-1.8.1\media\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables-1.8.1\media\js\jquery.js" />
+    <Content Include="Scripts\drag-drop-folder-tree.js" />
+    <Content Include="Scripts\home\img\buttons.gif" />
+    <Content Include="Scripts\home\img\column-bg-left.png" />
+    <Content Include="Scripts\home\img\column-bg-right.png" />
+    <Content Include="Scripts\home\img\head-bg.png" />
+    <Content Include="Scripts\home\img\widget-content-bg.png" />
+    <Content Include="Scripts\home\panels.css" />
+    <Content Include="Scripts\home\panels.js" />
+    <Content Include="Scripts\home\panels.js.css" />
+    <Content Include="Scripts\home\jquery-ui-personalized-1.6rc2.min.js" />
+    <Content Include="Scripts\jAlert\jquery.alerts.css" />
+    <Content Include="Scripts\jAlert\jquery.alerts.js" />
+    <Content Include="Scripts\CascadingDropDownList.js" />
+    <Content Include="Scripts\jNotify.jquery.js" />
+    <Content Include="Scripts\jqGrid\Content\images\document.png" />
+    <Content Include="Scripts\jqGrid\Content\images\folder-open.png" />
+    <Content Include="Scripts\jqGrid\Content\images\folder.png" />
+    <Content Include="Scripts\jqGrid\Content\Site.css" />
+    <Content Include="Scripts\jqGrid\Content\themes\ui.jqcombobox.css" />
+    <Content Include="Scripts\jqGrid\Content\themes\ui.jqdropdownlist.css" />
+    <Content Include="Scripts\jqGrid\Content\themes\ui.jqgrid.css" />
+    <Content Include="Scripts\jqGrid\Content\themes\ui.jqmultiselect.css" />
+    <Content Include="Scripts\jqGrid\Content\themes\ui.jqtreeview.css" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-ar.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-bg.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-bg1251.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-cat.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-cn.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-cs.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-da.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-de.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-dk.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-el.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-es.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-fa.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-fi.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-fr.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-gl.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-he.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-hr.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-hr1250.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-hu.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-id.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-is.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-it.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-ja.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-kr.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-lt.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-mne.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-nl.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-no.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-pl.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-pt-br.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-pt.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-ro.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-ru.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-sk.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-sr.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-sv.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-th.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-tr.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-tw.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-ua.js" />
+    <Content Include="Scripts\jqGrid\trirand\i18n\grid.locale-vi.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqAutoComplete.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqChart.exporting.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqChart.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqComboBox.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqDatePicker.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqDropDownList.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqMultiSelect.min.js" />
+    <Content Include="Scripts\jqGrid\trirand\jquery.jqTreeView.min.js" />
+    <Content Include="Scripts\jquery-1.11.2.js" />
+    <Content Include="Scripts\jquery-1.11.2.min.js" />
+    <Content Include="Scripts\jquery-1.3.2.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-2.1.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.14.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-datepicker.es.js" />
+    <Content Include="Scripts\jquery-ui.1.11.4.js" />
+    <Content Include="Scripts\jquery-ui.min.1.11.4.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.fmatter.js" />
+    <Content Include="Scripts\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
+    <Content Include="Scripts\jquery.toChecklist.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\mvcfoolproof.unobtrusive.min.js" />
+    <Content Include="Scripts\MvcFoolproofJQueryValidation.min.js" />
+    <Content Include="Scripts\MvcFoolproofValidation.min.js" />
+    <Content Include="Scripts\sha256.js" />
+    <Content Include="Scripts\utilities.js" />
+    <Content Include="Scripts\jTPS.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <None Include="Service References\Autenticacion\Autenticacion2.disco" />
+    <None Include="Service References\Autenticacion\Autenticacion4.disco" />
+    <Content Include="Scripts\validate_activity.js" />
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision.wsdl" />
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision.xsd" />
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision1.xsd" />
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision2.xsd" />
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision3.xsd" />
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones.wsdl" />
+    <None Include="Service References\ComisionesSVC\Comisiones.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones6.xsd" />
+    <None Include="Service References\ConsultasComisionesSVC\ConsultasComisiones.wsdl" />
+    <None Include="Service References\ConsultasComisionesSVC\ConsultasComisiones.xsd" />
+    <None Include="Service References\ConsultasComisionesSVC\ConsultasComisiones1.xsd" />
+    <None Include="Service References\ConsultasComisionesSVC\ConsultasComisiones2.xsd" />
+    <None Include="Service References\EjecucionETLs\EjecucionETLs.wsdl" />
+    <None Include="Service References\EjecucionETLs\EjecucionETLs.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EjecucionETLs\EjecucionETLs1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EjecucionETLs\EjecucionETLs2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EjecucionETLs\EjecucionETLs3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EjecucionETLs\EjecucionETLs4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoggingSvc\Logging.disco" />
+    <None Include="Service References\LoggingSvc\configuration91.svcinfo" />
+    <None Include="Service References\LoggingSvc\configuration.svcinfo" />
+    <None Include="Service References\LoggingSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EjecucionETLs\EjecucionETLs.disco" />
+    <None Include="Service References\EjecucionETLs\configuration91.svcinfo" />
+    <None Include="Service References\EjecucionETLs\configuration.svcinfo" />
+    <None Include="Service References\EjecucionETLs\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AdministracionSvc\Administracion.disco" />
+    <None Include="Service References\AdministracionSvc\configuration91.svcinfo" />
+    <None Include="Service References\AdministracionSvc\configuration.svcinfo" />
+    <None Include="Service References\AdministracionSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ModeloComisionSVC\ModeloComision.wsdl" />
+    <None Include="Service References\ModeloComisionSVC\ModeloComision.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ModeloComisionSVC\ModeloComision1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ModeloComisionSVC\ModeloComision2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ModeloComisionSVC\ModeloComision3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ModeloComisionSVC\ModeloComision4.xsd" />
+    <None Include="Service References\ModeloComisionSVC\ModeloComision6.xsd" />
+    <None Include="Service References\Reportes\Reportes.wsdl" />
+    <None Include="Service References\Reportes\Reportes.xsd" />
+    <None Include="Service References\Reportes\Reportes1.xsd" />
+    <None Include="Service References\Reportes\Reportes2.xsd" />
+    <None Include="Service References\Reportes\Reportes3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAutenticacion\Service.disco" />
+    <None Include="Service References\wsAutenticacion\configuration91.svcinfo" />
+    <None Include="Service References\wsAutenticacion\configuration.svcinfo" />
+    <None Include="Service References\wsAutenticacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ModeloComisionSVC\ModeloComision.disco" />
+    <None Include="Service References\ModeloComisionSVC\configuration91.svcinfo" />
+    <None Include="Service References\ModeloComisionSVC\configuration.svcinfo" />
+    <None Include="Service References\ModeloComisionSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CalculosTalentosComision\CalculosTalentosComision.disco" />
+    <None Include="Service References\CalculosTalentosComision\configuration91.svcinfo" />
+    <None Include="Service References\CalculosTalentosComision\configuration.svcinfo" />
+    <None Include="Service References\CalculosTalentosComision\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Reportes\Reportes.disco" />
+    <None Include="Service References\Reportes\configuration91.svcinfo" />
+    <None Include="Service References\Reportes\configuration.svcinfo" />
+    <None Include="Service References\Reportes\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ComisionesSVC\Comisiones.disco" />
+    <None Include="Service References\ComisionesSVC\configuration91.svcinfo" />
+    <None Include="Service References\ComisionesSVC\configuration.svcinfo" />
+    <None Include="Service References\ComisionesSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ConsultasComisionesSVC\ConsultasComisiones.disco" />
+    <None Include="Service References\ConsultasComisionesSVC\configuration91.svcinfo" />
+    <None Include="Service References\ConsultasComisionesSVC\configuration.svcinfo" />
+    <None Include="Service References\ConsultasComisionesSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\ActividadEconomica\Index.aspx" />
+    <Content Include="Views\ActualizaClave\Create.aspx" />
+    <Content Include="Views\ActualizaClave\Index.aspx" />
+    <Content Include="Views\Administracion\Index.aspx" />
+    <Content Include="Views\Ajustes\AjustesConcursos.aspx" />
+    <Content Include="Views\Ajustes\AjustesContratos.aspx" />
+    <Content Include="Views\Ajustes\AjustesFranquicias.aspx" />
+    <Content Include="Views\Amparo\Create.aspx" />
+    <Content Include="Views\Amparo\Detalle.aspx" />
+    <Content Include="Views\Amparo\Editar.aspx" />
+    <Content Include="Views\Amparo\Index.aspx" />
+    <Content Include="Views\AnticiposFranquicias\Create.aspx" />
+    <Content Include="Views\AnticiposFranquicias\Edit.aspx" />
+    <Content Include="Views\AnticiposFranquicias\Index.aspx" />
+    <Content Include="Views\AntiguedadxNivel\Editar.ascx" />
+    <Content Include="Views\AntiguedadxNivel\Eliminar.ascx" />
+    <Content Include="Views\AntiguedadxNivel\Index.aspx" />
+    <Content Include="Views\AuditoriaSeguimiento\Index.aspx" />
+    <Content Include="Views\Auditoria\Index.aspx" />
+    <Content Include="Views\Banco\Detalle.aspx" />
+    <Content Include="Views\Banco\Create.aspx" />
+    <Content Include="Views\Banco\Index.aspx" />
+    <Content Include="Views\BaseMoneda\Editar.ascx" />
+    <Content Include="Views\BaseMoneda\Eliminar.ascx" />
+    <Content Include="Views\BaseMoneda\Index.aspx" />
+    <Content Include="Views\BasexParticipante\Editar.ascx" />
+    <Content Include="Views\BasexParticipante\Eliminar.ascx" />
+    <Content Include="Views\BasexParticipante\Index.aspx" />
+    <Content Include="Views\Beneficiario\Index.aspx" />
+    <Content Include="Views\Canal\Editar.ascx" />
+    <Content Include="Views\Canal\Eliminar.ascx" />
+    <Content Include="Views\Canal\Index.aspx" />
+    <Content Include="Views\CompaniaxEtapa\CategoriaxRegla\index.aspx" />
+    <Content Include="Views\Categoria\Editar.ascx" />
+    <Content Include="Views\Categoria\Eliminar.ascx" />
+    <Content Include="Views\Categoria\Index.aspx" />
+    <Content Include="Views\Cobertura\Index.aspx" />
+    <Content Include="Views\CompaniaxEtapa\Editar.ascx" />
+    <Content Include="Views\CompaniaxEtapa\Eliminar.ascx" />
+    <Content Include="Views\CompaniaxEtapa\Index.aspx" />
+    <Content Include="Views\Compañia\Editar.ascx" />
+    <Content Include="Views\Compañia\Eliminar.ascx" />
+    <Content Include="Views\Compañia\Index.aspx" />
+    <Content Include="Views\Concursos\Crear.aspx" />
+    <Content Include="Views\Concursos\CrearExcepcion.aspx" />
+    <Content Include="Views\Concursos\Duplicar.ascx" />
+    <Content Include="Views\Concursos\Editar.ascx" />
+    <Content Include="Views\Concursos\EditarExcepciones.aspx" />
+    <Content Include="Views\Concursos\Eliminar.ascx" />
+    <Content Include="Views\Concursos\Excepciones.aspx" />
+    <Content Include="Views\Concursos\Index.aspx" />
+    <Content Include="Views\Concursos\LiquidacionAsesores.aspx" />
+    <Content Include="Views\Concursos\ReporteAsesor.ascx" />
+    <Content Include="Views\Concursos\ReporteEjecutivo.ascx" />
+    <Content Include="Views\CondicionAgrupada\Editar.ascx" />
+    <Content Include="Views\CondicionAgrupada\Eliminar.ascx" />
+    <Content Include="Views\CondicionAgrupada\Index.aspx" />
+    <Content Include="Views\CondicionAgrupada\SubRegla.ascx" />
+    <Content Include="Views\CondicionAgrupada\SubRegla1.ascx" />
+    <Content Include="Views\CondicionAgrupada\SubReglaEdit.ascx" />
+    <Content Include="Views\CondicionAgrupada\SubReglaEdit1.ascx" />
+    <Content Include="Views\CondicionxPremioSubRegla\Editar.ascx" />
+    <Content Include="Views\CondicionxPremioSubRegla\Eliminar.ascx" />
+    <Content Include="Views\CondicionxPremioSubRegla\Index.aspx" />
+    <Content Include="Views\CondicionxPremioSubRegla\Variable.ascx" />
+    <Content Include="Views\CondicionxPremioSubRegla\Variable1.ascx" />
+    <Content Include="Views\Condicion\Editar.ascx" />
+    <Content Include="Views\Condicion\Eliminar.ascx" />
+    <Content Include="Views\Condicion\Index.aspx" />
+    <Content Include="Views\Condicion\Variable.ascx" />
+    <Content Include="Views\Condicion\Variable1.ascx" />
+    <Content Include="Views\Contratacion\Index.aspx" />
+    <Content Include="Views\Contratacion\Parametrizacion.aspx" />
+    <Content Include="Views\Combo\Create.aspx" />
+    <Content Include="Views\Combo\Index.aspx" />
+    <Content Include="Views\CuadroPagFranquicias\Index.aspx" />
+    <Content Include="Views\Cuenta\ChangePassword.aspx" />
+    <Content Include="Views\Cuenta\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Cuenta\LogOn.aspx" />
+    <Content Include="Views\Cuenta\Register.aspx" />
+    <Content Include="Views\DetallePartFranquicia\Create.aspx" />
+    <Content Include="Views\DetallePartFranquicia\Delete.aspx" />
+    <Content Include="Views\DetallePartFranquicia\Details.aspx" />
+    <Content Include="Views\DetallePartFranquicia\Edit.aspx" />
+    <Content Include="Views\DetallePartFranquicia\Index.aspx" />
+    <Content Include="Views\Ejecucion\EjecucionesManuales.aspx" />
+    <Content Include="Views\Errores\Error.aspx" />
+    <Content Include="Views\Errores\Index.aspx" />
+    <Content Include="Views\EscalaNota\Editar.ascx" />
+    <Content Include="Views\EscalaNota\Eliminar.ascx" />
+    <Content Include="Views\EscalaNota\Index.aspx" />
+    <Content Include="Views\Estadisticas\Index.aspx" />
+    <Content Include="Views\ExcepcionesJerarquia\Create.aspx" />
+    <Content Include="Views\ExcepcionesJerarquia\Index.aspx" />
+    <Content Include="Views\Excepciones\CargueMasivoExcepciones.aspx" />
+    <Content Include="Views\Excepciones\CreateEspeciales.aspx" />
+    <Content Include="Views\Excepciones\Create.aspx" />
+    <Content Include="Views\Excepciones\Eliminar.aspx" />
+    <Content Include="Views\Excepciones\Index.aspx" />
+    <Content Include="Views\EtapaProducto\Editar.ascx" />
+    <Content Include="Views\EtapaProducto\Eliminar.ascx" />
+    <Content Include="Views\EtapaProducto\Index.aspx" />
+    <Content Include="Views\FactorVariable\Editar.ascx" />
+    <Content Include="Views\FactorVariable\Eliminar.ascx" />
+    <Content Include="Views\FactorVariable\Index.aspx" />
+    <Content Include="Views\FactorxNota\Editar.ascx" />
+    <Content Include="Views\FactorxNota\Eliminar.ascx" />
+    <Content Include="Views\FactorxNota\Index.aspx" />
+    <Content Include="Views\Franquicias\Index.aspx" />
+    <Content Include="Views\GrupoEndoso\Editar.ascx" />
+    <Content Include="Views\GrupoEndoso\Eliminar.ascx" />
+    <Content Include="Views\GrupoEndoso\Index.aspx" />
+    <Content Include="Views\GrupoTipoEndoso\Editar.ascx" />
+    <Content Include="Views\GrupoTipoEndoso\Eliminar.ascx" />
+    <Content Include="Views\GrupoTipoEndoso\Index.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Inicio.aspx" />
+    <Content Include="Views\Home\TablasControl.aspx" />
+    <Content Include="Views\IngresoLocalidad\Editar.ascx" />
+    <Content Include="Views\IngresoLocalidad\Eliminar.ascx" />
+    <Content Include="Views\IngresoLocalidad\Index.aspx" />
+    <Content Include="Views\JerarquiaComercial\Index.aspx" />
+    <Content Include="Views\Jerarquia\Crear.aspx" />
+    <Content Include="Views\Jerarquia\Detalle.aspx" />
+    <Content Include="Views\LineaNegocio\Index.aspx" />
+    <Content Include="Views\LiquidacionConcurso\Eliminar.ascx" />
+    <Content Include="Views\LiquidacionConcurso\ReporteLiquidacionRegla.aspx" />
+    <Content Include="Views\LiquidacionContrat\Create.aspx" />
+    <Content Include="Views\LiquidacionContrat\Index.aspx" />
+    <Content Include="Views\LiquidacionMoneda\ColquinesManuales.aspx" />
+    <Content Include="Views\LiquidacionFranqui\Create.aspx" />
+    <Content Include="Views\LiquidacionConcurso\Index.aspx" />
+    <Content Include="Views\LiquidacionConcurso\Liquidaciones.aspx" />
+    <Content Include="Views\LiquidacionConcurso\LiquidarRegla.aspx" />
+    <Content Include="Views\LiquidacionFranqui\Index.aspx" />
+    <Content Include="Views\LiquidacionFranqui\liquiIndex.aspx" />
+    <Content Include="Views\LiquidacionFranqui\Pagos.aspx" />
+    <Content Include="Views\LiquidacionMoneda\Index.aspx" />
+    <Content Include="Views\Localidad\Editar.ascx" />
+    <Content Include="Views\Localidad\Eliminar.ascx" />
+    <Content Include="Views\Localidad\Index.aspx" />
+    <Content Include="Views\LogIntegracionBz\Editar.ascx" />
+    <Content Include="Views\LogIntegracionBz\Index.aspx" />
+    <Content Include="Views\MaestroMonedaxnegocio\Editar.ascx" />
+    <Content Include="Views\MaestroMonedaxnegocio\Eliminar.ascx" />
+    <Content Include="Views\MaestroMonedaxnegocio\Index.aspx" />
+    <Content Include="Views\Meta\Create.aspx" />
+    <Content Include="Views\Meta\Index.aspx" />
+    <Content Include="Views\Modelo\Crear.aspx" />
+    <Content Include="Views\Modelo\Editar.aspx" />
+    <Content Include="Views\Modelo\Index.aspx" />
+    <Content Include="Views\Modelo\Nodos.ascx" />
+    <Content Include="Views\Modelo\Participantes.aspx" />
+    <Content Include="Views\MonedaxNegocio\Editar.ascx" />
+    <Content Include="Views\MonedaxNegocio\Eliminar.ascx" />
+    <Content Include="Views\MonedaxNegocio\Index.aspx" />
+    <Content Include="Views\Moneda\Editar.ascx" />
+    <Content Include="Views\Moneda\Eliminar.ascx" />
+    <Content Include="Views\Moneda\Index.aspx" />
+    <Content Include="Views\Nivel\Editar.ascx" />
+    <Content Include="Views\Nivel\Eliminar.ascx" />
+    <Content Include="Views\Nivel\Index.aspx" />
+    <Content Include="Views\ParametrizacionEficienciaARL\Editar.ascx" />
+    <Content Include="Views\ParametrizacionEficienciaARL\Eliminar.ascx" />
+    <Content Include="Views\ParametrizacionEficienciaARL\Index.aspx" />
+    <Content Include="Views\ParametrosApp\Index.aspx" />
+    <Content Include="Views\ParticipacionDirector\Editar.ascx" />
+    <Content Include="Views\ParticipacionDirector\Eliminar.ascx" />
+    <Content Include="Views\ParticipacionFranquicias\ActualizacionMasivaPartFranquicias.aspx" />
+    <Content Include="Views\ParticipacionFranquicias\ConfirmacionActualizacionPartFranquicias.aspx" />
+    <Content Include="Views\ParticipacionFranquicias\CopiarParametrizacionFranquicia.aspx" />
+    <Content Include="Views\ParticipacionFranquicias\Crear.aspx" />
+    <Content Include="Views\ParticipacionFranquicias\Detalle.aspx" />
+    <Content Include="Views\ParticipacionFranquicias\Eliminar.aspx" />
+    <Content Include="Views\ParticipacionFranquicias\Index.aspx" />
+    <Content Include="Views\Participacion\Eliminar.ascx" />
+    <Content Include="Views\Participacion\Editar.ascx" />
+    <Content Include="Views\Participacion\Index.aspx" />
+    <Content Include="Views\ParticipacionDirector\Directores.ascx" />
+    <Content Include="Views\ParticipanteConcurso\Editar.ascx" />
+    <Content Include="Views\ParticipanteConcurso\Eliminar.ascx" />
+    <Content Include="Views\ParticipanteConcurso\Index.aspx" />
+    <Content Include="Views\ParticipanteConcurso\Jerarquia.ascx" />
+    <Content Include="Views\ParticipanteConcurso\Participantes.ascx" />
+    <Content Include="Views\Participante\Crear.aspx" />
+    <Content Include="Views\Participante\Editar.ascx" />
+    <Content Include="Views\Participante\Eliminar.ascx" />
+    <Content Include="Views\Participante\Index.aspx" />
+    <Content Include="Views\PeriodoCierre\Create.aspx" />
+    <Content Include="Views\PeriodoCierre\Index.aspx" />
+    <Content Include="Views\PersistenciaCAPIDetalle\Editar.ascx" />
+    <Content Include="Views\PersistenciaCAPIDetalle\Index.aspx" />
+    <Content Include="Views\Plan\Detalle.aspx" />
+    <Content Include="Views\PersistenciaEsperada\Editar.ascx" />
+    <Content Include="Views\PersistenciaEsperada\Eliminar.ascx" />
+    <Content Include="Views\PersistenciaEsperada\Index.aspx" />
+    <Content Include="Views\Plan\Index.aspx" />
+    <Content Include="Views\ParticipacionDirector\Index.aspx" />
+    <Content Include="Views\PremiosAnteriores\Editar.ascx" />
+    <Content Include="Views\PremiosAnteriores\Eliminar.ascx" />
+    <Content Include="Views\PremiosAnteriores\Index.aspx" />
+    <Content Include="Views\PremioxSubRegla\Editar.ascx" />
+    <Content Include="Views\PremioxSubRegla\Eliminar.ascx" />
+    <Content Include="Views\PremioxSubRegla\Index.aspx" />
+    <Content Include="Views\PremioxSubRegla\Premio.ascx" />
+    <Content Include="Views\PremioxSubRegla\Premio1.ascx" />
+    <Content Include="Views\Premio\Editar.ascx" />
+    <Content Include="Views\Premio\Eliminar.ascx" />
+    <Content Include="Views\Premio\Index.aspx" />
+    <Content Include="Views\Presupuesto\Carge.aspx" />
+    <Content Include="Views\Presupuesto\Presupuestos.aspx" />
+    <Content Include="Views\Presupuesto\Detalle.aspx" />
+    <Content Include="Views\Presupuesto\Index.aspx" />
+    <Content Include="Views\ProcesoAutomatico\Index.aspx" />
+    <Content Include="Views\ProductoConcurso\Editar.ascx" />
+    <Content Include="Views\ProductoConcurso\Eliminar.ascx" />
+    <Content Include="Views\ProductoConcurso\Index.aspx" />
+    <Content Include="Views\Producto\Index.aspx" />
+    <Content Include="Views\Producto\Detalle.aspx" />
+    <Content Include="Views\Prueba\Index.aspx" />
+    <Content Include="Views\P_P_Vida\Editar.ascx" />
+    <Content Include="Views\P_P_Vida\Index.aspx" />
+    <Content Include="Views\RamoDetalle\Index.aspx" />
+    <Content Include="Views\Ramo\Editar.ascx" />
+    <Content Include="Views\Ramo\Eliminar.ascx" />
+    <Content Include="Views\Ramo\Index.aspx" />
+    <Content Include="Views\Red\Create.aspx" />
+    <Content Include="Views\Red\Detalle.aspx" />
+    <Content Include="Views\Red\Index.aspx" />
+    <Content Include="Views\ReglaxConceptoDescuento\Index.aspx" />
+    <Content Include="Views\Regla\Duplicar.ascx" />
+    <Content Include="Views\Regla\Editar.ascx" />
+    <Content Include="Views\Regla\Eliminar.ascx" />
+    <Content Include="Views\Regla\Index.aspx" />
+    <Content Include="Views\ReportesSAI\etl.aspx" />
+    <Content Include="Views\ReportesSAI\index.aspx" />
+    <Content Include="Views\ResumenConcurso\Index.aspx" />
+    <Content Include="Views\RptFranquicias\Create.aspx" />
+    <Content Include="Views\RptFranquicias\Index.aspx" />
+    <Content Include="Views\SalarioMinimo\Editar.ascx" />
+    <Content Include="Views\SalarioMinimo\Eliminar.ascx" />
+    <Content Include="Views\SalarioMinimo\Index.aspx" />
+    <Content Include="Views\Segmento\Editar.ascx" />
+    <Content Include="Views\Segmento\Eliminar.ascx" />
+    <Content Include="Views\Segmento\Index.aspx" />
+    <Content Include="Views\Shared\ContentMenuUserControl.ascx" />
+    <Content Include="Views\Shared\ProductoCombo.ascx" />
+    <Content Include="Views\Shared\LogIntegracion.ascx" />
+    <Content Include="Views\Shared\MetasJerarquiaList.ascx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\MenuUserControl.ascx" />
+    <Content Include="Views\Shared\ExcepcionesJerarquiaList.ascx" />
+    <Content Include="Views\Shared\ProductoMeta.ascx" />
+    <Content Include="Views\Shared\SiteMapPathUserControl.ascx" />
+    <Content Include="Views\SiniestralidadEsperada\Editar.ascx" />
+    <Content Include="Views\SiniestralidadEsperada\Eliminar.ascx" />
+    <Content Include="Views\SiniestralidadEsperada\Index.aspx" />
+    <Content Include="Views\SubRegla\Editar.ascx" />
+    <Content Include="Views\SubRegla\Eliminar.ascx" />
+    <Content Include="Views\SubRegla\Index.aspx" />
+    <Content Include="Views\TipoEndoso\Editar.ascx" />
+    <Content Include="Views\TipoEndoso\Eliminar.ascx" />
+    <Content Include="Views\TipoEndoso\Index.aspx" />
+    <Content Include="Views\TipoPremio\Index.aspx" />
+    <Content Include="Views\TipoUnidadMedida\Editar.ascx" />
+    <Content Include="Views\TipoUnidadMedida\Eliminar.ascx" />
+    <Content Include="Views\TipoUnidadMedida\Index.aspx" />
+    <Content Include="Views\TopeMoneda\Editar.ascx" />
+    <Content Include="Views\TopeMoneda\Eliminar.ascx" />
+    <Content Include="Views\TopeMoneda\Index.aspx" />
+    <Content Include="Views\TopexEdad\Editar.ascx" />
+    <Content Include="Views\TopexEdad\Eliminar.ascx" />
+    <Content Include="Views\TopexEdad\Index.aspx" />
+    <Content Include="Views\Variable\Index.aspx" />
+    <Content Include="Views\Zona\Crear.ascx" />
+    <Content Include="Views\Zona\Editar.ascx" />
+    <Content Include="Views\Zona\Eliminar.ascx" />
+    <Content Include="Views\Zona\Index.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\Autenticacion\ServicioAuthenticacion.wsdl" />
+    <Content Include="Web.Pruebas.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\LoggingSvc\Logging.wsdl" />
+    <None Include="Service References\LoggingSvc\Logging.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoggingSvc\Logging1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoggingSvc\Logging2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LoggingSvc\Logging3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wsAutenticacion\Service.wsdl" />
+    <None Include="Service References\wsAutenticacion\Service.xsd" />
+    <None Include="Service References\wsAutenticacion\Service1.xsd" />
+    <None Include="Service References\wsAutenticacion\Service2.xsd" />
+    <None Include="Service References\wsAutenticacion\Service3.xsd" />
+    <None Include="Service References\wsAutenticacion\Service4.xsd" />
+    <Content Include="Views\Shared\_siteMenu.cshtml" />
+    <Content Include="Views\Shared\Site2.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\SiteMapAdministration\Models\" />
+    <Folder Include="Areas\SiteMapAdministration\Views\Shared\" />
+    <Folder Include="Areas\UserAdministration\Views\Shared\" />
+    <Folder Include="CargueSAI\Contratacion\" />
+    <Folder Include="CargueSAI\Ejecuciones\" />
+    <Folder Include="CargueSAI\Presupuesto\" />
+    <Folder Include="Content\toolkit\js\kendo\" />
+    <Folder Include="obj\Debug\Package\" />
+    <Folder Include="obj\Release\TempPE\" />
+    <Folder Include="Scripts\PagedList\" />
+    <Folder Include="Views\UnidadMedida\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdministracionSvc\" />
+    <WCFMetadataStorage Include="Service References\Autenticacion\" />
+    <WCFMetadataStorage Include="Service References\CalculosTalentosComision\" />
+    <WCFMetadataStorage Include="Service References\ComisionesSVC\" />
+    <WCFMetadataStorage Include="Service References\ConsultasComisionesSVC\" />
+    <WCFMetadataStorage Include="Service References\EjecucionETLs\" />
+    <WCFMetadataStorage Include="Service References\LoggingSvc\" />
+    <WCFMetadataStorage Include="Service References\ModeloComisionSVC\" />
+    <WCFMetadataStorage Include="Service References\Reportes\" />
+    <WCFMetadataStorage Include="Service References\wsAutenticacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Areas\Comisiones\Reports\ReporteAsesores.rdlc" />
+    <EmbeddedResource Include="Areas\Comisiones\Reports\ReporteBeneficiarios.rdlc" />
+    <EmbeddedResource Include="Areas\Comisiones\Reports\ReporteLiderComercial.rdlc" />
+    <EmbeddedResource Include="Areas\Comisiones\Reports\ReporteTransferencias.rdlc" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>62477</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62477/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

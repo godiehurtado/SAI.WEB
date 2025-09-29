@@ -1,0 +1,11 @@
+﻿.checkbox LABEL{
+    display:none !important;
+}
+
+INPUT[type=checkbox]{
+    visibility:visible !important;
+    position:relative;
+}
+.combobox.form-control{
+    display:block !important;
+}

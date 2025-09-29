@@ -1,0 +1,323 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.ExcepcionesFijaVariableViewModel
+@{
+    ViewBag.Title = "Comisiones - Excepción Fija/Total";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<h4>
+    Excepciones</h4>
+<div class="container-fluid">
+    <div class="row">
+        @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
+        {
+            <label>
+                @TempData["SuccessMessage"]</label>
+        }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>
+        }
+    </div>
+    <div class="row">
+        @{Html.RenderPartial("_encabezadoModelo", Model);}
+    </div>
+    <div class="row model-header">
+        <div class="col-md-10 col-xs-10">
+            <input type="button" value="Agregar Excepción" onclick="javascript:mostrarDialogoCrear($('#frmFijaVariable'), '/Comisiones/Excepciones/AgregarExcepcionFijaVariable', 'Crear Excepción', $('#dialog-form'));" />
+        </div>
+        <div class="col-md-1 col-xs-1">
+            <input type="button" value="Regresar" onclick="javascript:window.location = '@Url.Action("ModeloComision", "modelos", new { area = "Comisiones" })'" />
+        </div>
+    </div>
+</div>
+<div class="dataTables_wrapper" id="tablaLista_wrapper">
+    <table id="tablaLista">
+        <thead>
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    Tipo Excepción
+                </th>
+                <th>
+                    Excepción por
+                </th>
+                <th>
+                    Excepción para
+                    <br />
+                    (G. Asociativo, Contrato, SubContrato):
+                </th>
+                <th>
+                    Asesor/Clave
+                </th>
+                <th>
+                    Porcentaje
+                </th>
+                <th>
+                    Inicio Vigencia
+                </th>
+                <th>
+                    Fin Vigencia
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ExcepcionesFijaVariableModeloComision)
+            {
+                <tr>
+                    <td>
+                        <a href="#" onclick="javascript:editarExcepcionFijaVariable('@Html.Raw(item.Id.ToString())');">
+                            @Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo) ? "Editar" : "Ver")</a>
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.TipoExcepcion))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.DescripcionExcepcionPor))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.NumeroContrato))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.AsesorClave))
+                    </td>
+                    <td align="center">
+                        @Html.Raw(Html.Encode(item.PorcentajeComision))%
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.FechaInicioVigencia.Value.ToShortDateString()))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.FechaFinVigencia.Value.ToShortDateString()))
+                    </td>
+                    <td>
+                        @Html.ActionLink(!item.Activo ? "Activar" : "Desactivar", "CambiarEstadoExcepcionFV", new { area = "Comisiones", controller = "Excepciones", id = item.Id, modeloId = item.ModeloId })
+                        &nbsp;-&nbsp; <a href="#" onclick="javascript:duplicarExcepcionFijaVariable('@Html.Raw(item.Id.ToString())');">
+                            Duplicar</a>
+                        @if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo))
+                        {
+                            @Html.Raw("&nbsp;-&nbsp;")
+                            @Html.ActionLink("Eliminar", "EliminarExcepcionFijaVariable", new { area = "Comisiones", modeloId = item.ModeloId, excepcionId = item.Id })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="dialog-form" title="Crear Fija/Variable">
+    <div class="row">
+        @using (Html.BeginForm("AgregarExcepcionFijaVariable", "Excepciones", FormMethod.Post, new { id = "frmFijaVariable", @class = "form-horizontal", role = "form" }))
+        {
+            if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True") { Html.RenderPartial("_errorMessage"); }
+            @Html.HiddenFor(m => m.IdModelo)
+            @Html.ValidationMessageFor(m => m.IdModelo)
+            @Html.HiddenFor(m => m.IdExcepcion)
+            @Html.ValidationMessageFor(m => m.IdExcepcion)
+            <fieldset style="padding: 10px;">
+                <legend></legend>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Tipo Excepción:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(m => m.IdTipoExcepcionSeleccionado, Model.TiposExcepcion, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.IdTipoExcepcionSeleccionado)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Excepción por:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(m => m.IdExcepcionPor, Model.ExcepcionesPor, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.IdExcepcionPor)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Excepción Para (G. Asociativo, Contrato, SubContrato):
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.NumeroContrato, new { @class = "form-control text" })
+                        @Html.ValidationMessageFor(m => m.NumeroContrato)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Asesor/Clave:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.HiddenFor(m => m.IdAsesorClaveSeleccionado)
+                        @Html.TextBoxFor(m => m.ParticipanteSeleccionado, new { @readonly = "true", @class = "form-control" })
+                        <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=ParticipanteSeleccionado&srvfi=IdAsesorClaveSeleccionado&pdi=dialogBuscarParticipante', 'Participantes');"
+                            style='float: none;' title='Buscar Participantes'>Buscar</a>
+                        @Html.ValidationMessageFor(m => m.ParticipanteSeleccionado)
+                        @Html.ValidationMessageFor(m => m.IdAsesorClaveSeleccionado)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 text-right">
+                        Porcentaje de Comisi&oacute;n:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.PorcentajeComision, new { @class = "form-control number", data_val_number = "Debe ser un número" })
+                        @Html.ValidationMessageFor(m => m.PorcentajeComision)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Fecha Inicio Vigencia:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.FechaInicioVigenciaExcepcion, new { @class = "form-control", title = "La fecha inicial de la excepcion es la fecha inicial del modelo" })
+                        @Html.ValidationMessageFor(m => m.FechaInicioVigenciaExcepcion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Fecha Fin Vigencia:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.FechaFinVigenciaExcepcion, new { @class = "form-control", title = "La fecha inicial de la excepcion es la fecha inicial del modelo" })
+                        @Html.ValidationMessageFor(m => m.FechaFinVigenciaExcepcion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12 text-center">
+                        <input type="submit" value="Guardar" />
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+<div id="dialogBuscarParticipante" style="display: none;">
+</div>
+@section AdditionalScripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#tablaLista').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers", "bStateSave": true
+        });
+        $('#dialog-form').dialog({
+            resizable: false,
+            modal: true,
+            autoOpen: false,
+            dialogClass: "customdialog",
+            width: "60%"
+        });
+        $('#FechaInicioVigenciaExcepcion').datepicker({ dateFormat: 'dd/mm/yy', minDate: 0 });
+        $('#FechaFinVigenciaExcepcion').datepicker({ dateFormat: 'dd/mm/yy' , minDate: 0});
+        
+    });
+
+    function limpiar(ddl) {
+        ddl.empty();
+        ddl.append($("<option>", { value: "-1" }).text("Todos"));
+    }
+
+    function editarExcepcionFijaVariable(idExcepcionFijaVariable) {
+        $.ajax({
+            url: "/Comisiones/Excepciones/ObtenerExcepcionFijaVariableXId",
+            data: { excepcionFijaVariableId: idExcepcionFijaVariable },
+            type: "POST",
+            success: function (data) {
+                loadFormData(data);
+                $('#dialog-form').dialog('option', "title", "Editar excepción");
+                $('#dialog-form').dialog('open');
+                $("#frmFijaVariable").attr("action", "/Comisiones/Excepciones/EditarExcepcionFijaVariable");
+                @Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo) ? "" : "$(\"input[type='text'],select,input[type='radio']\").attr('disabled',true)")
+            },
+            error: function (a, b, error) {
+                alert(error);
+            }
+        });
+    }
+
+    function duplicarExcepcionFijaVariable(idExcepcionFijaVariable){
+        $.ajax({
+            url: "/Comisiones/Excepciones/ObtenerExcepcionFijaVariableXId",
+            data: { excepcionFijaVariableId: idExcepcionFijaVariable },
+            type: "POST",
+            success: function (data) {
+                loadFormData(data,false);
+                $('#dialog-form').dialog('option', "title", "Duplicar excepción");
+                $('#dialog-form').dialog('open');
+                $("#frmFijaVariable").attr("action", "/Comisiones/Excepciones/AgregarExcepcionFijaVariable");
+                $("input[type='text'],select,input[type='radio']").attr('disabled',false);
+            },
+            error: function (a, b, error) {
+                alert(error);
+            }
+        });
+    }
+
+    function mostrarDialogParticipantes(pagina, titulo) {
+        $("#dialog-form").dialog('close');
+        $("#dialogBuscarParticipante").dialog({
+            height: 620, width: 550, modal: true, dialogClass: "customdialog",
+            buttons: {
+                Cerrar: function () {
+                    $(this).dialog("close");
+                }
+            },
+            title: titulo,
+
+            open: function (event, ui) { $(this).load(pagina); },
+            close: function (event, ui) {
+                $(this).dialog('destroy');
+                $("#dialog-form").dialog('open');
+            }
+        });
+    }
+    function loadFormData(data,nonduplicate){
+        if (nonduplicate == null) {
+            nonduplicate = true;
+        }   
+        if (nonduplicate) {
+            $("#IdExcepcion").val(data.id);
+        }
+        $("#NumeroContrato").val(data.numerocontrato);
+        $("#IdTipoExcepcionSeleccionado").val(data.tipoexcepcion_id);
+        $("#IdAsesorClaveSeleccionado").val(data.asesor_id);
+        $("#PorcentajeComision").val(data.porcentajeexcepcion);
+        $("#FechaInicioVigenciaExcepcion").datepicker('setDate', new Date(parseInt(data.fechainiciovigencia.substr(6))));
+        $("#FechaFinVigenciaExcepcion").datepicker('setDate', new Date(parseInt(data.fechafinvigencia.substr(6))));      
+        $("#ParticipanteSeleccionado").val(data.participante);
+        $("#IdExcepcionPor").val(data.excepcionpor_id);
+    }   
+    </script>
+    @if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True")
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#dialog-form').dialog('open');
+                @if(TempData["currentAction"] != null)
+                {
+                    @Html.Raw("$(\"#frmFijaVariable\").attr('action', '" + TempData["currentAction"].ToString() + "');" )
+                }
+                data = { 'modelo_id': '@Html.Raw(TempData["IdModelo"] != null ? TempData["IdModelo"].ToString() : "")',
+                    'id': '@Html.Raw(TempData["IdExcepcion"] != null ? TempData["IdExcepcion"].ToString() : "")',
+                    'numerocontrato': '@Html.Raw(TempData["NumeroContrato"] != null ? TempData["NumeroContrato"].ToString() : "")',
+                    'asesor_id': '@Html.Raw(TempData["IdAsesorClaveSeleccionado"] != null ? TempData["IdAsesorClaveSeleccionado"].ToString() : "")',
+                    'porcentajeexcepcion': '@Html.Raw(TempData["PorcentajeComision"] != null ? TempData["PorcentajeComision"].ToString() : "")',
+                    'fechainiciovigencia': '@Html.Raw(TempData["FechaInicioVigencia"] != null ? "/Date(" + TempData["FechaInicioVigencia"].ToString() + ")"  : "")',
+                    'fechafinvigencia': '@Html.Raw(TempData["FechaFinVigencia"] != null ? "/Date(" + TempData["FechaFinVigencia"].ToString() + ")"  : "")',
+                    'participante': '@Html.Raw(TempData["ParticipanteSeleccionado"] != null ? TempData["ParticipanteSeleccionado"].ToString() : "")',
+                    'tipoexcepcion_id': '@Html.Raw(TempData["IdTipoExcepcionSeleccionado"] != null ? TempData["IdTipoExcepcionSeleccionado"].ToString() : "")',
+                    'excepcionpor_id': '@Html.Raw(TempData["IdExcepcionPor"] != null ? TempData["IdExcepcionPor"].ToString() : "")'
+                };
+                loadFormData(data,true);
+                @if (TempData["editing"] != null && TempData["editing"].ToString() == "True")
+                {
+                    @Html.Raw("$('#frmFijaVariable').attr('action', '/Comisiones/Excepciones/EditarExcepcionFijaVariable');");
+                }
+            });
+        </script>
+    }
+}

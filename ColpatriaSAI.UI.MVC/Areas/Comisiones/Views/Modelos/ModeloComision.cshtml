@@ -1,0 +1,714 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.ModeloViewModel
+@{
+    ViewBag.Title = "Comisiones - Modelo Comision";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+
+<h2>
+    Modelos de Comisi&oacute;n</h2>
+<div class="container-fluid">
+    <div class="row">
+        @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
+        {
+            <label>
+                @TempData["SuccessMessage"]</label>
+        }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>
+        }
+    </div>
+</div>
+<div class="dataTables_wrapper" id="tablaLista_wrapper">
+    <table id="tablaLista">
+        <thead>
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    Modelo
+                </th>
+                <th>
+                    Fecha Inicial
+                </th>
+                <th>
+                    Fecha Final
+                </th>
+                <th>
+                    Tope Comisi&oacute;n
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ModelosComision)
+            {
+                   
+                <tr>
+                    <td>
+                        <a href="#" onclick="javascript:editarModelo('@Html.Raw(item.nombre)',@Html.Raw(item.id.ToString()),@Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(item.fechadesde) ? "false" : "true"));">
+                            @Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(item.fechadesde) ? "Editar" : "Ver")</a>&nbsp;
+                    </td>
+                    <td> 
+                        @Html.Raw(Html.Encode(item.nombre))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.fechadesde.ToString("yyyy-MM-dd")))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.fechahasta.ToString("yyyy-MM-dd")))
+                    </td>
+                    <td align="center">
+                        @Html.Raw(Html.Encode(item.tope))%
+                    </td>
+                    <td>
+                        @Html.ActionLink("Comisión Fija", "Detalle", new { id = item.id, controller = "ComisionFija" })
+                        &nbsp;-&nbsp;
+                        @Html.ActionLink("Factores Nuevos ", "FactoresNuevos", new { id = item.id, controller = "ComisionVariable" })
+                        &nbsp;-&nbsp;
+                        @Html.ActionLink("Factores Netos ", "FactoresNetos", new { id = item.id, controller = "ComisionVariable" })
+                        <br />
+                        @Html.ActionLink("Matriz CV", "Index", new { id = item.id, controller = "MatrizComisionVariable" })
+                        &nbsp;-&nbsp;
+                        @Html.ActionLink("Excepciones", "Excepciones", new { id = item.id, controller = "Inicio" })
+                        &nbsp;-&nbsp;<a href="#" onclick="javascript:ClonarModelo('@Html.Raw(item.nombre)',@Html.Raw(item.id.ToString()));">
+                            Duplicar </a>&nbsp;-&nbsp;
+                        @if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(item.fechadesde))
+                        {
+                            @Html.ActionLink("Eliminar", "EliminarModeloComision", new { id = item.id }, new { onclick = "javascript:return confirm('Está seguro que desea eliminar este modelo?');" }) 
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="button" value="Agregar Modelo Comisión" onclick="javascript:mostrarDialogoCrear($('#formModeloComision'), '/Comisiones/Modelos/Agregar', 'Crear Modelo Comisión', $('#dialog-form'));$('#save-button-container').show();$('#btnGuardar').show();$('#btnEditar').hide();$('#btnDuplicar').hide();" />
+        </div>
+    </div>
+</div>
+<div id="dialog-form">
+    @using (Html.BeginForm("Agregar", "Modelos", FormMethod.Post, new { id = "formModeloComision", @class = "form-horizontal", role = "form" }))
+    {
+        if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True") { Html.RenderPartial("_errorMessage"); }
+        @Html.HiddenFor(m => m.IdModelo)
+        @Html.Hidden("Duplicar")
+        @Html.ValidationMessageFor(m => m.IdModelo)
+        <fieldset style="padding: 10px;">
+            <legend></legend>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    Nombre:
+                </label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Nombre, new {@class = "form-control text", placeholder = "Nombre", @maxlength = "50" })
+                    @Html.ValidationMessageFor(m => m.Nombre)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    Descripción:
+                </label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.DescripcionModelo, new { @class = "form-control text", placeholder = "Descripción", @maxlength = "100" })
+                    @Html.ValidationMessageFor(m => m.DescripcionModelo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    Fecha Inicio:
+                </label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control", placeholder = "Inicio", @readonly = "false" })
+                    @Html.ValidationMessageFor(model => model.FechaInicio)
+                </div>
+                <label class="col-sm-2 control-label">
+                    Fecha Fin:
+                    </label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.FechaFin, new { @class = "form-control", placeholder = "Fin", @readonly = "false" })
+                    @Html.ValidationMessageFor(model => model.FechaFin)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">
+                    Tope Comisión(%):
+                </label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.ValorMaximoComision, new { @class = "form-control number", placeholder = "Tope de comisión", data_val_number = "Debe ser un número" })
+                    @Html.ValidationMessageFor(m => m.ValorMaximoComision)
+                </div>
+            </div>
+            
+            <div class="form-group">
+            <div class="container-fluid col-xs-4 col-sm-4 col-md-4">
+            <h4>CANALES</h4>
+            </div>
+            <div class="container-fluid col-xs-4 col-sm-4 col-md-4">
+            <h4>SUBCANALES</h4>
+            </div>
+            <div class="container-fluid col-xs-4 col-sm-4 col-md-4">
+            <h4>TIPO INTERMEDIARIO</h4>
+            </div>
+            @foreach (var canales in @Model.ListaCanales)
+            {
+                <div class="container-fluid col-xs-12 col-sm-12 col-md-12">
+                    <div class="container-fluid col-xs-4 col-sm-4 col-md-4">
+                        <a id="@Html.Raw("ao" + canales.Id)" href="javascript:MostrarSubcanales(@canales.Id)"><i class="icon-folder-plus"></i></a>
+                        <a id="@Html.Raw("ac" + canales.Id)" href="javascript:OcultarSubcanales(@canales.Id)" style="display:none"><i class="icon-folder-minus"></i></a>
+                        <input type="checkbox" class="chkclass" id="@Html.Raw("canal" + canales.Id)" onclick="SelectAll(@canales.Id)" />
+                        @canales.Nombre
+                    </div>
+                    <div id="@Html.Raw("dcanal" + canales.Id)" class="container-fluid col-xs-8 col-sm-8 col-md-8" style="display:none">
+                        @foreach (var cdetalle in canales.CanalDetalles)
+                        {
+                            <div class="container-fluid col-xs-12 col-sm-12 col-md-12">
+                            <div class="container-fluid col-xs-6 col-sm-6 col-md-6">
+                                <a id="@Html.Raw("sao" + cdetalle.Value)" href="javascript:MostrarTipoInt(@cdetalle.Value)"><i class="icon-folder-plus"></i></a>
+                                <a id="@Html.Raw("sac" + cdetalle.Value)" href="javascript:OcultarTipoInt(@cdetalle.Value)" style="display:none"><i class="icon-folder-minus"></i></a>
+                                <input type="checkbox" name="@Html.Raw("chk" + canales.Id)" class="chkclass" id="@Html.Raw("sub" + cdetalle.Value)" value="@cdetalle.Value" onclick="SelectAllTI(@cdetalle.Value,@canales.Id)" />
+                                @cdetalle.Text
+                            </div>                            
+                            <div id="@Html.Raw("dsubcanal" + cdetalle.Value)" class="container-fluid col-xs-6 col-sm-6 col-md-6" style="display:none">
+                                @foreach (var TipIntermediario in @Model.ListaTipoIntermediarios)
+                                {
+                                   if((Model.ListaCanalDetalleTipoIntermediario).Where(x => x.idCanalDetalle.ToString() == cdetalle.Value && x.idTipoIntermediario == TipIntermediario.id).FirstOrDefault() != null)
+                                    {
+                                    <div class="container-fluid col-xs-12 col-sm-12 col-md-12">
+                                    <input type="checkbox" name="@Html.Raw("Intchk" + cdetalle.Value)" id="@Html.Raw("Intchk" + TipIntermediario.id)" class="chkclass" value="@TipIntermediario.id" onclick="SelectAllCA(@cdetalle.Value,@canales.Id)" />
+                                    @TipIntermediario.Nombre
+                                    </div>
+                                    }
+                                }
+                            </div>
+                            </div>
+                        }
+                    </div>                                           
+            </div>
+            }                
+            </div>
+            <div class="form-group" id="save-button-container">
+                <div class="col-sm-12 text-center">
+                    
+                    <input id="btnGuardar" type="button" value="Guardar" onclick="javascript:Guardar()" />
+                    <input id="btnEditar" type="button" value="Guardar" onclick="javascript:Editar()" style="display:none" />
+                    <input id="btnDuplicar" type="button" value="Guardar" onclick="javascript:DuplicarModelo()" style="display:none" />
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>
+@section AdditionalScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tablaLista').dataTable({
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers", "bStateSave": true
+            });
+            $('#dialog-form').dialog({
+                resizable: false,
+                modal: true,
+                autoOpen: false,
+                dialogClass: "customdialog",
+                width: "80%"
+            });
+            //$('#FechaInicio').datepicker({ dateFormat: 'yy/mm/dd', minDate: 0 });
+            $("#btnGuardar").show();
+                    $("#btnEditar").hide();
+                    $("#btnDuplicar").hide();
+
+            $("#FechaInicio").datepicker({
+                minDate: '+1m',
+                dateFormat: 'yy/mm/dd',
+                beforeShow: function () {
+                    
+                    var fecha = new Date();
+                    fecha.setMonth(fecha.getMonth() + 1);
+                    fecha.setDate(1);
+                    $(this).datepicker('option', 'minDate', fecha);
+                    
+                }
+            }); 
+
+
+            $("#FechaFin").datepicker({
+                minDate: '+1m',
+                dateFormat: 'yy/mm/dd',
+                beforeShow: function () {
+                        var fecha = new Date();
+                        fecha.setMonth(fecha.getMonth() + 1);
+                        fecha.setDate(1);
+                        $(this).datepicker('option', 'minDate', fecha);
+                    }
+            });
+            $('#FechaFin').datepicker({ dateFormat: 'yy/mm/dd' });
+
+
+            //$('#FechaInicio').ToolTip({ track: true });
+            $('#FechaFin').change(function () {
+                $("#FechaInicio").focus();
+                $('#FechaFin').focus();
+                $('#ValorMaximoComision').focus();
+            });
+            $('#FechaInicio').change(function () {
+                $('#FechaFin').focus();
+                $('#ValorMaximoComision').focus();
+                $("#FechaInicio").focus();
+            });
+        });
+
+        function editarModelo(nombre, idmodelo, editable) {
+            $.ajax({
+                url: "/Comisiones/Modelos/ObtenerModeloComisionXId",
+                data: { modeloId: idmodelo },
+                type: "POST",
+                success: function (data) {
+                    loadFormData(data, idmodelo, editable);
+                    $("#btnGuardar").hide();
+                    $("#btnEditar").show();
+                    $("#btnDuplicar").hide();
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                },
+                beforeSend: function () {
+                    $("input[type='checkbox']").prop('checked', false);
+                }
+            });
+            $('#formModeloComision').attr('action', '/Comisiones/Modelos/Editar');
+            $('#dialog-form').dialog('option', 'title', 'Editar Modelo Comisión');
+            $('#dialog-form').dialog('open');
+        }
+
+        $(document).ready(function () {
+            $('.chkclass').click(function () {
+                var getchkid = $(this).attr('id');
+                var isChecked = $('#' + getchkid).is(':checked');
+
+                if ($('#' + getchkid).is(':checked') == true) {
+                    $('#td' + $(this).val()).css("color", "white");
+                    $('#td' + $(this).val()).css("background-color", "blue");
+                }
+                else {
+                    $('#td' + $(this).val()).css("color", "black");
+                    $('#td' + $(this).val()).css("background-color", "#f9f9f9");
+                }
+            });
+
+        });
+
+        function MostrarSubcanales(iddiv) {
+            $('#dcanal' + iddiv).show();
+            $('#ao' + iddiv).hide();
+            $('#ac' + iddiv).show();
+        }
+        function OcultarSubcanales(iddiv) {
+            $('#dcanal' + iddiv).hide();
+            $('#ao' + iddiv).show();
+            $('#ac' + iddiv).hide();
+        }
+        function MostrarTipoInt(iddiv){
+            $('#dsubcanal' + iddiv).show();
+            $('#sao' + iddiv).hide();
+            $('#sac' + iddiv).show();
+        }
+        function OcultarTipoInt(iddiv){
+            $('#dsubcanal' + iddiv).hide();
+            $('#sao' + iddiv).show();
+            $('#sac' + iddiv).hide();
+        }
+
+        function SelectAllTI(subcanalId,canalId) {
+            var name1 = "chk" + canalId;
+            var checks1 = document.getElementsByName(name1);
+            for (var i = 0; i < checks1.length; i++) {
+                if(checks1[i].checked)
+                {
+                var elemento = document.getElementById("canal" + canalId);
+                    elemento.checked = true;
+                    break;
+                }
+                else{
+                    var elemento = document.getElementById("canal" + canalId);
+                    elemento.checked = false;
+                }
+            }
+
+            var name = "Intchk" + subcanalId;
+            var checks = document.getElementsByName(name);
+            if ($('#sub' + subcanalId)[0].checked) {
+                for (var i = 0; i < checks.length; i++) {
+                    if (checks[i].type == 'checkbox') {
+                        checks[i].checked = true;
+                    }
+                }
+            } else {
+                for (var i = 0; i < checks.length; i++) {
+                    if (checks[i].type == 'checkbox') {
+                        checks[i].checked = false;
+                    }
+
+                }
+            }
+        }
+
+        function SelectAll(canalId) {
+            var name = "chk" + canalId;
+            var checks = document.getElementsByName(name);
+            if ($('#canal' + canalId)[0].checked) {
+                for (var i = 0; i < checks.length; i++) {
+                    if (checks[i].type == 'checkbox') {
+                        checks[i].checked = true;
+                        var name1 = "Intchk" + checks[i].value;
+                        var checks1 = document.getElementsByName(name1);
+                        for (var i = 0; i < checks1.length; i++) {
+                            if (checks1[i].type == 'checkbox') {
+                                checks1[i].checked = true;
+                            }
+                        }
+                    }
+                }
+            } else {
+                for (var i = 0; i < checks.length; i++) {
+                    if (checks[i].type == 'checkbox') {
+                        checks[i].checked = false;
+                        var name1 = "Intchk" + checks[i].value;
+                        var checks1 = document.getElementsByName(name1);
+                        for (var i = 0; i < checks1.length; i++) {
+                            if (checks1[i].type == 'checkbox') {
+                                checks1[i].checked = false;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        function SelectAllCA(subcanalId,canalId) {
+            var name = "Intchk" + subcanalId;
+            var checks = document.getElementsByName(name);
+            for (var i = 0; i < checks.length; i++) {
+                if(checks[i].checked)
+                {
+                    var elemento = document.getElementById("sub" + subcanalId);
+                    elemento.checked = true;
+                    break;
+                }
+                else{
+                    var elemento = document.getElementById("sub" + subcanalId);
+                    elemento.checked = false;
+                }
+            }
+
+            var name1 = "chk" + canalId;
+            var checks1 = document.getElementsByName(name1);
+            for (var i = 0; i < checks1.length; i++) {
+                if(checks1[i].checked)
+                {
+                var elemento = document.getElementById("canal" + canalId);
+                    elemento.checked = true;
+                    break;
+                }
+                else{
+                    var elemento = document.getElementById("canal" + canalId);
+                    elemento.checked = false;
+                }
+            }
+        }
+
+        function Guardar() {
+            var model = @Html.Raw(Json.Encode(Model));
+            var canales = model.canalesid;
+            var canalestipo = "";
+            for (var i = 0; i < canales.length; i++) {
+                var name = "chk" + canales[i];
+                var checks = document.getElementsByName(name);
+                for (var j = 0; j < checks.length; j++) {
+                    if (checks[j].checked) {
+                        canalestipo = canalestipo + checks[j].value + ":";
+                        var name2 = "Intchk" + checks[j].value;
+                        var checks2 = document.getElementsByName(name2);
+                        for (var k = 0; k < checks2.length; k++) {
+                            if (checks2[k].checked) {
+                                canalestipo = canalestipo + checks2[k].value + ",";
+                            }
+                        }
+                        canalestipo = canalestipo.substr(0, canalestipo.length - 1) + ";";
+                    }
+                }
+            }
+
+            var stUrl = '/Modelos/GuardarModelo';
+            mostrarCargando("Guardando. Espere Por Favor...");
+            var prueba1 = $.ajax({
+                type: 'POST',
+                url: stUrl,
+                data:
+                {
+                    nombre: document.getElementById("Nombre").value,
+                    descripcion: document.getElementById("DescripcionModelo").value,
+                    fechainicio: document.getElementById("FechaInicio").value,
+                    fechafin: document.getElementById("FechaFin").value,
+                    tope: document.getElementById("ValorMaximoComision").value,
+                    parametros: canalestipo
+                },
+                success: function (response) {
+                    if (response.Success) {                        
+                        closeNotify('jNotify');
+                        mostrarExito("El proceso se realizó con éxito.");
+                        window.location.href = '/Comisiones/Modelos/ModeloComision'
+                    }
+                    else{
+                        closeNotify('jNotify');
+                        mostrarError(response.ErrorMessage);
+                        window.location.href = '/Comisiones/Modelos/ModeloComision'
+                    }
+                }
+            });
+        }
+
+        function Editar() {
+            var model = @Html.Raw(Json.Encode(Model));
+            var canales = model.canalesid;
+            var canalestipo = "";
+            for (var i = 0; i < canales.length; i++) {
+                var name = "chk" + canales[i];
+                var checks = document.getElementsByName(name);
+                for (var j = 0; j < checks.length; j++) {
+                    if (checks[j].checked) {
+                        canalestipo = canalestipo + checks[j].value + ":";
+                        var name2 = "Intchk" + checks[j].value;
+                        var checks2 = document.getElementsByName(name2);
+                        for (var k = 0; k < checks2.length; k++) {
+                            if (checks2[k].checked) {
+                                canalestipo = canalestipo + checks2[k].value + ",";
+                            }
+                        }
+                        canalestipo = canalestipo.substr(0, canalestipo.length - 1) + ";";
+                    }
+                }
+            }
+
+            var stUrl = '/Modelos/EditarModelo';
+            mostrarCargando("Guardando. Espere Por Favor...");
+            var prueba1 = $.ajax({
+                type: 'POST',
+                url: stUrl,
+                data:
+                {
+                    idmodelo: document.getElementById("IdModelo").value,
+                    nombre: document.getElementById("Nombre").value,
+                    descripcion: document.getElementById("DescripcionModelo").value,
+                    fechainicio: document.getElementById("FechaInicio").value,
+                    fechafin: document.getElementById("FechaFin").value,
+                    tope: document.getElementById("ValorMaximoComision").value,
+                    parametros: canalestipo
+                },
+                success: function (response) {
+                    if (response.Success) {                        
+                        closeNotify('jNotify');
+                        mostrarExito("El proceso se realizó con éxito.");
+                        window.location.href = '/Comisiones/Modelos/ModeloComision'
+                    }
+                    else{
+                        closeNotify('jNotify');
+                        mostrarError(response.ErrorMessage);
+                        window.location.href = '/Comisiones/Modelos/ModeloComision'
+                    }
+                }
+            });
+        }
+
+        function DuplicarModelo() {
+            var model = @Html.Raw(Json.Encode(Model));
+            var canales = model.canalesid;
+            var canalestipo = "";
+            for (var i = 0; i < canales.length; i++) {
+                var name = "chk" + canales[i];
+                var checks = document.getElementsByName(name);
+                for (var j = 0; j < checks.length; j++) {
+                    if (checks[j].checked) {
+                        canalestipo = canalestipo + checks[j].value + ":";
+                        var name2 = "Intchk" + checks[j].value;
+                        var checks2 = document.getElementsByName(name2);
+                        for (var k = 0; k < checks2.length; k++) {
+                            if (checks2[k].checked) {
+                                canalestipo = canalestipo + checks2[k].value + ",";
+                            }
+                        }
+                        canalestipo = canalestipo.substr(0, canalestipo.length - 1) + ";";
+                    }
+                }
+            }
+
+            var stUrl = '/Modelos/DuplicarModelo';
+            mostrarCargando("Guardando. Espere Por Favor...");
+            var prueba1 = $.ajax({
+                type: 'POST',
+                url: stUrl,
+                data:
+                {
+                    idmodelo: document.getElementById("IdModelo").value,
+                    nombre: document.getElementById("Nombre").value,
+                    descripcion: document.getElementById("DescripcionModelo").value,
+                    fechainicio: document.getElementById("FechaInicio").value,
+                    fechafin: document.getElementById("FechaFin").value,
+                    tope: document.getElementById("ValorMaximoComision").value,
+                    parametros: canalestipo
+                },
+                success: function (response) {
+                    if (response.Success) {                        
+                        closeNotify('jNotify');
+                        mostrarExito("El proceso se realizó con éxito.");
+                        window.location.href = '/Comisiones/Modelos/ModeloComision'
+                    }
+                    else{
+                        closeNotify('jNotify');
+                        mostrarError(response.ErrorMessage);
+                        window.location.href = '/Comisiones/Modelos/ModeloComision'
+                    }
+                }
+            });
+        }
+
+        function ClonarModelo(nombre, idmodelo) {
+            $.ajax({
+                url: "/Comisiones/Modelos/ObtenerModeloComisionXId",
+                data: { modeloId: idmodelo },
+                type: "POST",
+                success: function (data) {
+                    $("#IdModelo").val(idmodelo);
+                    $("#Duplicar").val(1);
+                    $("#Nombre").val(data.Nombre);
+                    $("#DescripcionModelo").val(data.DescripcionModelo);
+                    $("#ValorMaximoComision").val(data.ValorMaximoComision);
+                    $('#FechaInicio').datepicker({ dateFormat: 'yy/mm/dd' });
+                    $('#FechaFin').datepicker({ dateFormat: 'yy/mm/dd' });
+                    $("#btnGuardar").hide();
+                    $("#btnEditar").hide();
+                    $("#btnDuplicar").show();
+                    $(data.ListaCanales).each(function () {
+                        var canal = this;
+                        $(this.CanalDetalles).each(function () {
+                            $("input[name='chk" + canal.Id + "'][value='" + this.Value + "']").prop('checked', true);
+                        });
+                    });
+                    $(data.ListaTipoIntermediarios).each(function () {
+                        var TipoInter = this;
+                        $("input[id='Intchk" + TipoInter.id + "']").prop('checked', true);
+                    });
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                },
+                beforeSend: function () {
+                    $("input[type='checkbox']").prop('checked', false);
+                }
+            });
+            $('#formModeloComision').attr('action', '/Comisiones/Modelos/Duplicar');
+            $('#dialog-form').dialog('option', 'title', 'Duplicar Modelo Comisión');
+            $('#dialog-form').dialog('open');
+        }
+
+        $(document).ready(function () {
+            $('.chkclass').click(function () {
+                var getchkid = $(this).attr('id');
+                var isChecked = $('#' + getchkid).is(':checked');
+                if ($('#' + getchkid).is(':checked') == true) {
+                    $('#td' + $(this).val()).css("color", "white");
+                    $('#td' + $(this).val()).css("background-color", "blue");
+                }
+                else {
+                    $('#td' + $(this).val()).css("color", "black");
+                    $('#td' + $(this).val()).css("background-color", "#f9f9f9");
+                }
+            });
+        });
+
+        function loadFormData(data, idmodelo, editable) {
+
+            $("#IdModelo").val(idmodelo);
+            $("#Nombre").val(data.Nombre);
+            $("#DescripcionModelo").val(data.DescripcionModelo);
+            $("#ValorMaximoComision").val(data.ValorMaximoComision);
+            $("#FechaInicio").datepicker('setDate', new Date(parseInt(data.FechaInicio.substr(6))));
+            $("#FechaFin").datepicker('setDate', new Date(parseInt(data.FechaFin.substr(6))));
+            $(data.ListaCanales).each(function () {
+                var canal = this;
+                $(this.CanalDetalles).each(function () {
+                    var canaldetalle = this;
+                    $("input[id='canal" + canal.Id + "']").prop('checked', true);
+                    $("input[name='chk" + canal.Id + "'][value='" + this.Value + "']").prop('checked', true);
+                    $(data.ListaTipoIntermediarios).each(function () {
+                        var TipoInter = this;
+                        $("input[name='Intchk" + canaldetalle.Value + "'][value='" + TipoInter.id + "']").prop('checked', true);
+                    });
+                });
+            });
+            
+            if (!editable) {
+                $("#save-button-container").hide();
+                $("input,select").each(function () {
+                    $(this).attr("disabled", true);
+                });
+            } else {
+                $("#save-button-container").show();
+                $("input,select").each(function () {
+                    $(this).attr("disabled", false);
+                });
+            }
+        }
+    </script>
+    @if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True")
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#dialog-form').dialog('open');
+                data = { 'id': '@Html.Raw(TempData["id"] != null ? TempData["id"].ToString() : "")',
+                    'Nombre': '@Html.Raw(TempData["Nombre"] != null ? TempData["Nombre"].ToString() : "")',
+                    'DescripcionModelo': '@Html.Raw(TempData["DescripcionModelo"] != null ? TempData["DescripcionModelo"].ToString() : "")',
+                    'ValorMaximoComision': '@Html.Raw(TempData["ValorMaximoComision"] != null ? TempData["ValorMaximoComision"].ToString() : "")',
+                    'FechaInicio': '@Html.Raw(TempData["FechaInicio"] != null ? "/Date(" + TempData["FechaInicio"].ToString() + ")" : "")',
+                    'FechaFin': '@Html.Raw(TempData["FechaFin"] != null ? "/Date(" + TempData["FechaFin"].ToString() + ")" : "")',
+                    'ListaCanales': [
+                        @{  var collection = (ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.CanalDetalleViewModel[])TempData["canalDetalles"];
+                            for (var i = 0; i < collection.Count(); i++)
+                            {    
+                                @Html.Raw("{ 'Id' : " + collection[i].canal_id + ", 'CanalDetalles': [{ 'id':" + collection[i].id + " , 'Value':'" + collection[i].id + "'}] }");
+                                                                                                                                                                                if (i < collection.Count() - 1)
+                                                                                                                                                                                {
+                                    @Html.Raw(",");
+                                                                                                                                                                                }
+                            }
+                        }
+                    ]
+
+                    'ListaTipoIntermediarios': [
+                         @{  var coleccion = (ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.TipoIntermediarioViewModel[])TempData["TipoIntermediario"];
+                             for (var i = 0; i < collection.Count(); i++)
+                             {    
+                                @Html.Raw("{  'id':" + collection[i].id + " , 'Value':'" + collection[i].id + "' }");
+                                                                                                                    if (i < collection.Count() - 1)
+                                                                                                                    {
+                                    @Html.Raw(",");
+                                                                                                                    }
+                             }
+                        }
+                    
+                    ]
+                    
+                };
+                loadFormData(data, '@Html.Raw(TempData["id"] != null ? TempData["id"].ToString() : "")',true);
+                @if (TempData["editing"] != null && TempData["editing"].ToString() == "True")
+                {
+                    @Html.Raw("$('#formModeloComision').attr('action', '/Comisiones/Modelos/Editar');");
+                }
+            });
+        </script>
+    }
+}

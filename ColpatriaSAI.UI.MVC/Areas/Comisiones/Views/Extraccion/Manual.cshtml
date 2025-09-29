@@ -1,0 +1,109 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.InvocacionForzadaViewModel
+@{
+    ViewBag.Title = "Comisiones - Ejecución manual";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<h2>
+    Comisiones: Ejecuci&oacute;n manual</h2>
+<div class="dataTables_wrapper" id="tablaLista_wrapper">
+    <table id="tablaLista">
+        <thead>
+            <tr>
+                <th>
+                    Proceso
+                </th>
+                <th>
+                    &Uacute;ltima ejecuci&oacute;n
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Procesos)
+            {
+                   
+                <tr>
+                    <td>
+                        @Html.Raw(Html.Encode(item.descripcion))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.ultimaEjecucion.ToString()))
+                    </td>
+                    <td>
+                        <a href="#" onclick="javascript:mostrarDialogo('@Html.Raw(item.descripcion)',@Html.Raw(item.id.ToString()));">
+                            Ejecutar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="dialog-form" title="Forzar Proceso">
+    <div class="row">
+        @using (Html.BeginForm("Manual", "Extraccion", FormMethod.Post, new { id = "formForzarProceso", area = "Comisiones", @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true)
+            <fieldset style="padding:10px;">
+                <legend></legend>
+                <label id="proceso">
+                </label>
+                @Html.HiddenFor(model => model.IdProcesoActual)
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        C&oacute;digo ejecuci&oacute;n</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.CodigoEjecucion, new { @class = "form-control text" })
+                        @Html.ValidationMessageFor(model => model.CodigoEjecucion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4  control-label">
+                        Inicio periodo</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.inicioPeriodo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.inicioPeriodo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Fin periodo</label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.finPeriodo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.finPeriodo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-ms-12 text-center">
+                        <input type="submit" value="Actualizar" tabindex="-1" />
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@section AdditionalScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tablaLista').dataTable({
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers", "bStateSave": true
+            });
+            $('#dialog-form').dialog({
+                resizable: false,
+                modal: true,
+                autoOpen: false,
+                dialogClass: "customdialog"
+            });
+            $('#inicioPeriodo').datepicker({ dateFormat: 'dd/mm/yy' });
+            $('#finPeriodo').datepicker({ dateFormat: 'dd/mm/yy' });
+        });
+
+        function mostrarDialogo(nombre, idproceso) {
+            $('#proceso').text(nombre);
+            $('#IdProcesoActual').val(idproceso);
+            $('#dialog-form').dialog('open');
+        } 
+    </script>
+}

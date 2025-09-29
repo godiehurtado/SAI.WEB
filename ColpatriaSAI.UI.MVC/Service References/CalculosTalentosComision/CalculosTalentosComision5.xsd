@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.ResultadoProcedimientos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.ResultadoProcedimientos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfComisionFijaFacturacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ComisionFijaFacturacion" nillable="true" type="tns:ComisionFijaFacturacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComisionFijaFacturacion" nillable="true" type="tns:ArrayOfComisionFijaFacturacion" />
+  <xs:complexType name="ComisionFijaFacturacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Canal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Clave" type="xs:int" />
+      <xs:element minOccurs="0" name="Compania" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Documento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstadoBeneficiario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Factura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFactura" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdNovedad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Novedad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Periodo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PlanDetalle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PorcentajeComisionFijaConExcepcion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeComisionFijaSinExcepcion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeComisionTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeComisionVariable" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeParticipacion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProductoDetalle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubCanal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubContrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TalentosNetos" type="xs:int" />
+      <xs:element minOccurs="0" name="TalentosNuevos" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoContrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoExcepcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValorComisionExcepcion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorComisionFija" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorComisionTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorComisionVariable" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorFactura" type="xs:decimal" />
+      <xs:element minOccurs="0" name="edad" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ComisionFijaFacturacion" nillable="true" type="tns:ComisionFijaFacturacion" />
+  <xs:complexType name="ArrayOfComisionFijaRecaudos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ComisionFijaRecaudos" nillable="true" type="tns:ComisionFijaRecaudos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComisionFijaRecaudos" nillable="true" type="tns:ArrayOfComisionFijaRecaudos" />
+  <xs:complexType name="ComisionFijaRecaudos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Canal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Clave" type="xs:int" />
+      <xs:element minOccurs="0" name="Compania" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Concepto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Documento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstadoBeneficiario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Factura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFactura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaRecaudo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ParticipacionUsurio" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Periodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanDetalle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PorcentajeComisionFijaConExcepcion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeComisionFijaSinExcepcion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeComisionTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeComisionVariable" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PorcentajeParticipacion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProductoDetalle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recibo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubCanal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubContrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TalentosNetos" type="xs:int" />
+      <xs:element minOccurs="0" name="TalentosNuevos" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoContrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoExcepcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValorComisionExcepcion" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorComisionFija" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorComisionTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorComisionVariable" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorFactura" type="xs:decimal" />
+      <xs:element minOccurs="0" name="edad" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ComisionFijaRecaudos" nillable="true" type="tns:ComisionFijaRecaudos" />
+</xs:schema>

@@ -1,0 +1,304 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.DetalleFactoresNuevosComisionVariableViewModel
+@{
+    ViewBag.Title = "Comisiones - Detalle Comisión variable - Factores Nuevos";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<h2>
+    Factores Nuevos</h2>
+<div class="container-fluid">
+    <div class="row">
+        @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
+        {
+            <label>
+                @TempData["SuccessMessage"]</label>
+        }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>
+        }
+    </div>
+    <div class="row">
+        @{Html.RenderPartial("_encabezadoModelo", Model);}
+    </div>
+    <div class="row model-header">
+        
+            <div class="col-md-10 col-xs-10">
+                <input type="button" value="Agregar Factor" onclick="javascript:mostrarDialogoCrear($('#frmFactorNuevoCV'), '/Comisiones/ComisionVariable/AgregarFactorNuevo', 'Crear Factor', $('#dialog-tipo-contratos'));" />
+            </div>
+        
+        <div class="col-md-1 col-xs-1">
+            <input type="button" value="Regresar" onclick="javascript:window.location = '@Url.Action("ModeloComision", "modelos", new { area = "Comisiones" })'" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="dataTables_wrapper" id="tablaLista_wrapper">
+            <table id="tablaLista">
+                <thead>
+                    <tr>
+                        <th>
+                            &nbsp;
+                        </th>
+                        <th>
+                            Compañ&iacute;a
+                        </th>
+                        <th>
+                            Ramo
+                        </th>
+                        <th>
+                            Plan
+                        </th>
+                        <th>
+                            Tipo Contrato
+                        </th>
+                        <th>
+                            Factor
+                        </th>                       
+                        @*@if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo))
+                        {*@
+                            <th>
+                                &nbsp;
+                            </th>
+                        @*}*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.FactoresComision)
+                    {
+                        <tr>
+                            <td>
+                                <a href="#" onclick="javascript:editarFactor('@item.id')">@Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo) ? "Editar" : "Ver")</a>
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.NombreCompania))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.NombreRamo))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.NombrePlan))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.DescripcionTipoContrato))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.Factor))
+                            </td>
+                            @*@if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo))
+                            {*@
+                                <td>
+                                    @Html.ActionLink("Eliminar", "EliminarFactorNuevo", new { area = "Comisiones", modeloId = item.ModeloId, factorId = item.id }, new { onclick = "javascript:return confirm('Está seguro que desea eliminar este factor?');" })
+                                </td>
+                            @*}*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="dialog-tipo-contratos" title="Crear factor">
+    @using (Html.BeginForm("AgregarFactorNuevo", "ComisionVariable", FormMethod.Post, new { area = "Comisiones", @class = "form-horizontal", role = "form", id = "frmFactorNuevoCV" }))
+    {
+        if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True") { Html.RenderPartial("_errorMessage"); }
+        @Html.HiddenFor(m => m.IdModelo)
+        @Html.ValidationMessageFor(m => m.IdModelo)
+        @Html.HiddenFor(m => m.IdFactorSeleccionado)
+        @Html.ValidationMessageFor(m => m.IdFactorSeleccionado)
+        <fieldset>
+            <legend></legend>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Compañ&iacute;a:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.IdCompaniaSeleccionada, Model.Companias, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IdCompaniaSeleccionada)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Ramo:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.IdRamoSeleccionado, Model.Ramos, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IdRamoSeleccionado)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Producto:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.IdProductoSeleccionado, Model.Productos, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IdProductoSeleccionado)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Tipo de Contrato:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.IdTipoContratoSeleccionado, Model.TipoContratos, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IdTipoContratoSeleccionado)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Plan:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.IdPlanSeleccionado, Model.Planes, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IdPlanSeleccionado)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Factor:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(m => m.FactorIngresado, new { @class = "form-control number", data_val_number = "Debe ser un número" })
+                    @Html.ValidationMessageFor(m => m.FactorIngresado)
+                </div>
+            </div>
+            @*@if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo))
+            {*@
+                <div class="form-group">
+                    <div class="col-sm-12 text-center">
+                        <input type="submit" value="Guardar" />
+                    </div>
+                </div>
+            @*}*@
+        </fieldset>        
+    }
+</div>
+@section AdditionalScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dialog-tipo-contratos').dialog({
+                resizable: false,
+                modal: true,
+                autoOpen: false,
+                dialogClass: "customdialog",
+                width: "65%"
+            });
+            $("#IdCompaniaSeleccionada").change(function () {
+                limpiar($("#IdRamoSeleccionado"));
+                actualizaRamos($(this).val(), $('#IdRamoSeleccionado'));
+                limpiar($("#IdProductoSeleccionado"),true);
+                limpiar($("#IdPlanSeleccionado"),true);
+            });
+            $("#IdRamoSeleccionado").change(function () {
+                limpiar($("#IdProductoSeleccionado",true));
+                actualizaProductos($(this).val(), $('#IdProductoSeleccionado'));
+                limpiar($("#IdPlanSeleccionado"),true);
+            });
+            $("#IdProductoSeleccionado").change(function () {
+                limpiar($("#IdPlanSeleccionado"),true);
+                actualizaPlanes($(this).val(), $('#IdPlanSeleccionado'));
+            });
+            $('#tablaLista').dataTable({
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers", "bStateSave": true
+            });
+        });
+        function actualizaRamos(val, ddlramos, defval) {
+            $.ajax({
+                url: "/Comisiones/ComisionFija/ObtenerRamosXCompaniaId",
+                data: { companiaId: val },
+                type: "POST",
+                success: function (data) {
+                    limpiar(ddlramos);
+                    $.each(data, function (index, value) {
+                        ddlramos.append($("<option>", { value: value.id }).text(value.nombre));
+                    });
+                    if (defval !== undefined) { ddlramos.val(defval) };
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                }
+            });
+        }
+        function actualizaProductos(val, ddl, defval) {
+            $.ajax({
+                url: "/Comisiones/ComisionFija/ObtenerProductosXRamoId",
+                data: { ramoId: val },
+                type: "POST",
+                success: function (data) {
+                    limpiar(ddl,true);
+                    $.each(data, function (index, value) {
+                        ddl.append($("<option>", { value: value.id }).text(value.nombre));
+                    });
+                    if (defval !== undefined) { ddl.val(defval) };
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                }
+            });
+        }
+        function actualizaPlanes(val, ddl, defval) {
+            $.ajax({
+                url: "/Comisiones/ComisionFija/ObtenerPlanesXProductoId",
+                data: { productoId: val },
+                type: "POST",
+                success: function (data) {
+                    limpiar(ddl,true);
+                    $.each(data, function (index, value) {
+                        ddl.append($("<option>", { value: value.id }).text(value.nombre));
+                    });
+                    if (defval !== undefined) { ddl.val(defval) };
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                }
+            });
+        }
+        function editarFactor(idFactor) {
+            $.ajax({
+                url: "/Comisiones/ComisionVariable/ObtenerFactorNuevoXId",
+                data: { factorId: idFactor },
+                type: "POST",
+                success: function (data) {                    
+                    loadFormData(data,idFactor)
+                    $('#dialog-tipo-contratos').dialog('open');
+                    $('#dialog-tipo-contratos').dialog('option', "title", "Editar Factor");
+                    $("#frmFactorNuevoCV").attr("action", "/Comisiones/ComisionVariable/EditarFactorNuevo");
+                    @Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo) ? "" : "$(\"input[type='text'],select,input[type='radio']\").attr('disabled',false)")
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                }
+            });
+        }
+        
+        function loadFormData(data,idFactor){  
+            $("#IdFactorSeleccionado").val(idFactor);          
+            $("#IdCompaniaSeleccionada").val(data.compania_id);
+            $("#IdTipoContratoSeleccionado").val(data.tipocontrato_id);
+            actualizaRamos(data.compania_id, $("#IdRamoSeleccionado"), data.ramoDetalle_id);
+            actualizaProductos(data.ramoDetalle_id, $("#IdProductoSeleccionado"), data.productoDetalle_id);
+            actualizaPlanes(data.productoDetalle_id, $("#IdPlanSeleccionado"), data.planDetalle_id);
+            $("#IdTipoContratoSeleccionado").val(data.tipocontrato_id);
+            $("#FactorIngresado").val(data.factor);
+        }   
+    </script>
+    @if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True")
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#dialog-tipo-contratos').dialog('open');
+                data = { 'compania_id': '@Html.Raw(TempData["IdCompaniaSeleccionada"] != null ? TempData["IdCompaniaSeleccionada"].ToString() : "")',
+                    'tipocontrato_id': '@Html.Raw(TempData["IdTipoContratoSeleccionado"] != null ? TempData["IdTipoContratoSeleccionado"].ToString() : "")',
+                    'ramoDetalle_id': '@Html.Raw(TempData["IdRamoSeleccionado"] != null ? TempData["IdRamoSeleccionado"].ToString() : "")',
+                    'productoDetalle_id': '@Html.Raw(TempData["IdProductoSeleccionado"] != null ? TempData["IdProductoSeleccionado"].ToString() : "")',
+                    'planDetalle_id': '@Html.Raw(TempData["IdPlanSeleccionado"] != null ? TempData["IdPlanSeleccionado"].ToString() : "")',
+                    'factor': '@Html.Raw(TempData["FactorIngresado"] != null ? TempData["FactorIngresado"].ToString() : "")'
+                };
+                loadFormData(data, '@Html.Raw(TempData["IdFactorSeleccionado"] != null ? TempData["IdFactorSeleccionado"].ToString() : "")');
+                @if (TempData["editing"] != null && TempData["editing"].ToString() == "True")
+                {
+                    @Html.Raw("$('#frmFactorNuevoCV').attr('action', '/Comisiones/ComisionVariable/EditarFactorNuevo');");
+                }
+            });
+        </script>
+    }
+}

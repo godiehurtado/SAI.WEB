@@ -1,0 +1,311 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.PrevisualizacionComisionesViewModel
+@if (Model.ComisionesVariables.Count > 0)
+{
+    <h4>
+        Comisi&oacute;n Variable</h4>
+    <div>
+        <div class="dataTables_wrapper" id="tablaLista_wrapper">
+            <table id="tablaLista">
+                <thead>
+                    <tr>
+                        <th>
+                            Participante
+                        </th>
+                        <th>
+                            X Inferior
+                        </th>
+                        <th>
+                            X Superior
+                        </th>
+                        <th>
+                            Talentos Netos
+                        </th>
+                        <th>
+                            Y Inferior
+                        </th>
+                        <th>
+                            Y Superior
+                        </th>
+                        <th>
+                            Talentos Nuevos
+                        </th>
+                        <th>
+                            Comisi&oacute;n Variable
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ComisionesVariables)
+                    {
+                        <tr>
+                            <td>
+                                @Html.Raw(Html.Encode(item.Participante.ToString()))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.RangoXInferior.ToString()))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.RangoXSuperior.ToString()))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.TalentosNetos.ToString()))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.RangoYInferior.ToString()))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.RangoYSuperior.ToString()))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.TalentosNuevos.ToString()))
+                            </td>
+                            <td>
+                                @Html.Raw(Html.Encode(item.ComisionVariable.ToString()))
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else if (Model.LiquidacionComisionId != 0)
+{ 
+    <label class="alert-danger">
+        No se encontraron registros v&aacute;lidos para calcular la comisi&oacute;n variable
+        en este modelo</label>
+}
+@if (Model.ComisionesFijasFacturacion.Count > 0)
+{
+    <h4>
+        Facturaci&oacute;n</h4>
+    <div>
+        <div class="dataTables_wrapper">
+            <table id="ListaFacturacion">
+                <thead>
+                    <tr>
+                        <th>
+                            # Factura
+                        </th>
+                        <th>
+                            Compañ&iacute;a
+                        </th>
+                        <th>
+                            Ramo
+                        </th>
+                        <th>
+                            Tipo Contrato
+                        </th>
+                        <th>
+                            Producto
+                        </th>
+                        <th>
+                            Plan
+                        </th>
+                        <th>
+                            Documento
+                        </th>
+                        <th>
+                            Edad
+                        </th>
+                        <th>
+                            Estado Beneficiario
+                        </th>
+                        <th>
+                            # Negocio
+                        </th>
+                        <th>
+                            Asesor
+                        </th>
+                        <th>
+                            % Comisi&oacute;n fija
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ComisionesFijasFacturacion)
+                    {
+                        <tr>
+                            <td>
+                                @Html.Raw(item.Factura)
+                            </td>
+                            <td>
+                                @Html.Raw(item.Compania)
+                            </td>
+                            <td>
+                                @Html.Raw(item.RamoDetalle)
+                            </td>
+                            <td>
+                                @Html.Raw(item.TipoContrato)
+                            </td>
+                            <td>
+                                @Html.Raw(item.ProductoDetalle)
+                            </td>
+                            <td>
+                                @Html.Raw(item.PlanDetalle)
+                            </td>
+                            <td>
+                                @Html.Raw(item.Documento)
+                            </td>
+                            <td>
+                                @Html.Raw(item.edad.ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(item.EstadoBeneficiario)
+                            </td>
+                            <td>
+                                @Html.Raw(item.Contrato)
+                            </td>
+                            <td>@Html.Raw(item.Participante)
+                            </td>
+                            <td>
+                                @Html.Raw(item.Factor.ToString()) %
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else if (Model.LiquidacionComisionId != 0)
+{ 
+    <label class="alert-danger">
+        No se encontraron registros v&aacute;lidos para calcular la comisi&oacute;n fija
+        de la facturaci&oacute;n para este modelo</label>
+}
+@if (Model.ComisionesFijaRecaudos.Count > 0)
+{
+    <h4>
+        Recaudos</h4>
+    <div>
+        <table id="listaRecaudos">
+            <thead>
+                <tr>
+                    <th>
+                        # Factura
+                    </th>
+                    <th>
+                        Compañ&iacute;a
+                    </th>
+                    <th>
+                        Ramo
+                    </th>
+                    <th>
+                        Tipo Contrato
+                    </th>
+                    <th>
+                        Producto
+                    </th>
+                    <th>
+                        Plan
+                    </th>
+                    <th>
+                        Documento
+                    </th>
+                    <th>
+                        Edad
+                    </th>
+                    <th>
+                        Estado Beneficiario
+                    </th>
+                    <th>
+                        # Negocio
+                    </th>
+                    <th>
+                        Asesor
+                    </th>
+                    <th>
+                        % Comisi&oacute;n fija
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ComisionesFijaRecaudos)
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(item.Factura)
+                        </td>
+                        <td>
+                            @Html.Raw(item.Compania)
+                        </td>
+                        <td>
+                            @Html.Raw(item.RamoDetalle)
+                        </td>
+                        <td>
+                            @Html.Raw(item.TipoContrato)
+                        </td>
+                        <td>
+                            @Html.Raw(item.ProductoDetalle)
+                        </td>
+                        <td>
+                            @Html.Raw(item.PlanDetalle)
+                        </td>
+                        <td>
+                            @Html.Raw(item.Documento)
+                        </td>
+                        <td>
+                            @Html.Raw(item.edad.ToString())
+                        </td>
+                        <td>
+                            @Html.Raw(item.EstadoBeneficiario)
+                        </td>
+                        <td>
+                            @Html.Raw(item.Contrato)
+                        </td>                        
+                        <td>@Html.Raw(item.Participante)
+                        </td>
+                        <td>
+                            @Html.Raw(item.PorcentajeComisionFija.ToString())%
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else if (Model.LiquidacionComisionId != 0)
+{ 
+    <label class="alert-danger">
+        No se encontraron registros v&aacute;lidos para calcular la comisi&oacute;n fija
+        de recaudos para este modelo</label>
+}
+@if (Model.ComisionesVariables.Count > 0 || Model.ComisionesFijasFacturacion.Count > 0 || Model.ComisionesFijaRecaudos.Count > 0)
+{
+    using (Html.BeginForm("LiquidarComision", "CalculoComision", FormMethod.Post))
+    {
+    @Html.HiddenFor(m => m.ModeloId)
+    @Html.ValidationMessageFor(m => m.ModeloId)
+    @Html.HiddenFor(m => m.LiquidacionComisionId)
+    @Html.ValidationMessageFor(m => m.LiquidacionComisionId)
+    @Html.HiddenFor(m => m.Anio)
+    @Html.ValidationMessageFor(m => m.Anio)
+    @Html.HiddenFor(m => m.Mes)
+    @Html.ValidationMessageFor(m => m.Mes)
+    @Html.HiddenFor(m => m.TipoLiquidacionId)
+    @Html.ValidationMessageFor(m => m.TipoLiquidacionId)
+    @Html.HiddenFor(m => m.EstadoLiquidacion)
+    @Html.ValidationMessageFor(m => m.EstadoLiquidacion)
+    <input type="submit" value="Liquidar" id="btnLiquidar" />
+    }
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tablaLista').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers", "bStateSave": true
+        });
+        $('#ListaFacturacion').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers", "bStateSave": true
+        });
+        $('#listaRecaudos').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers", "bStateSave": true
+        });
+        $('#btnLiquidar').click(function () {
+            $("#dialog-wait").dialog('open');
+        });
+    });
+</script>

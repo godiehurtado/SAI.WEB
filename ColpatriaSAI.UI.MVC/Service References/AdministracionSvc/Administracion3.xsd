@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.Informacion" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.Informacion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="InfoAplicacion">
+    <xs:sequence>
+      <xs:element name="direccionIP" nillable="true" type="xs:string" />
+      <xs:element name="nombreUsuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InfoAplicacion" nillable="true" type="tns:InfoAplicacion" />
+</xs:schema>

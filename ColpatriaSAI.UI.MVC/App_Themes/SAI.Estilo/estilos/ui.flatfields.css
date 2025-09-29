@@ -1,0 +1,149 @@
+﻿.ui-flatFields
+{
+	width: 865px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.ui-flatFields th
+{
+	background: url(      "custom_theme/images/ui-bg_flat_100_ece9d8_40x100.png" ) repeat-x scroll 50% 50% #ECE9D8;
+	border: 1px solid #D4D0C8;
+	color: #CC0000;
+	font-weight: bold;
+	padding: 2px 0 2px 5px;
+	margin: 2px 0 2px 0;
+	height: 16px;
+	text-align: left;
+}
+.ui-flatFields td
+{
+	text-align: left;
+	background-color: #F1F0EC;
+	padding: 2px 0 2px 5px;
+	margin: 1px 1px 0 0;
+}
+.ui_def_button
+{
+	width: 100px;
+	height: 27px;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+	margin-top: 20px;
+}
+.ui_body
+{
+	padding: 0px 5px 0 5px;
+	width: 830px;
+	height: auto;
+	margin-top: 5px;
+	margin-bottom:5px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+	overflow: visible;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.ui_banner
+{
+	margin: 0 0 10px 0;
+	padding: 0;
+	width: 865px;
+	height: 30px;
+}
+.ui_banner_cons_col
+{
+	background-image: url(      "../Imagenes/banner_cons_col.png" );
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-color: #ffffff;
+}
+.ui_banner_cons_col p
+{
+	line-height:150%;
+	font-size: 12px;
+}
+.ui_info_text
+{
+	width: 865px;
+	text-align: left;
+}
+.ui_table_collapse
+{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.ui_content
+{
+	width: 865px;
+	margin: 0 auto;
+	padding: 0;
+	text-align: left;
+}
+.ui_content_center
+{
+	text-align: center;
+}
+.ui_content_margin_20
+{
+	margin: 20px auto 20px auto;
+	text-align: center;
+}
+.ui_content_margin_10
+{
+	margin: 10px auto 10px auto;
+	text-align: center;
+}
+.ui_content_margin_0
+{
+	margin: 0 auto 0 auto;
+	text-align: center;
+}
+.ui_border_blue
+{
+	border: solid 1px blue;
+}
+.ui_border_green
+{
+	border: solid 1px green;
+}
+.ui_title
+{
+	text-align: left;
+	color: #7C6F57;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 5px 0 0 0;
+	float: left;
+}
+.ui_td_150
+{
+	width: 150px;
+}
+.ui_td_400
+{
+	width: 400px;
+}
+.ui_form input
+{
+	width: 90%;
+	max-width: 90%;
+}
+.ui_form textarea
+{
+	width: 550px;
+	max-width: 550px;
+}
+.ui_form select
+{
+	width: 92%;
+}
+label.error
+{
+	color: red;
+	width: auto;
+	display: inline-block;
+}

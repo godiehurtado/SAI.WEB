@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2090/ConsultasComisiones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" />
+  <xs:element name="ListadoUsuariosCalculoComison">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListadoUsuariosCalculoComisonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="ListadoUsuariosCalculoComisonResult" nillable="true" type="q1:ArrayOfListadoUsuarios" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListadoUsuariosCalculoComisonPorFechas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fechIni" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechFin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListadoUsuariosCalculoComisonPorFechasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="ListadoUsuariosCalculoComisonPorFechasResult" nillable="true" type="q2:ArrayOfListadoUsuarios" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListadoFacturasCalculoComison">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListadoFacturasCalculoComisonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="ListadoFacturasCalculoComisonResult" nillable="true" type="q3:ArrayOfListadoUsuarios" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListadoRecaudosCalculoComison">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListadoRecaudosCalculoComisonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="ListadoRecaudosCalculoComisonResult" nillable="true" type="q4:ArrayOfListadoUsuarios" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleUsuariosCalculoComison">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codExtraccion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleUsuariosCalculoComisonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="DetalleUsuariosCalculoComisonResult" nillable="true" type="q5:ArrayOfDetalleUsuarios" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcelDetalleUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codExtraccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoLog" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idUsuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcelDetalleUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="ExcelDetalleUsuarioResult" nillable="true" type="q6:ArrayOfLogExtraccionBH" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleFactura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codExtraccion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleFacturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="DetalleFacturaResult" nillable="true" type="q7:ArrayOfDetalleFacturas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcelDetalleFactura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codExtraccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoLog" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcelDetalleFacturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="ExcelDetalleFacturaResult" nillable="true" type="q8:ArrayOfLogExtFacturacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleRecaudo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codExtraccion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetalleRecaudoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="DetalleRecaudoResult" nillable="true" type="q9:ArrayOfDetalleFacturas" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcelDetalleRecaudo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codExtraccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoLog" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcelDetalleRecaudoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" minOccurs="0" name="ExcelDetalleRecaudoResult" nillable="true" type="q10:ArrayOfLogExtracionRecaudo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

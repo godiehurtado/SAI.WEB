@@ -1,0 +1,242 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.MatrizComisionVariableViewModel
+@{
+    ViewBag.Title = "Matriz Comisión Variable - Configurar Ejes";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";    
+}
+<h4>
+    Configuraci&oacute;n Ejes</h4>
+<div class="container-fluid">
+    <div class="row">
+        @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
+        {
+            <label>
+                @TempData["SuccessMessage"]</label>
+        }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>
+        }
+    </div>
+    <div class="row">
+        @{Html.RenderPartial("_encabezadoModelo", Model);}
+    </div>
+    @using (Html.BeginForm("ConfigurarEjes", "MatrizComisionVariable", new { }, FormMethod.Post, new { id = "frmConfEjes", @class = "form-horizontal" }))
+    {
+    
+        @Html.Hidden("DimensionInicial", Model.Dimension)
+        @Html.HiddenFor(m => m.ModeloId)
+        @Html.ValidationMessageFor(m => m.ModeloId)
+        <div class="row model-header model-header-last-row">
+            <div class="form-group">
+                <label class="control-label col-md-2 col-xs-2 text-right">
+                    Dimensi&oacute;n:</label>
+                <div class="col-md-4 col-xs-4">
+                    @Html.DropDownListFor(m => m.Dimension, Model.Dimensiones, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Dimension)
+                </div>
+                @if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo) && !Model.HayEjesDefinidos)
+                {
+                    <div class="col-md-2 col-xs-2 text-right">
+                        <input type="submit" value="Guardar" /></div>
+                }
+                @if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo))
+                {
+                    <div class="col-md-2 col-xs-2 text-right">
+                        <input type="button" value="Limpiar" onclick="javascript:window.location = '@Url.Action("LimpiarMatriz", "MatrizComisionVariable", new { area = "Comisiones", id = Model.ModeloId })';" /></div>   
+                }
+                <div class="col-md-2 col-xs-2 text-right">
+                    <input type="button" value="Regresar" onclick="javascript:window.location = '@Url.Action("ModeloComision", "modelos", new { area = "Comisiones" })'" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <h2>
+            Configuraci&oacute;n Eje X</h2>
+        <br />
+        <div class="row" id="XNetos-container">
+            @for (int i = 1; i <= Model.XNetos.Count; i++)
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-xs-2 text-right">
+                        L&iacute;mite inferior @Html.Raw("X" + i.ToString() + ":")</label>
+                    <div class="col-md-4 col-xs-4">
+                        @if (i == 1)
+                        {
+                            <input class="form-control" data-point-index="@Html.Raw(i.ToString())" data-control-point="true" type="text" value="@Html.Raw(Model.XNetos[i - 1].LimiteInferior.HasValue ? Model.XNetos[i - 1].LimiteInferior.Value.ToString() : "")" id="@Html.Raw("xinf" + i.ToString())" name="@Html.Raw("xinf" + i.ToString())" data-point-type="INF" data-point-axis="X" />
+                        }
+                        else
+                        {
+                            <input class="form-control" data-point-index="@Html.Raw(i.ToString())" disabled="disabled" data-control-point="true" type="text" value="@Html.Raw(Model.XNetos[i - 1].LimiteInferior.HasValue ? Model.XNetos[i - 1].LimiteInferior.Value.ToString() : "")" id="@Html.Raw("xinf" + i.ToString())" name="@Html.Raw("xinf" + i.ToString())" data-point-type="INF" data-point-axis="X"/>                            
+                        }
+                    </div>
+                    <label class="control-label col-md-2 col-xs-2 text-right">
+                        L&iacute;mite superior @Html.Raw("X" + i.ToString() + ":")</label>
+                    <div class="col-md-4 col-xs-4">
+                        <input class="form-control" data-point-index="@Html.Raw(i.ToString())" data-control-point="true" type="text" value="@Html.Raw(Model.XNetos[i - 1].LimiteSuperior.HasValue ? Model.XNetos[i - 1].LimiteSuperior.Value.ToString() : "")" id="@Html.Raw("xsup" + i.ToString())" name="@Html.Raw("xsup" + i.ToString())" data-point-type="SUP" data-point-axis="X"/>
+                    </div>
+                </div>
+            }
+        </div>
+        <br />
+        <h2>
+            Configuraci&oacute;n Eje Y</h2>
+        <br />
+        <div class="row" id="YNuevos-container">
+            @for (int i = 1; i <= Model.YNuevos.Count; i++)
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-xs-2 text-right">
+                        L&iacute;mite inferior @Html.Raw("Y" + i.ToString() + ":")</label>
+                    <div class="col-md-4 col-xs-4">
+                        @if (i == 1)
+                        {
+                            <input class="form-control" disabled="disabled" data-control-point="true" type="text" id="@Html.Raw("yinf" + i.ToString())" name="@Html.Raw("yinf" + i.ToString())" value="0" data-point-index="@Html.Raw(i.ToString())" data-point-type="INF" data-point-axis="Y"/>                        
+                        }
+                        else
+                        {
+                            <input class="form-control" data-control-point="true" type="text" id="@Html.Raw("yinf" + i.ToString())" name="@Html.Raw("yinf" + i.ToString())" value="@Html.Raw(Model.YNuevos[i - 1].LimiteInferior.HasValue ? Model.YNuevos[i - 1].LimiteInferior.Value.ToString() : "")" data-point-index="@Html.Raw(i.ToString())" data-point-type="INF" data-point-axis="Y"/>                        
+                        }
+                    </div>
+                    <label class="control-label col-md-2 col-xs-2 text-right">
+                        L&iacute;mite superior @Html.Raw("Y" + i.ToString() + ":")</label>
+                    <div class="col-md-4 col-xs-4">
+                        <input class="form-control" data-control-point="true" type="text" id="@Html.Raw("ysup" + i.ToString())" name="@Html.Raw("ysup" + i.ToString())" value="@Html.Raw(Model.YNuevos[i - 1].LimiteSuperior.HasValue ? Model.YNuevos[i - 1].LimiteSuperior.Value.ToString() : "")" data-point-index="@Html.Raw(i.ToString())" data-point-type="SUP" data-point-axis="Y"/>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+@section AdditionalScripts
+{
+    <script type="text/javascript">
+        function obtenerPuntos(eje, id) {
+            var nxnetoshtml = "<div class=\"form-group\">";
+            nxnetoshtml += "<label class=\"control-label col-md-2 col-xs-2 text-right\">";
+            nxnetoshtml += "L&iacute;mite inferior " + eje.toUpperCase() + id + ":</label>";
+            nxnetoshtml += "<div class=\"col-md-4 col-xs-4\">";
+            nxnetoshtml += "<input data-control-point=\"true\" class=\"form-control\" type=\"text\" id=\""
+                        + eje.toLowerCase() + "inf" + id
+                        + "\" name=\"" + eje.toLowerCase() + "inf" + id + "\" "
+                        + "data-point-index=\"" + id + "\" "
+                        + "data-point-type=\"INF\" "
+                        + "data-point-axis=\"" + eje.toUpperCase() + "\" "
+                        + "/>";
+            nxnetoshtml += "</div>";
+            nxnetoshtml += "<label class=\"control-label col-md-2 col-xs-2 text-right\">";
+            nxnetoshtml += "L&iacute;mite superior " + eje.toUpperCase() + id + ":</label>"
+            nxnetoshtml += "<div class=\"col-md-4 col-xs-4\">"
+            nxnetoshtml += "<input data-control-point=\"true\" class=\"form-control\" type=\"text\" id=\""
+                        + eje.toLowerCase() + "sup" + id
+                        + "\" name=\"" + eje.toLowerCase() + "sup" + id + "\" "
+                        + "data-point-index=\"" + id + "\" "
+                        + "data-point-type=\"SUP\" "
+                        + "data-point-axis=\"" + eje.toUpperCase() + "\" "
+                        + " />";
+            nxnetoshtml += "</div>";
+            nxnetoshtml += "</div>";
+            return nxnetoshtml;
+        }
+        function setControlPointsProperties() {
+            $("[data-control-point='true']").change(function () {
+                $("#Dimension").attr('disabled', true);
+            });
+            $("#frmConfEjes").validate();
+            $("[data-control-point='true']").each(function () {
+                $(this).attr("data-val", true);
+                $(this).attr("data-val-required", "Se requiere definir");
+                $(this).rules("remove", "required");
+                $(this).next("span").remove();
+                $(this).after("<span class=\"field-validation-valid\" data-valmsg-for=\"" + $(this).attr("id") + "\" data-valmsg-replace=\"true\"></span>");
+                $(this).rules("add", "required");
+                $(this).rules("add", "number");
+                $(this).rules("add", { RealInteger: /^[-]?\d+$/ });
+                if ($(this).attr("data-point-index") != 1 && $(this).attr("data-point-type") == "INF") {
+                    $(this).attr('disabled', true);
+                }
+                if ($(this).attr("data-point-axis") == "X" && $(this).attr("data-point-type") == "SUP") {
+                    $(this).rules("add", "MatrixAxis");
+                    if ($(this).attr("data-point-index") == $("#Dimension").val()) {
+                        $(this).attr('disabled', true);
+                    } else {
+                        $(this).attr('disabled', false);
+                    }   
+                    if ($("[data-point-index='" + (parseInt($(this).attr("data-point-index")) + 1) + "']") != "undefined") {
+                        $(this).change(function () {
+                            $("[data-point-type='INF'][data-point-axis='X'][data-point-index='" + (parseInt($(this).attr("data-point-index")) + 1) + "']").val(parseInt($(this).val()) + 1);
+                            if ($(this).attr("data-point-index") == (+$("#DimensionInicial").val() - 1)) {
+                                $("[data-point-type='SUP'][data-point-axis='X'][data-point-index='" + (parseInt($("#DimensionInicial").val())) + "']").val(parseInt($(this).val()) + 2);
+                            }
+                        });
+                    }
+                }
+                if ($(this).attr("data-point-axis") == "Y" && $(this).attr("data-point-type") == "SUP") {
+                    $(this).rules("add", "MatrixAxis");
+                    if ($("[data-point-index='" + (parseInt($(this).attr("data-point-index")) + 1) + "']") != "undefined") {
+                        if ($(this).attr("data-point-index") == $("#Dimension").val()) {
+                            $(this).attr('disabled', true);
+                        } else {
+                            $(this).attr('disabled', false);
+                        }   
+                        $(this).change(function () {
+                            $("[data-point-type='INF'][data-point-axis='Y'][data-point-index='" + (parseInt($(this).attr("data-point-index")) + 1) + "']").val(parseInt($(this).val()) + 1);
+                            if (+$(this).attr("data-point-index") == (+$("#DimensionInicial").val() - 1)) {
+                                $("[data-point-type='SUP'][data-point-axis='Y'][data-point-index='" + (parseInt($("#DimensionInicial").val())) + "']").val(parseInt($(this).val()) + 2);
+                            }
+                        });
+                    }
+                }
+            });
+
+
+        }
+        $(document).ready(function () {
+            $("#frmConfEjes").submit(function (event) {
+                if ($(this).valid()) {
+                    $("input,select").each(function () {
+                        $(this).attr("disabled", false);
+                    });
+                    return true;
+                } else {
+                    event.preventDefault();
+                }
+            });
+            $.validator.addMethod("MatrixAxis", function (value, element) {
+                var infValue = $("#" + $(element).attr('id').substring(0, 1) + "inf" + $(element).attr('id').substring(4)).val();
+                return parseInt(value) > parseInt(infValue);
+            }, "El rango superior debe ser mayor que el inferior");
+            $.validator.addMethod("RealInteger", function (value, element, regexp) {
+                var re = new RegExp(regexp);
+                return re.test(value);
+            }, "Solo se permiten números enteros");
+            setControlPointsProperties();
+            $("#Dimension").change(function () {
+                var dDimension = parseInt($(this).val()) - parseInt($("#DimensionInicial").val());
+                if (dDimension > 0) {
+                    for (var i = 1; i <= dDimension; i++) {
+                        $("#XNetos-container").append(obtenerPuntos("X", parseInt($("#DimensionInicial").val()) + i));
+                        $("#YNuevos-container").append(obtenerPuntos("Y", parseInt($("#DimensionInicial").val()) + i));
+                    }
+                    setControlPointsProperties();
+                    $("#DimensionInicial").val($(this).val());
+                }
+            });
+        });
+    </script>
+    @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True" && Model.HayEjesDefinidos)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                window.open('@Url.Action("ConfigurarFactores", "MatrizComisionVariable", new { area = "Comisiones", id = Model.ModeloId })', '', 'width=1240,height=640');
+            });
+        </script>
+    }
+    @if (Model.HayEjesDefinidos)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("input[type='text'],select").attr('disabled', true);
+            });
+        </script>
+    }
+}

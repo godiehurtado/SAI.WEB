@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfListadoUsuarios">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListadoUsuarios" nillable="true" type="tns:ListadoUsuarios" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListadoUsuarios" nillable="true" type="tns:ArrayOfListadoUsuarios" />
+  <xs:complexType name="ListadoUsuarios">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UsuariosSalientes" type="xs:long" />
+      <xs:element minOccurs="0" name="numExtraccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="usuariosEntrantes" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListadoUsuarios" nillable="true" type="tns:ListadoUsuarios" />
+  <xs:complexType name="ArrayOfDetalleUsuarios">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetalleUsuarios" nillable="true" type="tns:DetalleUsuarios" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetalleUsuarios" nillable="true" type="tns:ArrayOfDetalleUsuarios" />
+  <xs:complexType name="DetalleUsuarios">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion_log" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="conteo" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetalleUsuarios" nillable="true" type="tns:DetalleUsuarios" />
+  <xs:complexType name="ArrayOfLogExtraccionBH">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogExtraccionBH" nillable="true" type="tns:LogExtraccionBH" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLogExtraccionBH" nillable="true" type="tns:ArrayOfLogExtraccionBH" />
+  <xs:complexType name="LogExtraccionBH">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACO_CONTRACTCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AGE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BRE_NCOMMISSIONPERCENT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CTY_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CTY_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodExtraccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DIR_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DIR_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ESTADO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FST_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FST_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_CINTERMEDIARY_NAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_CKEY" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ITY_CTYPEIDENTIFICATION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MEM_DENDINGDATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MEM_DSTARTINGDATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MEM_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PER_CFIRSTNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PER_CIDENTIFICATIONNUMBER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PER_CLASTNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PER_CMIDDLENAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PER_CMOTHERNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PME_CDESCRIPTION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PME_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PROPLA_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SUB_CONTRACT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TID_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TIPOLOG" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UTY_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UTY_NCODE" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogExtraccionBH" nillable="true" type="tns:LogExtraccionBH" />
+  <xs:complexType name="ArrayOfDetalleFacturas">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DetalleFacturas" nillable="true" type="tns:DetalleFacturas" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDetalleFacturas" nillable="true" type="tns:ArrayOfDetalleFacturas" />
+  <xs:complexType name="DetalleFacturas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion_log" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="conteo" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DetalleFacturas" nillable="true" type="tns:DetalleFacturas" />
+  <xs:complexType name="ArrayOfLogExtFacturacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogExtFacturacion" nillable="true" type="tns:LogExtFacturacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLogExtFacturacion" nillable="true" type="tns:ArrayOfLogExtFacturacion" />
+  <xs:complexType name="LogExtFacturacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AIN_CLEGALCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AIN_DINVOICEDATE" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AIN_NTAXES" type="xs:double" />
+      <xs:element minOccurs="0" name="AIN_NTOTALVALUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ANO_DCREATEDDATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ANO_DFINALDATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ANO_DSTARTINGDATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ANO_NCODE" type="xs:int" />
+      <xs:element minOccurs="0" name="ANO_NNOVELTYVALUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BRE_NCOMMISSIONPERCENT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CONTRACT_CODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CTY_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodExtraccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ESTADO_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="EXTRACT_DATE" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="INT_CINTERMEDIARY_NAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_CKEY" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_NCODE" type="xs:int" />
+      <xs:element minOccurs="0" name="ITY_CSHORTNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ITY_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MEM_NCODE" type="xs:int" />
+      <xs:element minOccurs="0" name="MVA_NVALUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOV_CDESCRIPTION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PCO_CFARE_CODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PER_CIDENTIFICATIONNUMBER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PLA_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PLA_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRO_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRO_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_FACT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VALOR_ASESOR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VALOR_USUARIO" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogExtFacturacion" nillable="true" type="tns:LogExtFacturacion" />
+  <xs:complexType name="ArrayOfLogExtracionRecaudo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogExtracionRecaudo" nillable="true" type="tns:LogExtracionRecaudo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLogExtracionRecaudo" nillable="true" type="tns:ArrayOfLogExtracionRecaudo" />
+  <xs:complexType name="LogExtracionRecaudo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AIN_CLEGALCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AIN_DINVOICEDATE" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AIN_NTAXES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AIN_NTOTALVALUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BRE_NCOMMISSIONPERCENT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CONTRACT_CODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CTY_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CTY_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodExtraccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EXTRACT_DATE" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EXTRACT_STATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_CINTERMEDIARY_NAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_CKEY" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INT_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ITY_CSHORTNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ITY_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MVA_NVALUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PARTICIPATION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PCO_CFARE_CODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PER_CIDENTIFICATIONNUMBER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PLA_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PLA_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRO_CNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRO_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_FACT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VALOR_ASESOR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VALOR_USUARIO" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogExtracionRecaudo" nillable="true" type="tns:LogExtracionRecaudo" />
+</xs:schema>

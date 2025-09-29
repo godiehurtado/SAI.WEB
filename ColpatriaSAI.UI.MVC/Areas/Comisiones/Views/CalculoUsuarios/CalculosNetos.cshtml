@@ -1,0 +1,107 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.DetalleCalculosNetosViewModel
+@{
+    ViewBag.Title = "Cálculos de Talentos por Usuarios Netos";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<h2>
+    Cálculos de Talentos por Usuarios Netos</h2>
+<div class="container-fluid">
+    @using (Html.BeginForm("CalculosNetos", "CalculoUsuarios", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmCalcNetos" }))
+    {
+        <fieldset>
+            <legend></legend>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    <strong>*</strong> Modelo:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.IdModelo, Model.ModelosComision, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IdModelo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    <strong>*</strong> Año:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.Anio, Model.Anios, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Anio)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    <strong>*</strong> Mes:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.Mes, Model.MesesAnio, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Mes)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    <strong>*</strong>Asesor:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(m => m.AsesorClaveSeleccionado, new { @class = "form-control", @readonly = "true" })
+                    @Html.HiddenFor(m => m.Asesor)
+                    <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=AsesorClaveSeleccionado&srvfi=Asesor&pdi=dialogBuscarParticipante', 'Asesores');"
+                        style='float: none;' title='Buscar Participantes'>Buscar</a><br />
+                    @Html.ValidationMessageFor(m => m.Asesor)
+                    @Html.ValidationMessageFor(m => m.AsesorClaveSeleccionado)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <input type="submit" value="Calcular" />
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>
+<div id="resultados">
+    @{
+        Html.RenderPartial("CalcNetos", Model.vmodelpartial);
+    }
+</div>
+<div id="dialogBuscarParticipante" style="display: none;">
+</div>
+@section AdditionalScripts{
+    <script type="text/javascript">
+
+        function mostrarDialogParticipantes(pagina, titulo) {
+            $("#dialogBuscarParticipante").dialog({
+                height: 620, width: 550, modal: true, dialogClass: "customdialog",
+                buttons: {
+                    Cerrar: function () {
+                        $(this).dialog("close");
+                    }
+                },
+                title: titulo,
+
+                open: function (event, ui) { $(this).load(pagina); },
+                close: function (event, ui) { $(this).dialog('destroy'); }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#Mes").change(function () {
+                if ($("#Anio").val() == new Date().getYear()) {
+                    if ($(this).val() > new Date().getMonth()) {
+                        alert("El mes seleccionado no puede ser superior al mes actual");
+                        $(this).val(new Date().getMonth() + 1);
+                    }
+                }
+            });
+            $("#frmCalcNetos").submit(function (event) {
+                if ($(this).valid()) {
+                    $("input,select").each(function () {
+                        $(this).attr("disabled", false);
+                    });
+                    return true;
+                } else {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+}

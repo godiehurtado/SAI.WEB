@@ -1,0 +1,256 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.ConsultaParametrizacionViewModel
+@{
+    ViewBag.Title = "Comisiones - Consulta de Parametrización del Modelo";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<link href="@Url.Content("/Content/toolkit/css/normalize.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("/Content/toolkit/css/bootstrap/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("/Content/toolkit/css/fonts.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("/Content/toolkit/css/axa_icons.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("/Content/toolkit/css/toolkit.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("/Content/toolkit/css/site/login.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("/Content/MvcMembership.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+        
+    });
+
+    function cambiarModelo(modelo, id) {
+        $("#txtmodelo").html(modelo);
+        $("#hmodelo").val(id);
+    }
+
+    function consultarparametrizacion() {
+        var valor = document.getElementById("hmodelo").value;
+        if (valor == 0) {
+            mostrarError("Seleccione un modelo");
+        }
+        else {
+            var stUrl = '/ConsultaParametrizacion/Consultar';
+            mostrarCargando("Consultando. Espere Por Favor...");
+            var prueba1 = $.ajax({
+                type: 'POST',
+                url: stUrl,
+                data:
+                {
+                    modelo: document.getElementById("hmodelo").value
+                },
+                success: function (response) {
+                    if (response.Success) {
+                        $("#tablaResultados").show("slow");
+                        $("#resultados1").html(response.htmlresult1);
+                        $("#resultados2").html(response.htmlresult2);
+                        $("#resultados3").html(response.htmlresult3);
+                        $("#resultados4").html(response.htmlresult4);
+                        closeNotify('jNotify');
+                        mostrarExito("El proceso se realizó con éxito.");
+                    }
+                }
+            });
+        }
+    }
+</script>
+<div class="row">
+    <div id="encabezadoSeccion">
+        <div id="infoSeccion">
+            <h2>
+                Consulta Parametrización Modelo de Comisión</h2>
+            <p>
+            </p>
+        </div>
+        <div id="progresoSeccion">
+        </div>
+        <div style="clear: both;">
+            <hr />
+        </div>
+    </div>
+    <form class="form-horizontal">
+    <div class="form-group">
+        <input id="hmodelo" type="hidden" value="0"/>
+        <label for="txtmodelo" class="col-sm-2 control-label">
+            Modelo de Comisión</label>
+        <div class="col-sm-10">
+            <div class="dropdown">
+                <button id="txtmodelo" class="btn btn-cancel dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true" style="width: 100%">
+                    Escoja el modelo que desea consultar <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="txttidoc" style="width: 100%; text-align: right;">
+                    @foreach (var modelo in Model.ModelosComision)
+                    { 
+                        <li><a href="javascript:cambiarModelo('@Html.Raw(modelo.nombre)','@Html.Raw(modelo.id.ToString())')">
+                            @Html.Raw(Html.Encode(modelo.nombre))</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-2" style="text-align: right">
+            <input type="button" value="Consultar" onclick="javascript:consultarparametrizacion()" />
+        </div>
+    </div>
+    </form>
+    <div id="tablaResultados" class="bs-example" data-example-id="simple-table" style="display: none">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                            href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Factores de
+                            Comisión Fija <i class="iconCollapse glyphicon glyphicon-chevron-down"></i></a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <table class="table table-condensed table-striped table-header">
+                            <caption>
+                                Parametrización para Comisión Fija</caption>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Compañía
+                                    </th>
+                                    <th>
+                                        Ramo
+                                    </th>
+                                    <th>
+                                        Producto
+                                    </th>
+                                    <th>
+                                        Plan
+                                    </th>
+                                    <th>
+                                        Tipo Contrato
+                                    </th>
+                                    <th>
+                                        Edad Mínima
+                                    </th>
+                                    <th>
+                                        Edad Máxima
+                                    </th>
+                                    <th>
+                                        Estado Beneficiario
+                                    </th>
+                                    <th>
+                                        Factor (%)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultados1">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                            href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Factores de
+                            Comisión Variable para Nuevos <i class="iconCollapse glyphicon glyphicon-chevron-down">
+                            </i></a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <table class="table table-condensed table-striped table-header">
+                            <caption>
+                                Parametrización para Comisión Variable de Beneficiarios Nuevos</caption>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Compañía
+                                    </th>
+                                    <th>
+                                        Ramo
+                                    </th>
+                                    <th>
+                                        Producto
+                                    </th>
+                                    <th>
+                                        Plan
+                                    </th>
+                                    <th>
+                                        Tipo Contrato
+                                    </th>
+                                    <th>
+                                        Estado Beneficiario
+                                    </th>
+                                    <th>
+                                        Factor
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultados2">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                            href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Factores
+                            de Comisión Variable para Netos <i class="iconCollapse glyphicon glyphicon-chevron-down">
+                            </i></a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <table class="table table-condensed table-striped table-header">
+                            <caption>
+                                Parametrización para Comisión Variable para Neteo de Beneficiarios</caption>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Compañía
+                                    </th>
+                                    <th>
+                                        Ramo
+                                    </th>
+                                    <th>
+                                        Producto
+                                    </th>
+                                    <th>
+                                        Plan
+                                    </th>
+                                    <th>
+                                        Tipo Contrato
+                                    </th>
+                                    <th>
+                                        Estado Beneficiario
+                                    </th>
+                                    <th>
+                                        Factor
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultados3">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                            href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Matriz de Comisión Variable <i class="iconCollapse glyphicon glyphicon-chevron-down">
+                            </i></a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                        <table style="width:auto">   
+                            <tbody id="resultados4">                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

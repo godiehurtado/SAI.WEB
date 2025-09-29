@@ -1,0 +1,101 @@
+<%@ Master Language="VB" %> <%-- Inherits="Publico" CodeFile="Publico.master.vb"--%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>:: Portal Colpatria ::</title>
+
+    <link href="../estilos/custom-theme/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="../estilos/ui.flatfields.css" rel="stylesheet" type="text/css" />
+    <link rel="SHORTCUT ICON" href="../imagenes/AxaColpatria.ico" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="global">
+        <table id="wrap" border="0" cellspacing="0" cellpadding="0" align="center">
+            <!-- Inicio del contenedor global -->
+            <tr id="tr_header">
+                <td rowspan="4" class="borde_izq">
+                </td>
+                <td valign="middle" align="right">
+                    <!-- Inicio del header -->
+                    <div id="header">
+                        <a href="LogIn.aspx">
+                            <img id="logo" src="../imagenes/logo.gif" alt="" border="0" />
+                        </a>
+                        <div id="info">
+                        </div>
+                    </div>
+                    <!-- Fin del header -->
+                    <div id="menu">
+                        <table border="0" cellspacing="0" cellpadding="0" align="left">
+                            <tr>
+                                <td>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td rowspan="4" class="borde_der">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="contenido" style="margin-bottom: 67px" class="ui_body">
+                        <!-- Inicio del contenido -->
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                        <!-- Fin del banner -->
+                    </div>
+                    <!-- Fin del contenido -->
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+            </tr>
+        </table>
+        <div id="tr_footer">
+            <!-- Inicio del footer -->
+            <div id="footer_bg">
+            </div>
+            <div id="footer_bgl">
+            </div>
+            <div id="footer_bgr">
+            </div>
+        </div>
+        <div id="footer">
+            <center>
+                <table id="sub">
+                    <tr>
+                        <td>
+                            <a href="http://www.arpcolpatria.com/PortalUIColpatria/PortalColpatria/paginas/documento.aspx?idr=1569">
+                                Pol&iacute;ticas de seguridad </a>
+                        </td>
+                        <td style="width: 80px; margin: 0 40px 0 40px">
+                            |
+                        </td>
+                        <td>
+                            <a href="http://www.arpcolpatria.com/PortalUIColpatria/PortalColpatria/paginas/documento.aspx?idr=1570">
+                                Pol&iacute;ticas de Privacidad </a>
+                        </td>
+                        <td style="width: 80px; margin: 0 40px 0 40px">
+                            |
+                        </td>
+                        <td>
+                            <a href="http://www.arpcolpatria.com/PortalUIColpatria/PortalColpatria/paginas/documento.aspx?idr=1571">
+                                T&eacute;rminos y condiciones de Uso </a>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </div>
+        <!-- Inicio del footer -->
+        <!-- Fin del contenedor global -->
+    </div>
+    </form>
+</body>
+</html>

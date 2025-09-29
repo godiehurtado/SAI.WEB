@@ -1,0 +1,718 @@
+﻿
+@{
+    ViewBag.Title = "Comisiones - Novedades Usuarios";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <h2>Configuración Novedades Usuarios</h2>
+        <br />
+    </div>
+
+     <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#NovNuevCF">Usuarios Nuevos CF</a></li>
+        <li><a data-toggle="tab" href="#NovNuevCV">Usuarios Nuevos CV</a></li>
+        <li><a data-toggle="tab" href="#NovRenovados">Usuarios Renovados</a></li>
+        <li><a data-toggle="tab" href="#NovActivos">Usuarios Cancelados</a></li>
+    </ul>
+
+      <div class="tab-content">
+        <div id="NovNuevCF" class="tab-pane fade in active   ">
+            <br />
+            <input  type="submit" value="Agregar Nueva Novedad" class="btn btn-primary" onclick="AddNovedad('CF');"/>
+
+            <h3>Novedades configuradas actualmente</h3>
+                
+            @*Se pintan las novedades existentes para usuarios nuevos comision variables*@
+            <div id="divTbNuevosCF" style="height:300px"></div>
+        </div>
+
+          <div id="NovNuevCV" class="tab-pane fade">
+           <br />
+            <input  type="submit" value="Agregar Nueva Novedad" class="btn btn-primary" onclick="AddNovedad('CV');"/>
+
+            <h3>Novedades configuradas actualmente</h3>
+                
+            @*Se pintan las novedades existentes para usuarios nuevos comision variables*@
+            <div id="divTbNuevosCV" style="height:300px"></div>
+          </div>
+
+          <div id="NovRenovados" class="tab-pane fade">
+           <br />
+            <input  type="submit" value="Agregar Nueva Novedad" class="btn btn-primary" onclick="AddNovedad('REN');"/>
+
+            <h3>Novedades configuradas actualmente</h3>
+                
+            @*Se pintan las novedades existentes para usuarios nuevos comision variables*@
+            <div id="divTbNuevosRen" style="height:300px"></div>
+          </div>
+
+          <div id="NovActivos" class="tab-pane fade">
+            <br />
+            <form id="FormBenefActivos">
+            <div><h4>Por favor seleccione si desea incluir en la extracción de beneficiarios nuevos y renovados del último año, a los usuarios que ya se encuentran cancelados.</h4></div>
+            <table>
+            <tr>
+                <td><h4>Traer beneficiarios cancelados?</h4> </td>
+                <td>
+                    &nbsp;&nbsp;<input type="radio" name="BenfVigentes" id="BenfVigentesSI" value="S" checked> Si
+                </td>
+                <td>
+                    &nbsp;&nbsp;<input type="radio" name="BenfVigentes" id="BenfVigentesNO" value="N"> No
+                </td>
+            </tr>
+            </table>
+            </form>
+            
+
+            <input  type="submit" value="Guardar configuración" class="btn btn-primary" onclick="SalvarConfigBenefVigentes()" />
+          </div>
+      </div>
+   
+
+</div>
+
+<div id="dialog-Novedades" title="Seleccionar Novedades a añadir">
+        <div id="NovedadesAgregar" style="overflow-y: scroll;height: 300px">
+        
+        </div>
+        <div>
+         <input type="button" value="Ir Atrás" style="margin-left: 280px;" onclick="OcultarModalNovedades()" />
+        </div>
+</div>
+
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+@section AdditionalScripts{
+  <script type="text/javascript">
+     
+     function SalvarConfigBenefVigentes()
+     {
+        var checjedSel=$('input[name=BenfVigentes]:checked', '#FormBenefActivos').val();
+          $.ajax({
+                    url: "@Url.Action("ActualizarBeneficiariosComision", "AdminComision")",
+                    timeout: 1000000,
+                    data: { config: checjedSel },
+                    type: "POST",
+                    success: function (data) {
+                        if (data.MensajeError == "OK")
+                        {
+                            alert("Configuración actualizada correctamente");
+                        }
+                    },
+                    error: function (a, b, error) {
+                        alert(error);
+                    }
+                });
+     }
+     
+
+     function selectorVentana()
+     {
+  
+
+        var accionpestana= localStorage.getItem("Vista");
+      
+              switch (accionpestana)
+              {
+                  case "CF":
+                          activaTab('NovNuevCF');
+                      break;
+                  case "CV":
+                          activaTab('NovNuevCV');
+                      break;
+                  case "REN":
+                          activaTab('NovRenovados');
+                      break;
+
+              }
+         
+     }
+     
+     var operacion;
+      $(document).ready(function () {
+
+         $("#dialog-Novedades").dialog({
+                resizable: false,
+                height: "auto",
+                width: 700,
+                height: 400,
+                modal: true,
+                autoOpen: false,
+                buttons: {},
+                open: function(event, ui) { 
+                    //hide close button.
+                    $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+                }
+            });
+
+
+          //Se selecciona el radiobutton correspondiente para inclusión beneficiarios vigentes
+           var config= "@TempData["IncBenefVigentes"]";
+           $("input[name=BenfVigentes][value=" + config + "]").prop('checked', true);
+          //Se pintan los tables
+          PintarTbCF();
+          PintarTbCV();
+          PintarTbRen();
+
+          //Se valida la acción previa ejecutada
+          selectorVentana();
+
+      });
+
+      function activaTab(tab){
+
+         $('.nav-tabs a[href="#'+tab+'"]').tab('show');
+      };
+
+
+       function detalleListaCF(idfila)
+          {
+            var filaBuscar="#tbNovedadesCF tr#row" +idfila+" td";
+           
+          
+
+                    $.ajax({
+                            url: "@Url.Action("DetalleNovedades", "AdminComision")",
+                            timeout: 1000000,
+                            data: { idNovedad: idfila },
+                            type: "POST",
+                            success: function (data) {
+                            
+                                    //loadFormData(data, idmodelo, editable);
+                                    var ListaDetalle = " <h2>Causas Detalle </h2> ";
+                                    ListaDetalle += " <ul>";
+
+                                    jQuery.each(data, function () {
+                                        ListaDetalle +=  " <li>" + this.Nca_Cdescription + " </li>";
+                                    });
+                                    ListaDetalle += "</ul>";
+
+
+                                    //Se llena el div correspondiente
+                                    $("#detalleCF"+ idfila).empty();
+                                    $("#detalleCF"+ idfila).append(ListaDetalle);
+
+                                    var textoRemplazar;
+                                                 if ($(filaBuscar)[0].outerHTML.includes('glyphicon-list'))
+                                                   {
+                                                        textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-list","glyphicon-chevron-up");
+                                                        //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-chevron-up"></i></td>';
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                                   else
+                                                   {
+                                                     //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-list"></i></td>'
+                                                     textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-chevron-up", "glyphicon-list");
+                                                        
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                        },
+                                    error: function (a, b, error) {
+                                        alert(error);
+                                    }
+                               });
+
+
+                    
+          }
+
+
+
+
+
+
+
+      function PintarTbCF() {
+        
+          var estructura = "<table id=\"tbNovedadesCF\" style=\"width:100%\" class='table table-striped'> <thead>  <tr><th></th> <th></th> <th>NOVEDAD</th> <th>TIPO</th></tr></thead>";
+          estructura += "<tbody>";
+
+          //Se pinta el cuerpo
+        
+           @{
+               System.Text.StringBuilder cuerpoTbPPal = new System.Text.StringBuilder();
+               System.Text.StringBuilder cuerpoDetalleTbPPal = new System.Text.StringBuilder();
+               String tipoOp = "CF";
+
+               System.Data.DataTable DtUsuariosCF = (System.Data.DataTable)TempData["DtUsuariosCF"];
+               //System.Data.DataTable DtDetalleUsuariosCF = (System.Data.DataTable)TempData["DtDetalleNovUsuariosCF"];
+
+               foreach (System.Data.DataRow item in DtUsuariosCF.Rows)
+               {
+
+                   cuerpoTbPPal.Append("<tr id='row" + item["NovNcode"].ToString() + "'>");
+
+                   cuerpoTbPPal.Append("<td data-id='" + item["NovNcode"].ToString() + "' data-toggle='collapse'  data-target='.row" + item["NovNcode"].ToString() + "'> ");
+                   cuerpoTbPPal.Append("<i  title='Ver listado de causas' class='glyphicon glyphicon-list' onclick='javascript:detalleListaCF(" + item["NovNcode"].ToString() + ");'>");
+                   cuerpoTbPPal.Append("</td>");
+                   cuerpoTbPPal.Append("<td><a href='#' onclick='javascript:EliminarNovedad(" + item["NovNcode"].ToString() + ",1);'> Eliminar </a>&nbsp;</td>");
+                   cuerpoTbPPal.Append("<td>" + item["NovCDescription"].ToString() + "</td>");
+                   cuerpoTbPPal.Append("<td>" + item["NovCtType"].ToString() + "</td>");
+                   //<td>@item["Nca_Cdescription"].ToString()</td>
+                   cuerpoTbPPal.Append("</tr>");
+
+                   //var dtll = DtDetalleUsuariosCF.Select("NovNcode=" +  item["NovNcode"].ToString() );
+                   cuerpoDetalleTbPPal.Clear();
+                   cuerpoDetalleTbPPal.Append("<tr class='collapse row" + item["NovNcode"].ToString() + "'><td></td><td colspan='2'>");
+                   cuerpoDetalleTbPPal.Append("<div id='detalleCF" + item["NovNcode"].ToString() + "' style='overflow:auto; max-height:200px;'>");
+                   cuerpoDetalleTbPPal.Append("Cargado...</div></td></tr>");
+                   cuerpoTbPPal.Append(cuerpoDetalleTbPPal.ToString());
+               }
+                              
+                                    
+           }
+           estructura += "@Html.Raw(cuerpoTbPPal.ToString().Replace('\\', '\''))";
+            
+          estructura += "</tbody> </table>";
+          
+
+          $("#divTbNuevosCF").empty();
+          $("#divTbNuevosCF").append(estructura);
+
+      }
+
+
+      function AddNovedad(tipo)
+      {
+        
+          $("#dialog-Novedades").dialog('open');
+            var atributoDialog = $(".ui-dialog").attr('style')  + "z-index: 100";
+            $(".ui-dialog").attr('style', atributoDialog);
+            var opcionP;
+            switch (tipo) {
+            case "CF":
+                    opcionP=1;
+                    break;
+            case "CV":
+                    opcionP=2;
+                    break;
+            case "REN":
+                    opcionP=3;
+                    break;
+            default:
+                    opcionP=1;
+                    break;
+                }
+            
+
+            //Se obtiene el listado de noveades general
+
+              $.ajax({
+                            url: "@Url.Action("ListadoNovedadesAdd", "AdminComision")",
+                            timeout: 1000000,
+                            data: { tipoNov: tipo },
+                            type: "POST",
+                            success: function (data) {
+                            
+                                    //SE carga la tabla modal
+
+                                     var estructura = "<table id=\"tbNovedadesAdd\" style=\"width:100%\" class='table table-striped'> <thead>  <tr><th></th> <th></th> <th>NOVEDAD</th> <th>TIPO</th></tr></thead>";
+                                     estructura += "<tbody>";
+
+                                     //Se recorre cada registro devuelto
+                                     jQuery.each(data, function () {
+                                       
+                                        //Se pinta el cuerpo
+                                         estructura +=  "<tr id='Mrow"+this.NovNcode+"'>";
+                                         estructura +=  "<td data-id='M"+this.NovNcode+"' data-toggle='collapse'  data-target='.Mrow"+this.NovNcode+"'> ";
+                                         estructura +=  "<i  title='Ver listado de causas' class='glyphicon glyphicon-list' onclick='javascript:detalleListaM("+ this.NovNcode+");'>";
+                                         estructura +=  "</td>";
+                                         estructura +=  "<td><a href='#' onclick='javascript:AddNovedadModal(" + this.NovNcode  +"," + opcionP + ");'> Agregar </a>&nbsp;</td>";
+                                         estructura +=  "<td>"+ this.NovCDescription +"</td>";
+                                         estructura +=  "<td>"+ this.NovCtType +"</td>";
+                                         estructura +=  "</tr>";
+                                         estructura +=  "<tr class='collapse Mrow"+ this.NovNcode+"'><td></td><td colspan='2'>";
+                                         estructura +=  "<div id='detalleM"+ this.NovNcode +"' style='overflow:auto; max-height:200px;'>";
+                                         estructura +=  "Cargado...</div></td></tr>";
+                                                                              
+                                        
+                                    });//fin jQuery.each(data, function () {
+
+                                     estructura += "</tbody> </table>";
+                                        
+
+                                      $("#NovedadesAgregar").empty();
+                                      $("#NovedadesAgregar").append(estructura);
+
+
+                                        //-fin type: "POST", success: function (data) {
+                                        },
+                                    error: function (a, b, error) {
+                                        alert(error);
+                                    }
+                               });
+
+
+
+      }
+
+       function detalleListaM(idfila)
+          {
+            var filaBuscar="#tbNovedadesAdd tr#Mrow" +idfila+" td";
+           
+
+
+                    $.ajax({
+                            url: "@Url.Action("DetalleNovedades", "AdminComision")",
+                            timeout: 1000000,
+                            data: { idNovedad: idfila },
+                            type: "POST",
+                            success: function (data) {
+                            
+                                    //loadFormData(data, idmodelo, editable);
+                                    var ListaDetalle = " <h2>Causas Detalle </h2> ";
+                                    ListaDetalle += " <ul>";
+
+                                    jQuery.each(data, function () {
+                                        ListaDetalle +=  " <li>" + this.Nca_Cdescription + " </li>";
+                                    });
+                                    ListaDetalle += "</ul>";
+
+
+                                    //Se llena el div correspondiente
+                                    $("#detalleM"+ idfila).empty();
+                                    $("#detalleM"+ idfila).append(ListaDetalle);
+
+                                    var textoRemplazar;
+                                                 if ($(filaBuscar)[0].outerHTML.includes('glyphicon-list'))
+                                                   {
+                                                        textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-list","glyphicon-chevron-up");
+                                                        //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-chevron-up"></i></td>';
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                                   else
+                                                   {
+                                                     //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-list"></i></td>'
+                                                     textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-chevron-up", "glyphicon-list");
+                                                        
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                        },
+                                    error: function (a, b, error) {
+                                        alert(error);
+                                    }
+                               });
+
+
+                 //fin function detalleListaM(idfila)   
+          }
+
+
+
+          function EliminarNovedad(id, tipo)
+          {
+
+            
+           
+
+                
+              $.ajax({
+                        url: "@Url.Action("EliminarNovedad", "AdminComision")",
+                        timeout: 1000000,
+                        data: { idNovedad: id, tipoNov:tipo },
+                        type: "POST",
+                        success: function (data) {
+                            
+                            if (data.MensajeError=="OK")
+                            {
+                                alert("Novedad eliminada exitosamente")
+                                //location.reload();
+                                 switch (tipo) {
+                                case 1://CF
+                                    var filaM="#tbNovedadesCF tr#row" +id+" td";
+                                    var filaD=".row" +id;
+                                    $(filaD).remove();
+                                    $(filaM).remove();
+                                break;
+                                case 2:
+                                    var filaM="#tbNovedadesCV tr#row" +id+" td";
+                                    var filaD=".row" +id;
+                                    $(filaD).remove();
+                                    $(filaM).remove();
+                                break;
+                                case 3:
+                                    var filaM="#tbNovedadesRen tr#row" +id+" td";
+                                    var filaD=".row" +id;
+                                    $(filaD).remove();
+                                    $(filaM).remove();
+                                break;
+                    
+                    
+
+                            }//fin switch
+
+                            }
+                        //fin success: function (data) {
+                        },
+                        error: function (a, b, error) {
+                            alert(error);
+                        }
+                    });
+
+          
+          }
+
+
+          function AddNovedadModal(id, tipo)
+          {
+            
+                
+              $.ajax({
+                        url: "@Url.Action("AddNovedad", "AdminComision")",
+                        timeout: 1000000,
+                        data: { idNovedad: id, tipoNov:tipo },
+                        type: "POST",
+                        success: function (data) {
+
+                            if (data.MensajeError=="OK")
+                            {
+                                alert("Novedad agregada exitosamente")
+                                operacion=tipo;
+                            }//fin if (this.MensajeError=="OK")
+                        //fin success: function (data) {
+                        },
+                        error: function (a, b, error) {
+                            alert(error);
+                        }
+                    });
+
+          
+          }
+
+          
+          function OcultarModalNovedades()
+          {
+
+            $("#dialog-Novedades").dialog('close');
+            console.log(operacion);
+            switch (operacion) {
+            case 1:
+                localStorage.setItem("Vista", "CF");        
+                location.href="@Url.Action("NovedadesUsuarios", "AdminComision")";
+            break;
+            case 2:
+                localStorage.setItem("Vista", "CV");        
+                location.href="@Url.Action("NovedadesUsuarios", "AdminComision")";
+            break;
+            case 3:
+             
+                localStorage.setItem("Vista", "REN");
+                location.href="@Url.Action("NovedadesUsuarios", "AdminComision")";
+            break;
+                    
+            }//fin switch
+            
+          //fin function OcultarModalNovedades()
+          }
+
+          
+          
+           function PintarTbCV() {
+        
+              var estructura = "<table id=\"tbNovedadesCV\" style=\"width:100%\" class='table table-striped'> <thead>  <tr><th></th> <th></th> <th>NOVEDAD</th> <th>TIPO</th></tr></thead>";
+              estructura += "<tbody>";
+
+              //Se pinta el cuerpo
+        
+               @{
+                   System.Text.StringBuilder cuerpoTbPPalCV = new System.Text.StringBuilder();
+
+                   System.Data.DataTable DtUsuariosCV = (System.Data.DataTable)TempData["DtUsuariosCV"];
+                   //System.Data.DataTable DtDetalleUsuariosCF = (System.Data.DataTable)TempData["DtDetalleNovUsuariosCF"];
+
+                   foreach (System.Data.DataRow item in DtUsuariosCV.Rows)
+                   {
+
+                       cuerpoTbPPalCV.Append("<tr id='row" + item["NovNcode"].ToString() + "'>");
+
+                       cuerpoTbPPalCV.Append("<td data-id='" + item["NovNcode"].ToString() + "' data-toggle='collapse'  data-target='.row" + item["NovNcode"].ToString() + "'> ");
+                       cuerpoTbPPalCV.Append("<i  title='Ver listado de causas' class='glyphicon glyphicon-list' onclick='javascript:detalleListaCV(" + item["NovNcode"].ToString() + ");'>");
+                       cuerpoTbPPalCV.Append("</td>");
+                       cuerpoTbPPalCV.Append("<td><a href='#' onclick='javascript:EliminarNovedad(" + item["NovNcode"].ToString() + ",2);'> Eliminar </a>&nbsp;</td>");
+                       cuerpoTbPPalCV.Append("<td>" + item["NovCDescription"].ToString() + "</td>");
+                       cuerpoTbPPalCV.Append("<td>" + item["NovCtType"].ToString() + "</td>");
+                       cuerpoTbPPalCV.Append("</tr>");
+                       //Ahora se añade el detalle
+                       cuerpoTbPPalCV.Append("<tr class='collapse row" + item["NovNcode"].ToString() + "'><td></td><td colspan='2'>");
+                       cuerpoTbPPalCV.Append("<div id='detalleCV" + item["NovNcode"].ToString() + "' style='overflow:auto; max-height:200px;'>");
+                       cuerpoTbPPalCV.Append("Cargado...</div></td></tr>");
+
+                       cuerpoTbPPalCV.Append(cuerpoDetalleTbPPal.ToString());
+                   }
+                              
+                                    
+           }
+           estructura += "@Html.Raw(cuerpoTbPPalCV.ToString().Replace('\\', '\''))";
+            
+          estructura += "</tbody> </table>";
+          
+
+          $("#divTbNuevosCV").empty();
+          $("#divTbNuevosCV").append(estructura);
+          //fin function PintarTbCV()
+      }
+
+       function detalleListaCV(idfila)
+          {
+            var filaBuscar="#tbNovedadesCV tr#row" +idfila+" td";
+           
+          
+
+                    $.ajax({
+                            url: "@Url.Action("DetalleNovedades", "AdminComision")",
+                            timeout: 1000000,
+                            data: { idNovedad: idfila },
+                            type: "POST",
+                            success: function (data) {
+                            
+                                    //loadFormData(data, idmodelo, editable);
+                                    var ListaDetalle = " <h2>Causas Detalle </h2> ";
+                                    ListaDetalle += " <ul>";
+
+                                    jQuery.each(data, function () {
+                                        ListaDetalle +=  " <li>" + this.Nca_Cdescription + " </li>";
+                                    });
+                                    ListaDetalle += "</ul>";
+
+
+                                    //Se llena el div correspondiente
+                                    $("#detalleCV"+ idfila).empty();
+                                    $("#detalleCV"+ idfila).append(ListaDetalle);
+
+                                    var textoRemplazar;
+                                                 if ($(filaBuscar)[0].outerHTML.includes('glyphicon-list'))
+                                                   {
+                                                        textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-list","glyphicon-chevron-up");
+                                                        //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-chevron-up"></i></td>';
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                                   else
+                                                   {
+                                                     //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-list"></i></td>'
+                                                     textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-chevron-up", "glyphicon-list");
+                                                        
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                        },
+                                    error: function (a, b, error) {
+                                        alert(error);
+                                    }
+                               });
+
+
+           //fin  detalleListaCV(idfila)         
+          }
+    
+
+
+    function PintarTbRen() {
+        
+              var estructura = "<table id=\"tbNovedadesRen\" style=\"width:100%\" class='table table-striped'> <thead>  <tr><th></th> <th></th> <th>NOVEDAD</th> <th>TIPO</th></tr></thead>";
+              estructura += "<tbody>";
+
+              //Se pinta el cuerpo
+        
+               @{
+                   System.Text.StringBuilder cuerpoTbPPalRen = new System.Text.StringBuilder();
+
+                   System.Data.DataTable DtUsuariosRen = (System.Data.DataTable)TempData["DtUsuariosREN"];
+                   //System.Data.DataTable DtDetalleUsuariosCF = (System.Data.DataTable)TempData["DtDetalleNovUsuariosCF"];
+
+                   foreach (System.Data.DataRow item in DtUsuariosRen.Rows)
+                   {
+
+                       cuerpoTbPPalRen.Append("<tr id='row" + item["NovNcode"].ToString() + "'>");
+
+                       cuerpoTbPPalRen.Append("<td data-id='" + item["NovNcode"].ToString() + "' data-toggle='collapse'  data-target='.row" + item["NovNcode"].ToString() + "'> ");
+                       cuerpoTbPPalRen.Append("<i  title='Ver listado de causas' class='glyphicon glyphicon-list' onclick='javascript:detalleListaREN(" + item["NovNcode"].ToString() + ");'>");
+                       cuerpoTbPPalRen.Append("</td>");
+                       cuerpoTbPPalRen.Append("<td><a href='#' onclick='javascript:EliminarNovedad(" + item["NovNcode"].ToString() + ",3);'> Eliminar </a>&nbsp;</td>");
+                       cuerpoTbPPalRen.Append("<td>" + item["NovCDescription"].ToString() + "</td>");
+                       cuerpoTbPPalRen.Append("<td>" + item["NovCtType"].ToString() + "</td>");
+                       cuerpoTbPPalRen.Append("</tr>");
+                       //Ahora se añade el detalle
+                       cuerpoTbPPalRen.Append("<tr class='collapse row" + item["NovNcode"].ToString() + "'><td></td><td colspan='2'>");
+                       cuerpoTbPPalRen.Append("<div id='detalleREN" + item["NovNcode"].ToString() + "' style='overflow:auto; max-height:200px;'>");
+                       cuerpoTbPPalRen.Append("Cargado...</div></td></tr>");
+
+                       cuerpoTbPPalRen.Append(cuerpoDetalleTbPPal.ToString());
+                   }
+                              
+                                    
+           }
+           estructura += "@Html.Raw(cuerpoTbPPalRen.ToString().Replace('\\', '\''))";
+            
+          estructura += "</tbody> </table>";
+          
+
+          $("#divTbNuevosRen").empty();
+          $("#divTbNuevosRen").append(estructura);
+          //fin function PintarTbRen()
+      }
+
+      function detalleListaREN(idfila)
+          {
+            var filaBuscar="#tbNovedadesRen tr#row" +idfila+" td";
+           
+          
+
+                    $.ajax({
+                            url: "@Url.Action("DetalleNovedades", "AdminComision")",
+                            timeout: 1000000,
+                            data: { idNovedad: idfila },
+                            type: "POST",
+                            success: function (data) {
+                            
+                                    //loadFormData(data, idmodelo, editable);
+                                    var ListaDetalle = " <h2>Causas Detalle </h2> ";
+                                    ListaDetalle += " <ul>";
+
+                                    jQuery.each(data, function () {
+                                        ListaDetalle +=  " <li>" + this.Nca_Cdescription + " </li>";
+                                    });
+                                    ListaDetalle += "</ul>";
+
+
+                                    //Se llena el div correspondiente
+                                    $("#detalleREN"+ idfila).empty();
+                                    $("#detalleREN"+ idfila).append(ListaDetalle);
+
+                                    var textoRemplazar;
+                                                 if ($(filaBuscar)[0].outerHTML.includes('glyphicon-list'))
+                                                   {
+                                                        textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-list","glyphicon-chevron-up");
+                                                        //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-chevron-up"></i></td>';
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                                   else
+                                                   {
+                                                     //$(filaBuscar)[0].outerHTML='<td> <i class="glyphicon glyphicon-list"></i></td>'
+                                                     textoRemplazar=$(filaBuscar)[0].outerHTML;
+                                                        textoRemplazar=textoRemplazar.replace("glyphicon-chevron-up", "glyphicon-list");
+                                                        
+                                                        $(filaBuscar)[0].outerHTML=textoRemplazar;
+                                                   }
+                                        },
+                                    error: function (a, b, error) {
+                                        alert(error);
+                                    }
+                               });
+
+
+           //fin  detalleListaREN(idfila)         
+          }
+
+
+  </script>
+}

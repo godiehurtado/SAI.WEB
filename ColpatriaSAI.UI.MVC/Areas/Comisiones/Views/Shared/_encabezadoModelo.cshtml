@@ -1,0 +1,44 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.EncabezadoModeloComisionViewModel
+<div class="container-fluid encabezado-comision">
+    <div class="row bar">
+        <div class="col-sm-2 col-md-2 text-right">
+            <label>
+                Modelo:</label>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            @Model.Nombre
+        </div>        
+    </div>
+    <div class="row model-header">
+        <div class="col-sm-2 col-md-2 text-right">
+            <label>
+                Descripci&oacute;n:</label>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            @Model.Descripcion
+        </div>
+        <div class="col-sm-2 col-md-2 text-right">
+            <label>
+                Tope m&aacute;ximo:</label>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            @Model.TopeComision.ToString() %
+        </div>
+    </div>
+    <div class="row model-header">
+        <div class="col-sm-2 col-md-2 text-right">
+            <label>
+                Inicio Vigencia:</label>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            @Model.InicioVigencia.ToLongDateString()
+        </div>
+        <div class="col-sm-2 col-md-2 text-right">
+            <label>
+                Fin Vigencia:</label>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            @Model.FinVigencia.ToLongDateString()
+        </div>
+    </div>
+</div>

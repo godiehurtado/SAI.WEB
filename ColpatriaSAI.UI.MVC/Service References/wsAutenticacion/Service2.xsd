@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UI.Colpatria.SeguridadDeUsuarios.LogicLayer.RegistroDeUsuarios" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UI.Colpatria.SeguridadDeUsuarios.LogicLayer.RegistroDeUsuarios" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UI.Colpatria.SeguridadDeUsuarios.LogicLayer.Autenticacion" />
+  <xs:import schemaLocation="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/UI.Colpatria.BusinessEntities.Enumerations" />
+  <xs:complexType name="Usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apellidos" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Aplicaciones" nillable="true" type="tns:ArrayOfAplicacion" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cargo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Celular" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClaveAsesor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoCiudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoDepartamento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contrasena" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorreoElectronico" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescripcionCiudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescripcionDepartamento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/UI.Colpatria.SeguridadDeUsuarios.LogicLayer.Autenticacion" minOccurs="0" name="Estado" type="q1:Estado" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/UI.Colpatria.BusinessEntities.Enumerations" minOccurs="0" name="EstadoCivil" type="q2:EstadoCivil" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaNacimiento" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaUltimoIngreso" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ForzarCambioContrasena" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IPUltimoIngreso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombres" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NroHijos" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroIdentificacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequiereValidacionEmpresa" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UI.Colpatria.BusinessEntities.Enumerations" minOccurs="0" name="Sexo" type="q3:Genero" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UI.Colpatria.BusinessEntities.Enumerations" minOccurs="0" name="TipoIdentificacion" type="q4:TipoIdentificacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="ArrayOfAplicacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Aplicacion" nillable="true" type="tns:Aplicacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAplicacion" nillable="true" type="tns:ArrayOfAplicacion" />
+  <xs:complexType name="Aplicacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Perfiles" nillable="true" type="tns:ArrayOfPerfil" />
+      <xs:element minOccurs="0" name="Prefijo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Publico" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Aplicacion" nillable="true" type="tns:Aplicacion" />
+  <xs:complexType name="ArrayOfPerfil">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Perfil" nillable="true" type="tns:Perfil" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPerfil" nillable="true" type="tns:ArrayOfPerfil" />
+  <xs:complexType name="Perfil">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Empresas" nillable="true" type="tns:ArrayOfEmpresa" />
+      <xs:element minOccurs="0" name="Prefijo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Publico" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Perfil" nillable="true" type="tns:Perfil" />
+  <xs:complexType name="ArrayOfEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Empresa" nillable="true" type="tns:Empresa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpresa" nillable="true" type="tns:ArrayOfEmpresa" />
+  <xs:complexType name="Empresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClaveAsesor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorreoElectronico" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Departamento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DigitoVerificacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroAfiliacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroIdentificacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoEmpresa" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/UI.Colpatria.BusinessEntities.Enumerations" minOccurs="0" name="TipoIdentificacion" type="q5:TipoIdentificacion" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Valida" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Empresa" nillable="true" type="tns:Empresa" />
+</xs:schema>

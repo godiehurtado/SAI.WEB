@@ -1,0 +1,239 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.ExcepcionesPenalizacionViewModel
+@{
+    ViewBag.Title = "Comisiones - Excepción a Penalización";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<h4>
+    Excepción a Penalización</h4>
+<div class="container-fluid">
+    <div class="row">
+        @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
+        {
+            <label>
+                @TempData["SuccessMessage"]</label>
+        }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>
+        }
+    </div>
+    <div class="row">
+        @{Html.RenderPartial("_encabezadoModelo", Model);}
+    </div>
+    <div class="row model-header">
+        <div class="col-md-10 col-xs-10">
+            <input type="button" value="Agregar excepción" onclick="javascript:mostrarDialogoCrear($('#frmExcPenal'), '/Comisiones/ExcepcionesComision/AgregarPenalizacion', 'Crear Excepción Penalización', $('#dialog-form'));" />
+        </div>
+        <div class="col-md-1 col-xs-1">
+            <input type="button" value="Regresar" onclick="javascript:window.location = '@Url.Action("ModeloComision", "modelos", new { area = "Comisiones" })'" />
+        </div>
+    </div>
+</div>
+<div class="dataTables_wrapper" id="tablaLista_wrapper">
+    <table id="tablaLista">
+        <thead>
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    Número Contrato
+                </th>
+                <th>
+                    Clave Origen
+                </th>
+                <th>
+                    Clave Destino
+                </th>
+                <th>
+                    Excepci&oacute;n para
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ExcepcionesPenalizacionModeloComision)
+            {
+                <tr>
+                    <td>
+                        <a href="#" onclick="javascript:editarPenalizacion('@Html.Raw(item.Id.ToString())');">
+                            @Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo) ? "Editar" : "Ver")</a>
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.NumeroContrato))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.AsesorOrigen))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.AsesorDestino))
+                    </td>
+                    <td>
+                        @Html.Raw(Html.Encode(item.Aplica))
+                    </td>
+                    <td>
+                        @Html.ActionLink(!item.Activo ? "Activar" : "Desactivar", "CambiarEstadoExcepcionPenalizacion", new { area = "Comisiones", controller = "ExcepcionesComision", id = item.Id, modeloId = item.ModeloId })
+                        @if (ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo))
+                        {
+                            @Html.ActionLink("Eliminar", "EliminarExcepcionPenalizacion", new { area = "Comisiones", modeloId = item.ModeloId, penalizacionId = item.Id })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="dialog-form" title="Crear Penalización">
+    <div class="row">
+        @using (Html.BeginForm("AgregarPenalizacion", "ExcepcionesComision", FormMethod.Post, new { id = "frmExcPenal", @class = "form-horizontal", role = "form" }))
+        {
+            if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True") { Html.RenderPartial("_errorMessage"); }
+            @Html.HiddenFor(m => m.IdModelo)
+            @Html.ValidationMessageFor(m => m.IdModelo)
+            @Html.HiddenFor(m => m.Id)
+            @Html.ValidationMessageFor(m => m.Id)
+            <fieldset style="padding: 10px;">
+                <legend></legend>
+                <div class="form-group">
+                    <label class="col-sm-4 text-right">
+                        Número Contrato:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.NumeroContrato, new { @class = "form-control text" })
+                        @Html.ValidationMessageFor(m => m.NumeroContrato)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4  control-label">
+                        Clave Origen:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.AsesorClaveOrigenSeleccionado, new { @readonly = "true", @class = "form-control" })
+                        @Html.HiddenFor(m => m.IdAsesorClaveOrigenSeleccionado)
+                        <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=AsesorClaveOrigenSeleccionado&srvfi=IdAsesorClaveOrigenSeleccionado&pdi=dialogBuscarParticipante', 'Participantes');"
+                            style='float: none;' title='Buscar Participantes'>Buscar</a>
+                        @Html.ValidationMessageFor(m => m.AsesorClaveOrigenSeleccionado)
+                        @Html.ValidationMessageFor(m => m.IdAsesorClaveOrigenSeleccionado)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4  control-label">
+                        Clave Destino:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.AsesorClaveDestinoSeleccionado, new { @readonly = "true", @class = "form-control" })
+                        @Html.HiddenFor(m => m.IdAsesorClaveDestinoSeleccionado)
+                        <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=AsesorClaveDestinoSeleccionado&srvfi=IdAsesorClaveDestinoSeleccionado&pdi=dialogBuscarParticipante', 'Participantes');"
+                            style='float: none;' title='Buscar Participantes'>Buscar</a>
+                        @Html.ValidationMessageFor(m => m.AsesorClaveDestinoSeleccionado)
+                        @Html.ValidationMessageFor(m => m.IdAsesorClaveDestinoSeleccionado)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 text-right">
+                        Excepci&oacute;n para:
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.DropDownListFor(m => m.IdAplicaSeleccionado, Model.ListaAplicas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.IdAplicaSeleccionado)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12 text-center">
+                        <input type="submit" value="Guardar" />
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+<div id="dialogBuscarParticipante" style="display: none;">
+</div>
+@section AdditionalScripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#tablaLista').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers", "bStateSave": true
+        });
+        $('#dialog-form').dialog({
+            resizable: false,
+            modal: true,
+            autoOpen: false,
+            dialogClass: "customdialog",
+            width: "60%"
+        });
+    });
+
+    function mostrarDialogParticipantes(pagina, titulo) {
+        $("#dialog-form").dialog('close');
+        $("#dialogBuscarParticipante").dialog({
+            height: 620, width: 550, modal: true, dialogClass: "customdialog",
+            buttons: {
+                Cerrar: function () {
+                    $(this).dialog("close");
+                }
+            },
+            title: titulo,
+
+            open: function (event, ui) { $(this).load(pagina); },
+            close: function (event, ui) {
+                $(this).dialog('destroy');
+                $("#dialog-form").dialog('open');
+            }
+        });
+    }
+
+    function editarPenalizacion(idPenalizacion) {
+        $.ajax({
+            url: "/Comisiones/ExcepcionesComision/ObtenerPenalizacionXId",
+            data: { penalizacionId: idPenalizacion },
+            type: "POST",
+            success: function (data) {
+                loadFormData(data);
+                $('#dialog-form').dialog('option', "title", "Editar Penalización");
+                $('#dialog-form').dialog('open');
+                $("#frmExcPenal").attr("action", "/Comisiones/ExcepcionesComision/EditarPenalizacion");
+                @Html.Raw(ColpatriaSAI.Negocio.Validadores.ModeloComision.ValidadorModeloComision.EditableSegunVigenciaModelo(Model.FechaInicioVigenciaModelo) ? "" : "$(\"input[type='text'],select,input[type='radio']\").attr('disabled',true)")
+            },
+            error: function (a, b, error) {
+                alert(error);
+            }
+        });
+        function loadFormData(data){
+            $("#IdModelo").val(data.modelo_id);
+            $("#Id").val(data.id);
+            $("#NumeroContrato").val(data.numerocontrato);
+            $("#IdAsesorClaveOrigenSeleccionado").val(data.asesororigen_id);
+            $("#IdAsesorClaveDestinoSeleccionado").val(data.asesordestino_id);
+            $("#AsesorClaveOrigenSeleccionado").val(data.asesorOrigen);
+            $("#AsesorClaveDestinoSeleccionado").val(data.asesorDestino);
+            $("#IdAplicaSeleccionado").val(data.aplica_id);
+        }
+    }   
+    </script>
+    @if (TempData["openForm"] != null && TempData["openForm"].ToString() == "True")
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('dialog-form').dialog('open');
+                data = { 'modelo_id': '@Html.Raw(TempData["IdModelo"] != null ? TempData["IdModelo"].ToString() : "")',
+                    'id': '@Html.Raw(TempData["Id"] != null ? TempData["Id"].ToString() : "")',
+                    'numerocontrato': '@Html.Raw(TempData["NumeroContrato"] != null ? TempData["NumeroContrato"].ToString() : "")',
+                    'asesororigen_id': '@Html.Raw(TempData["IdAsesorClaveOrigenSeleccionado"] != null ? TempData["IdAsesorClaveOrigenSeleccionado"].ToString() : "")',
+                    'asesordestino_id': '@Html.Raw(TempData["IdAsesorClaveDestinoSeleccionado"] != null ? TempData["IdAsesorClaveDestinoSeleccionado"].ToString() : "")',
+                    'asesorOrigen': '@Html.Raw(TempData["AsesorClaveOrigenSeleccionado"] != null ? TempData["AsesorClaveOrigenSeleccionado"].ToString() : "")',
+                    'asesorDestino': '@Html.Raw(TempData["AsesorClaveDestinoSeleccionado"] != null ? TempData["AsesorClaveDestinoSeleccionado"].ToString() : "")',
+                    'aplica_id': '@Html.Raw(TempData["IdAplicaSeleccionado"] != null ? TempData["IdAplicaSeleccionado"].ToString() : "")'
+                };
+                loadFormData(data);
+                @if (TempData["editing"] != null && TempData["editing"].ToString() == "True")
+                {
+                    @Html.Raw("$('#frmExcPenal').attr('action', '/Comisiones/ExcepcionesComision/EditarPenalizacion');");
+                }
+            });
+        </script>
+    }
+}

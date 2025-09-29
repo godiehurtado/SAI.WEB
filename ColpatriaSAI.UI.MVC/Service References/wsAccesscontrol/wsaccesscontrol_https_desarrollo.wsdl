@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/dtsRegistro.xsd" />
+      <s:import schemaLocation="https://www.arpcolpatria.com:2055/wsaccesscontrol.asmx?schema=dtsRegistro" namespace="http://tempuri.org/dtsRegistro.xsd" />
+      <s:element name="User_registration_ref">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlRegistro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_registration_refResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User_registration_refResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_registration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_registrationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User_registrationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPN_AIX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPN_AIXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Valida_UPN_AIXResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPN_AS4">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPN_AS4Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Valida_UPN_AS4Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="valida_User_BH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_doc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nro_doc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="valida_User_BHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="valida_User_BHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPJ_AIX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPJ_AIXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Valida_UPJ_AIXResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPJ_AS4">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPJ_AS4Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Valida_UPJ_AS4Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_APJ_AS4">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="x_ClaveAsesor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_APJ_AS4Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Valida_APJ_AS4Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPPJ_AS4">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_UPPJ_AS4Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Valida_UPPJ_AS4Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaUsuarioPN_BAC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaUsuarioPN_BACResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidaUsuarioPN_BACResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaUsuarioPJ_BAC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Ip_Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidaUsuarioPJ_BACResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidaUsuarioPJ_BACResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Guarda_RPJ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoUser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Guarda_RPJResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Guarda_RPJResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Guarda_RPN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dtsDatos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtsRegistro.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Guarda_RPNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Guarda_RPNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authentication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authenticationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_authenticationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authentication_web">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authentication_webResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_authentication_webResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authentication_web_prueba">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="user_authentication_web_pruebaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_authentication_web_pruebaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Edita_Registro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x_Nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_TipoDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_NroDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_FecNac" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Cargo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_EstaCivil" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Sexo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="x_NroHijos" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="x_Depto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_DirRes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_TelRes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Celular" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Edita_RegistroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Edita_RegistroResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Editar_Password">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x_TipoDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_NroDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Editar_PasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Editar_PasswordResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Cambio_Estado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="x_TipoDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_NroDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_Estado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="x_CambioPws" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Cambio_EstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cambio_EstadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Encrypt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PwsText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="User_registration_refSoapIn">
+    <wsdl:part name="parameters" element="tns:User_registration_ref" />
+  </wsdl:message>
+  <wsdl:message name="User_registration_refSoapOut">
+    <wsdl:part name="parameters" element="tns:User_registration_refResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_registrationSoapIn">
+    <wsdl:part name="parameters" element="tns:User_registration" />
+  </wsdl:message>
+  <wsdl:message name="User_registrationSoapOut">
+    <wsdl:part name="parameters" element="tns:User_registrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPN_AIXSoapIn">
+    <wsdl:part name="parameters" element="tns:Valida_UPN_AIX" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPN_AIXSoapOut">
+    <wsdl:part name="parameters" element="tns:Valida_UPN_AIXResponse" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPN_AS4SoapIn">
+    <wsdl:part name="parameters" element="tns:Valida_UPN_AS4" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPN_AS4SoapOut">
+    <wsdl:part name="parameters" element="tns:Valida_UPN_AS4Response" />
+  </wsdl:message>
+  <wsdl:message name="valida_User_BHSoapIn">
+    <wsdl:part name="parameters" element="tns:valida_User_BH" />
+  </wsdl:message>
+  <wsdl:message name="valida_User_BHSoapOut">
+    <wsdl:part name="parameters" element="tns:valida_User_BHResponse" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPJ_AIXSoapIn">
+    <wsdl:part name="parameters" element="tns:Valida_UPJ_AIX" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPJ_AIXSoapOut">
+    <wsdl:part name="parameters" element="tns:Valida_UPJ_AIXResponse" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPJ_AS4SoapIn">
+    <wsdl:part name="parameters" element="tns:Valida_UPJ_AS4" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPJ_AS4SoapOut">
+    <wsdl:part name="parameters" element="tns:Valida_UPJ_AS4Response" />
+  </wsdl:message>
+  <wsdl:message name="Valida_APJ_AS4SoapIn">
+    <wsdl:part name="parameters" element="tns:Valida_APJ_AS4" />
+  </wsdl:message>
+  <wsdl:message name="Valida_APJ_AS4SoapOut">
+    <wsdl:part name="parameters" element="tns:Valida_APJ_AS4Response" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPPJ_AS4SoapIn">
+    <wsdl:part name="parameters" element="tns:Valida_UPPJ_AS4" />
+  </wsdl:message>
+  <wsdl:message name="Valida_UPPJ_AS4SoapOut">
+    <wsdl:part name="parameters" element="tns:Valida_UPPJ_AS4Response" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuarioPN_BACSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidaUsuarioPN_BAC" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuarioPN_BACSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidaUsuarioPN_BACResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuarioPJ_BACSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidaUsuarioPJ_BAC" />
+  </wsdl:message>
+  <wsdl:message name="ValidaUsuarioPJ_BACSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidaUsuarioPJ_BACResponse" />
+  </wsdl:message>
+  <wsdl:message name="Guarda_RPJSoapIn">
+    <wsdl:part name="parameters" element="tns:Guarda_RPJ" />
+  </wsdl:message>
+  <wsdl:message name="Guarda_RPJSoapOut">
+    <wsdl:part name="parameters" element="tns:Guarda_RPJResponse" />
+  </wsdl:message>
+  <wsdl:message name="Guarda_RPNSoapIn">
+    <wsdl:part name="parameters" element="tns:Guarda_RPN" />
+  </wsdl:message>
+  <wsdl:message name="Guarda_RPNSoapOut">
+    <wsdl:part name="parameters" element="tns:Guarda_RPNResponse" />
+  </wsdl:message>
+  <wsdl:message name="user_authenticationSoapIn">
+    <wsdl:part name="parameters" element="tns:user_authentication" />
+  </wsdl:message>
+  <wsdl:message name="user_authenticationSoapOut">
+    <wsdl:part name="parameters" element="tns:user_authenticationResponse" />
+  </wsdl:message>
+  <wsdl:message name="user_authentication_webSoapIn">
+    <wsdl:part name="parameters" element="tns:user_authentication_web" />
+  </wsdl:message>
+  <wsdl:message name="user_authentication_webSoapOut">
+    <wsdl:part name="parameters" element="tns:user_authentication_webResponse" />
+  </wsdl:message>
+  <wsdl:message name="user_authentication_web_pruebaSoapIn">
+    <wsdl:part name="parameters" element="tns:user_authentication_web_prueba" />
+  </wsdl:message>
+  <wsdl:message name="user_authentication_web_pruebaSoapOut">
+    <wsdl:part name="parameters" element="tns:user_authentication_web_pruebaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Edita_RegistroSoapIn">
+    <wsdl:part name="parameters" element="tns:Edita_Registro" />
+  </wsdl:message>
+  <wsdl:message name="Edita_RegistroSoapOut">
+    <wsdl:part name="parameters" element="tns:Edita_RegistroResponse" />
+  </wsdl:message>
+  <wsdl:message name="Editar_PasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:Editar_Password" />
+  </wsdl:message>
+  <wsdl:message name="Editar_PasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:Editar_PasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="Cambio_EstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:Cambio_Estado" />
+  </wsdl:message>
+  <wsdl:message name="Cambio_EstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:Cambio_EstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptSoapIn">
+    <wsdl:part name="parameters" element="tns:Encrypt" />
+  </wsdl:message>
+  <wsdl:message name="EncryptSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsAccesscontrolSoap">
+    <wsdl:operation name="User_registration_ref">
+      <wsdl:input message="tns:User_registration_refSoapIn" />
+      <wsdl:output message="tns:User_registration_refSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_registration">
+      <wsdl:input message="tns:User_registrationSoapIn" />
+      <wsdl:output message="tns:User_registrationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPN_AIX">
+      <wsdl:input message="tns:Valida_UPN_AIXSoapIn" />
+      <wsdl:output message="tns:Valida_UPN_AIXSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPN_AS4">
+      <wsdl:input message="tns:Valida_UPN_AS4SoapIn" />
+      <wsdl:output message="tns:Valida_UPN_AS4SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="valida_User_BH">
+      <wsdl:input message="tns:valida_User_BHSoapIn" />
+      <wsdl:output message="tns:valida_User_BHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPJ_AIX">
+      <wsdl:input message="tns:Valida_UPJ_AIXSoapIn" />
+      <wsdl:output message="tns:Valida_UPJ_AIXSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPJ_AS4">
+      <wsdl:input message="tns:Valida_UPJ_AS4SoapIn" />
+      <wsdl:output message="tns:Valida_UPJ_AS4SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_APJ_AS4">
+      <wsdl:input message="tns:Valida_APJ_AS4SoapIn" />
+      <wsdl:output message="tns:Valida_APJ_AS4SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPPJ_AS4">
+      <wsdl:input message="tns:Valida_UPPJ_AS4SoapIn" />
+      <wsdl:output message="tns:Valida_UPPJ_AS4SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarioPN_BAC">
+      <wsdl:input message="tns:ValidaUsuarioPN_BACSoapIn" />
+      <wsdl:output message="tns:ValidaUsuarioPN_BACSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarioPJ_BAC">
+      <wsdl:input message="tns:ValidaUsuarioPJ_BACSoapIn" />
+      <wsdl:output message="tns:ValidaUsuarioPJ_BACSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guarda_RPJ">
+      <wsdl:input message="tns:Guarda_RPJSoapIn" />
+      <wsdl:output message="tns:Guarda_RPJSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guarda_RPN">
+      <wsdl:input message="tns:Guarda_RPNSoapIn" />
+      <wsdl:output message="tns:Guarda_RPNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication">
+      <wsdl:input message="tns:user_authenticationSoapIn" />
+      <wsdl:output message="tns:user_authenticationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication_web">
+      <wsdl:input message="tns:user_authentication_webSoapIn" />
+      <wsdl:output message="tns:user_authentication_webSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication_web_prueba">
+      <wsdl:input message="tns:user_authentication_web_pruebaSoapIn" />
+      <wsdl:output message="tns:user_authentication_web_pruebaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Edita_Registro">
+      <wsdl:input message="tns:Edita_RegistroSoapIn" />
+      <wsdl:output message="tns:Edita_RegistroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Editar_Password">
+      <wsdl:input message="tns:Editar_PasswordSoapIn" />
+      <wsdl:output message="tns:Editar_PasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Cambio_Estado">
+      <wsdl:input message="tns:Cambio_EstadoSoapIn" />
+      <wsdl:output message="tns:Cambio_EstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <wsdl:input message="tns:EncryptSoapIn" />
+      <wsdl:output message="tns:EncryptSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsAccesscontrolSoap" type="tns:wsAccesscontrolSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="User_registration_ref">
+      <soap:operation soapAction="http://tempuri.org/User_registration_ref" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_registration">
+      <soap:operation soapAction="http://tempuri.org/User_registration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPN_AIX">
+      <soap:operation soapAction="http://tempuri.org/Valida_UPN_AIX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPN_AS4">
+      <soap:operation soapAction="http://tempuri.org/Valida_UPN_AS4" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valida_User_BH">
+      <soap:operation soapAction="http://tempuri.org/valida_User_BH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPJ_AIX">
+      <soap:operation soapAction="http://tempuri.org/Valida_UPJ_AIX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPJ_AS4">
+      <soap:operation soapAction="http://tempuri.org/Valida_UPJ_AS4" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_APJ_AS4">
+      <soap:operation soapAction="http://tempuri.org/Valida_APJ_AS4" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPPJ_AS4">
+      <soap:operation soapAction="http://tempuri.org/Valida_UPPJ_AS4" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarioPN_BAC">
+      <soap:operation soapAction="http://tempuri.org/ValidaUsuarioPN_BAC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarioPJ_BAC">
+      <soap:operation soapAction="http://tempuri.org/ValidaUsuarioPJ_BAC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guarda_RPJ">
+      <soap:operation soapAction="http://tempuri.org/Guarda_RPJ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guarda_RPN">
+      <soap:operation soapAction="http://tempuri.org/Guarda_RPN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication">
+      <soap:operation soapAction="http://tempuri.org/user_authentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication_web">
+      <soap:operation soapAction="http://tempuri.org/user_authentication_web" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication_web_prueba">
+      <soap:operation soapAction="http://tempuri.org/user_authentication_web_prueba" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Edita_Registro">
+      <soap:operation soapAction="http://tempuri.org/Edita_Registro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Editar_Password">
+      <soap:operation soapAction="http://tempuri.org/Editar_Password" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cambio_Estado">
+      <soap:operation soapAction="http://tempuri.org/Cambio_Estado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <soap:operation soapAction="http://tempuri.org/Encrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsAccesscontrolSoap12" type="tns:wsAccesscontrolSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="User_registration_ref">
+      <soap12:operation soapAction="http://tempuri.org/User_registration_ref" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_registration">
+      <soap12:operation soapAction="http://tempuri.org/User_registration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPN_AIX">
+      <soap12:operation soapAction="http://tempuri.org/Valida_UPN_AIX" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPN_AS4">
+      <soap12:operation soapAction="http://tempuri.org/Valida_UPN_AS4" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valida_User_BH">
+      <soap12:operation soapAction="http://tempuri.org/valida_User_BH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPJ_AIX">
+      <soap12:operation soapAction="http://tempuri.org/Valida_UPJ_AIX" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPJ_AS4">
+      <soap12:operation soapAction="http://tempuri.org/Valida_UPJ_AS4" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_APJ_AS4">
+      <soap12:operation soapAction="http://tempuri.org/Valida_APJ_AS4" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_UPPJ_AS4">
+      <soap12:operation soapAction="http://tempuri.org/Valida_UPPJ_AS4" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarioPN_BAC">
+      <soap12:operation soapAction="http://tempuri.org/ValidaUsuarioPN_BAC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaUsuarioPJ_BAC">
+      <soap12:operation soapAction="http://tempuri.org/ValidaUsuarioPJ_BAC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guarda_RPJ">
+      <soap12:operation soapAction="http://tempuri.org/Guarda_RPJ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guarda_RPN">
+      <soap12:operation soapAction="http://tempuri.org/Guarda_RPN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication">
+      <soap12:operation soapAction="http://tempuri.org/user_authentication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication_web">
+      <soap12:operation soapAction="http://tempuri.org/user_authentication_web" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="user_authentication_web_prueba">
+      <soap12:operation soapAction="http://tempuri.org/user_authentication_web_prueba" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Edita_Registro">
+      <soap12:operation soapAction="http://tempuri.org/Edita_Registro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Editar_Password">
+      <soap12:operation soapAction="http://tempuri.org/Editar_Password" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cambio_Estado">
+      <soap12:operation soapAction="http://tempuri.org/Cambio_Estado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <soap12:operation soapAction="http://tempuri.org/Encrypt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsAccesscontrol">
+    <wsdl:port name="wsAccesscontrolSoap" binding="tns:wsAccesscontrolSoap">
+      <soap:address location="https://www.arpcolpatria.com:2055/wsaccesscontrol.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsAccesscontrolSoap12" binding="tns:wsAccesscontrolSoap12">
+      <soap12:address location="https://www.arpcolpatria.com:2055/wsaccesscontrol.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

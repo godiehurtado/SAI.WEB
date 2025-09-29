@@ -1,0 +1,182 @@
+﻿@model ColpatriaSAI.Negocio.Componentes.Comision.Reportes.ReporteAsesoresViewModel
+@{
+    ViewBag.Title = "Reporte Asesores";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+
+<h2>
+    Reporte Lider Comercial</h2>
+<div class="container-fluid">
+    @using (Html.BeginForm("ReporteComercial", "Reportes", FormMethod.Post, new { id = "frmReporteAsesorComercial", @class = "form-horizontal", role = "form" }))
+    {
+        <fieldset>
+                <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    <span style="color:Red;"> *</span>Fecha Corte:
+                </label>
+                <div class="col-sm-4">
+                      @Html.DropDownListFor(m => m.IdLiqComision, Model.LiquidacionComision, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.IdLiqComision)
+                </div>
+            </div>
+        @if (Model.IdDirector == 0)
+        {
+           <div class="form-group">
+          
+                <label class="col-sm-4 control-label">
+                   <span style="color:Red;"> *</span> Director:
+                </label>
+                <div class="col-sm-8">
+                  
+                    @Html.TextBox("Directortxt", null, new { @readonly = "true", @class = "form-control-2" })
+                    @Html.HiddenFor(m => m.IdDirector)
+                   
+                </div>
+                <div class="col-xs-4 buscar-left">
+                <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=Directortxt&srvfi=IdDirectores&IdDirector=IdDirector&selectvarios=1&nivel=2&pdi=dialogBuscarParticipante', 'Directores'); return false;"
+                        style='float: none;' title='Buscar Directores'>Buscar</a> <a href="#" onclick="limpiar('Director'); return false;"title='Limpiar'> Limpiar </a>
+                </div>
+            </div>
+        }
+             <legend></legend>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <input type="submit" value="Cargar Reporte " onclick="return validarCampos()" />
+                    <input type="button" value="Limpiar Formulario" id="LimpiarFrom"/>
+                </div>
+            </div>
+        </fieldset> 
+    }
+</div>
+<div id="dialogBuscarParticipante" style="display: none;">
+</div>
+
+<style>
+    .buscar-left
+    {
+     float: right;
+     margin: -28px -118px 0px -5px;
+    }
+    
+.form-control-2 {
+    display: block;
+    width: 72%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+</style>
+@section AdditionalScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#LimpiarFrom").click(function () {
+                LimpiarFrom();
+            })
+          //  $('#FechaPeriodo').datepicker({ dateFormat: 'dd/mm/yy' }).datepicker("setDate", new Date());
+//            $("#CanalVentas").change(function () {
+//                limpiar($("#SubCanal"));
+//                if (+$(this).val() > 0) {
+//                    actualizaSubcanales($(this).val(), $('#SubCanal'));
+//                }
+//            });
+        });
+
+        function limpiar(ddl) {
+            ddl.empty();
+            ddl.append($("<option>", { value: "-1" }).text("Sin Selección"));
+        }
+
+        function LimpiarFrom() {
+//            $("#Gerentetxt").val("");
+//            $("#IdGerente").val();
+//            ///DIRECTOR
+             $("#Directortxt").val("");
+//            $("#IdDirector").val("");
+//            $("#Asesortxt").val("");
+//            $("#ClavesAsesor").val("");
+//            $("#IdAsesores").val("");
+            document.getElementById("frmReporteAsesorComercial").reset();
+           // $('#FechaPeriodo').datepicker({ dateFormat: 'dd/mm/yy' }).datepicker("setDate", new Date()); ;
+        }
+       
+        function validarCampos() {
+            var IdLiqcomision = $("#IdLiqComision").val();
+          //  var ValDirector = $("#Directortxt").val().trim();
+            if (IdLiqcomision == -1) {
+                alert("La fecha de Corte es obligatorio ");
+                return false;
+            }
+            else {
+                return true;
+            }
+            
+
+        }
+
+        function limpiar(campos) {
+            switch (campos.toString()) {
+                case 'Asesor':
+                    //$("#Asesortxt").val("");
+                    //$("#ClavesAsesor").val("");
+                    //$("#IdAsesores").val("");
+                    break;
+                case 'Gerente':
+                    //$("#Gerentetxt").val("");
+                    //$("#IdGerente").val("");
+                    break;
+                case 'Director':
+                    $("#Directortxt").val("");
+                    $("#IdDirector").val("");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+//    
+//        function actualizaSubcanales(val, ddlsubcanal, defval) {
+//            $.ajax({
+//                url: "/Comisiones/Reportes/ObtenerSubcanalesxCanal",
+//                data: { CanalId: val },
+//                type: "POST",
+//                success: function (data) {
+//                    limpiar(ddlsubcanal);
+//                    $.each(data, function (index, value) {
+//                        ddlsubcanal.append($("<option>", { value: value.id }).text(value.nombre));
+//                    });
+//                    if (defval !== undefined) { ddlsubcanal.val(defval) };
+//                },
+//                error: function (a, b, error) {
+//                    alert(error);
+//                }
+//            });
+//        }
+
+        function mostrarDialogParticipantes(pagina, titulo) {
+            localStorage.setItem("AccionBusqueda", titulo);
+            $("#dialogBuscarParticipante").dialog({
+                height: 620, width: 644, modal: true, dialogClass: "customdialog",
+                buttons: {
+                    Cerrar: function () {
+                        $(this).dialog("close");
+                    }
+                },
+                title: titulo,
+
+                open: function (event, ui) { $(this).load(pagina); },
+                close: function (event, ui) { $(this).dialog('destroy'); }
+            });
+        }
+    </script>
+    }

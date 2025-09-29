@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ModeloComision" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" />
+      <xsd:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Modelo" />
+      <xsd:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IModeloComision_ListarFactorComisionFijaXModeloId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFactorComisionFijaXModeloId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarFactorComisionFijaXModeloId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFactorComisionFijaXModeloIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarFactorComisionFija_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarFactorComisionFija" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarFactorComisionFija_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarFactorComisionFijaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarFactorComisionFija_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFactorComisionFija" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarFactorComisionFija_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFactorComisionFijaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerFactorComisionFijaXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerFactorComisionFijaXId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerFactorComisionFijaXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerFactorComisionFijaXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorComisionFija_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorComisionFija" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorComisionFija_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorComisionFijaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ValidarEdadMaxima_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarEdadMaxima" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ValidarEdadMaxima_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarEdadMaximaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarModelosComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarModelosComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarModelosComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarModelosComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarLiquidacionComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLiquidacionComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarLiquidacionComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLiquidacionComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerModeloComisionXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerModeloComisionXId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerModeloComisionXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerModeloComisionXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarCanalesDetalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCanalesDetalle" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarCanalesDetalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCanalesDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarTipoIntermediario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoIntermediario" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarTipoIntermediario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTipoIntermediarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarCanalDetalleTipoIntermediario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCanalDetalleTipoIntermediario" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarCanalDetalleTipoIntermediario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCanalDetalleTipoIntermediarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarModeloComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarModeloComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarModeloComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarModeloComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarModeloComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarModeloComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarModeloComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarModeloComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarModeloComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarModeloComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarModeloComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarModeloComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_DuplicarModeloComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:DuplicarModeloComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_DuplicarModeloComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DuplicarModeloComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarModeloComisionVigentes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarModeloComisionVigentes" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarModeloComisionVigentes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarModeloComisionVigentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarExcepcionesPenalizacionXModeloComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExcepcionesPenalizacionXModeloComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarExcepcionesPenalizacionXModeloComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExcepcionesPenalizacionXModeloComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision__lisErrores_InputMessage">
+    <wsdl:part name="parameters" element="tns:_lisErrores" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision__lisErrores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:_lisErroresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerExcepcionPenalizacionXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerExcepcionPenalizacionXId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerExcepcionPenalizacionXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerExcepcionPenalizacionXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CargueExcepcionesPenalizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CargueExcepcionesPenalizacion" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CargueExcepcionesPenalizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CargueExcepcionesPenalizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarExcepcionPenalizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarExcepcionPenalizacion" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarExcepcionPenalizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarExcepcionPenalizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarExcepcionPenalizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarExcepcionPenalizacion" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarExcepcionPenalizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarExcepcionPenalizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarExcepcionPenalizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarExcepcionPenalizacion" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarExcepcionPenalizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarExcepcionPenalizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarParticipantes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarParticipantes" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarParticipantes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarParticipantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CambiarEstadoExcepcionPenalizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarEstadoExcepcionPenalizacion" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CambiarEstadoExcepcionPenalizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarEstadoExcepcionPenalizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarExcepcionesFijaVariableXModeloComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExcepcionesFijaVariableXModeloComision" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarExcepcionesFijaVariableXModeloComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarExcepcionesFijaVariableXModeloComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerExcepcionFijaVariableXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerExcepcionFijaVariableXId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerExcepcionFijaVariableXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerExcepcionFijaVariableXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarExcepcionFijaVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarExcepcionFijaVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarExcepcionFijaVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarExcepcionFijaVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarExcepcionFijaVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarExcepcionFijaVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarExcepcionFijaVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarExcepcionFijaVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarExcepcionFijaVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarExcepcionFijaVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarExcepcionFijaVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarExcepcionFijaVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CargarExcepcionesMasivo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CargarExcepcionesMasivo" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CargarExcepcionesMasivo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CargarExcepcionesMasivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CambiarEstadoExcepcionFijaVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarEstadoExcepcionFijaVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_CambiarEstadoExcepcionFijaVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CambiarEstadoExcepcionFijaVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarFactorNetoComisionVariableXModeloId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFactorNetoComisionVariableXModeloId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarFactorNetoComisionVariableXModeloId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFactorNetoComisionVariableXModeloIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarFactorNetoComisionVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarFactorNetoComisionVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarFactorNetoComisionVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarFactorNetoComisionVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarFactorNetoComisionVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFactorNetoComisionVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarFactorNetoComisionVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFactorNetoComisionVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerFactorNetoComisionVariableXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerFactorNetoComisionVariableXId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerFactorNetoComisionVariableXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerFactorNetoComisionVariableXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorNetoComisionVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorNetoComisionVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorNetoComisionVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorNetoComisionVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarFactorNuevoComisionVariableXModeloId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFactorNuevoComisionVariableXModeloId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarFactorNuevoComisionVariableXModeloId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFactorNuevoComisionVariableXModeloIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarFactorNuevoComisionVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarFactorNuevoComisionVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_InsertarFactorNuevoComisionVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarFactorNuevoComisionVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarFactorNuevoComisionVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFactorNuevoComisionVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarFactorNuevoComisionVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarFactorNuevoComisionVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerFactorNuevoComisionVariableXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerFactorNuevoComisionVariableXId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ObtenerFactorNuevoComisionVariableXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerFactorNuevoComisionVariableXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorNuevoComisionVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorNuevoComisionVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorNuevoComisionVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorNuevoComisionVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_AdicionarRangosMatriz_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdicionarRangosMatriz" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_AdicionarRangosMatriz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdicionarRangosMatrizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarMatrizComisionVariableXModeloId_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarMatrizComisionVariableXModeloId" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_EliminarMatrizComisionVariableXModeloId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarMatrizComisionVariableXModeloIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarValoresMatrizComisionVariableXModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarValoresMatrizComisionVariableXModelo" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarValoresMatrizComisionVariableXModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarValoresMatrizComisionVariableXModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarRangosYNuevoMatrizComisionVariableXModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRangosYNuevoMatrizComisionVariableXModelo" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarRangosYNuevoMatrizComisionVariableXModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRangosYNuevoMatrizComisionVariableXModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarRangosXNetoMatrizComisionVariableXModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRangosXNetoMatrizComisionVariableXModelo" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ListarRangosXNetoMatrizComisionVariableXModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRangosXNetoMatrizComisionVariableXModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorMatrizComisionVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorMatrizComisionVariable" />
+  </wsdl:message>
+  <wsdl:message name="IModeloComision_ActualizarFactorMatrizComisionVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarFactorMatrizComisionVariableResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IModeloComision">
+    <wsdl:operation name="ListarFactorComisionFijaXModeloId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarFactorComisionFijaXModeloId" message="tns:IModeloComision_ListarFactorComisionFijaXModeloId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarFactorComisionFijaXModeloIdResponse" message="tns:IModeloComision_ListarFactorComisionFijaXModeloId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarFactorComisionFija">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/InsertarFactorComisionFija" message="tns:IModeloComision_InsertarFactorComisionFija_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/InsertarFactorComisionFijaResponse" message="tns:IModeloComision_InsertarFactorComisionFija_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFactorComisionFija">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/EliminarFactorComisionFija" message="tns:IModeloComision_EliminarFactorComisionFija_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/EliminarFactorComisionFijaResponse" message="tns:IModeloComision_EliminarFactorComisionFija_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFactorComisionFijaXId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ObtenerFactorComisionFijaXId" message="tns:IModeloComision_ObtenerFactorComisionFijaXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ObtenerFactorComisionFijaXIdResponse" message="tns:IModeloComision_ObtenerFactorComisionFijaXId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorComisionFija">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorComisionFija" message="tns:IModeloComision_ActualizarFactorComisionFija_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorComisionFijaResponse" message="tns:IModeloComision_ActualizarFactorComisionFija_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarEdadMaxima">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ValidarEdadMaxima" message="tns:IModeloComision_ValidarEdadMaxima_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ValidarEdadMaximaResponse" message="tns:IModeloComision_ValidarEdadMaxima_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarModelosComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarModelosComision" message="tns:IModeloComision_ListarModelosComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarModelosComisionResponse" message="tns:IModeloComision_ListarModelosComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarLiquidacionComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarLiquidacionComision" message="tns:IModeloComision_ListarLiquidacionComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarLiquidacionComisionResponse" message="tns:IModeloComision_ListarLiquidacionComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerModeloComisionXId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ObtenerModeloComisionXId" message="tns:IModeloComision_ObtenerModeloComisionXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ObtenerModeloComisionXIdResponse" message="tns:IModeloComision_ObtenerModeloComisionXId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCanalesDetalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarCanalesDetalle" message="tns:IModeloComision_ListarCanalesDetalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarCanalesDetalleResponse" message="tns:IModeloComision_ListarCanalesDetalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoIntermediario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarTipoIntermediario" message="tns:IModeloComision_ListarTipoIntermediario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarTipoIntermediarioResponse" message="tns:IModeloComision_ListarTipoIntermediario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCanalDetalleTipoIntermediario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarCanalDetalleTipoIntermediario" message="tns:IModeloComision_ListarCanalDetalleTipoIntermediario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarCanalDetalleTipoIntermediarioResponse" message="tns:IModeloComision_ListarCanalDetalleTipoIntermediario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarModeloComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/InsertarModeloComision" message="tns:IModeloComision_InsertarModeloComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/InsertarModeloComisionResponse" message="tns:IModeloComision_InsertarModeloComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarModeloComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ActualizarModeloComision" message="tns:IModeloComision_ActualizarModeloComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ActualizarModeloComisionResponse" message="tns:IModeloComision_ActualizarModeloComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarModeloComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/EliminarModeloComision" message="tns:IModeloComision_EliminarModeloComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/EliminarModeloComisionResponse" message="tns:IModeloComision_EliminarModeloComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DuplicarModeloComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/DuplicarModeloComision" message="tns:IModeloComision_DuplicarModeloComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/DuplicarModeloComisionResponse" message="tns:IModeloComision_DuplicarModeloComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarModeloComisionVigentes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarModeloComisionVigentes" message="tns:IModeloComision_ListarModeloComisionVigentes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarModeloComisionVigentesResponse" message="tns:IModeloComision_ListarModeloComisionVigentes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarExcepcionesPenalizacionXModeloComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarExcepcionesPenalizacionXModeloComision" message="tns:IModeloComision_ListarExcepcionesPenalizacionXModeloComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarExcepcionesPenalizacionXModeloComisionResponse" message="tns:IModeloComision_ListarExcepcionesPenalizacionXModeloComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="_lisErrores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/_lisErrores" message="tns:IModeloComision__lisErrores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/_lisErroresResponse" message="tns:IModeloComision__lisErrores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerExcepcionPenalizacionXId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ObtenerExcepcionPenalizacionXId" message="tns:IModeloComision_ObtenerExcepcionPenalizacionXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ObtenerExcepcionPenalizacionXIdResponse" message="tns:IModeloComision_ObtenerExcepcionPenalizacionXId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CargueExcepcionesPenalizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/CargueExcepcionesPenalizacion" message="tns:IModeloComision_CargueExcepcionesPenalizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/CargueExcepcionesPenalizacionResponse" message="tns:IModeloComision_CargueExcepcionesPenalizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarExcepcionPenalizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/InsertarExcepcionPenalizacion" message="tns:IModeloComision_InsertarExcepcionPenalizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/InsertarExcepcionPenalizacionResponse" message="tns:IModeloComision_InsertarExcepcionPenalizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarExcepcionPenalizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ActualizarExcepcionPenalizacion" message="tns:IModeloComision_ActualizarExcepcionPenalizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ActualizarExcepcionPenalizacionResponse" message="tns:IModeloComision_ActualizarExcepcionPenalizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarExcepcionPenalizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/EliminarExcepcionPenalizacion" message="tns:IModeloComision_EliminarExcepcionPenalizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/EliminarExcepcionPenalizacionResponse" message="tns:IModeloComision_EliminarExcepcionPenalizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarParticipantes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarParticipantes" message="tns:IModeloComision_ListarParticipantes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarParticipantesResponse" message="tns:IModeloComision_ListarParticipantes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiarEstadoExcepcionPenalizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/CambiarEstadoExcepcionPenalizacion" message="tns:IModeloComision_CambiarEstadoExcepcionPenalizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/CambiarEstadoExcepcionPenalizacionResponse" message="tns:IModeloComision_CambiarEstadoExcepcionPenalizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarExcepcionesFijaVariableXModeloComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarExcepcionesFijaVariableXModeloComision" message="tns:IModeloComision_ListarExcepcionesFijaVariableXModeloComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarExcepcionesFijaVariableXModeloComisionResponse" message="tns:IModeloComision_ListarExcepcionesFijaVariableXModeloComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerExcepcionFijaVariableXId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ObtenerExcepcionFijaVariableXId" message="tns:IModeloComision_ObtenerExcepcionFijaVariableXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ObtenerExcepcionFijaVariableXIdResponse" message="tns:IModeloComision_ObtenerExcepcionFijaVariableXId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarExcepcionFijaVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/InsertarExcepcionFijaVariable" message="tns:IModeloComision_InsertarExcepcionFijaVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/InsertarExcepcionFijaVariableResponse" message="tns:IModeloComision_InsertarExcepcionFijaVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarExcepcionFijaVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ActualizarExcepcionFijaVariable" message="tns:IModeloComision_ActualizarExcepcionFijaVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ActualizarExcepcionFijaVariableResponse" message="tns:IModeloComision_ActualizarExcepcionFijaVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarExcepcionFijaVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/EliminarExcepcionFijaVariable" message="tns:IModeloComision_EliminarExcepcionFijaVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/EliminarExcepcionFijaVariableResponse" message="tns:IModeloComision_EliminarExcepcionFijaVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CargarExcepcionesMasivo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/CargarExcepcionesMasivo" message="tns:IModeloComision_CargarExcepcionesMasivo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/CargarExcepcionesMasivoResponse" message="tns:IModeloComision_CargarExcepcionesMasivo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiarEstadoExcepcionFijaVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/CambiarEstadoExcepcionFijaVariable" message="tns:IModeloComision_CambiarEstadoExcepcionFijaVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/CambiarEstadoExcepcionFijaVariableResponse" message="tns:IModeloComision_CambiarEstadoExcepcionFijaVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFactorNetoComisionVariableXModeloId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarFactorNetoComisionVariableXModeloId" message="tns:IModeloComision_ListarFactorNetoComisionVariableXModeloId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarFactorNetoComisionVariableXModeloIdResponse" message="tns:IModeloComision_ListarFactorNetoComisionVariableXModeloId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarFactorNetoComisionVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/InsertarFactorNetoComisionVariable" message="tns:IModeloComision_InsertarFactorNetoComisionVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/InsertarFactorNetoComisionVariableResponse" message="tns:IModeloComision_InsertarFactorNetoComisionVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFactorNetoComisionVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/EliminarFactorNetoComisionVariable" message="tns:IModeloComision_EliminarFactorNetoComisionVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/EliminarFactorNetoComisionVariableResponse" message="tns:IModeloComision_EliminarFactorNetoComisionVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFactorNetoComisionVariableXId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ObtenerFactorNetoComisionVariableXId" message="tns:IModeloComision_ObtenerFactorNetoComisionVariableXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ObtenerFactorNetoComisionVariableXIdResponse" message="tns:IModeloComision_ObtenerFactorNetoComisionVariableXId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorNetoComisionVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorNetoComisionVariable" message="tns:IModeloComision_ActualizarFactorNetoComisionVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorNetoComisionVariableResponse" message="tns:IModeloComision_ActualizarFactorNetoComisionVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFactorNuevoComisionVariableXModeloId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarFactorNuevoComisionVariableXModeloId" message="tns:IModeloComision_ListarFactorNuevoComisionVariableXModeloId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarFactorNuevoComisionVariableXModeloIdResponse" message="tns:IModeloComision_ListarFactorNuevoComisionVariableXModeloId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarFactorNuevoComisionVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/InsertarFactorNuevoComisionVariable" message="tns:IModeloComision_InsertarFactorNuevoComisionVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/InsertarFactorNuevoComisionVariableResponse" message="tns:IModeloComision_InsertarFactorNuevoComisionVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFactorNuevoComisionVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/EliminarFactorNuevoComisionVariable" message="tns:IModeloComision_EliminarFactorNuevoComisionVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/EliminarFactorNuevoComisionVariableResponse" message="tns:IModeloComision_EliminarFactorNuevoComisionVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFactorNuevoComisionVariableXId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ObtenerFactorNuevoComisionVariableXId" message="tns:IModeloComision_ObtenerFactorNuevoComisionVariableXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ObtenerFactorNuevoComisionVariableXIdResponse" message="tns:IModeloComision_ObtenerFactorNuevoComisionVariableXId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorNuevoComisionVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorNuevoComisionVariable" message="tns:IModeloComision_ActualizarFactorNuevoComisionVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorNuevoComisionVariableResponse" message="tns:IModeloComision_ActualizarFactorNuevoComisionVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarRangosMatriz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/AdicionarRangosMatriz" message="tns:IModeloComision_AdicionarRangosMatriz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/AdicionarRangosMatrizResponse" message="tns:IModeloComision_AdicionarRangosMatriz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMatrizComisionVariableXModeloId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/EliminarMatrizComisionVariableXModeloId" message="tns:IModeloComision_EliminarMatrizComisionVariableXModeloId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/EliminarMatrizComisionVariableXModeloIdResponse" message="tns:IModeloComision_EliminarMatrizComisionVariableXModeloId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarValoresMatrizComisionVariableXModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarValoresMatrizComisionVariableXModelo" message="tns:IModeloComision_ListarValoresMatrizComisionVariableXModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarValoresMatrizComisionVariableXModeloResponse" message="tns:IModeloComision_ListarValoresMatrizComisionVariableXModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRangosYNuevoMatrizComisionVariableXModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarRangosYNuevoMatrizComisionVariableXModelo" message="tns:IModeloComision_ListarRangosYNuevoMatrizComisionVariableXModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarRangosYNuevoMatrizComisionVariableXModeloResponse" message="tns:IModeloComision_ListarRangosYNuevoMatrizComisionVariableXModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRangosXNetoMatrizComisionVariableXModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ListarRangosXNetoMatrizComisionVariableXModelo" message="tns:IModeloComision_ListarRangosXNetoMatrizComisionVariableXModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ListarRangosXNetoMatrizComisionVariableXModeloResponse" message="tns:IModeloComision_ListarRangosXNetoMatrizComisionVariableXModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorMatrizComisionVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorMatrizComisionVariable" message="tns:IModeloComision_ActualizarFactorMatrizComisionVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModeloComision/ActualizarFactorMatrizComisionVariableResponse" message="tns:IModeloComision_ActualizarFactorMatrizComisionVariable_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IModeloComision" type="tns:IModeloComision">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarFactorComisionFijaXModeloId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarFactorComisionFijaXModeloId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarFactorComisionFija">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/InsertarFactorComisionFija" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFactorComisionFija">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/EliminarFactorComisionFija" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFactorComisionFijaXId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ObtenerFactorComisionFijaXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorComisionFija">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ActualizarFactorComisionFija" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarEdadMaxima">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ValidarEdadMaxima" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarModelosComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarModelosComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarLiquidacionComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarLiquidacionComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerModeloComisionXId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ObtenerModeloComisionXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCanalesDetalle">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarCanalesDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTipoIntermediario">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarTipoIntermediario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCanalDetalleTipoIntermediario">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarCanalDetalleTipoIntermediario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarModeloComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/InsertarModeloComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarModeloComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ActualizarModeloComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarModeloComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/EliminarModeloComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicarModeloComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/DuplicarModeloComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarModeloComisionVigentes">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarModeloComisionVigentes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarExcepcionesPenalizacionXModeloComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarExcepcionesPenalizacionXModeloComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="_lisErrores">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/_lisErrores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerExcepcionPenalizacionXId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ObtenerExcepcionPenalizacionXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CargueExcepcionesPenalizacion">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/CargueExcepcionesPenalizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarExcepcionPenalizacion">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/InsertarExcepcionPenalizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarExcepcionPenalizacion">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ActualizarExcepcionPenalizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarExcepcionPenalizacion">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/EliminarExcepcionPenalizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarParticipantes">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarParticipantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarEstadoExcepcionPenalizacion">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/CambiarEstadoExcepcionPenalizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarExcepcionesFijaVariableXModeloComision">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarExcepcionesFijaVariableXModeloComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerExcepcionFijaVariableXId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ObtenerExcepcionFijaVariableXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarExcepcionFijaVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/InsertarExcepcionFijaVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarExcepcionFijaVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ActualizarExcepcionFijaVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarExcepcionFijaVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/EliminarExcepcionFijaVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CargarExcepcionesMasivo">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/CargarExcepcionesMasivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarEstadoExcepcionFijaVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/CambiarEstadoExcepcionFijaVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFactorNetoComisionVariableXModeloId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarFactorNetoComisionVariableXModeloId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarFactorNetoComisionVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/InsertarFactorNetoComisionVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFactorNetoComisionVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/EliminarFactorNetoComisionVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFactorNetoComisionVariableXId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ObtenerFactorNetoComisionVariableXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorNetoComisionVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ActualizarFactorNetoComisionVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFactorNuevoComisionVariableXModeloId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarFactorNuevoComisionVariableXModeloId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarFactorNuevoComisionVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/InsertarFactorNuevoComisionVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarFactorNuevoComisionVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/EliminarFactorNuevoComisionVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFactorNuevoComisionVariableXId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ObtenerFactorNuevoComisionVariableXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorNuevoComisionVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ActualizarFactorNuevoComisionVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarRangosMatriz">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/AdicionarRangosMatriz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMatrizComisionVariableXModeloId">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/EliminarMatrizComisionVariableXModeloId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarValoresMatrizComisionVariableXModelo">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarValoresMatrizComisionVariableXModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRangosYNuevoMatrizComisionVariableXModelo">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarRangosYNuevoMatrizComisionVariableXModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRangosXNetoMatrizComisionVariableXModelo">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ListarRangosXNetoMatrizComisionVariableXModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFactorMatrizComisionVariable">
+      <soap:operation soapAction="http://tempuri.org/IModeloComision/ActualizarFactorMatrizComisionVariable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ModeloComision">
+    <wsdl:port name="BasicHttpBinding_IModeloComision" binding="tns:BasicHttpBinding_IModeloComision">
+      <soap:address location="http://localhost:2090/ModeloComision.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

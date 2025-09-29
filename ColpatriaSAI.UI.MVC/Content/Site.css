@@ -1,0 +1,103 @@
+/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.invalid
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+label .invalid
+{
+    color:#ff0000;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label,
+.editor-label,
+.display-field,
+.editor-field
+{
+    margin: 0.5em 0;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+
+input[type="button"], input[type="submit"]
+{
+    font-family:Arial;
+	background:#CE1B11;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 10pt;
+	margin:5px 0;
+    padding: 3px 7px;
+    border-color: #FF0000;
+    border-style: solid;
+    border-width: 1px;
+    font-weight:bold;	
+}
+
+input[type="button"]:hover {
+	background:#CC6569;
+}
+
+input[type="submit"]:hover {
+	background:#CC6569;
+}
+
+#mensaje
+{
+    color: #FF0000;
+    padding:7px;   
+}
+
+.trColor1
+{
+   background:#CCCCC9; 
+}

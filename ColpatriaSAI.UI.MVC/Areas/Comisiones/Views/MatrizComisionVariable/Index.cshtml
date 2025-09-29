@@ -1,0 +1,56 @@
+﻿@model ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.MatrizComisionVariableViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";    
+}
+@section AdditionalStyles{
+    <link href="@Url.Content("~/Content/css/comisiones/MatrizComisionVariable.css")" rel="stylesheet" type="text/css" />
+}
+<h2>
+    Matriz Comisi&oacute;n Variable</h2>
+<div class="container-fluid">
+    <div class="row">
+        @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
+        {
+            <label>
+                @TempData["SuccessMessage"]</label>
+        }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>
+        }
+    </div>
+    <div class="row">
+        @{Html.RenderPartial("_encabezadoModelo", Model);}
+    </div>
+    <div class="row model-header model-header-last-row">
+        <div class="col-sm-4 col-xs-4 text-center">
+            <input type="button" value="Configurar ejes" onclick="javascript:window.location = '@Url.Action("ConfigurarEjes", "MatrizComisionVariable", new { area = "Comisiones", id = Model.ModeloId })'" />
+        </div>
+        <div class="col-sm-4 col-xs-4 text-center">
+            <input type="button" value="Regresar" onclick="javascript:window.location = '@Url.Action("ModeloComision", "modelos", new { area = "Comisiones" })'" />
+        </div>
+        @if (Model.Matriz.Count > 0)
+        {
+            <div class="col-sm-4 col-xs-4 text-center">
+                <input type="button" value="Ver Factores" onclick="javascript:window.open('@Url.Action("ConfigurarFactores", "MatrizComisionVariable", new { area = "Comisiones", id = Model.ModeloId })', '', 'width=1240,height=640');" />
+            </div>
+        }
+    </div>
+    <br />
+    @if (Model.Matriz.Count == 0)
+    {
+        <label class="alert-danger">
+            No se han definido valores para la matriz. Para definirlos haga clic @Html.ActionLink("aquí", "ConfigurarEjes", new { id = Model.ModeloId })</label>
+    }
+</div>
+@section AdditionalScripts{
+    @if (Model.Matriz.Count > 0)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                window.open('@Url.Action("ConfigurarFactores", "MatrizComisionVariable", new { area = "Comisiones", id = Model.ModeloId })', '', 'width=1240,height=640');
+            });
+        </script>
+    }
+}

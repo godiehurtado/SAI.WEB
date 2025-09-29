@@ -1,0 +1,49 @@
+﻿/* Cambiar los tamaños para ajustar la página de reportes */
+body    {	background: url(~/App_Themes/SAI.Estilo/Imagenes/bg.png) center repeat-y; }
+#global {  width: 95%; }
+#wrap   {  width: 1050px; }
+#header
+{
+    border-style: none;
+    width: 100%;
+    height: 140px;
+}
+#MenuSai{  width: 1050px; }
+#footer table { width:1055px; }
+#tituloSAI { float:none; font-size:12px; padding-top:0px; }
+#contenido { width:100%; padding-top:20px; }
+#areaMenuReportes{ width:100%; float:left;}
+#areaReporte { width:100%; float:left; margin-bottom:10px; }
+/* Menu vertical para el listado de reportes */
+
+#menuReportes { width: 100%; }
+#areaMenuReportes ul
+{
+margin-left: 0;
+padding-left: 0;
+list-style-type: none;
+}
+#areaMenuReportes ul li
+{
+    padding-right:10px;
+}
+#areaMenuReportes ul li a
+{
+display: block;
+padding: 3px;
+width: 100px;
+background-color: White;
+border-bottom: 1px solid #CE1B11;
+}
+
+#areaMenuReportes ul li a:link, #areaMenuReportes ul li #navlist a:visited
+{
+color:Black;
+text-decoration: none;
+}
+
+#areaMenuReportes ul li a:hover
+{
+background-color: White;
+color:#CE1B11;
+}

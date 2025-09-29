@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Comisiones" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" />
+      <xsd:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.CustomEntities" />
+      <xsd:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Administracion" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IComisiones_ListarProcesosExtraccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProcesosExtraccion" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_ListarProcesosExtraccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProcesosExtraccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_EjecutarPorcesoExtraccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:EjecutarPorcesoExtraccion" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_EjecutarPorcesoExtraccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EjecutarPorcesoExtraccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_LogProcesoExtraccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogProcesoExtraccion" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_LogProcesoExtraccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogProcesoExtraccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_InsertarLiquidacionComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarLiquidacionComision" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_InsertarLiquidacionComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarLiquidacionComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_ObtenerParametros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerParametros" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_ObtenerParametros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerParametrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_EditarParametro_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditarParametro" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_EditarParametro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditarParametroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_ObtenerListNovedades_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListNovedades" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_ObtenerListNovedades_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListNovedadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_ObtenerListNovedadesAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListNovedadesAdd" />
+  </wsdl:message>
+  <wsdl:message name="IComisiones_ObtenerListNovedadesAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListNovedadesAddResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IComisiones">
+    <wsdl:operation name="ListarProcesosExtraccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/ListarProcesosExtraccion" message="tns:IComisiones_ListarProcesosExtraccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/ListarProcesosExtraccionResponse" message="tns:IComisiones_ListarProcesosExtraccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EjecutarPorcesoExtraccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/EjecutarPorcesoExtraccion" message="tns:IComisiones_EjecutarPorcesoExtraccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/EjecutarPorcesoExtraccionResponse" message="tns:IComisiones_EjecutarPorcesoExtraccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogProcesoExtraccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/LogProcesoExtraccion" message="tns:IComisiones_LogProcesoExtraccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/LogProcesoExtraccionResponse" message="tns:IComisiones_LogProcesoExtraccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLiquidacionComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/InsertarLiquidacionComision" message="tns:IComisiones_InsertarLiquidacionComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/InsertarLiquidacionComisionResponse" message="tns:IComisiones_InsertarLiquidacionComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametros">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/ObtenerParametros" message="tns:IComisiones_ObtenerParametros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/ObtenerParametrosResponse" message="tns:IComisiones_ObtenerParametros_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditarParametro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/EditarParametro" message="tns:IComisiones_EditarParametro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/EditarParametroResponse" message="tns:IComisiones_EditarParametro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListNovedades">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/ObtenerListNovedades" message="tns:IComisiones_ObtenerListNovedades_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/ObtenerListNovedadesResponse" message="tns:IComisiones_ObtenerListNovedades_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListNovedadesAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IComisiones/ObtenerListNovedadesAdd" message="tns:IComisiones_ObtenerListNovedadesAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IComisiones/ObtenerListNovedadesAddResponse" message="tns:IComisiones_ObtenerListNovedadesAdd_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IComisiones" type="tns:IComisiones">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarProcesosExtraccion">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/ListarProcesosExtraccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EjecutarPorcesoExtraccion">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/EjecutarPorcesoExtraccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogProcesoExtraccion">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/LogProcesoExtraccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLiquidacionComision">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/InsertarLiquidacionComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametros">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/ObtenerParametros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditarParametro">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/EditarParametro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListNovedades">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/ObtenerListNovedades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListNovedadesAdd">
+      <soap:operation soapAction="http://tempuri.org/IComisiones/ObtenerListNovedadesAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Comisiones">
+    <wsdl:port name="BasicHttpBinding_IComisiones" binding="tns:BasicHttpBinding_IComisiones">
+      <soap:address location="http://localhost:2090/Comisiones.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

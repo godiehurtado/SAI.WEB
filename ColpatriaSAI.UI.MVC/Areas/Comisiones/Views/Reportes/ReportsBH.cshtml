@@ -1,0 +1,23 @@
+﻿@model ColpatriaSAI.Negocio.Componentes.Comision.Reportes.ReportBHViewModel
+@{ ViewBag.Title = "Reportes BH - SAI";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml"; }
+<h2>
+    Reportes DEVENGADO y DIFERIDO SAI - BH
+</h2>
+
+<div class="container-fluid">
+<h4>
+    Seleccionar el enlace para cargar el reporte:
+</h4>
+        <legend></legend>
+        
+        <div class="col-sm-3 text-center">
+            <li><a href="#" onclick="popupReport('DEVENGADOS','');" title='Reporte Devengados' id="bReporteDev">Reporte DEVENGADOS</a></li>
+        </div>
+        <legend></legend>
+       <div class="col-sm-3 text-center">
+        
+            <li><a href="#" onclick="popupReport('DIFERIDOS','');" title='Reporte Diferidos' id="bReporteDif">Reporte DIFERIDOS</a></li>
+     
+    </div>
+</div>

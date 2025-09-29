@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="106625a7-b81c-4a82-b444-2864db52b935" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2090/ModeloComision.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ModeloComision6.xsd" MetadataType="Schema" ID="2722e8a7-8b24-4d22-aa50-c51518439c0d" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?xsd=xsd5" />
+    <MetadataFile FileName="ModeloComision.wsdl" MetadataType="Wsdl" ID="d606fa2f-1138-43aa-b700-2f6257def691" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?wsdl" />
+    <MetadataFile FileName="ModeloComision.disco" MetadataType="Disco" ID="6c7a2aa0-edc3-4ff8-bca6-b8a906d19d9d" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?disco" />
+    <MetadataFile FileName="ModeloComision.xsd" MetadataType="Schema" ID="4e047ad6-d14a-4f61-946a-6de0106658d8" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?xsd=xsd0" />
+    <MetadataFile FileName="ModeloComision1.xsd" MetadataType="Schema" ID="bdf14bca-66ed-40d1-85cc-033b54a32942" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?xsd=xsd1" />
+    <MetadataFile FileName="ModeloComision2.xsd" MetadataType="Schema" ID="94514a72-a770-470d-a50b-ad4077555c54" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?xsd=xsd2" />
+    <MetadataFile FileName="ModeloComision3.xsd" MetadataType="Schema" ID="6c88c4b3-d6a5-4a01-99ad-f320ed601f4d" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?xsd=xsd3" />
+    <MetadataFile FileName="ModeloComision4.xsd" MetadataType="Schema" ID="ba213d72-e6f0-4070-916d-265545ef2a6d" SourceId="1" SourceUrl="http://localhost:2090/ModeloComision.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" />
+  <xs:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" />
+  <xs:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.CustomEntities" />
+  <xs:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:2090/Comisiones.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Administracion" />
+  <xs:element name="ListarProcesosExtraccion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarProcesosExtraccionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarProcesosExtraccionResult" nillable="true" type="q1:ArrayOfCPRO_ProcesosExtraccion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EjecutarPorcesoExtraccion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procesoId" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="fechaInicio" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fechaFin" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="codigoExtraccion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EjecutarPorcesoExtraccionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EjecutarPorcesoExtraccionResult" nillable="true" type="q2:ResultadoProcesoExtraccion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogProcesoExtraccion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogProcesoExtraccionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.CustomEntities" minOccurs="0" name="LogProcesoExtraccionResult" nillable="true" type="q3:ArrayOfLogProcesoBH" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarLiquidacionComision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="obj" nillable="true" type="q4:LiquidacionComision" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarLiquidacionComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="InsertarLiquidacionComisionResult" nillable="true" type="q5:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerParametros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametros" nillable="true" type="q6:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerParametrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Administracion" minOccurs="0" name="ObtenerParametrosResult" nillable="true" type="q7:ArrayOfConfigParametros" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditarParametro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="valor" nillable="true" type="xs:string" />
+		<xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditarParametroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EditarParametroResult" nillable="true" type="q8:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListNovedades">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametros" nillable="true" type="q9:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListNovedadesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Administracion" minOccurs="0" name="ObtenerListNovedadesResult" nillable="true" type="q10:ArrayOfparmbhExtractNoveades" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListNovedadesAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametros" nillable="true" type="q11:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListNovedadesAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Administracion" minOccurs="0" name="ObtenerListNovedadesAddResult" nillable="true" type="q12:ArrayOfparmbhExtractNoveades" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

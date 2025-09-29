@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Comisiones - Cargue Excepcion penaliazacion";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<h2>
+    Cargue Excepción Penalizacion
+</h2>
+<div class="container-fluid">
+    @using (Html.BeginForm("CargueExcepcionPenalizacion", "ExcepcionesComision", new { modelo = ViewBag.Id }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmImportExc", enctype = "multipart/form-data" }))
+    {
+         <div class="row">
+        @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
+        {
+            <label id="alert-message"style="width: 100%; height: 50px; background-color: #adafae; opacity: 1.4;border-radius: 4px; padding: 18px 1px 1px 19px;color: white;  font-size: 14px;">
+                @TempData["SuccessMessage"]<span style="float: right;margin: -22px 1% 1% 1%;font-size: 21px;cursor: pointer;" id="close-alert">x</span></label>
+        }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>
+        }
+    </div>
+        <!---@ViewBag.Id--->
+        <fieldset>
+            <legend></legend>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Seleccionar Archivo:
+                </label>
+                <div class="col-sm-8">
+                    <input name="uploadFile" id="uploadFile" type="file" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <input type="submit" value="Cargar" title="Cargar" onclick="return CheckFileName();" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h6>
+                    <b>PRECONDICIONES PARA EL CARGUE DE EXCEPCIONES </b>
+                </h6>
+                <br />
+                - El documento debe ser de tipo Excel 97/2003 (*.xls)
+                <br />
+                - Solo se permite un documento por modelo
+                <br />
+                - El sistema tomara <b>SIEMPRE</b> la primera hoja del documento sin importar el
+                nombre de esta
+                <br />
+                - No existe limite de excepciones a cargar
+                <br />
+                Para descargar un modelo de como debe ir el documento puede hacerlo <b>@Html.ActionLink("AQUI", "DescargarPruebaPenalizacion", "ExcepcionesComision")</b>
+            </div>
+        </fieldset>       
+    }
+
+</div>
+<div id="resultados">
+    @{
+        Html.RenderPartial("ResultCargue");
+        
+    }
+    
+</div>
+    <div class="col-sm-8">
+        <label>
+            Puede descargar los registros no procesados y su errores <b>@Html.ActionLink("AQUI", "DescargarLog", "ExcepcionesComision")</b>
+        </label>
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#close-alert").click(function () {
+            $("#alert-message").hide();
+        })
+        function CheckFileName() {
+            var filecontrol = $("#uploadFile")[0];
+            console.log(filecontrol);
+            var fileName = "";
+            if (filecontrol.files.length > 0) {
+                fileName = $("#uploadFile")[0].files[0].name;
+            }
+            if (fileName == "") {
+                alert("Por favor seleccione un archivo");
+                return false;
+            }
+            else if (fileName.split(".")[1].toUpperCase() == "XLS")
+                return true;
+            else {
+                alert("El archivo de extension " + fileName.split(".")[1] + " es invalido. Por favor seleccione un archivo valido de tipo .xls");
+                return false;
+            }
+            return true;
+        }
+    });
+</script>
+<div class="col-md-1 col-xs-1">
+    <input type="button" value="Regresar" onclick="javascript:window.location = '@Url.Action("Excepciones", "Inicio", new { area = "Comisiones", id = ViewBag.id })'" />
+</div>

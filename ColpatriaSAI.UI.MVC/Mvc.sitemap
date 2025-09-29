@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode id="Root" url="~/Index.aspx">
+    <mvcSiteMapNode id="Home" title="Home" controller="Home" action="Index" />
+    <mvcSiteMapNode id="About" title="About Us" controller="Home" action="About" />
+    <mvcSiteMapNode id="Presupuesto" title="Presupuesto" controller="Presupuesto" action="Index" />
+    <mvcSiteMapNode id="Concursos" title="Concursos" controller="Concursos" action="Index" />
+    <mvcSiteMapNode id="Contrataciondesempeño" title="Contratación al desempeño" controller="Contratacion" action="Index" />
+    <mvcSiteMapNode id="LiquidacionFranqui" title="Liquidación de franquicias" controller="LiquidacionFranqui" action="Index" />
+    <mvcSiteMapNode id="Reportes" title="Reportes" controller="Reportes" action="Index" />
+    <!--<mvcSiteMapNode id="Cuenta" title="Cuenta" controller="Cuenta">
+      <mvcSiteMapNode id="Login" title="Login" controller="CuentaController" action="Login" />
+      <mvcSiteMapNode id="Register" title="Account Creation" controller="CuentaController" action="Register" />
+      <mvcSiteMapNode id="ChangePassword" title="Change Password" controller="CuentaController" action="ChangePassword" />
+      <mvcSiteMapNode id="Logout" title="Logout" controller="CuentaController" action="Logout" />
+    </mvcSiteMapNode>-->
+  </siteMapNode>
+</siteMap>
+
+

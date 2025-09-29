@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f95f3c88-f52e-4abb-a441-99ca8d3fe83b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2090/CalculosTalentosComision.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CalculosTalentosComision.xsd" MetadataType="Schema" ID="d1a567d9-1334-4d7d-9910-be474df56803" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd2" />
+    <MetadataFile FileName="CalculosTalentosComision7.xsd" MetadataType="Schema" ID="73408e7f-2f3e-4bed-90e0-b418654a6497" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd7" />
+    <MetadataFile FileName="CalculosTalentosComision.disco" MetadataType="Disco" ID="6f836d30-2df7-4c10-8ae9-5bfb412d7276" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?disco" />
+    <MetadataFile FileName="CalculosTalentosComision4.xsd" MetadataType="Schema" ID="da2dc902-3c75-4ce5-af9f-8a0989872cd8" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd4" />
+    <MetadataFile FileName="CalculosTalentosComision.wsdl" MetadataType="Wsdl" ID="ab0079bc-f7da-43af-ac23-5d9694b0e19c" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?wsdl" />
+    <MetadataFile FileName="CalculosTalentosComision8.xsd" MetadataType="Schema" ID="5a8f3174-4d35-447b-b93a-c02930a871df" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd8" />
+    <MetadataFile FileName="CalculosTalentosComision5.xsd" MetadataType="Schema" ID="b61db192-f374-4519-9a80-a7066edd0959" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd5" />
+    <MetadataFile FileName="CalculosTalentosComision3.xsd" MetadataType="Schema" ID="9540c180-04ae-4e25-b37b-d9d905e43742" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd3" />
+    <MetadataFile FileName="CalculosTalentosComision6.xsd" MetadataType="Schema" ID="0a40cb6d-7820-4905-aa48-6355de8b15ce" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd6" />
+    <MetadataFile FileName="CalculosTalentosComision2.xsd" MetadataType="Schema" ID="fc2c1369-d43e-4322-a275-5991a8398de2" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd0" />
+    <MetadataFile FileName="CalculosTalentosComision1.xsd" MetadataType="Schema" ID="88170aa1-decc-4349-af4e-a6b7b8625381" SourceId="1" SourceUrl="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

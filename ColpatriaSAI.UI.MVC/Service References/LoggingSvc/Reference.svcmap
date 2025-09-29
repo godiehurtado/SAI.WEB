@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fb12a86e-77f2-48c9-8d59-9dbbe1e6b619" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2090/Logging.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Logging.xsd" MetadataType="Schema" ID="8c3e20ee-ea5a-47b5-976e-d981f41dd12c" SourceId="1" SourceUrl="http://localhost:2090/Logging.svc?xsd=xsd0" />
+    <MetadataFile FileName="Logging1.xsd" MetadataType="Schema" ID="59a3b3ce-8dc0-4e66-8fce-7ac564867030" SourceId="1" SourceUrl="http://localhost:2090/Logging.svc?xsd=xsd1" />
+    <MetadataFile FileName="Logging2.xsd" MetadataType="Schema" ID="5b5942fa-2f37-4380-be25-58c31c99f76a" SourceId="1" SourceUrl="http://localhost:2090/Logging.svc?xsd=xsd2" />
+    <MetadataFile FileName="Logging3.xsd" MetadataType="Schema" ID="cf8df859-1787-4367-8000-76a844a57791" SourceId="1" SourceUrl="http://localhost:2090/Logging.svc?xsd=xsd3" />
+    <MetadataFile FileName="Logging.disco" MetadataType="Disco" ID="1dc5fdf7-565d-454f-817c-d6be2eb41f30" SourceId="1" SourceUrl="http://localhost:2090/Logging.svc?disco" />
+    <MetadataFile FileName="Logging.wsdl" MetadataType="Wsdl" ID="f3dfcb1b-f3a5-4d66-9b82-bf84f498bc24" SourceId="1" SourceUrl="http://localhost:2090/Logging.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

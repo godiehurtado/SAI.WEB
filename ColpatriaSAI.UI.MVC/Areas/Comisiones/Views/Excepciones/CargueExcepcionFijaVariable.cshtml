@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Comisiones - Cargue Excepción Fija/Variable";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<h2>
+    Cargue Excepción Fija/Variable
+</h2>
+<div class="container-fluid">
+    @using (Html.BeginForm("CargueExcepcionFijaVariable", "Excepciones", new { modelo = ViewBag.Id }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "frmImportExc", enctype = "multipart/form-data" }))
+    {
+        <fieldset>
+            <legend></legend>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Seleccionar Archivo:
+                </label>
+                <div class="col-sm-8">
+                    <input name="uploadFile" id="uploadFile" type="file" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <input type="submit" value="Cargar" title="Cargar" onclick="return CheckFileName();" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h6>
+                    <b>PRECONDICIONES PARA EL CARGUE DE EXCEPCIONES </b>
+                </h6>
+                <br />
+                - El documento debe ser de tipo Excel 97/2003 (*.xls)
+                <br />
+                - Solo se permite un documento por modelo
+                <br />
+                - El sistema tomar&aacute; <b>SIEMPRE</b> la primera hoja del documento sin importar el
+                nombre de &eacute;sta
+                <br />
+                - No existe l&iacute;mite de excepciones a cargar
+                <br />
+                - Para descargar un ejemplo de como debe ir el documento puede hacerlo <b>@Html.ActionLink("AQUI", "DescargarPrueba", "Excepciones")</b>
+            </div>
+        </fieldset>       
+    }
+</div>
+<div id="resultados">
+    @{
+        Html.RenderPartial("ResultCargue");
+    }
+</div>
+<script type="text/javascript">
+    function CheckFileName() {
+        var filecontrol = $("#uploadFile")[0];
+        var fileName = "";
+        if (filecontrol.files.length > 0) {
+            fileName = $("#uploadFile")[0].files[0].name;
+        }
+        if (fileName == "") {
+            alert("Por favor seleccione un archivo");
+            return false;
+        }
+        else if (fileName.split(".")[1].toUpperCase() == "XLS" || fileName.split(".")[1].toUpperCase() == "XLSX")
+            return true;
+        else {
+            alert("El archivo de extension " + fileName.split(".")[1] + " es invalido. Por favor seleccione un archivo valido de tipo .xls");
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="col-md-1 col-xs-1">
+    <input type="button" value="Regresar" onclick="javascript:window.location = '@Url.Action("ModeloComision", "modelos", new { area = "Comisiones" })'" />
+</div>

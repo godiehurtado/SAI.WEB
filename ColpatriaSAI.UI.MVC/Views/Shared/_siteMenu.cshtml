@@ -1,0 +1,21 @@
+﻿<ul id="menuSai">
+    <li>
+        @Html.ActionLink("Inicio", "index", "home", new { area = "" }, new { })
+    </li>
+    @foreach (ColpatriaSAI.UI.MVC.MvcSitemapProvider.MvcSiteMapNode item in SiteMap.Provider.RootNode.ChildNodes)
+    {
+        ColpatriaSAI.UI.MVC.AdministracionSvc.AdministracionClient web = new ColpatriaSAI.UI.MVC.AdministracionSvc.AdministracionClient();
+        
+        ColpatriaSAI.Negocio.Entidades.SiteMap site = web.ListarSiteMapPorId(item.Id).FirstOrDefault();
+        if (Request.IsAuthenticated)
+        {
+            if (item.CanUserAccessModule(Roles.GetRolesForUser()))
+            {
+                if((bool)site.ver)
+                {
+                    <li><a href="/@Html.Raw(item.Controller + "/" + item.Action)">@item.Title</a> </li> 
+                }
+            }                
+        }
+    }
+</ul>

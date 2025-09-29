@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dd00c1a2-6205-48e7-869b-8f1498bad694" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://pru-aplnetui01:3091/WsAutenticacionReferencia/Service.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="9843f7e9-22b5-4d9d-af74-ce42e57d7906" SourceId="1" SourceUrl="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="ab08d12c-84c2-4c91-a844-18045523af91" SourceId="1" SourceUrl="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="e36d37d4-9959-426b-b04a-3dd46397df95" SourceId="1" SourceUrl="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="97db55d8-8263-4caf-9eca-6dea6052ca6a" SourceId="1" SourceUrl="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?xsd=xsd3" />
+    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="f58bffc0-d415-4cd2-8ef7-efa248caa26f" SourceId="1" SourceUrl="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?disco" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="28138cd6-255f-4a6d-90bf-e66dcbd64528" SourceId="1" SourceUrl="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?wsdl" />
+    <MetadataFile FileName="Service4.xsd" MetadataType="Schema" ID="4a4b26c2-2f0a-44e8-a31e-ffa0181e5ebc" SourceId="1" SourceUrl="http://pru-aplnetui01.uinversion.colpatria.com:3091/WsAutenticacionReferencia/Service.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

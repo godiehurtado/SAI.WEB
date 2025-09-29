@@ -1,0 +1,237 @@
+.content-login{
+    -webkit-transition: top .5s ease;
+    transition: top .5s ease;
+    position: relative;
+}
+
+.main-IconW{
+    background: #fff;
+    padding: 10px 5px;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+    border-radius: 50%;
+    margin: 0 auto 5px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#overlay{
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	background: #f2f2f2;
+    padding: 15px 0;
+    position: relative;
+}
+
+div.loginForm .form-wrap {
+	-webkit-box-shadow:0px 1px 1px rgba(0,0,0,0.3);
+	box-shadow:0px 1px 1px rgba(0,0,0,0.3);
+	height: 445px;
+	padding: 25px;
+    width: 487px;
+	position: relative;
+	-webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    perspective: 600px;
+     margin: 0 auto;
+    transition:all .3s;
+    -webkit-transition:all .3s;
+    -moz-transition:all .3s;
+}
+
+
+.recovery{
+	background: #fff;
+}
+.form-wrap.flip{
+	height: 530px !important;
+}
+
+.new_users {
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    height: inherit;
+    background: #fff;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+    padding: 25px;
+}
+
+.old_users {
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 800;
+    width: inherit;
+    height: inherit;
+    border: 1px solid #ccc;
+    -webkit-transform: rotateX(-180deg);
+    -moz-transform: rotateX(-179deg);
+    transform: rotateX(-179deg);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+    padding: 25px;
+    width: 100%;
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+.flip .new_users {
+    z-index: 900;
+    background: #fff;
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+
+.flip .old_users {
+    z-index: 1000;
+    background: #fff;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(0deg);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        opacity: 1;
+    filter:alpha(opacity=100);
+}
+
+.iconLog-foot{
+	font-size: 1.6em;
+	display: inline-block;
+}
+
+.foot_log{
+	position: absolute;
+	bottom: 0px;
+	padding: 10px;
+	background: #f2f2f2;
+	width: 100%;
+	left: 0px;
+}
+.foot_log >div:last-child{
+	border-left: 1px solid #ccc;
+}
+
+
+.foot_log div a{
+	font-size: 16px;
+	text-align: center;
+}
+
+.registro{
+	display: table;
+    padding: 20px;
+    vertical-align: bottom;
+    width: 100%;
+    transition:all .3s;
+    -webkit-transition:all .3s;
+    -moz-transition:all .3s;
+}
+
+.registro >div{
+	display: table-cell;
+	float: none;
+}
+
+@media (min-width: 280px) {
+  .registro, .form-wrap {    
+  	width: 280px;
+  }
+} 
+@media (min-width: 768px) {
+  .registro, .form-wrap {    
+  	width: 487px;
+  }
+}
+
+
+
+/*Bienvenida*/
+.application{
+    width: 70%;
+    margin: 30px auto;
+}
+
+.iconRegister{
+	    color: #e3e3e3;
+    font-weight: lighter;
+    -webkit-font-smoothing: antialiased;
+    font-size: 8em;
+    margin: 15px 0;
+    display: block;
+}
+
+.iconPerson{
+	    display: block;
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.userType label{
+	border: 1px solid #e3e3e3;
+	background: #fff;
+	         transition:all .6s;
+    -webkit-transition:all .6s;
+    -moz-transition:all .6s;
+    position: relative;
+    min-height: 120px;
+
+}
+
+.userType label:hover, .userType label.active{
+	transform:translateY(-5px);
+	box-shadow: 0px 0px 7px rgba(0,0,0,0.2);
+	background: #0060d6;
+	color: #fff;
+	border:none;
+}
+
+.userType label:hover i, .userType label.active i{
+	color: #fff;
+}
+
+.userType label .option-round{
+content: "o";
+    display: block;
+    position: absolute;
+    background: #0e2e86;
+    border-radius: 50%;
+    color: #fff;
+    right: -7%;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    top: 36%;
+    z-index: 999;
+}
+
+.userType label:last-child .option-round{
+	content: "";
+	background: transparent;
+	text-indent: -3000px;
+}

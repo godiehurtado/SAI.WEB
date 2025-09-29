@@ -1,0 +1,268 @@
+﻿
+@model ColpatriaSAI.Negocio.Componentes.Comision.Reportes.ReporteTransferenciasViewModel
+@{
+    ViewBag.Title = "Reporte Transferencias ";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+<!– jQuery Validation –>
+
+<h2>
+    Reporte Transferencias</h2>
+<div class="container-fluid">
+    @using (Html.BeginForm("ReporteTransferencias", "Reportes", FormMethod.Post, new { id = "frmReportTrans", @class = "form-horizontal", role = "form" }))
+    {
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4  control-label">
+                    <span style="color:red">*</span> Fecha Periodo:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Fecha_Periodo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Fecha_Periodo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Asesor Inicial:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBox("AsesorInicialtxt", null, new { @readonly = "true", @class = "form-control" })
+                    @Html.HiddenFor(m => m.Clave_Inicial_Asesor)
+                    @Html.HiddenFor(m => m.Id_Asesor_Inicial)
+                    <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=AsesorInicialtxt&srvfi=Id_Asesor_Inicial&ssrvfi=Clave_Inicial_Asesor&pdi=dialogBuscarParticipante', 'Asesores');return false;"
+                        title='Buscar Participantes'  class=float-rg>Buscar</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Asesor Final:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBox("Asesorfinaltxt", null, new { @readonly = "true",@class = "form-control"})
+                    @Html.HiddenFor(m => m.Clave_Final_Asesor)
+                    @Html.HiddenFor(m => m.Id_Asesor_Final)
+                    <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=Asesorfinaltxt&srvfi=Id_Asesor_Final&ssrvfi=Clave_Final_Asesor&pdi=dialogBuscarParticipante', 'Asesores');return false;"
+                         title='Buscar Participantes' class=float-rg>Buscar</a>
+                        </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                   <span style="color:red">*</span> Canal de Ventas:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.Canal_Venta, Model.Canales, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Canal_Venta)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    SubCanal:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.SubCanal, Model.SubCanales, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SubCanal)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Sucursal:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.Sucursal, Model.Sucursal, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.sucursal)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    <span style="color:red">*</span> Modelo:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.Modelo, Model.Modelo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Modelo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Director:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBox("Directortxt", null, new { @readonly = "true", @class = "form-control" })
+                    @Html.HiddenFor(m => m.Id_Director)
+                    <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=Directortxt&srvfi=Id_Director&nivel=2&pdi=dialogBuscarParticipante', 'Directores');return false;"
+                        class=float-rg title='Buscar Gerentes'>Buscar</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Gerente Oficina:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBox("GerenteOficinatxt", null, new { @readonly = "true", @class = "form-control" })
+                    @Html.HiddenFor(m => m.Id_GerenteOficina)
+                    <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=GerenteOficinatxt&srvfi=Id_GerenteOficina&nivel=3&pdi=dialogBuscarParticipante', 'Gerente Oficina');return false;"
+                        class=float-rg title='Buscar Gerentes'>Buscar</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Gerente Regional:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBox("GerenteRegional", null, new { @readonly = "true", @class = "form-control" })
+                    @Html.HiddenFor(m => m.Id_GerenteRegional)
+                    <a href="#" onclick="javascript:mostrarDialogParticipantes('/Comisiones/Asesores/_BuscarAsesores?srtfi=GerenteRegional&srvfi=Id_GerenteRegional&nivel=3&pdi=dialogBuscarParticipante', 'Gerente Regional');return false;"
+                        class=float-rg title='Buscar Gerentes'>Buscar</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4  control-label">
+                    Numero de Contrato:
+                </label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Contrato, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Contrato)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Tipo de Plan:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.Tipo_Plan, Model.Planes, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Tipo_Plan)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 text-right">
+                    Tipo de Contrato:
+                </label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(m => m.Tipo_Contrato, Model.Contratos, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Tipo_Contrato)
+                </div>
+            </div>
+            <legend></legend>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <input type="submit" value="Cargar Reporte" onclick="return ValidarCanal();"/>
+                    <input type="button" value="limpiar formulario" onclick="LimpiarForm();"/>
+                </div>
+            </div>
+        </fieldset> 
+    }
+</div>
+@if (Model.Visualizar == 1)
+{
+    <div id="resultados">
+        @Html.Partial("ReportViewer", Model)
+    </div>
+}
+<div id="dialogBuscarParticipante" style="display: none;">
+</div>
+<style>
+    
+    .float-rg
+    {
+          float: right;
+    margin: -26px 1px 1px 1px;   
+     }
+    .form-control {
+    display: block;
+    width: 91%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+</style>
+@section AdditionalScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Contrato').keyup(function () {
+                this.value = (this.value + '').replace(/[^0-9]/g, '');
+            });
+            $('#Fecha_Periodo').datepicker({ dateFormat: 'dd/mm/yy' }).datepicker("setDate", new Date()); ;
+
+            $("#Canal_Venta").change(function () {
+                limpiar($("#SubCanal"));
+                if (+$(this).val() > 0) {
+                    actualizaSubcanales($(this).val(), $('#SubCanal'));
+                }
+            });
+        });
+
+        function limpiar(ddl) {
+            ddl.empty();
+            ddl.append($("<option>", { value: "-1" }).text("Sin Selección"));
+        }
+
+
+        function ValidarCanal() {
+            var ValCanal = $("#Canal_Venta").val();
+            var ValModelo = $("#Modelo").val();
+            if (ValCanal < 0 || ValModelo < 0) {
+                alert("El campo canal y modelo son obligatorio");
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+
+        function actualizaSubcanales(val, ddlsubcanal, defval) {
+            $.ajax({
+                url: "/Comisiones/Reportes/ObtenerSubcanalesxCanal",
+                data: { CanalId: val },
+                type: "POST",
+                success: function (data) {
+                    limpiar(ddlsubcanal);
+                    $.each(data, function (index, value) {
+                        ddlsubcanal.append($("<option>", { value: value.id }).text(value.nombre));
+                    });
+                    if (defval !== undefined) { ddlsubcanal.val(defval) };
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                }
+            });
+        }
+
+        //metodo para limpiar formulario
+        function LimpiarForm() {
+            $('#frmReportTrans')[0].reset();
+            $("#Id_Director").val("");
+            $("#Id_GerenteOficina").val("");
+            $("#Id_GerenteRegional").val("");
+            $("#Clave_Inicial_Asesor").val("");
+            $("#Clave_Final_Asesor").val("");
+            $('#Fecha_Periodo').datepicker({ dateFormat: 'dd/mm/yy' }).datepicker("setDate", new Date()); ;
+        }
+
+        function mostrarDialogParticipantes(pagina, titulo) {
+            $("#dialogBuscarParticipante").dialog({
+                height: 620, width: 640, modal: true, dialogClass: "customdialog",
+                buttons: {
+                    Cerrar: function () {
+                        $(this).dialog("close");
+                    }
+                },
+                title: titulo,
+
+                open: function (event, ui) { $(this).load(pagina); },
+                close: function (event, ui) { $(this).dialog('destroy'); }
+            });
+        }
+    </script>
+}
+

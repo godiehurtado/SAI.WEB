@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="63870703-606e-45c5-b739-de841a77b391" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2090/Comisiones.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Comisiones6.xsd" MetadataType="Schema" ID="7336922e-4f56-4712-ab2f-4e12d6905657" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?xsd=xsd6" />
+    <MetadataFile FileName="Comisiones.wsdl" MetadataType="Wsdl" ID="07ba3538-2434-465e-a320-46666f22540e" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?wsdl" />
+    <MetadataFile FileName="Comisiones.xsd" MetadataType="Schema" ID="0aaee4e3-2aec-4ae0-84f0-8dbd15543908" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Comisiones1.xsd" MetadataType="Schema" ID="6b9008cb-89d5-42fd-b8e6-15097bc04d52" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?xsd=xsd0" />
+    <MetadataFile FileName="Comisiones.disco" MetadataType="Disco" ID="4ae0e80b-1241-412f-b611-50ab4253077d" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?disco" />
+    <MetadataFile FileName="Comisiones2.xsd" MetadataType="Schema" ID="50e9743a-08d5-4f8f-a220-276c6747bb6b" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?xsd=xsd2" />
+    <MetadataFile FileName="Comisiones3.xsd" MetadataType="Schema" ID="e52f830c-46df-46a7-be2a-2ee1031860e2" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?xsd=xsd3" />
+    <MetadataFile FileName="Comisiones4.xsd" MetadataType="Schema" ID="0564975e-66a4-4c97-8ce9-f856a5cb2a0f" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?xsd=xsd4" />
+    <MetadataFile FileName="Comisiones5.xsd" MetadataType="Schema" ID="9203a887-e602-4186-849f-05e7a4f0b93d" SourceId="1" SourceUrl="http://localhost:2090/Comisiones.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

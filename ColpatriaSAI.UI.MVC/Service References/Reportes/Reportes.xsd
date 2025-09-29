@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Reportes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfReporteBeneficiarioClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReporteBeneficiarioClass" nillable="true" type="tns:ReporteBeneficiarioClass" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReporteBeneficiarioClass" nillable="true" type="tns:ArrayOfReporteBeneficiarioClass" />
+  <xs:complexType name="ReporteBeneficiarioClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BENEFICIARIOS_AÑO_ACTUAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BENEFICIARIOS_AÑO_ANTERIOR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BENEFICIARIOS_NUEVOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CLAVE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EQUIVALENCIAS_POR_NUEVOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PLAN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRODUCTO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SUCURSAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TIPO_CONTRATO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_BENEFICIARIOS_NETOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_EQUIVALENCIAS_POR_NETOS" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReporteBeneficiarioClass" nillable="true" type="tns:ReporteBeneficiarioClass" />
+  <xs:complexType name="ArrayOfReporteDetalleBeneficiariosClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReporteDetalleBeneficiariosClass" nillable="true" type="tns:ReporteDetalleBeneficiariosClass" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReporteDetalleBeneficiariosClass" nillable="true" type="tns:ArrayOfReporteDetalleBeneficiariosClass" />
+  <xs:complexType name="ReporteDetalleBeneficiariosClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="APELLIDO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CLAVE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CONTRATO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DOCUMENTO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EDAD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ESTADO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOMBRE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PLAN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRODUCTO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SUCURSAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TIPO_CONTRATO" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReporteDetalleBeneficiariosClass" nillable="true" type="tns:ReporteDetalleBeneficiariosClass" />
+  <xs:complexType name="ArrayOfReporteTrasnferenciasClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReporteTrasnferenciasClass" nillable="true" type="tns:ReporteTrasnferenciasClass" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReporteTrasnferenciasClass" nillable="true" type="tns:ArrayOfReporteTrasnferenciasClass" />
+  <xs:complexType name="ReporteTrasnferenciasClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Canal_Ventas" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Canal_Ventas_New" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Clave_Final" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Clave_Inicial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Director" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Director_new" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha_Periodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha_Transferencia" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Gerente_Oficina" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gerente_Oficina_new" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gerente_Regional" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gerente_Regional_new" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre_Asesor_Final" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre_Asesor_Inicial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubCanal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubCanal_new" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubContrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo_Contrato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo_Plan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo_Transferencia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="beneficiarios_trasn" type="xs:int" />
+      <xs:element minOccurs="0" name="sucursal_new" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sucursal_old" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReporteTrasnferenciasClass" nillable="true" type="tns:ReporteTrasnferenciasClass" />
+  
+   <xs:complexType name="ArrayOfReportBHDeferredClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportBHDeferredClass" nillable="true" type="tns:ReportBHDeferredClass" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportBHDeferredClass" nillable="true" type="tns:ArrayOfReportBHDeferredClass" />
+   <xs:complexType name="ReportBHDeferredClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CONTRATO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NVALUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TIPO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FACTURA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FECHA_EXIGIBLE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TIPO_CONTRATO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="REGIONAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PERIODO_DEVENGADO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID_NOVEDAD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FECHA_RADICACION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MEM_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CEDULA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOMBRE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ANNIO_CREACION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOVEDAD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CAUSA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CAUSAL_NOTA" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="ESTADO_CONTRATO_EN_CIERRE" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="FECHA_INICIO_VIGENCIA" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="FECHA_FIN_VIGENCIA" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="CLAVE_ASESOR" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="MODALIDAD_PAGO" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="PORCENTAJE_COMISION" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="ESTADO_BENEFICIARIO" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="RANGO_EDAD" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="MARCA_EXCEPCION" nillable="true" type="xs:string" />
+	</xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportBHDeferredClass" nillable="true" type="tns:ReportBHDeferredClass" />
+  
+  <xs:complexType name="ArrayOfReportBHAccruedClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportBHAccruedClass" nillable="true" type="tns:ReportBHAccruedClass" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportBHAccruedClass" nillable="true" type="tns:ArrayOfReportBHAccruedClass" />
+   <xs:complexType name="ReportBHAccruedClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CONTRATO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PLAN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NVALUE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CUENTA_CONTABLE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TIPO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FACTURA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FECHA_EXIGIBLE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TIPO_CONTRATO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="REGIONAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PERIODO_DEVENGADO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID_NOVEDAD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FECHA_RADICACION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MEM_NCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CEDULA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOMBRE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ANNIO_CREACION" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="ESTADO_CONTRATO_EN_CIERRE" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="FECHA_INICIO_VIGENCIA" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="FECHA_FIN_VIGENCIA" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="CLAVE_ASESOR" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="MODALIDAD_PAGO" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="PORCENTAJE_COMISION" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="ESTADO_BENEFICIARIO" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="RANGO_EDAD" nillable="true" type="xs:string" />
+	  <xs:element minOccurs="0" name="MARCA_EXCEPCION" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportBHAccruedClass" nillable="true" type="tns:ReportBHAccruedClass" />
+  
+  <xs:complexType name="ArrayOfReporteAsesoresClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReporteAsesoresClass" nillable="true" type="tns:ReporteAsesoresClass" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReporteAsesoresClass" nillable="true" type="tns:ArrayOfReporteAsesoresClass" />
+  <xs:complexType name="ReporteAsesoresClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CANTIDAD_USUARIOS_FINAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CANTIDAD_USUARIOS_INICIAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CLAVE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INTERMEDIARIO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PORCENTAJE_COMISION_VARIABLE_DEL_MES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PORCENTAJE_PROMEDIO_COMISION_FIJA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PORCENTAJE_PROMEDIO_COMISION_TOTAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PORCENTAJE_PROMEDIO_COMISION_VARIABLE_PAGADA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SUCURSAL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_EQUIVALENCIAS_X_NETOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_EQUIVALENCIAS_X_USUARIO_NUEVOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_RECAUDO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_USUARIOS_NETOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_USUARIO_NUEVOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_VALOR_COMISION_FIJA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TOTAL_VALOR_COMISION_VARIABLE_PAGADA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VALOR_COMISION_TOTAL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReporteAsesoresClass" nillable="true" type="tns:ReporteAsesoresClass" />
+</xs:schema>

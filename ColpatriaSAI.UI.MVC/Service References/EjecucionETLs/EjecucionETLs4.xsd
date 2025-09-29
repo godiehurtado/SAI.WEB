@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2090/EjecucionETLs.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" />
+  <xs:import schemaLocation="http://localhost:2090/EjecucionETLs.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:2090/EjecucionETLs.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.Informacion" />
+  <xs:element name="ListarTiposETLRemota">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTiposETLRemotaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarTiposETLRemotaResult" nillable="true" type="q1:ArrayOfTipoETLRemota" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarETLsRemotas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarETLsRemotasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarETLsRemotasResult" nillable="true" type="q2:ArrayOfETLRemota" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerETLRemotaporId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerETLRemotaporIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ObtenerETLRemotaporIdResult" nillable="true" type="q3:ETLRemota" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarETLsRemotasporTipo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tipoETLRemota_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarETLsRemotasporTipoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarETLsRemotasporTipoResult" nillable="true" type="q4:ArrayOfETLRemota" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EjecutarETL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="eTLRemota" nillable="true" type="q5:ETLRemota" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametros" nillable="true" type="q6:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.Informacion" minOccurs="0" name="info" nillable="true" type="q7:InfoAplicacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

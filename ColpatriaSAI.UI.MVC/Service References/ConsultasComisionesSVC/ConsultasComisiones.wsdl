@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ConsultasComisiones" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2090/ConsultasComisiones.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2090/ConsultasComisiones.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2090/ConsultasComisiones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Consultas" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBitacoraCalculo_ListadoUsuariosCalculoComison_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoUsuariosCalculoComison" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ListadoUsuariosCalculoComison_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoUsuariosCalculoComisonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ListadoUsuariosCalculoComisonPorFechas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoUsuariosCalculoComisonPorFechas" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ListadoUsuariosCalculoComisonPorFechas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoUsuariosCalculoComisonPorFechasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ListadoFacturasCalculoComison_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoFacturasCalculoComison" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ListadoFacturasCalculoComison_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoFacturasCalculoComisonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ListadoRecaudosCalculoComison_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoRecaudosCalculoComison" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ListadoRecaudosCalculoComison_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListadoRecaudosCalculoComisonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_DetalleUsuariosCalculoComison_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleUsuariosCalculoComison" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_DetalleUsuariosCalculoComison_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleUsuariosCalculoComisonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ExcelDetalleUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExcelDetalleUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ExcelDetalleUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExcelDetalleUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_DetalleFactura_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleFactura" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_DetalleFactura_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleFacturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ExcelDetalleFactura_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExcelDetalleFactura" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ExcelDetalleFactura_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExcelDetalleFacturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_DetalleRecaudo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleRecaudo" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_DetalleRecaudo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetalleRecaudoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ExcelDetalleRecaudo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExcelDetalleRecaudo" />
+  </wsdl:message>
+  <wsdl:message name="IBitacoraCalculo_ExcelDetalleRecaudo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExcelDetalleRecaudoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBitacoraCalculo">
+    <wsdl:operation name="ListadoUsuariosCalculoComison">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoUsuariosCalculoComison" message="tns:IBitacoraCalculo_ListadoUsuariosCalculoComison_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoUsuariosCalculoComisonResponse" message="tns:IBitacoraCalculo_ListadoUsuariosCalculoComison_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListadoUsuariosCalculoComisonPorFechas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoUsuariosCalculoComisonPorFechas" message="tns:IBitacoraCalculo_ListadoUsuariosCalculoComisonPorFechas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoUsuariosCalculoComisonPorFechasResponse" message="tns:IBitacoraCalculo_ListadoUsuariosCalculoComisonPorFechas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListadoFacturasCalculoComison">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoFacturasCalculoComison" message="tns:IBitacoraCalculo_ListadoFacturasCalculoComison_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoFacturasCalculoComisonResponse" message="tns:IBitacoraCalculo_ListadoFacturasCalculoComison_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListadoRecaudosCalculoComison">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoRecaudosCalculoComison" message="tns:IBitacoraCalculo_ListadoRecaudosCalculoComison_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/ListadoRecaudosCalculoComisonResponse" message="tns:IBitacoraCalculo_ListadoRecaudosCalculoComison_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalleUsuariosCalculoComison">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/DetalleUsuariosCalculoComison" message="tns:IBitacoraCalculo_DetalleUsuariosCalculoComison_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/DetalleUsuariosCalculoComisonResponse" message="tns:IBitacoraCalculo_DetalleUsuariosCalculoComison_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcelDetalleUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/ExcelDetalleUsuario" message="tns:IBitacoraCalculo_ExcelDetalleUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/ExcelDetalleUsuarioResponse" message="tns:IBitacoraCalculo_ExcelDetalleUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalleFactura">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/DetalleFactura" message="tns:IBitacoraCalculo_DetalleFactura_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/DetalleFacturaResponse" message="tns:IBitacoraCalculo_DetalleFactura_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcelDetalleFactura">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/ExcelDetalleFactura" message="tns:IBitacoraCalculo_ExcelDetalleFactura_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/ExcelDetalleFacturaResponse" message="tns:IBitacoraCalculo_ExcelDetalleFactura_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetalleRecaudo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/DetalleRecaudo" message="tns:IBitacoraCalculo_DetalleRecaudo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/DetalleRecaudoResponse" message="tns:IBitacoraCalculo_DetalleRecaudo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcelDetalleRecaudo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBitacoraCalculo/ExcelDetalleRecaudo" message="tns:IBitacoraCalculo_ExcelDetalleRecaudo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBitacoraCalculo/ExcelDetalleRecaudoResponse" message="tns:IBitacoraCalculo_ExcelDetalleRecaudo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IBitacoraCalculo" type="tns:IBitacoraCalculo">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListadoUsuariosCalculoComison">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/ListadoUsuariosCalculoComison" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListadoUsuariosCalculoComisonPorFechas">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/ListadoUsuariosCalculoComisonPorFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListadoFacturasCalculoComison">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/ListadoFacturasCalculoComison" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListadoRecaudosCalculoComison">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/ListadoRecaudosCalculoComison" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalleUsuariosCalculoComison">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/DetalleUsuariosCalculoComison" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelDetalleUsuario">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/ExcelDetalleUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalleFactura">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/DetalleFactura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelDetalleFactura">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/ExcelDetalleFactura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetalleRecaudo">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/DetalleRecaudo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcelDetalleRecaudo">
+      <soap:operation soapAction="http://tempuri.org/IBitacoraCalculo/ExcelDetalleRecaudo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultasComisiones">
+    <wsdl:port name="BasicHttpBinding_IBitacoraCalculo" binding="tns:BasicHttpBinding_IBitacoraCalculo">
+      <soap:address location="http://localhost:2090/ConsultasComisiones.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

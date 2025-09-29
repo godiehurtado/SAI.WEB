@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fa550dba-8e8f-4d0d-ad9c-f3f764235f81" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2090/EjecucionETLs.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EjecucionETLs.xsd" MetadataType="Schema" ID="98c3b7d5-afd5-4713-98d0-cd93517339e0" SourceId="1" SourceUrl="http://localhost:2090/EjecucionETLs.svc?xsd=xsd2" />
+    <MetadataFile FileName="EjecucionETLs2.xsd" MetadataType="Schema" ID="24dbd15e-8726-4bb6-a75f-ef42564c1c8a" SourceId="1" SourceUrl="http://localhost:2090/EjecucionETLs.svc?xsd=xsd4" />
+    <MetadataFile FileName="EjecucionETLs3.xsd" MetadataType="Schema" ID="f5c99d32-598a-4b81-973f-119f988c93d9" SourceId="1" SourceUrl="http://localhost:2090/EjecucionETLs.svc?xsd=xsd1" />
+    <MetadataFile FileName="EjecucionETLs.wsdl" MetadataType="Wsdl" ID="facb17da-85d6-46f9-86b3-79dc6275172f" SourceId="1" SourceUrl="http://localhost:2090/EjecucionETLs.svc?wsdl" />
+    <MetadataFile FileName="EjecucionETLs1.xsd" MetadataType="Schema" ID="c31b29b5-a022-40b7-9a29-97debe1f7093" SourceId="1" SourceUrl="http://localhost:2090/EjecucionETLs.svc?xsd=xsd3" />
+    <MetadataFile FileName="EjecucionETLs4.xsd" MetadataType="Schema" ID="2dd2d87d-2177-45ca-8e93-713de1749c7d" SourceId="1" SourceUrl="http://localhost:2090/EjecucionETLs.svc?xsd=xsd0" />
+    <MetadataFile FileName="EjecucionETLs.disco" MetadataType="Disco" ID="1ec7d2bd-4a28-492a-bb70-d1aab5669d4e" SourceId="1" SourceUrl="http://localhost:2090/EjecucionETLs.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

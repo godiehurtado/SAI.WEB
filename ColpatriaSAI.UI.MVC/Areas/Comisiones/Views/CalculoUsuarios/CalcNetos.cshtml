@@ -1,0 +1,29 @@
+﻿@model List<ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.ResultadosCalculosViewModel>
+@{
+    ViewBag.Title = "Resultados";
+}
+<h2>
+    Resultados
+</h2>
+<div class="container-fluid">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-sm-8">
+                <b>@item.CombinacionQuery : </b>
+                <ul>
+                    @if (@item.resultados.Any())
+                    {
+                        <li>
+                            @item.resultados.Sum().ToString()
+                        </li>
+                    }
+                    else
+                    {   
+                        <li><span>No se encontraron registros</span> </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>

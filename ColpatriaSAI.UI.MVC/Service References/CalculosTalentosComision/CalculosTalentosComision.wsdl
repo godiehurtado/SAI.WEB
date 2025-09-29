@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CalculosTalentosComision" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Calculos" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.ResultadoProcedimientos" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.Informacion" />
+      <xsd:import schemaLocation="http://localhost:2090/CalculosTalentosComision.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.CustomEntities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICalculos_CalculoTalentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:CalculoTalentos" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_CalculoTalentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CalculoTalentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_CalculosNetos_InputMessage">
+    <wsdl:part name="parameters" element="tns:CalculosNetos" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_CalculosNetos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CalculosNetosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionVariablePorLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionVariablePorLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionVariablePorLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionVariablePorLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionFijaFacturacionPorLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionFijaFacturacionPorLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionFijaFacturacionPorLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionFijaFacturacionPorLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionFijaRecaudosPorLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionFijaRecaudosPorLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion604_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionFijaRecaudosPorLiquidacion604" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion604_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerComisionFijaRecaudosPorLiquidacion604Response" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_PreCalcularComisionSegunModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:PreCalcularComisionSegunModelo" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_PreCalcularComisionSegunModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PreCalcularComisionSegunModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_LiquidarComisionSegunModelo_InputMessage">
+    <wsdl:part name="parameters" element="tns:LiquidarComisionSegunModelo" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_LiquidarComisionSegunModelo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LiquidarComisionSegunModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerHistoricoLiquidaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerHistoricoLiquidaciones" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ObtenerHistoricoLiquidaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerHistoricoLiquidacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ProcesoExtraccionBeneficiarioFacturacionRecaudos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesoExtraccionBeneficiarioFacturacionRecaudos" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ProcesoExtraccionBeneficiarioFacturacionRecaudos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcesoExtraccionBeneficiarioFacturacionRecaudosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ExtractCf_CV_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExtractCf_CV" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ExtractCf_CV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExtractCf_CVResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_LiquidarComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:LiquidarComision" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_LiquidarComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LiquidarComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_CargarExtraccionHistorico_InputMessage">
+    <wsdl:part name="parameters" element="tns:CargarExtraccionHistorico" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_CargarExtraccionHistorico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CargarExtraccionHistoricoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_obtenerPeriodoCalcComision_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerPeriodoCalcComision" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_obtenerPeriodoCalcComision_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerPeriodoCalcComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValLiqPendientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValLiqPendientes" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValLiqPendientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValLiqPendientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValidarExtraccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarExtraccion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValidarExtraccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarExtraccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValidarUltimaExtraccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUltimaExtraccion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValidarUltimaExtraccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUltimaExtraccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_LiquidarComisiones_InputMessage">
+    <wsdl:part name="parameters" element="tns:LiquidarComisiones" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_LiquidarComisiones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LiquidarComisionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValidaAnularLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaAnularLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValidaAnularLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaAnularLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ExtractAnulacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExtractAnulacion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ExtractAnulacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExtractAnulacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ReprocesarLiquidacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReprocesarLiquidacion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ReprocesarLiquidacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReprocesarLiquidacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ActualizaEstadoReprocesar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizaEstadoReprocesar" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ActualizaEstadoReprocesar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizaEstadoReprocesarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValReprocesoLiq_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValReprocesoLiq" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ValReprocesoLiq_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValReprocesoLiqResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICalculos">
+    <wsdl:operation name="CalculoTalentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/CalculoTalentos" message="tns:ICalculos_CalculoTalentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/CalculoTalentosResponse" message="tns:ICalculos_CalculoTalentos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculosNetos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/CalculosNetos" message="tns:ICalculos_CalculosNetos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/CalculosNetosResponse" message="tns:ICalculos_CalculosNetos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionVariablePorLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionVariablePorLiquidacion" message="tns:ICalculos_ObtenerComisionVariablePorLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionVariablePorLiquidacionResponse" message="tns:ICalculos_ObtenerComisionVariablePorLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionFijaFacturacionPorLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionFijaFacturacionPorLiquidacion" message="tns:ICalculos_ObtenerComisionFijaFacturacionPorLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionFijaFacturacionPorLiquidacionResponse" message="tns:ICalculos_ObtenerComisionFijaFacturacionPorLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionFijaRecaudosPorLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionFijaRecaudosPorLiquidacion" message="tns:ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionFijaRecaudosPorLiquidacionResponse" message="tns:ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionFijaRecaudosPorLiquidacion604">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionFijaRecaudosPorLiquidacion604" message="tns:ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion604_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ObtenerComisionFijaRecaudosPorLiquidacion604Response" message="tns:ICalculos_ObtenerComisionFijaRecaudosPorLiquidacion604_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PreCalcularComisionSegunModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/PreCalcularComisionSegunModelo" message="tns:ICalculos_PreCalcularComisionSegunModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/PreCalcularComisionSegunModeloResponse" message="tns:ICalculos_PreCalcularComisionSegunModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LiquidarComisionSegunModelo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/LiquidarComisionSegunModelo" message="tns:ICalculos_LiquidarComisionSegunModelo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/LiquidarComisionSegunModeloResponse" message="tns:ICalculos_LiquidarComisionSegunModelo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerHistoricoLiquidaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ObtenerHistoricoLiquidaciones" message="tns:ICalculos_ObtenerHistoricoLiquidaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ObtenerHistoricoLiquidacionesResponse" message="tns:ICalculos_ObtenerHistoricoLiquidaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesoExtraccionBeneficiarioFacturacionRecaudos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ProcesoExtraccionBeneficiarioFacturacionRecaudos" message="tns:ICalculos_ProcesoExtraccionBeneficiarioFacturacionRecaudos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ProcesoExtraccionBeneficiarioFacturacionRecaudosResponse" message="tns:ICalculos_ProcesoExtraccionBeneficiarioFacturacionRecaudos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtractCf_CV">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ExtractCf_CV" message="tns:ICalculos_ExtractCf_CV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ExtractCf_CVResponse" message="tns:ICalculos_ExtractCf_CV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LiquidarComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/LiquidarComision" message="tns:ICalculos_LiquidarComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/LiquidarComisionResponse" message="tns:ICalculos_LiquidarComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CargarExtraccionHistorico">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/CargarExtraccionHistorico" message="tns:ICalculos_CargarExtraccionHistorico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/CargarExtraccionHistoricoResponse" message="tns:ICalculos_CargarExtraccionHistorico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerPeriodoCalcComision">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/obtenerPeriodoCalcComision" message="tns:ICalculos_obtenerPeriodoCalcComision_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/obtenerPeriodoCalcComisionResponse" message="tns:ICalculos_obtenerPeriodoCalcComision_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValLiqPendientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ValLiqPendientes" message="tns:ICalculos_ValLiqPendientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ValLiqPendientesResponse" message="tns:ICalculos_ValLiqPendientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarExtraccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ValidarExtraccion" message="tns:ICalculos_ValidarExtraccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ValidarExtraccionResponse" message="tns:ICalculos_ValidarExtraccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUltimaExtraccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ValidarUltimaExtraccion" message="tns:ICalculos_ValidarUltimaExtraccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ValidarUltimaExtraccionResponse" message="tns:ICalculos_ValidarUltimaExtraccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LiquidarComisiones">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/LiquidarComisiones" message="tns:ICalculos_LiquidarComisiones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/LiquidarComisionesResponse" message="tns:ICalculos_LiquidarComisiones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaAnularLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ValidaAnularLiquidacion" message="tns:ICalculos_ValidaAnularLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ValidaAnularLiquidacionResponse" message="tns:ICalculos_ValidaAnularLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtractAnulacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ExtractAnulacion" message="tns:ICalculos_ExtractAnulacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ExtractAnulacionResponse" message="tns:ICalculos_ExtractAnulacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReprocesarLiquidacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ReprocesarLiquidacion" message="tns:ICalculos_ReprocesarLiquidacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ReprocesarLiquidacionResponse" message="tns:ICalculos_ReprocesarLiquidacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstadoReprocesar">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ActualizaEstadoReprocesar" message="tns:ICalculos_ActualizaEstadoReprocesar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ActualizaEstadoReprocesarResponse" message="tns:ICalculos_ActualizaEstadoReprocesar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValReprocesoLiq">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ValReprocesoLiq" message="tns:ICalculos_ValReprocesoLiq_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ValReprocesoLiqResponse" message="tns:ICalculos_ValReprocesoLiq_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICalculos" type="tns:ICalculos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CalculoTalentos">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/CalculoTalentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculosNetos">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/CalculosNetos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionVariablePorLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ObtenerComisionVariablePorLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionFijaFacturacionPorLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ObtenerComisionFijaFacturacionPorLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionFijaRecaudosPorLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ObtenerComisionFijaRecaudosPorLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerComisionFijaRecaudosPorLiquidacion604">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ObtenerComisionFijaRecaudosPorLiquidacion604" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreCalcularComisionSegunModelo">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/PreCalcularComisionSegunModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LiquidarComisionSegunModelo">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/LiquidarComisionSegunModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerHistoricoLiquidaciones">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ObtenerHistoricoLiquidaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesoExtraccionBeneficiarioFacturacionRecaudos">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ProcesoExtraccionBeneficiarioFacturacionRecaudos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtractCf_CV">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ExtractCf_CV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LiquidarComision">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/LiquidarComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CargarExtraccionHistorico">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/CargarExtraccionHistorico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerPeriodoCalcComision">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/obtenerPeriodoCalcComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValLiqPendientes">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ValLiqPendientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarExtraccion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ValidarExtraccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUltimaExtraccion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ValidarUltimaExtraccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LiquidarComisiones">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/LiquidarComisiones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaAnularLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ValidaAnularLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtractAnulacion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ExtractAnulacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprocesarLiquidacion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ReprocesarLiquidacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstadoReprocesar">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ActualizaEstadoReprocesar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValReprocesoLiq">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ValReprocesoLiq" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculosTalentosComision">
+    <wsdl:port name="BasicHttpBinding_ICalculos" binding="tns:BasicHttpBinding_ICalculos">
+      <soap:address location="http://localhost:2090/CalculosTalentosComision.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

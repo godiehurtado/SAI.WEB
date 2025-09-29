@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" />
+  <xs:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" />
+  <xs:import schemaLocation="http://localhost:2090/ModeloComision.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Modelo" />
+  <xs:element name="ListarFactorComisionFijaXModeloId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFactorComisionFijaXModeloIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarFactorComisionFijaXModeloIdResult" nillable="true" type="q1:ArrayOfFactorComisionFija" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarFactorComisionFija">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDb" nillable="true" type="q2:FactorComisionFija" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarFactorComisionFijaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="InsertarFactorComisionFijaResult" nillable="true" type="q3:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarFactorComisionFija">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDb" nillable="true" type="q4:FactorComisionFija" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarFactorComisionFijaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EliminarFactorComisionFijaResult" nillable="true" type="q5:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFactorComisionFijaXId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="factorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFactorComisionFijaXIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ObtenerFactorComisionFijaXIdResult" nillable="true" type="q6:FactorComisionFija" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorComisionFija">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDb" nillable="true" type="q7:FactorComisionFija" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorComisionFijaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizarFactorComisionFijaResult" nillable="true" type="q8:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarEdadMaxima">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="edad" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarEdadMaximaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidarEdadMaximaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarModelosComision">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarModelosComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarModelosComisionResult" nillable="true" type="q9:ArrayOfModeloComision" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarLiquidacionComision">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarLiquidacionComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision.Modelo" minOccurs="0" name="ListarLiquidacionComisionResult" nillable="true" type="q10:ArrayOfLiquidacionComisionClass" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerModeloComisionXId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloComisionId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerModeloComisionXIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ObtenerModeloComisionXIdResult" nillable="true" type="q11:ModeloComision" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCanalesDetalle">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCanalesDetalleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarCanalesDetalleResult" nillable="true" type="q12:ArrayOfCanal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTipoIntermediario">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTipoIntermediarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarTipoIntermediarioResult" nillable="true" type="q13:ArrayOfTipoIntermediario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCanalDetalleTipoIntermediario">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCanalDetalleTipoIntermediarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarCanalDetalleTipoIntermediarioResult" nillable="true" type="q14:ArrayOfCanalDetalleTipoIntermediario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarModeloComision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q15:ModeloComision" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarModeloComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="InsertarModeloComisionResult" nillable="true" type="q16:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarModeloComision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q17:ModeloComision" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarModeloComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizarModeloComisionResult" nillable="true" type="q18:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarModeloComision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarModeloComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EliminarModeloComisionResult" nillable="true" type="q19:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DuplicarModeloComision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q20:ModeloComision" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DuplicarModeloComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="DuplicarModeloComisionResult" nillable="true" type="q21:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarModeloComisionVigentes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarModeloComisionVigentesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarModeloComisionVigentesResult" nillable="true" type="q22:ArrayOfModeloComision" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarExcepcionesPenalizacionXModeloComision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloComisionId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarExcepcionesPenalizacionXModeloComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarExcepcionesPenalizacionXModeloComisionResult" nillable="true" type="q23:ArrayOf_ExcepcionPenalizacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="_lisErrores">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="_lisErroresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="_lisErroresResult" nillable="true" type="q24:ArrayOf_ExcepcionPenalizacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerExcepcionPenalizacionXId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="penalizacionId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerExcepcionPenalizacionXIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ObtenerExcepcionPenalizacionXIdResult" nillable="true" type="q25:ExcepcionPenalizacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargueExcepcionesPenalizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="penalizacion" nillable="true" type="q26:ArrayOf_ExcepcionPenalizacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargueExcepcionesPenalizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="CargueExcepcionesPenalizacionResult" nillable="true" type="q27:ArrayOf_ExcepcionPenalizacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarExcepcionPenalizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q28:ExcepcionPenalizacion" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarExcepcionPenalizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="InsertarExcepcionPenalizacionResult" nillable="true" type="q29:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarExcepcionPenalizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q30:ExcepcionPenalizacion" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarExcepcionPenalizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizarExcepcionPenalizacionResult" nillable="true" type="q31:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarExcepcionPenalizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q32:ExcepcionPenalizacion" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarExcepcionPenalizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EliminarExcepcionPenalizacionResult" nillable="true" type="q33:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarParticipantes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarParticipantesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarParticipantesResult" nillable="true" type="q34:ArrayOfParticipante" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarEstadoExcepcionPenalizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="excepcionId" type="xs:int" />
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarEstadoExcepcionPenalizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="CambiarEstadoExcepcionPenalizacionResult" nillable="true" type="q35:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarExcepcionesFijaVariableXModeloComision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloComisionId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarExcepcionesFijaVariableXModeloComisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarExcepcionesFijaVariableXModeloComisionResult" nillable="true" type="q36:ArrayOfExcepcionFijaVariable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerExcepcionFijaVariableXId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="excepcionFijaVariableId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerExcepcionFijaVariableXIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ObtenerExcepcionFijaVariableXIdResult" nillable="true" type="q37:ExcepcionFijaVariable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarExcepcionFijaVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q38:ExcepcionFijaVariable" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarExcepcionFijaVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="InsertarExcepcionFijaVariableResult" nillable="true" type="q39:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarExcepcionFijaVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDB" nillable="true" type="q40:ExcepcionFijaVariable" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarExcepcionFijaVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizarExcepcionFijaVariableResult" nillable="true" type="q41:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarExcepcionFijaVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="objetoDb" nillable="true" type="q42:ExcepcionFijaVariable" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarExcepcionFijaVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EliminarExcepcionFijaVariableResult" nillable="true" type="q43:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarExcepcionesMasivo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pData" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="modelo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CargarExcepcionesMasivoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="CargarExcepcionesMasivoResult" nillable="true" type="q44:ArrayOfResultadoOperacionBD" />
+        <xs:element minOccurs="0" name="pErrores" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarEstadoExcepcionFijaVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="excepcionId" type="xs:int" />
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarEstadoExcepcionFijaVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="CambiarEstadoExcepcionFijaVariableResult" nillable="true" type="q45:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFactorNetoComisionVariableXModeloId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFactorNetoComisionVariableXModeloIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarFactorNetoComisionVariableXModeloIdResult" nillable="true" type="q46:ArrayOfFactorComisionVariableNeto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarFactorNetoComisionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="dbobj" nillable="true" type="q47:FactorComisionVariableNeto" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarFactorNetoComisionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="InsertarFactorNetoComisionVariableResult" nillable="true" type="q48:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarFactorNetoComisionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="dbobj" nillable="true" type="q49:FactorComisionVariableNeto" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarFactorNetoComisionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EliminarFactorNetoComisionVariableResult" nillable="true" type="q50:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFactorNetoComisionVariableXId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="factorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFactorNetoComisionVariableXIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ObtenerFactorNetoComisionVariableXIdResult" nillable="true" type="q51:FactorComisionVariableNeto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorNetoComisionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="dbobj" nillable="true" type="q52:FactorComisionVariableNeto" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorNetoComisionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizarFactorNetoComisionVariableResult" nillable="true" type="q53:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFactorNuevoComisionVariableXModeloId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFactorNuevoComisionVariableXModeloIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarFactorNuevoComisionVariableXModeloIdResult" nillable="true" type="q54:ArrayOfFactorComisionVariableNuevo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarFactorNuevoComisionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="dbobj" nillable="true" type="q55:FactorComisionVariableNuevo" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarFactorNuevoComisionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="InsertarFactorNuevoComisionVariableResult" nillable="true" type="q56:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarFactorNuevoComisionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="dbobj" nillable="true" type="q57:FactorComisionVariableNuevo" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarFactorNuevoComisionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EliminarFactorNuevoComisionVariableResult" nillable="true" type="q58:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFactorNuevoComisionVariableXId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="factorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerFactorNuevoComisionVariableXIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ObtenerFactorNuevoComisionVariableXIdResult" nillable="true" type="q59:FactorComisionVariableNuevo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorNuevoComisionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="dbobj" nillable="true" type="q60:FactorComisionVariableNuevo" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorNuevoComisionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizarFactorNuevoComisionVariableResult" nillable="true" type="q61:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdicionarRangosMatriz">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ejex" nillable="true" type="q62:ArrayOfRangosXNeto" />
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ejey" nillable="true" type="q63:ArrayOfRangosYNuevo" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdicionarRangosMatrizResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="AdicionarRangosMatrizResult" nillable="true" type="q64:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarMatrizComisionVariableXModeloId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarMatrizComisionVariableXModeloIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="EliminarMatrizComisionVariableXModeloIdResult" nillable="true" type="q65:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarValoresMatrizComisionVariableXModelo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarValoresMatrizComisionVariableXModeloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarValoresMatrizComisionVariableXModeloResult" nillable="true" type="q66:ArrayOfMatrizComisionVariable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRangosYNuevoMatrizComisionVariableXModelo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRangosYNuevoMatrizComisionVariableXModeloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarRangosYNuevoMatrizComisionVariableXModeloResult" nillable="true" type="q67:ArrayOfRangosYNuevo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRangosXNetoMatrizComisionVariableXModelo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRangosXNetoMatrizComisionVariableXModeloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="ListarRangosXNetoMatrizComisionVariableXModeloResult" nillable="true" type="q68:ArrayOfRangosXNeto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorMatrizComisionVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades" minOccurs="0" name="dbobj" nillable="true" type="q69:MatrizComisionVariable" />
+        <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarFactorMatrizComisionVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizarFactorMatrizComisionVariableResult" nillable="true" type="q70:ResultadoOperacionBD" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

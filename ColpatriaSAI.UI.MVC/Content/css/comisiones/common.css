@@ -1,0 +1,63 @@
+﻿h2
+{
+    padding: 0.5em;
+}
+.customdialog
+{
+    z-index: 1000;
+}
+.no-overflow-dialog
+{
+    overflow: hidden;
+}
+.ui-dialog-titlebar-close span.ui-icon
+{
+    top: -1px;
+    left: -1px;
+}
+.dataTables_wrapper input, .dataTables_wrapper select
+{
+    color: Black;
+}
+.alert-danger
+{
+    padding: 15px;
+    width: 100%;
+}
+.encabezado-comision div div
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.encabezado-comision
+{
+    margin-top: 15px;
+}
+
+.encabezado-comision div.bar
+{
+    background: #1762A5;
+    padding-top:5px;
+    border-top-right-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    border-left-right-radius: 6px;
+    -webkit-border-top-left-radius: 6px;
+    color: #ffffff;
+}
+.model-header
+{
+    border-left:1px solid #1762A5;
+    border-right:1px solid #1762A5;
+    
+}
+.model-header-last-row
+{
+    border-bottom:1px solid #1762A5;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    
+}
+#ui-datepicker-div {display: none;}
+.ui-widget-overlay { height: 100vw; position: fixed !important; } 

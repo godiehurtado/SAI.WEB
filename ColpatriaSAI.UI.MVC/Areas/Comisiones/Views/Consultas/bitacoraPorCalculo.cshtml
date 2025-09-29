@@ -1,0 +1,511 @@
+﻿@model  ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.BitacoraComisionCalculada
+@{
+    ViewBag.Title = "Comisiones - Tablero Comisión Aplciada";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h2>Tablero Comisiones-SAI</h2>
+        <br />
+    </div>
+
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#ConsUsuarios" id="beneficiario">Beneficiarios</a></li>
+        <li><a data-toggle="tab" href="#ConsFacturacion"  id="factura">Facturación</a></li>
+        <li><a data-toggle="tab" href="#ConsRecaudos" id="recaudo">Recaudos</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="ConsUsuarios" class="tab-pane fade in active   ">
+        
+                </table>
+                <br />
+                <div class="dataTables_wrapper" id="tablaLista_wrapper" style=" min-height: 200px !important; width: 800px;">
+                    <table id="tablaLista">
+                        <thead>
+                            <tr>
+                                <th>
+                                    &nbsp;
+                                </th>
+                                <th>
+                                    Código Extracción
+                                </th>
+                              
+                                <th>
+                                    Usuaros Salieron BH
+                                </th>
+                                  <th>
+                                    Usuarios entraron Sai
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+
+                                System.Data.DataTable dtLogUsuarios = (System.Data.DataTable)TempData["LogUsuarios"];
+
+                                foreach (System.Data.DataRow item in dtLogUsuarios.Rows)
+                                {
+
+                                    <tr>
+
+                                        <td>
+                                            <a href="#" onclick="javascript:VerDeatalleUsuarios('@item["codigoextraccion"].ToString()','B');">
+                                                @Html.Raw("Ver")
+                                            </a>&nbsp;
+                                        </td>
+                                        <td>@item["codigoextraccion"].ToString()</td>
+                                        <td>@item["usersEntrantes"].ToString()</td>
+                                        <td>@item["UsuariosSalientes"].ToString()</td>
+                                    </tr>
+                                }
+
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+        </div>
+
+        <div id="ConsFacturacion" class="tab-pane fade">
+                </table>
+                <br />
+            <table id="tablaLista1">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mostrar
+                                </th>
+                                <th>
+                                    Código Extracción
+                                </th>
+                                <th>
+                                    No. Facturas Salientes BH
+                                </th>
+                                <th>
+                                    No. Facturas Entraron Sai
+                                </th>
+
+                            </tr>
+                            </thead>
+                        <tbody>
+                            @{
+
+                                dtLogUsuarios = (System.Data.DataTable)TempData["LogFacturas"];
+
+                                foreach (System.Data.DataRow item in dtLogUsuarios.Rows)
+                                {
+
+                                    <tr>
+                                      <td>
+                                            <a href="#" onclick="javascript:VerdetalleFacturas('@item["codigoextraccion"].ToString()','F');">
+                                                @Html.Raw("Ver")
+                                            </a>&nbsp;
+                                        </td>
+                                        
+                                        <td>@item["codigoextraccion"].ToString()</td>
+                                        <td>@item["usersEntrantes"].ToString()</td>
+                                        <td>@item["UsuariosSalientes"].ToString()</td>
+                                    </tr>
+                                }
+
+                //List<ColpatriaSAI.Negocio.Componentes.Comision.Consultas.ListadoUsuarios> UsuariosFiltrados =
+                            }
+                        </tbody>
+                    </table>
+
+        </div>
+
+        <div id="ConsRecaudos" class="tab-pane fade">
+                <br />
+
+            <table id="tablaLista2">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mostrar
+                            </th>
+                            <th>
+                                Código Extracción
+                            </th>
+                            <th>
+                                No. Recaudos Salieron BH
+                            </th>
+                            <th>
+                                No. Recaudos Entraron Sai
+                            </th>
+
+                        </tr>
+                        </thead>
+                    <tbody>
+                        @{
+
+                            dtLogUsuarios = (System.Data.DataTable)TempData["LogRecaudos"];
+
+                            foreach (System.Data.DataRow item in dtLogUsuarios.Rows)
+                            {
+
+                                <tr>
+                                   <td>
+                                            <a href="#" onclick="javascript:VerdetalleRecaudo('@item["codigoextraccion"].ToString()','R');">
+                                                @Html.Raw("Ver")
+                                            </a>&nbsp;
+                                        </td>
+                                    
+                                    <td>@item["codigoextraccion"].ToString()</td>
+                                    <td>@item["usersEntrantes"].ToString()</td>
+                                    <td>@item["UsuariosSalientes"].ToString()</td>
+                                </tr>
+                            }
+
+
+                        }
+                    </tbody>
+                </table>
+            
+        </div>
+
+    </div>
+    <h3 id="TituloLog"></h3>
+    <div id="ContDetalles"  style="display:none">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#DetalleUserxExtraccion">Detalle General</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="DetalleUserxExtraccion" class="tab-pane fade in active" >
+                        <div id="DetalleUserxExtraccion_Contenido" style="min-height: 300px; overflow: auto;"> </div>
+                        
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+
+@section AdditionalScripts{
+    <script type="text/javascript">
+        $("#beneficiario").click(function(){
+          $("#ContDetalles").css("display","none");
+           $("#TituloLog").css("display","none");
+                  
+        });
+
+          $("#factura").click(function(){
+          $("#ContDetalles").css("display","none");
+           $("#TituloLog").css("display","none");
+                  
+        });
+         $("#recaudo").click(function(){
+          $("#ContDetalles").css("display","none");
+
+           $("#TituloLog").css("display","none");
+                  
+        });
+
+        var codExtraccionUsuarios;
+        var Accion="";
+
+        
+
+        function VerdetalleRecaudo(_codEstraccion,OP){
+        codExtraccionUsuarios = _codEstraccion;
+            $("#DetalleUserxExtraccion_Contenido").empty();
+            //console.log("Codigo consultado: " + _codEstraccion);
+            $.ajax({
+                url: "@Url.Action("DetalleRecaudo", "Consultas")",
+                timeout: 1000000,
+                data: { codExtraccion: _codEstraccion },
+                type: "POST",
+                success: function (data) {
+                   switch (OP) {
+                     case'R':
+                     $("#TituloLog").css("display","block");
+                       $("#TituloLog").text("Detalle Log Recaudo")
+                     break
+              
+                     }
+                    var filas = "<table> <tr> <th style='padding: 0px 200px 0px 0px;'> Descipcion </th> <th style='padding: 0px 28px 0px 0px;'> Cantidad </th> <th>&nbsp;  </th>";
+                    var DescargaDetalle;
+                    jQuery.each(data, function () {
+                        DescargaDetalle = "@Url.Action("ExcelDetalleRecaudo", "Consultas")" + "/?codExtraccion=" + _codEstraccion + "&tipoLog=" + this.Descripcion_log + "&exportar=1"
+                        filas = filas + " <tr> <td>" + this.Descripcion_log + " </td> <td>" + this.conteo + "</td> <td> <a href=\"" + DescargaDetalle + "\">Descargar</a>" + " </td> </tr>"
+
+                    });
+                    filas = filas + "</table>";
+
+
+                    $("#DetalleUserxExtraccion_Contenido").append(filas);
+                    $("#DetalleUserxExtraccion_Contenido").attr("style", "display:block;   ");// border: solid; min-height: 100px; width:412px;
+                    $("#ContDetalles").attr("style", "display:block; ")//width: 800px; margin-left: -20px;
+                    //SE genera un botón descargar
+                    @*$("#btDescargarGral").empty();
+                $("#btDescargarGral").append("<a href=" + "@Url.Action("ExcelDetalleRecaudo", "Consultas")" + "/?codExtraccion=" + _codEstraccion +">Descargar Excel</a>");*@
+
+                    //$("#DesccargarDetalle").attr("style", "display:block");
+
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                },
+                beforeSend: function () {
+
+                }
+            });
+        }
+
+
+        function VerdetalleFacturas(_codEstraccion,OP){
+        codExtraccionUsuarios = _codEstraccion;
+            console.log(OP)
+            $("#DetalleUserxExtraccion_Contenido").empty();
+            //console.log("Codigo consultado: " + _codEstraccion);
+            $.ajax({
+                url: "@Url.Action("DetalleFacturacion", "Consultas")",
+                timeout: 1000000,
+                data: { codExtraccion: _codEstraccion },
+                type: "POST",
+                success: function (data) {
+                    switch (OP) {
+                     case'F':
+                      $("#TituloLog").css("display","block");
+                       $("#TituloLog").text("Detalle Log Facturación")
+                     break
+        
+                     }
+                    var filas = "<table> <tr> <th style='padding: 0px 200px 0px 0px;'> Descipcion </th> <th style='padding: 0px 28px 0px 0px;'> Cantidad </th> <th>&nbsp;  </th>";
+                    var DescargaDetalle;
+                    jQuery.each(data, function () {
+                        DescargaDetalle = "@Url.Action("ExcelDetalleFactura", "Consultas")" + "/?codExtraccion=" + _codEstraccion + "&tipoLog=" + this.Descripcion_log + "&exportar=1"
+                        filas = filas + " <tr> <td>" + this.Descripcion_log + " </td> <td>" + this.conteo + "</td> <td> <a href=\"" + DescargaDetalle + "\">Descargar</a>" + " </td> </tr>"
+
+                    });
+                    filas = filas + "</table>";
+
+
+                    $("#DetalleUserxExtraccion_Contenido").append(filas);
+                    $("#DetalleUserxExtraccion_Contenido").attr("style", "display:block;   ");// border: solid; min-height: 100px; width:412px;
+                    $("#ContDetalles").attr("style", "display:block; ")//width: 800px; margin-left: -20px;
+                    //SE genera un botón descargar
+                    @*$("#btDescargarGral").empty();
+                $("#btDescargarGral").append("<a href=" + "@Url.Action("ExportToExcelFac", "Consultas")" + "/?codExtraccion=" + _codEstraccion +">Descargar Excel</a>");*@
+
+                    //$("#DesccargarDetalle").attr("style", "display:block");
+
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                },
+                beforeSend: function () {
+
+                }
+            });
+        }
+        function VerDeatalleUsuarios(_codEstraccion,OP) {
+            codExtraccionUsuarios = _codEstraccion;
+            console.log(OP)
+            $("#DetalleUserxExtraccion_Contenido").empty();
+            //console.log("Codigo consultado: " + _codEstraccion);
+            $.ajax({
+                url: "@Url.Action("DetalleUsuarios", "Consultas")",
+                timeout: 1000000,
+                data: { codExtraccion: _codEstraccion },
+                type: "POST",
+                success: function (data) {
+                    switch (OP) {
+                     case'B':
+                      $("#TituloLog").css("display","block");
+                       $("#TituloLog").text("Detalle Log Beneficiarios")
+                     break
+                       }
+                    var filas = "<table> <tr> <th style='padding: 0px 200px 0px 0px;'> Descipcion </th> <th style='padding: 0px 28px 0px 0px;'> Cantidad </th> <th>&nbsp;  </th>";
+                    var DescargaDetalle;
+                    jQuery.each(data, function () {
+                        DescargaDetalle = "@Url.Action("ExcelDetalleUsuarios", "Consultas")" + "/?codExtraccion=" + _codEstraccion + "&tipoLog=" + this.Descripcion_log + "&exportar=1"
+                        filas = filas + " <tr> <td>" + this.Descripcion_log + " </td> <td>" + this.conteo + "</td> <td> <a href=\"" + DescargaDetalle + "\">Descargar</a>" + " </td> </tr>"
+
+                    });
+                    filas = filas + "</table>";
+
+
+                    $("#DetalleUserxExtraccion_Contenido").append(filas);
+                    $("#DetalleUserxExtraccion_Contenido").attr("style", "display:block;   ");// border: solid; min-height: 100px; width:412px;
+                    $("#ContDetalles").attr("style", "display:block; ")//width: 800px; margin-left: -20px;
+                    //SE genera un botón descargar
+                    @*$("#btDescargarGral").empty();
+                $("#btDescargarGral").append("<a href=" + "@Url.Action("ExcelDetalleUsuarios", "Consultas")" + "/?codExtraccion=" + _codEstraccion +">Descargar Excel</a>");*@
+
+                    //$("#DesccargarDetalle").attr("style", "display:block");
+
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                },
+                beforeSend: function () {
+
+                }
+            });
+
+        }
+
+
+        function filtrarUsuariosFechas() {
+            var fechaInicioFiltro = document.getElementById("fechIniUsuarios").value;
+            var fechaFinFiltro = document.getElementById("fechFinUsuarios").value;
+            $("#ContDetalles").removeAttr("style");
+            $("#ContDetalles").attr("style", "display:none;");// Se oculta el div que muestra el datalle
+            $("#usuariosFiltradosXCedula").empty();
+            $("#tbfiltrarXusuarios").val("");
+            $.ajax({
+                url: "@Url.Action("FiltroLosUsuariosxFechas", "Consultas")",
+                timeout: 1000000,
+                data: { fechIni: fechaInicioFiltro, fechFin: fechaFinFiltro },
+                type: "POST",
+                success: function (data) {
+
+                    var filas = "<table id='tablaLista'> <thead> <tr> <th>&nbsp;</th><th>Código Extracción</th><th>Usuarios Entraron</th><th> Usuaros Salieron</th></tr> </thead>";
+                    filas = filas + "<tbody>"
+                    jQuery.each(data, function () {
+
+                        filas = filas + " <tr><td> <a href='#' onclick=\"javascript:VerDeatalleUsuarios('" + this.numExtraccion + "');\">";
+                        filas = filas + "Ver </a>&nbsp;</td>";
+                        filas = filas + " <td>" + this.numExtraccion + " </td> <td>" + this.usuariosEntrantes + "</td> <td>" + this.UsuariosSalientes + "</td></tr>"
+
+                    });
+                    filas = filas + "</tbody> </table>";
+
+                    $("#tablaLista_wrapper").empty();
+                    $("#tablaLista_wrapper").append(filas);
+
+                    $('#tablaLista').dataTable({
+                        "bJQueryUI": true,
+                        "sPaginationType": "full_numbers", "bStateSave": true
+                    });
+
+
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                },
+                beforeSend: function () {
+                    //$("input[type='checkbox']").prop('checked', false);
+                }
+            });
+
+        }
+
+        function filtrarXusuarios() {
+                
+            var cedulas = $("#tbfiltrarXusuarios").val();
+            //codExtraccionUsuarios
+            var urlEjecutar = "@Url.Action("ExcelDetalleUsuarios", "Consultas")" + "/?codExtraccion=" + codExtraccionUsuarios + "&tipoLog=" + "&exportar=0"
+
+
+            $.ajax({
+                url: urlEjecutar,
+                timeout: 1000000,
+                data: { codExtraccion: codExtraccionUsuarios, tipoLog: "", idUsuario: cedulas, exportar: 0 },
+                type: "POST",
+                success: function (data) {
+
+                    var filas = "<table id='tablaFiltroXusuarios' style='width: 100%;'> <thead> <tr>";
+                    //se escriben las columnas
+                    filas = filas + " <th>TIPOLOG</th> <th>COD_EXTRACCION</th> <th>MEM_NCODE</th> <th>TID_NCODE</th> <th>ITY_CTYPEIDENTIFICATION</th> <th>PER_CIDENTIFICATIONNUMBER</th> ";
+                    filas = filas + " <th>PER_CLASTNAME</th> <th>PER_CMOTHERNAME</th> <th>PER_CFIRSTNAME</th> <th>PER_CMIDDLENAME</th> ";
+                    filas = filas + " <th>AGE</th> <th>ACO_CONTRACTCODE</th> <th>SUB_CONTRACT</th> <th>UTY_NCODE</th> ";
+                    filas = filas + " <th>UTY_CNAME</th> <th>INT_NCODE</th> <th>INT_CINTERMEDIARY_NAME</th> <th>INT_CKEY</th> ";
+                    filas = filas + " <th>BRE_NCOMMISSIONPERCENT</th> <th>DIR_NCODE</th> <th>DIR_CNAME</th> ";
+                    filas = filas + " <th>CTY_NCODE</th> <th>CTY_CNAME</th> <th>PROPLA_NCODE</th> <th>MEM_DSTARTINGDATE</th> ";
+                    filas = filas + " <th>MEM_DENDINGDATE</th> <th>PME_CDESCRIPTION</th> <th>FST_NCODE</th> <th>FST_CNAME</th> ";
+                    filas = filas + " <th>PME_NCODE</th> <th>ESTADO</th>  ";
+                    filas = filas + "</tr> </thead>";
+                    //se escriben las filas del cuerp
+                    filas = filas + "<tbody>"
+                    jQuery.each(data, function () {
+
+                        filas = filas + "<tr>";
+                        filas = filas + " <td>" + this.TIPOLOG + " </td> <td>" + this.CodExtraccion + "</td> <td>" + this.MEM_NCODE + "</td>";
+                        filas = filas + " <td>" + this.TID_NCODE + " </td> <td>" + this.ITY_CTYPEIDENTIFICATION + "</td> <td>" + this.PER_CIDENTIFICATIONNUMBER + "</td> <td>" + this.PER_CLASTNAME + "</td> <td>" + this.PER_CMOTHERNAME + "</td> <td>" + this.PER_CFIRSTNAME + "</td>";
+                        filas = filas + " <td>" + this.PER_CMIDDLENAME + " </td> <td>" + this.AGE + "</td> <td>" + this.ACO_CONTRACTCODE + "</td>";
+                        filas = filas + " <td>" + this.SUB_CONTRACT + " </td> <td>" + this.UTY_NCODE + "</td> <td>" + this.UTY_CNAME + "</td>";
+                        filas = filas + " <td>" + this.INT_NCODE + " </td> <td>" + this.INT_CINTERMEDIARY_NAME + "</td> <td>" + this.INT_CKEY + "</td>";
+                        filas = filas + " <td>" + this.BRE_NCOMMISSIONPERCENT + " </td> <td>" + this.DIR_NCODE + "</td> <td>" + this.DIR_CNAME + "</td>";
+                        filas = filas + " <td>" + this.CTY_NCODE + " </td> <td>" + this.CTY_CNAME + "</td> <td>" + this.PROPLA_NCODE + "</td>";
+                        filas = filas + " <td>" + this.MEM_DSTARTINGDATE + " </td> <td>" + this.MEM_DENDINGDATE + "</td> <td>" + this.PME_CDESCRIPTION + "</td>";
+                        filas = filas + " <td>" + this.FST_NCODE + " </td>  <td>" + this.FST_CNAME + " </td> <td>" + this.PME_NCODE + " </td>  <td>" + this.ESTADO + "</td>";
+                        filas = filas + "</tr>";
+                    });
+                    filas = filas + "</tbody> </table>";
+
+                    $("#usuariosFiltradosXCedula").empty();
+                    $("#usuariosFiltradosXCedula").append(filas);
+
+                    $('#tablaFiltroXusuarios').dataTable({
+                        "bJQueryUI": true,
+                        "sPaginationType": "full_numbers", "bStateSave": true
+                    });
+
+
+                },
+                error: function (a, b, error) {
+                    alert(error);
+                },
+                beforeSend: function () {
+                    //$("input[type='checkbox']").prop('checked', false);
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        $(document).ready(function () {
+
+            $(document).ready(function () {
+                $('#tablaLista').dataTable({
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers", "bStateSave": true
+                });
+
+            });
+
+            $(document).ready(function () {
+                $('#tablaLista1').dataTable({
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers", "bStateSave": true
+                });
+
+            });
+
+            $(document).ready(function () {
+                $('#tablaLista2').dataTable({
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers", "bStateSave": true
+                });
+
+            });
+
+        });
+
+
+
+    </script>
+}
+
+
+

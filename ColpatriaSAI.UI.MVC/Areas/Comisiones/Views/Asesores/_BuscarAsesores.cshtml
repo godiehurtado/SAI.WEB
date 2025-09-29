@@ -1,0 +1,293 @@
+﻿<style type="text/css">
+    #resultados
+    {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+    }
+    #resultados thead th
+    {
+        color: #CC0000;
+        background-color: #D4D0C8;
+        border: 1px solid #D4D0C8;
+        padding: 2px 0px 2px 0px;
+    }
+    #resultados td
+    {
+        border: 1px solid #D4D0C8;
+        padding: 0 0.5em;
+        text-align: center;
+    }
+</style>
+@Html.Label("Buscar")
+<input type="hidden" id="searchResultTextFieldId" value='@Request.QueryString["srtfi"]' />
+<input type="hidden" id="secondarySearchResultValueFieldId" value='@Request.QueryString["ssrvfi"]' />
+<input type="hidden" id="searchResultValueFieldId" value='@Request.QueryString["srvfi"]' />
+<input type="hidden" id="parentDialogId" value='@Request.QueryString["pdi"]' />
+<input type="hidden" id="multipleSelection" value='@Request.QueryString["selectvarios"]' />
+<input type="hidden" id="nivelbusqueda" value='@Request.QueryString["nivel"]' />
+<input type="hidden" id="searchDirectorap" value='@Request.QueryString["IdDirector"]' />
+<input type="text" id="buscar" name="buscar" value="Digite nombre, apellido o clave"
+    onfocus="if (value == 'Digite nombre, apellido o clave') { value = ''; }" onblur="if (value== '') { value = 'Digite nombre, apellido o clave'; }"
+    size="28" />
+<input type="button" value="Buscar" onclick="consultar('buscar')" />
+<br />
+<table align="center" id="resultados" cellspacing="2">
+    <thead>
+        <tr>
+            <th>
+                Selección
+            </th>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Clave
+            </th>
+            <th>
+                Documento
+            </th>
+            <th>
+                Id
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<br />
+<input type="button" value="Seleccionar" id="seleccionvarios"/>
+<input type="hidden" value="0" id="inicio" />
+<input type="hidden" value="20" id="cantidad" />
+<input type="button" value="Atras" id="atras" onclick="consultar('atras', false)"
+    disabled="disabled" />
+<input type="button" value="Siguiente" id="siguiente" onclick="consultar('siguiente', false)" />
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        var id, apellido, clave;
+        var data = [];
+        var nombreAsesores = [];
+        var apellidosdirec = [];
+        var apellidosger = [];
+        var directores = [];
+        var gerentes = [];
+        var nombresger = [];
+        var nombresunidos = '';
+        var iddata = [];
+        var patt1 = /[^a-z-A-Z]/g;
+        var nombresdirectores = [];
+        var _Clave = 0;
+        $(document).on("click", "#seleccionvarios", function () {
+            var accion = localStorage.getItem("AccionBusqueda");
+
+            console.log("a")
+            switch (accion) {
+                case "Asesores":
+                    $("#resultados tbody tr").each(function (index, item) {
+                        var check = $(this).children().children('input').eq(1).is(':checked');
+                        if (check) {
+                            id = $(this).children().children('input').eq(0).val();
+                            nombre = clave = $(this).find("td").eq(1).html();
+                            apellido = clave = $(this).find("td").eq(2).html();
+                            clave = $(this).find("td").eq(3).html();
+                            console.log('clave' + clave)
+                            var nombreformat = nombre.replace(patt1, ' ');
+                            var apellidoformat = apellido.replace(patt1, ' ');
+
+                        }
+                    });
+
+                    $("#Asesortxt").val(nombre + " " + apellido);
+                    $("#ClavesAsesor").val(clave);
+
+
+                    break
+                case "Directores":
+                    var nombresDirect = [];
+                    $("#resultados tbody tr").each(function (index) {
+                        var check = $(this).children().children('input').eq(1).is(':checked');
+                        if (check) {
+                            id = clave = $(this).find("td").eq(5).html();
+                            nombre = clave = $(this).find("td").eq(1).html();
+                            apellido = clave = $(this).find("td").eq(2).html();
+                            clave = $(this).children().next().next().next().next().text();
+
+                            ////console.log(nombre);
+
+                        }
+                    });
+
+                    $("#Directortxt").val(nombre + " " + apellido);
+                    $("#IdDirector").val(id);
+
+
+                    break
+                case "Gerentes":
+                    var apellidosgrt = [];
+                    $("#resultados tbody tr").each(function (index) {
+                        var check = $(this).children().children('input').eq(1).is(':checked');
+
+                        if (check) {
+
+                            id = clave = $(this).find("td").eq(5).html();
+                            //console.log(id);
+                            nombre = clave = $(this).find("td").eq(1).html();
+                            apellido = clave = $(this).find("td").eq(2).html();
+                            //console.log(apellido);
+                            clave = $(this).children().next().next().next().next().text();
+                        }
+                    });
+
+                    $("#Gerentetxt").val(nombre + " " + apellido);
+                    $("#IdGerente").val(id);
+
+                    break
+            }
+
+            $("#" + $("#parentDialogId").val()).dialog("close");
+
+        });
+
+
+
+        var limpiarDao = function () {
+            alert("limpiar")
+        }
+
+    });
+
+    $(function () {
+        $('#nivel').change(function () {
+            $("#inicio").val(0);
+        });
+    });
+
+    function consultar(accion, inicioBusqueda) {
+        
+        if (accion == "buscar") {
+            $("#inicio").val(0);
+            $("#atras").attr("disabled", "disabled");
+        }
+
+        var inicio = $("#inicio").val();
+        var cantidad = $("#cantidad").val();
+        var multiple = +$("#multipleSelection").val();
+
+        var nivelbuscar = +$("#nivelbusqueda").val();
+
+        var reporte = $("#esreporteben").val();
+
+        if (accion == "atras" && inicio > 0) {
+            inicio = parseInt(inicio) - parseInt(cantidad);
+        }
+
+        if (accion == "siguiente" && !inicioBusqueda) {
+            inicio = parseInt(inicio) + parseInt(cantidad);
+        }
+
+        if (multiple == 1) {
+            $("#seleccionvarios").css("display", "block");
+        } else {
+            $("#seleccionvarios").css("display", "none");
+        }
+
+        $("#inicio").val(inicio);
+
+        var texto = $("#buscar").val();
+
+        if (texto == 'Digite nombre, apellido o clave') texto = '';
+
+        $.ajax({ url: '/Comisiones/Asesores/BuscarAsesoresJSON',
+            data: {
+                textoBusqueda: texto,
+                inicio: inicio,
+                cantidad: cantidad,
+                nivel: nivelbuscar
+            }, type: "POST",
+            success: function (result) {
+                ///console.log(result)
+                $("#resultados tbody tr").remove();
+
+                if (accion == "buscar") {
+                    var d = 0;
+                    $("#inicio").val(d);
+                }
+
+                if (inicio == 0)
+                    $("#atras").attr('disabled', 'disabled');
+                else
+                    $("#atras").removeAttr('disabled');
+
+                if (cantidad > result.length)
+                    $("#siguiente").attr('disabled', 'disabled');
+                else
+                    $("#siguiente").removeAttr('disabled');
+
+
+                $(result).each(function () {
+                    if (multiple != 1) {
+                        $("<tr>" +
+                            "<td><input id='seleccionado' name='radiobtn' type='radio' " +
+                            "onclick='seleccionarParticipante(" + this.id + ", \"" + this.nombre + " " + this.apellidos + " \",\"" + this.clave + "\",\"" + this.documento + "\");'  /></td>" +
+                            "<td>" + this.nombre + "</td>" +
+                            "<td>" + this.apellidos + "</td>" +
+                            "<td>" + this.clave + "</td>" +
+                            "<td>" + this.documento + "</td>" +
+                            "<td>" + this.id + "</td>" +
+                        "</tr>").appendTo("#resultados tbody");
+                    } else {
+                        $("<tr>" +
+                            "<td><input id='id' name='id' type='hidden'/><input name='radiobtn' type='radio'></td>" +
+                            "<td>" + this.nombre + "</td>" +
+                            "<td>" + this.apellidos + "</td>" +
+                            "<td>" + this.clave + "</td>" +
+                            "<td>" + this.documento + "</td>" +
+                            "<td>" + this.id + "</td>" +
+                        "</tr>").appendTo("#resultados tbody");
+                    }
+                });
+            }
+        });
+    }
+
+    function seleccionarParticipante(id, nombre, clave, documento) {
+
+        var accion = $(".ui-dialog-title").text();
+        console.log(accion);
+        $("#" + $("#searchResultTextFieldId").val()).val(nombre);
+        if (accion === "Directores") {
+            //alert("d")
+            $("#" + $("#searchResultValueFieldId").val()).val(id);
+            $("#" + $("#secondarySearchResultValueFieldId").val()).val(id);
+        } else if (accion === "Gerente Oficina") {
+        //alert("gr")
+            $("#" + $("#searchResultValueFieldId").val()).val(id);
+            $("#" + $("#secondarySearchResultValueFieldId").val()).val(id);
+        } else if (accion === "Gerente Regional") {
+            //alert("g")
+            $("#" + $("#searchResultValueFieldId").val()).val(documento);
+            $("#" + $("#secondarySearchResultValueFieldId").val()).val(id);
+        } else {
+
+            $("#" + $("#searchResultValueFieldId").val()).val(id);
+            $("#" + $("#secondarySearchResultValueFieldId").val()).val(id);
+        }
+        $("#" + $("#parentDialogId").val()).dialog("close");
+    }
+
+    
+    
+</script>
+
+
+
+
+
+
+

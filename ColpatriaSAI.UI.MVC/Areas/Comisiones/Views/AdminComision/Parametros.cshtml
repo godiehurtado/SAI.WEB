@@ -1,0 +1,110 @@
+﻿@model  ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels.ConfigParametros
+@{
+    ViewBag.Title = "Comisiones - Parametrización";
+    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+@{
+    if (TempData["JsonParametros"]!=null)
+    {
+        <script type="text/javascript">
+            
+        var jsonObtenido=@Html.Raw(TempData["JsonParametros"].ToString());
+         var ListParametros= JSON.stringify(jsonObtenido);
+        </script>
+    }   
+ }
+
+<div class="container-fluid">
+    <div class="row">
+        <h2>Configuración de Parámetros-SAI</h2>
+        <br />
+    </div>
+
+    <table style="width:100%">
+        <tr>
+            <td>
+                <span>Seleccionar Parámetro:</span>
+            </td>
+            <td>
+                @Html.DropDownList("ddParametros", TempData["ddParametros"] as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td> <span>Valor:</span></td>
+            <td>
+                @Html.TextBoxFor(m=>m.valor)
+            </td>
+        </tr>
+        <tr>
+            <td> <span>Descripción:</span></td>
+            <td>
+                
+                @Html.TextAreaFor(m => m.descripcion, new { disabled = true })
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" id="FiltroUsuarios" value="Guardar" onclick="ActualizarParametro();" />
+
+
+   
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#ddParametros").change(
+        function () { MostrarDatosParametro(); }
+        );
+
+        
+       $("#descripcion").attr("style","width: 647px; height: 156px;");
+
+    });
+
+
+    function ActualizarParametro() { 
+        
+        var _id=$("#ddParametros").val();
+        var _valor= $("#valor").val();
+         $.ajax({
+                url: "@Url.Action("ModificarParametro", "AdminComision")",
+                timeout: 1000000,
+                data: { id: _id, valor:_valor },
+                type: "POST",
+                 success: function (data) {
+                    if (data.MensajeError.lenght="OK")
+
+                        for (var i = 0; i < jsonObtenido.length; i++) {
+                                if (jsonObtenido[i].id == _id) {
+                                    jsonObtenido[i].valor=$("#valor").val();
+                                }
+                            }
+
+                        alert('Actualización Exitosa.');
+                    },
+                 error: function (a, b, error) {
+                    alert('Ocurrió un error, vuelva a intentarlo');
+                    }
+                });
+    }
+    
+
+
+    function MostrarDatosParametro() {
+        
+        var idParSel = $("#ddParametros").val();
+
+        for (var i = 0; i < jsonObtenido.length; i++) {
+            if (jsonObtenido[i].id == idParSel) {
+                $("#valor").val(jsonObtenido[i].valor);
+                $("#descripcion").val(jsonObtenido[i].descripcion);
+            }
+        }
+    }
+    
+</script>

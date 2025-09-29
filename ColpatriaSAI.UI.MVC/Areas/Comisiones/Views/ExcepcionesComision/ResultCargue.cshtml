@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Resultados";
+}
+<h2>
+    Resultados
+</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+            <label>
+               Procesados  @ViewBag.TitleResultadosProcesados : @ViewBag.CantResultadosProcesados
+            </label>
+        </div>
+        <div class="col-sm-8">
+            <label>
+             Fallidos  @ViewBag.TitleResultadosFallidos : @ViewBag.CantResultadosFallidos
+            </label>
+        </div>
+        <div class="col-sm-8">
+            <label>
+               Totales Registrados @ViewBag.TitleTotales : @ViewBag.CantTotales
+            </label>
+        </div>
+        @if (ViewBag.Errores)
+        {
+            <div class="col-sm-8">
+                <label>
+                    Puede descargar los registros no procesados y su errores <b>@Html.ActionLink("AQUI", "DescargarErrores", "ExcepcionesComision")</b>
+                </label>
+            </div>
+        }
+    </div>
+</div>

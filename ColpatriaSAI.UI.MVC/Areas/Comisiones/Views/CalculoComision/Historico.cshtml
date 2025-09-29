@@ -1,0 +1,297 @@
+﻿@model IEnumerable<ColpatriaSAI.Negocio.Entidades.LiquidacionComision>
+    @{ ViewBag.Title = "Históricos Liquidación";
+                    Layout = "~/Areas/Comisiones/Views/Shared/_comisionesLayoutPage.cshtml"; }
+
+    @if (TempData["FACT_REP"] != null && TempData["FACT_REP"].ToString() == "S")
+    {
+                      <script type="text/javascript">
+
+    $(document).ready(function () {
+        console.log("1");
+        $("#dialog-wait").dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            height: 250,
+            modal: true,
+            autoOpen: false,
+            buttons: {}
+        });
+        console.log("2");
+        $(".btnReprocesar").hide();
+        console.log("3");
+        //Se muestra el mensaje
+        $("#dialog-wait").dialog('open');
+        var atributoDialog = $(".ui-dialog").attr('style') + "z-index: 100";
+        $(".ui-dialog").attr('style', atributoDialog);
+        console.log("4");
+
+        
+    });
+
+    
+
+                      </script>}
+
+    <h4>
+        Proceso de Extracci&oacute;n
+    </h4>
+
+<div class="form-group">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Última extracción realizada:</h5>
+        </div>
+        <label class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label">
+            Fecha Periodo:
+        </label>
+        <div class="col-sm-4">
+            <input id="fecha" class="form-control" disabled="disabled" type="text" />
+        </div>
+        <label class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label">
+            Tipo Liquidaci&oacute;n
+        </label>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <input id="tipoliquidacion" class="form-control" disabled="disabled" type="text" />
+        </div>
+        <label class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label">
+            Código Extracción
+        </label>
+        <div class="col-sm-4">
+            <input id="codigoextraccion" class="form-control" disabled="disabled" type="text" />
+        </div>
+        <label class="col-lg-2 col-md-2 col-sm-2 col-xs-2 control-label">
+            Estado
+        </label>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <input id="estado" class="form-control" disabled="disabled" type="text" />
+        </div>
+    </div>
+</div>
+    <br />
+    <br />
+    <h4>
+        Historicos liquidaciones
+    </h4>
+    <div>
+        <div class="dataTables_wrapper" id="tablaLista_wrapper">
+            <table id="historicos">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Estado
+                        </th>
+                        <th>
+                            Modelo
+                        </th>
+                        <th>
+                            Periodo
+                        </th>
+                        <th>
+                            Tipo <br />Liquidaci&oacute;n
+                        </th>
+                        <th>
+                            Fecha
+                        </th>
+                        <th>
+                            Usuario
+                        </th>
+                        <th>
+                            Ver
+                        </th>
+                        <th>
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>
+                @Html.Raw(item.id.ToString())
+            </td>
+            <td>
+                @Html.Raw(item.EstadoLiquidacion.nombre)
+            </td>
+            <td>
+                @Html.Raw(item.ModeloComision.nombre)
+            </td>
+            <td>
+                @Html.Raw(item.año.Value.ToString())
+                &nbsp;-&nbsp;
+                @Html.Raw(item.mes.Value.ToString())
+            </td>
+            <td>
+                @Html.Raw(item.tipoLiquidacion == 1 ? "Comisiones" : "Comisiones + Reserva")
+            </td>
+            <td>
+                @Html.Raw(item.fecha.ToString())
+            </td>
+            <td>
+                @Html.Raw(item.usuario)
+            </td>
+            <td>
+                @Html.ActionLink(" Liquidación Reserva", "PreVisualizarFacturacion", new { controller = "CalculoComision", area = "Comisiones", idLiquidacion = item.id })
+                <br />
+                @Html.ActionLink("Liquidación Comisiones", "PreVisualizarRecaudos", new { controller = "CalculoComision", area = "Comisiones", idLiquidacion = item.id })
+                <br />
+                @Html.ActionLink("604", "PreVisualizarRecaudos604", new { controller = "CalculoComision", area = "Comisiones", idLiquidacion = item.id })
+            </td>
+            <td>
+                @{ String urlPagar = Url.Action("Pagar", "AsyncCalculoComision", new { controller = "AsyncCalculoComision", area = "Comisiones", NumLiq = item.id }).ToString();
+                                    urlPagar = "javascript:onlick=PagarLiquidacion('" + urlPagar + "')"; }
+                <a href="@urlPagar">Pagar</a>
+
+                &nbsp;
+                @if (new ColpatriaSAI.UI.MVC.Areas.Comisiones.Controllers.CalculoComisionController().ValidaEliminacionLiquidacion(item.id))
+                {
+
+                    String UrlReprocesar = Url.Action("ReprocesarEtl", "AsyncCalculoComision", new { controller = "AsyncCalculoComision", area = "Comisiones", Anio = item.fecha.Year, mes = item.fecha.Month, dia = item.fecha.Day, idliquidacion = item.id, Tipoliq = item.tipoLiquidacion, modeloid = item.ModeloComision.id }).ToString();
+                    UrlReprocesar = "javascript:onlick=ReprocesarLiquidacion('" + UrlReprocesar + "')";
+<a class="btnReprocesar" href="@UrlReprocesar">Reprocesar</a>}
+                &nbsp;
+                @if (new ColpatriaSAI.UI.MVC.Areas.Comisiones.Controllers.CalculoComisionController().ValidaEliminacionLiquidacion(item.id))
+                {
+
+                    String UrlAnular = Url.Action("LevantarEtlAnulacion", "AsyncCalculoComision", new { controller = "AsyncCalculoComision", area = "Comisiones", idliquidacion = item.id, Anio = item.fecha.Year, mes = item.fecha.Month, dia = item.fecha.Day }).ToString();
+                    UrlAnular = "javascript:onlick=AnularLiquidacion('" + UrlAnular + "')";
+<a href="@UrlAnular">Anular</a>}
+            </td>
+        </tr>}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="dialog-wait" title="Proceso en Ejecución">
+        <p>
+            <span class="ui-icon ui-icon-clock" style="float: left; margin: 12px 12px 20px 0;">
+            </span>El proceso se está generando.
+        </p>
+    </div>
+
+
+
+    @section AdditionalScripts{
+                          <script type="text/javascript">
+            $(document).ready(function () {
+                $('#historicos').dataTable({
+                    "aaSorting": [[0, 'desc']],
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "bStateSave": true
+                });
+
+                $("#dialog-wait").dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    height: 250,
+                    modal: true,
+                    autoOpen: false,
+                    buttons: {}
+                });
+
+                consultarDescarga();
+
+                //            $('.btnReprocesar').click(function(){
+
+                //               $(this).hide();
+                //               return false;
+
+                //            });
+
+            });
+
+            function PagarLiquidacion(urlPost) {
+
+                //Se muestra el mensaje
+                $("#dialog-wait").dialog('open');
+                var atributoDialog = $(".ui-dialog").attr('style') + "z-index: 100";
+                $(".ui-dialog").attr('style', atributoDialog);
+
+                $.ajax({
+                    type: 'POST',
+                    url: urlPost,
+                    async: true,
+                    timeout: 1000000,
+                    type: "POST",
+                }).done(function (res) {
+
+                });
+            }
+
+            function AnularLiquidacion(UrlAnular) {
+                //Se muestra el mensaje
+
+                if (confirm('Está seguro que desea Anular la liquidación?')) {
+
+
+                    $("#dialog-wait").dialog('open');
+                    var atributoDialog = $(".ui-dialog").attr('style') + "z-index: 100";
+                    $(".ui-dialog").attr('style', atributoDialog);
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: UrlAnular,
+                        async: true,
+                        timeout: 1000000,
+                        type: "POST",
+                    }).done(function (res) {
+
+                    });
+
+                }
+            }
+
+            function consultarDescarga() {
+
+            $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ConsultarUltimaExtraccion", "CalculoComision")',
+            async: true,
+            timeout: 1000000,
+                data: {  },
+                type: "POST",
+                }).done(function (res) {
+                    $("#fecha").val(res.Extraccion.Fecha);
+                    $("#tipoliquidacion").val(res.Extraccion.TipoLiquidacionName);
+                    $("#codigoextraccion").val(res.Extraccion.CodigoExtraccion);
+                    $("#estado").val(res.Extraccion.EstadoExtraccionName);
+                });
+        }
+
+            function ReprocesarLiquidacion(UrlReprocesar) {
+                //Se muestra el mensaje
+
+                if (confirm('Está seguro que desea Reprocesar la liquidación?')) {
+
+
+                    $("#dialog-wait").dialog('open');
+                    var atributoDialog = $(".ui-dialog").attr('style') + "z-index: 100";
+                    $(".ui-dialog").attr('style', atributoDialog);
+
+                    $(".btnReprocesar").hide();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: UrlReprocesar,
+                        async: true,
+                        timeout: 1000000,
+                        type: "POST",
+                    }).done(function (res) {
+
+                    });
+
+                }
+            }
+
+
+
+                          </script>
+    }
