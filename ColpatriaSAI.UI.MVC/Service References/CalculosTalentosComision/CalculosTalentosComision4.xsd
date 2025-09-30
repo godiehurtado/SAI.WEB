@@ -3661,6 +3661,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CanalDetalleTipoIntermediarios" nillable="true" type="tns:ArrayOfCanalDetalleTipoIntermediario" />
       <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="CodigoCore" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Participantes" nillable="true" type="tns:ArrayOfParticipante" />

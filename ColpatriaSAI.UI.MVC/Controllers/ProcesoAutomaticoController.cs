@@ -157,8 +157,23 @@ namespace ColpatriaSAI.UI.MVC.Controllers
         {
             DateTime fecha = DateTime.Parse(DateTime.Now.ToShortDateString()).AddHours(18);
             AUT_Programacion_Proceso programacion = new AUT_Programacion_Proceso();
-            programacion.fecha_hora_inicio_ejecucion = fecha;
-            web.AdministracionClient.InsertarProgramacion(programacion);
+
+            List<AUT_Proceso> procesos = web.AdministracionClient.TraerProcesos();
+            bool procesohabilidato = false;
+            foreach (AUT_Proceso pro in procesos)
+            {
+                if (pro.habilitado == 1)
+                {
+                    procesohabilidato = true;
+                }
+            }
+
+            if (procesohabilidato)
+            {
+                programacion.fecha_hora_inicio_ejecucion = fecha;
+                web.AdministracionClient.InsertarProgramacion(programacion);
+            }
+
             List<AUT_Programacion_Proceso> programas = web.AdministracionClient.TraerFechasProgramacion();
             string estadoProcesoAutomatico = String.Empty;
             string ultimaFechaEjecucion = String.Empty;
@@ -191,7 +206,14 @@ namespace ColpatriaSAI.UI.MVC.Controllers
                 ultimaFechaEjecucion = "<h4>" + programas[0].fecha_hora_inicio_ejecucion.ToString() + "</h4>";
                 proximafechaejecucion = "<h4>" + "NO APLICA" + "</h4>";
             }
-            return Json(new { Success = true, estadoProcesoAutomatico = estadoProcesoAutomatico, ultimaFechaEjecucion = ultimaFechaEjecucion, proximafechaejecucion = proximafechaejecucion});
+            if (procesohabilidato)
+            {
+                return Json(new { Success = true, estadoProcesoAutomatico = estadoProcesoAutomatico, ultimaFechaEjecucion = ultimaFechaEjecucion, proximafechaejecucion = proximafechaejecucion });
+            }
+            else
+            {
+                return Json(new { Success = false, estadoProcesoAutomatico = estadoProcesoAutomatico, ultimaFechaEjecucion = ultimaFechaEjecucion, proximafechaejecucion = proximafechaejecucion });
+            }
         }
 
         public JsonResult ActivarProceso()
@@ -202,10 +224,24 @@ namespace ColpatriaSAI.UI.MVC.Controllers
             {
                 resultado = web.AdministracionClient.EliminarProgramacion(programas[0]);
             }
-            DateTime fecha = DateTime.Now.AddMinutes(2);
-            AUT_Programacion_Proceso programacion = new AUT_Programacion_Proceso();
-            programacion.fecha_hora_inicio_ejecucion = fecha;
-            web.AdministracionClient.InsertarProgramacion(programacion);
+            List<AUT_Proceso> procesos = web.AdministracionClient.TraerProcesos();
+            bool procesohabilidato = false;
+            foreach (AUT_Proceso pro in procesos)
+            {
+                if (pro.habilitado == 1)
+                {
+                    procesohabilidato = true;
+                }
+            }
+
+            if (procesohabilidato)
+            {
+                DateTime fecha = DateTime.Now.AddMinutes(2);
+                AUT_Programacion_Proceso programacion = new AUT_Programacion_Proceso();
+                programacion.fecha_hora_inicio_ejecucion = fecha;
+                web.AdministracionClient.InsertarProgramacion(programacion);
+            }
+
             programas = web.AdministracionClient.TraerFechasProgramacion();
             string estadoProcesoAutomatico = String.Empty;
             string ultimaFechaEjecucion = String.Empty;
@@ -238,7 +274,14 @@ namespace ColpatriaSAI.UI.MVC.Controllers
                 ultimaFechaEjecucion = "<h4>" + programas[0].fecha_hora_inicio_ejecucion.ToString() + "</h4>";
                 proximafechaejecucion = "<h4>" + "NO APLICA" + "</h4>";
             }
-            return Json(new { Success = true, estadoProcesoAutomatico = estadoProcesoAutomatico, ultimaFechaEjecucion = ultimaFechaEjecucion, proximafechaejecucion = proximafechaejecucion });
+            if (procesohabilidato)
+            {
+                return Json(new { Success = true, estadoProcesoAutomatico = estadoProcesoAutomatico, ultimaFechaEjecucion = ultimaFechaEjecucion, proximafechaejecucion = proximafechaejecucion });
+            }
+            else
+            {
+                return Json(new { Success = false, estadoProcesoAutomatico = estadoProcesoAutomatico, ultimaFechaEjecucion = ultimaFechaEjecucion, proximafechaejecucion = proximafechaejecucion });
+            }
         }
 
         public JsonResult ApagarProceso()
@@ -328,6 +371,10 @@ namespace ColpatriaSAI.UI.MVC.Controllers
             proceso = web.AdministracionClient.ActualizarProceso(proceso);
             List<AUT_Proceso> procesos = web.AdministracionClient.TraerProcesos();
             string htmlresult = string.Empty;
+            bool procesohabilidato = false;
+            string estadoProcesoAutomatico = String.Empty;
+            string ultimaFechaEjecucion = String.Empty;
+            string proximafechaejecucion = String.Empty;
             foreach (AUT_Proceso pro in procesos)
             {
                 htmlresult += "<tr><td class=\"col-lg-6\">"
@@ -344,6 +391,7 @@ namespace ColpatriaSAI.UI.MVC.Controllers
                 htmlresult += "<td class=\"col-lg-3\" style=\"text-align:center\">";
                 if (pro.habilitado == 1)
                 {
+                    procesohabilidato = true;
                     htmlresult += "<h6 style=\"color: Red\">Deshabilitar</h6>"
                         + "<a href=\"javascript:deshabilitarProceso(" + pro.id + ")\">"
                         + "<i class=\"glyphicon glyphicon-off\" data-toggle=\"tooltip\" data-placement=\"right\" style=\"color: Red;font-size: xx-large\"></i></a>";
@@ -356,7 +404,41 @@ namespace ColpatriaSAI.UI.MVC.Controllers
                 }
                 htmlresult += "</td></tr>";
             }
-            return Json(new { Success = true, htmlresult = htmlresult });
+            if (!procesohabilidato)
+            {
+                List<AUT_Programacion_Proceso> programas = web.AdministracionClient.TraerUltimasFechasProgramacion();
+                bool resultado = true;
+                if (programas[0].fecha_hora_inicio_ejecucion > DateTime.Now)
+                {
+                    resultado = web.AdministracionClient.EliminarProgramacion(programas[0]);
+                    estadoProcesoAutomatico = "<div class=\"col-lg-6\" style=\"text-align: center\">"
+                            + "<h1 class=\" uppercase title\">PROCESO AUTOMÁTICO</h1>"
+                            + "<h5 style=\"color: Red\">(Se encuentra apagado)</h5></div>"
+                            + "<div class=\"col-lg-3\" style=\"text-align: center\">"
+                            + "<h5 style=\"color: Green\">Encender</h5>"
+                            + "<a href=\"javascript:encenderProceso()\">"
+                            + "<i class=\"glyphicon glyphicon-off\" data-toggle=\"tooltip\" data-placement=\"right\" style=\"color: Green;font-size: xx-large\"></i></a></div>"
+                            + "<div class=\"col-lg-3\" style=\"text-align: center\"><h5 style=\"color: Blue\">Activar</h5><a href=\"javascript:activarProceso()\">"
+                            + "<i class=\"glyphicon glyphicon-off\" data-toggle=\"tooltip\" data-placement=\"right\" style=\"color: Blue;font-size: xx-large\"></i></a></div>";
+                    ultimaFechaEjecucion = "<h4>" + programas[1].fecha_hora_inicio_ejecucion.ToString() + "</h4>";
+                    proximafechaejecucion = "<h4>" + "NO APLICA" + "</h4>";
+                }
+                else
+                {
+                    estadoProcesoAutomatico = "<div class=\"col-lg-6\" style=\"text-align: center\">"
+                            + "<h1 class=\" uppercase title\">PROCESO AUTOMÁTICO</h1>"
+                            + "<h5 style=\"color: Red\">(Se encuentra apagado)</h5></div>"
+                            + "<div class=\"col-lg-3\" style=\"text-align: center\">"
+                            + "<h5 style=\"color: Green\">Encender</h5>"
+                            + "<a href=\"javascript:encenderProceso()\">"
+                            + "<i class=\"glyphicon glyphicon-off\" data-toggle=\"tooltip\" data-placement=\"right\" style=\"color: Green;font-size: xx-large\"></i></a></div>"
+                            + "<div class=\"col-lg-3\" style=\"text-align: center\"><h5 style=\"color: Blue\">Activar</h5><a href=\"javascript:activarProceso()\">"
+                            + "<i class=\"glyphicon glyphicon-off\" data-toggle=\"tooltip\" data-placement=\"right\" style=\"color: Blue;font-size: xx-large\"></i></a></div>";
+                    ultimaFechaEjecucion = "<h4>" + programas[0].fecha_hora_inicio_ejecucion.ToString() + "</h4>";
+                    proximafechaejecucion = "<h4>" + "NO APLICA" + "</h4>";
+                }
+            }
+            return Json(new { Success = true, htmlresult = htmlresult, estadoProcesoAutomatico = estadoProcesoAutomatico, ultimaFechaEjecucion = ultimaFechaEjecucion, proximafechaejecucion = proximafechaejecucion });
         }
 
         public JsonResult ActualizarDependencias()

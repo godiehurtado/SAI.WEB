@@ -27,7 +27,7 @@ namespace ColpatriaSAI.UI.MVC.Controllers
         {
             var modelPeriodo = new PeriodoCierreModel()
             {
-                PeriodoCierreList = web.AdministracionClient.ListarPeriodos().ToList()
+                PeriodoCierreList = web.AdministracionClient.ListarPeriodos().OrderByDescending(x => x.anioCierre).ThenByDescending(x => x.mesCierre).OrderBy(x => x.compania_id).ToList()
             };
 
             return View(modelPeriodo);
@@ -143,26 +143,91 @@ namespace ColpatriaSAI.UI.MVC.Controllers
             return Json(new { Success = success, Messagge = "El proceso se realizó con éxito." });
         }
 
+        public ActionResult AbrirPeriodo(string periodo)
+        {
+            string userName = HttpContext.Session["userName"].ToString();
+            int anioCierre = Int32.Parse(periodo.Split('-')[0]);
+            int mesCierre = Int32.Parse(periodo.Split('-')[1]);
+            List<PeriodoCierre> periodosAbrir = web.AdministracionClient.ListarPeriodos().Where(x => x.anioCierre == anioCierre && x.mesCierre == mesCierre).ToList();
+            List<PeriodoCierre> periodosCerrar = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 1 && ((x.anioCierre == anioCierre && x.mesCierre != mesCierre) || (x.anioCierre != anioCierre))).ToList();
+            List<PeriodoCierre> periodosPendientesCerrar = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 0 && ((x.anioCierre == anioCierre && x.mesCierre < mesCierre) || (x.anioCierre < anioCierre))).ToList();
+
+            foreach (PeriodoCierre per in periodosAbrir)
+            {
+                per.estado = 1;
+                per.fechaCierre = DateTime.Parse(DateTime.Now.AddDays(2).ToShortDateString());
+                web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
+            }
+
+            web.AdministracionClient.DeleteReprocesos(mesCierre, anioCierre);
+            DateTime fechaabierta = new DateTime(anioCierre, mesCierre, 1);
+
+            foreach (PeriodoCierre per in periodosCerrar)
+            {
+                DateTime fecha = new DateTime((int)per.anioCierre, (int)per.mesCierre, 1);
+                if (fecha < fechaabierta)
+                {
+                    per.estado = 2;
+                    web.AdministracionClient.CerrarMesAbierto((int)per.compania_id, (int)per.mesCierre, (int)per.anioCierre);
+                }
+                else
+                {
+                    per.estado = 0;
+                }
+
+                web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
+            }
+
+            foreach (PeriodoCierre per in periodosPendientesCerrar)
+            {
+                per.estado = 2;
+                web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
+                web.AdministracionClient.CerrarMesAbierto((int)per.compania_id, (int)per.mesCierre, (int)per.anioCierre);
+            }
+
+            return Json(new { Success = true, Messagge = "El proceso se realizó con éxito." });
+        }
+
         public ActionResult ReprocesaPeriodo(string periodo)
         {
             string userName = HttpContext.Session["userName"].ToString();
             int anioCierre = Int32.Parse(periodo.Split('-')[0]);
             int mesCierre = Int32.Parse(periodo.Split('-')[1]);
             List<PeriodoCierre> periodosAbrir = web.AdministracionClient.ListarPeriodos().Where(x => x.anioCierre == anioCierre && x.mesCierre == mesCierre).ToList();
-            List<PeriodoCierre> periodosCerrar = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 1).ToList();
+            List<PeriodoCierre> periodosCerrar = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 1 && ((x.anioCierre == anioCierre && x.mesCierre != mesCierre) || (x.anioCierre != anioCierre))).ToList();
+            List<PeriodoCierre> periodosPendientesCerrar = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 0 && ((x.anioCierre == anioCierre && x.mesCierre < mesCierre) || (x.anioCierre < anioCierre))).ToList();
 
             foreach (PeriodoCierre per in periodosAbrir)
             {               
                     per.estado = 1;
                     per.fechaCierre = DateTime.Parse(DateTime.Now.AddDays(2).ToShortDateString());
                     web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
-                    web.AdministracionClient.DeleteReprocesos(mesCierre, anioCierre);                
             }
+
+            web.AdministracionClient.DeleteReprocesos(mesCierre, anioCierre);
+            DateTime fechaabierta = new DateTime(anioCierre, mesCierre, 1);
 
             foreach (PeriodoCierre per in periodosCerrar)
             {
-                per.estado = 2;                
+                DateTime fecha = new DateTime((int)per.anioCierre, (int)per.mesCierre, 1);
+                if(fecha < fechaabierta)
+                {
+                    per.estado = 2;
+                    web.AdministracionClient.CerrarMesAbierto((int)per.compania_id, (int)per.mesCierre, (int)per.anioCierre);
+                }
+                else
+                {
+                    per.estado = 0;
+                }
+                                
                 web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
+            }
+
+            foreach (PeriodoCierre per in periodosPendientesCerrar)
+            {
+                per.estado = 2;
+                web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
+                web.AdministracionClient.CerrarMesAbierto((int)per.compania_id, (int)per.mesCierre, (int)per.anioCierre);
             }
 
             return Json(new { Success = true, Messagge = "El proceso se realizó con éxito." });
@@ -174,19 +239,21 @@ namespace ColpatriaSAI.UI.MVC.Controllers
             int anioCierre = Int32.Parse(periodo.Split('-')[0]);
             int mesCierre = Int32.Parse(periodo.Split('-')[1]);
             List<PeriodoCierre> periodosCerrar = web.AdministracionClient.ListarPeriodos().Where(x => x.anioCierre == anioCierre && x.mesCierre == mesCierre).ToList();
-            DateTime fechaminima = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 0).Min(x => (DateTime)x.fechaCierre);
-            List<PeriodoCierre> cerrarPeriodosPendientes = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 0 && x.fechaCierre == fechaminima).ToList();
+            PeriodoCierre periodoPendiente = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 0).OrderBy(x => x.anioCierre).ThenBy(x => x.mesCierre).FirstOrDefault();
+            List<PeriodoCierre> cerrarPeriodosPendientes = web.AdministracionClient.ListarPeriodos().Where(x => x.estado == 0 && x.anioCierre == periodoPendiente.anioCierre && x.mesCierre == periodoPendiente.mesCierre).ToList();
 
             foreach (PeriodoCierre per in periodosCerrar)
             {
                 per.estado = 2;
                 web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
+                web.AdministracionClient.CerrarMesAbierto((int)per.compania_id, (int)per.mesCierre, (int)per.anioCierre);
             }
 
             foreach (PeriodoCierre per in cerrarPeriodosPendientes)
             {
-                per.estado = 2;
+                per.estado = 1;
                 web.AdministracionClient.ActualizarPeriodoCierre(per, userName);
+                web.AdministracionClient.SPPeriodoCierre((int)per.compania_id, (int)per.mesCierre, (int)per.anioCierre);
             }
 
             return Json(new { Success = true, Messagge = "El proceso se realizó con éxito." });

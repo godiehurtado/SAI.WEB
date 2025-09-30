@@ -9,9 +9,16 @@
       <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="mes" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="tipoLiquidacion" type="xs:int" />
       <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ExtraccionComision" nillable="true" type="tns:ExtraccionComision" />
+  <xs:complexType name="ArrayOfExtraccionComision">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExtraccionComision" nillable="true" type="tns:ExtraccionComision" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExtraccionComision" nillable="true" type="tns:ArrayOfExtraccionComision" />
 </xs:schema>

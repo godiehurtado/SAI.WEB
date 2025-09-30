@@ -270,6 +270,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ConsultarHistoricoExtraccion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarHistoricoExtraccionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.CustomEntities" minOccurs="0" name="ConsultarHistoricoExtraccionResult" nillable="true" type="q20:ArrayOfExtraccionComision" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="LiquidarComisiones">
     <xs:complexType>
       <xs:sequence>
@@ -280,7 +292,7 @@
   <xs:element name="LiquidarComisionesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="LiquidarComisionesResult" nillable="true" type="q20:ResultadoOperacionBD" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="LiquidarComisionesResult" nillable="true" type="q21:ResultadoOperacionBD" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -301,7 +313,7 @@
   <xs:element name="ExtractAnulacion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametrosEtlAnulacion" nillable="true" type="q21:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametrosEtlAnulacion" nillable="true" type="q22:ArrayOfKeyValueOfstringanyType" />
         <xs:element minOccurs="0" name="idLiquidacion" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -309,31 +321,21 @@
   <xs:element name="ExtractAnulacionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ExtractAnulacionResult" nillable="true" type="q22:ResultadoOperacionBD" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ExtractAnulacionResult" nillable="true" type="q23:ResultadoOperacionBD" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReprocesarLiquidacion">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametrosEtlCF" nillable="true" type="q23:ArrayOfKeyValueOfstringanyType" />
-        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametrosEtlCV" nillable="true" type="q24:ArrayOfKeyValueOfstringanyType" />
-        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="parametrosEtlAnulacion" nillable="true" type="q25:ArrayOfKeyValueOfstringanyType" />
-        <xs:element minOccurs="0" name="modeloId" type="xs:int" />
-        <xs:element minOccurs="0" name="anio" type="xs:short" />
-        <xs:element minOccurs="0" name="mes" type="xs:unsignedByte" />
-        <xs:element minOccurs="0" name="liquidacionComisionId" type="xs:int" />
-        <xs:element minOccurs="0" name="tipoLiquidacionId" type="xs:unsignedByte" />
-        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="tipoEjec" type="xs:int" />
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Entidades.Informacion" minOccurs="0" name="info" nillable="true" type="q26:InfoAplicacion" />
+        <xs:element minOccurs="0" name="idLiquidacion" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReprocesarLiquidacionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ReprocesarLiquidacionResult" nillable="true" type="q27:ResultadoOperacionBD" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ReprocesarLiquidacionResult" nillable="true" type="q24:ResultadoOperacionBD" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -347,7 +349,7 @@
   <xs:element name="ActualizaEstadoReprocesarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizaEstadoReprocesarResult" nillable="true" type="q28:ResultadoOperacionBD" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ColpatriaSAI.Negocio.Componentes.Comision" minOccurs="0" name="ActualizaEstadoReprocesarResult" nillable="true" type="q25:ResultadoOperacionBD" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -359,7 +361,7 @@
   <xs:element name="ValReprocesoLiqResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValReprocesoLiqResult" nillable="true" type="q29:ArrayOfint" />
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValReprocesoLiqResult" nillable="true" type="q26:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

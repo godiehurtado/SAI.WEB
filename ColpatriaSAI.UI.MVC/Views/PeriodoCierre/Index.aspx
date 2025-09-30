@@ -28,7 +28,52 @@
 
 	    function mostrarPeriodos2() {
 	        $("#divPeriodos2").show("slow");
-	    }
+        }
+
+        function mostrarPeriodos3() {
+            $("#divPeriodos3").show("slow");
+        }
+
+        function abrirPeriodo() {
+            var stUrl = '/PeriodoCierre/AbrirPeriodo';
+            var continuar = confirm(
+                "Desea Abrir el periodo " + document.getElementById("txtperiodo3").value
+            );
+            if (continuar == true) {
+                var ok = confirm(
+                    "Tener en cuenta activar los proce" +
+                    "sos  correspondientes(Inician 6:00 p.m) "
+                )
+                if (ok == true) {
+                    mostrarCargando("Ejecutando Operacion! Espere Por Favor...");
+                    var prueba1 = $.ajax({
+                        type: 'POST',
+                        url: stUrl,
+                        data: {
+                            periodo: document.getElementById("txtperiodo3").value
+                        },
+                        success: function (response) {
+                            if (response.Success) {
+                                $("#divPeriodos3").hide("slow");
+                                closeNotify('jNotify');
+                                mostrarExito("El proceso se realizó con éxito.");
+                                location.reload();
+                            }
+                        }
+                    });
+                    return true;
+                } else {
+                    mostrarError("Accion revertida por el usuario");
+                    location.reload();
+                    return false;
+                }
+                return true;
+            } else {
+                mostrarError("Accion revertida por el usuario");
+                location.reload();
+                return false;
+            }
+        }
 
         function reprocesarPeriodo() {
             var stUrl = '/PeriodoCierre/ReprocesaPeriodo';
@@ -37,8 +82,7 @@
             );
             if (continuar == true) {
                 var ok = confirm(
-                    "Esta operacion borrara todos los registros del periodo seleccionado para los c" +
-                    "ore: SISE, BH y CAPI y no podran reversarse. Tener en cuenta activar los proce" +
+                    "Tener en cuenta activar los proce" +
                     "sos  correspondientes(Inician 6:00 p.m) "
                 )
                 if (ok == true) {
@@ -213,7 +257,7 @@
         var tempList = Model.PeriodoCierreList;
         foreach (var item in Model.PeriodoCierreList) {
             
-            var periodo = item.mesCierre + "-" + item.anioCierre;
+            var periodo = item.anioCierre + "-" + item.mesCierre;
             var compania = item.Compania.nombre;  
                 
         %>
@@ -296,6 +340,36 @@
 	<% } %>
 	</tbody>
 	</table>
+
+    <table style="width:100%">
+        <tr>
+            <td>
+                <input onclick="mostrarPeriodos3()" type="button" name="Abrir Periodo" title="Abrir Periodo" value="Abrir Periodo" />
+            </td>
+            <td>
+                <table id="divPeriodos3" style="display:none">
+                    <tr>
+                        <td>
+                            <label for="txtperiodo" class="col-sm-2 control-label">Periodo:</label>
+                        </td>
+                        <td>
+                            <select style="width:100%; text-align:right" id="txtperiodo3">
+                                 <%  foreach (var periodo in Model.PeriodoCierreList.Where(x => x.estado == 0).OrderBy(x => x.anioCierre).ThenBy(x => x.mesCierre).GroupBy(key => new { key.anioCierre, key.mesCierre }).Select(s => new { anioCierre = s.Key.anioCierre, mesCierre = s.Key.mesCierre }))
+                                         
+                                     { %>
+                                <option id="<%  =periodo.anioCierre.ToString() + "-" + periodo.mesCierre.ToString()%>"><%  =periodo.anioCierre.ToString() + "-" + periodo.mesCierre.ToString()%></option>
+                            <%  } %>
+                            </select>                            
+                        </td>
+                        <td>
+                            <input onclick="abrirPeriodo()" type="button" name="Abrir" title="Abrir" value="Abrir"/>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
     <table style="width:100%">
         <tr>
             <td>
@@ -309,7 +383,7 @@
                         </td>
                         <td>
                             <select style="width:100%; text-align:right" id="txtperiodo">
-                                 <%  foreach (var periodo in Model.PeriodoCierreList.Where(x => x.estado == 2).GroupBy(key => new { key.anioCierre, key.mesCierre }).Select(s => new { anioCierre = s.Key.anioCierre, mesCierre = s.Key.mesCierre }))
+                                 <%  foreach (var periodo in Model.PeriodoCierreList.Where(x => x.estado == 2).OrderByDescending(x => x.anioCierre).ThenByDescending(x => x.mesCierre).GroupBy(key => new { key.anioCierre, key.mesCierre }).Select(s => new { anioCierre = s.Key.anioCierre, mesCierre = s.Key.mesCierre }))
                                          
                                      { %>
                                 <option id="<%  =periodo.anioCierre.ToString() + "-" + periodo.mesCierre.ToString()%>"><%  =periodo.anioCierre.ToString() + "-" + periodo.mesCierre.ToString()%></option>

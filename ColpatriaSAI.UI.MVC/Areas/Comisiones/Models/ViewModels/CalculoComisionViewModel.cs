@@ -33,6 +33,8 @@ namespace ColpatriaSAI.UI.MVC.Areas.Comisiones.Models.ViewModels
         public int EstadoLiquidacion { get; set; }
         public PrevisualizacionExtraccionViewModel Extraccion { get; set; }
 
+        public List<PrevisualizacionExtraccionViewModel> ListaExtracciones { get; set; }
+
         public PrevisualizacionComisionesViewModel Comisiones { get; set; }
 
         public CalculoComisionViewModel()

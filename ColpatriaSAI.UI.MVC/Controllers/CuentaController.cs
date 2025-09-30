@@ -252,8 +252,12 @@ namespace ColpatriaSAI.UI.MVC.Controllers
             // Cuando se cae el WS de Aut
             // Comentar las (2) líneas de arriba y descomentar las
             // (4) de abajo
-            
-            
+
+            //Usuario autenticacion = new Usuario();
+            //HttpContext.Session["IdDocumento"] = "";
+            //HttpContext.Session["userName"] = "";
+            //autenticacion.Estado = Estado.OK;
+
             //1. Usuario autenticacion = new Usuario();
             //2. HttpContext.Session["IdDocumento"] = "";
             //3. HttpContext.Session["userName"] = "";

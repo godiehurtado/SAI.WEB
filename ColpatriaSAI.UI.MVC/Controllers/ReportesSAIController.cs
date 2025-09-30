@@ -7,12 +7,14 @@ using System.Configuration;
 using ColpatriaSAI.UI.MVC.Comun;
 using ColpatriaSAI.Negocio.Entidades;
 using ColpatriaSAI.UI.MVC.Views.Shared;
+using System.Net;
+using System.IO;
 
 namespace ColpatriaSAI.UI.MVC.Controllers
 {
     public class ReportesSAIController : ControladorBase
     {
-        WebPage web = new WebPage();
+        WebPage web = new WebPage();        
 
         public ActionResult Index()
         {
@@ -33,6 +35,89 @@ namespace ColpatriaSAI.UI.MVC.Controllers
             ViewBag.Localidad = new SelectList(localidades, "id", "nombre");
 
             return View();
+        }
+
+        public ActionResult Reportesftp(string path = "")
+        {
+            try
+            {
+                //string ftpServer = "ftp://ftppru.axacolpatria.co:21/SalidaSAI/Reportes/";
+                //string fullPath = ftpServer + path;
+                //string userName = "usrftpsai";
+                //string password = @"ToE\PP7N*PztpL/*\_*";
+
+                string ftpServer = new AppSettingsReader().GetValue("FTPReportes", String.Empty.GetType()).ToString();
+                string fullPath = ftpServer + path;
+                string userName = new AppSettingsReader().GetValue("FTPusername", String.Empty.GetType()).ToString();
+                string password = new AppSettingsReader().GetValue("FTPpass", String.Empty.GetType()).ToString();
+
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(fullPath);
+                request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                request.Credentials = new NetworkCredential(userName, password);
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.EnableSsl = false;
+
+                string[] principalFolder = path.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+                string principalName = "";
+                if (principalFolder.Count() > 0)
+                {
+                    principalName = principalFolder[0].Replace("/", "");
+                }
+
+                List<FtpItem> items = new List<FtpItem>();
+
+                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+                        bool isDirectory = line.StartsWith("d");
+                        string[] details = line.Split(new[] { "          " }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] splitname = details[details.Length - 1].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        int index = Array.FindIndex(splitname, s => s.Contains(principalName));
+                        string name = "";
+                        if(principalName != "" && index != -1)
+                        {
+                            for (int i = index; i < splitname.Length; i++)
+                            {
+                                name = name + splitname[i] + " ";
+                            }
+                        }
+                        else
+                        {
+                            name = splitname[splitname.Length - 2] + " " + splitname[splitname.Length - 1];
+                        }
+
+                        name = name.TrimEnd();
+                        
+                        string[] splitdate = name.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+                        string dateString = splitdate[splitdate.Length - 1].Replace(".csv", "").Replace('.',':');
+                        DateTime lastModified = new DateTime();
+                        bool isDate = DateTime.TryParse(dateString, out lastModified);
+
+                        if (isDate)
+                        {
+                            items.Add(new FtpItem
+                            {
+                                Name = name,
+                                LastModified = lastModified,
+                                IsDirectory = isDirectory
+                            });
+                        }
+                    }
+                }
+
+                items = items.OrderByDescending(i => i.LastModified).ToList();
+
+                ViewBag.CurrentPath = path;
+                return View(items);
+            }
+            catch (Exception ex)
+            {
+                return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
 
         /// <summary>
@@ -165,5 +250,67 @@ namespace ColpatriaSAI.UI.MVC.Controllers
         {
             return Json(web.AdministracionClient.ListarPartFranquiciasPorlocalidad(localidadID).Select(r => new { r.rangoParametros, r.id }), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult DescargarReporte(string fileName)
+        {
+            try
+            {
+                // Configuración del FTP
+                //string ftpServer = "ftp://ftppru.axacolpatria.co:21/SalidaSAI/Reportes/";
+                //string ftpPath = ftpServer + fileName;
+                //string userName = "usrftpsai";
+                //string password = @"ToE\PP7N*PztpL/*\_*";
+
+                string ftpServer = new AppSettingsReader().GetValue("FTPReportes", String.Empty.GetType()).ToString();
+                string ftpPath = ftpServer + fileName;
+                string userName = new AppSettingsReader().GetValue("FTPusername", String.Empty.GetType()).ToString();
+                string password = new AppSettingsReader().GetValue("FTPpass", String.Empty.GetType()).ToString();
+
+                // Configurar la solicitud FTP
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpPath);
+                request.Method = WebRequestMethods.Ftp.DownloadFile;
+                request.Credentials = new NetworkCredential(userName, password);
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.EnableSsl = false;
+
+                // Obtener la respuesta del servidor FTP
+                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    if (responseStream != null)
+                    {
+                        byte[] buffer = new byte[2048];
+                        using (MemoryStream memoryStream = new MemoryStream())
+                        {
+                            int bytesRead;
+                            while ((bytesRead = responseStream.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                memoryStream.Write(buffer, 0, bytesRead);
+                            }
+
+                            string[] splitname = fileName.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
+                            string name = splitname[splitname.Length - 1];
+                            // Retornar el archivo descargado al cliente
+                            return File(memoryStream.ToArray(), "application/octet-stream", name);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+
+            return new HttpStatusCodeResult((int)HttpStatusCode.NotFound);
+        }
+    }
+
+    public class FtpItem
+    {
+        public string Name { get; set; }
+        public DateTime LastModified { get; set; }
+        public bool IsDirectory { get; set; }
     }
 }

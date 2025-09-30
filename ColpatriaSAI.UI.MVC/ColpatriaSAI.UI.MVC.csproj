@@ -77,23 +77,26 @@
   <ItemGroup>
     <Reference Include="ColpatriaSAI.Datos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ColpatriaSAI.Datos.dll</HintPath>
+      <HintPath>..\..\SAI.LIB\ColpatriaSAI.Datos\bin\Debug\ColpatriaSAI.Datos.dll</HintPath>
     </Reference>
     <Reference Include="ColpatriaSAI.Negocio.Componentes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Negocio.Componentes\bin\Release\ColpatriaSAI.Negocio.Componentes.dll</HintPath>
+      <HintPath>..\..\SAI.LIB\ColpatriaSAI.Negocio.Componentes\bin\Debug\ColpatriaSAI.Negocio.Componentes.dll</HintPath>
     </Reference>
     <Reference Include="ColpatriaSAI.Negocio.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Negocio.Entidades\bin\Release\ColpatriaSAI.Negocio.Entidades.dll</HintPath>
+      <HintPath>..\..\SAI.LIB\ColpatriaSAI.Seguridad.Proveedores\bin\Debug\ColpatriaSAI.Negocio.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="ColpatriaSAI.Negocio.Validadores">
+      <HintPath>..\..\SAI.LIB\ColpatriaSAI.Negocio.Validadores\bin\Debug\ColpatriaSAI.Negocio.Validadores.dll</HintPath>
     </Reference>
     <Reference Include="ColpatriaSAI.Seguridad.Encripcion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Seguridad.Encripcion\bin\Release\ColpatriaSAI.Seguridad.Encripcion.dll</HintPath>
+      <HintPath>..\..\SAI.LIB\ColpatriaSAI.Seguridad.Encripcion\bin\Debug\ColpatriaSAI.Seguridad.Encripcion.dll</HintPath>
     </Reference>
     <Reference Include="ColpatriaSAI.Seguridad.Proveedores, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ColpatriaSAI.Libraries\ColpatriaSAI.Seguridad.Proveedores\bin\Release\ColpatriaSAI.Seguridad.Proveedores.dll</HintPath>
+      <HintPath>..\..\SAI.LIB\ColpatriaSAI.Seguridad.Proveedores\bin\Debug\ColpatriaSAI.Seguridad.Proveedores.dll</HintPath>
     </Reference>
     <Reference Include="Encrypt1_1">
       <HintPath>..\Librerias\Encrypt1_1.dll</HintPath>

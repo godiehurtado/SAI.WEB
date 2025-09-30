@@ -209,6 +209,9 @@
                 success: function (response) {
                     if (response.Success) {
                         $("#tablaProcesos").html(response.htmlresult);
+                        $("#divProAutGen").html(response.estadoProcesoAutomatico);
+                        $("#ultimaFechaEjecucion").html(response.ultimaFechaEjecucion);
+                        $("#proximafechaejecucion").html(response.proximafechaejecucion);
                         closeNotify('jNotify');
                         mostrarExito("El proceso se realizó con éxito.");
                     }

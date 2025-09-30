@@ -9,37 +9,38 @@
     <div class="row">
         @if (TempData["OperationSuccess"] != null && TempData["OperationSuccess"].ToString() == "True")
         {
-<label>
-    @TempData["SuccessMessage"]
-</label> }
-else
-{
-<label class="alert-danger">@TempData["ErrorMessage"]</label>}
+            <label>
+                @TempData["SuccessMessage"]
+            </label> }
+        else
+        {
+            <label class="alert-danger">@TempData["ErrorMessage"]</label>}
 
         @if (TempData["FACT_PEND"] != null && TempData["FACT_PEND"].ToString() == "S")
         {
-<script type="text/javascript">
-    $(document).ready(function () {
-        console.log("1");
-        $("#dialog-wait").dialog({
-            resizable: false,
-            height: "auto",
-            width: 400,
-            height: 250,
-            modal: true,
-            autoOpen: false,
-            buttons: {}
-        });
-        console.log("2");
-        $("#btnCalcular").hide();
-        console.log("3");
-        //Se muestra el mensaje
-        $("#dialog-wait").dialog('open');
-        var atributoDialog = $(".ui-dialog").attr('style') + "z-index: 100";
-        $(".ui-dialog").attr('style', atributoDialog);
-        console.log("4");
-    });
-</script>}
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    console.log("1");
+                    $("#dialog-wait").dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        height: 250,
+                        modal: true,
+                        autoOpen: false,
+                        buttons: {}
+                    });
+                    console.log("2");
+                    $("#btnCalcular").hide();
+                    console.log("3");
+                    //Se muestra el mensaje
+                    $("#dialog-wait").dialog('open');
+                    var atributoDialog = $(".ui-dialog").attr('style') + "z-index: 100";
+                    $(".ui-dialog").attr('style', atributoDialog);
+                    console.log("4");
+                });
+            </script>
+}
     </div>
 
 
@@ -55,6 +56,9 @@ else
             </div>
             <div id="mensaje2" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h5>Existe un proceso de extracción disponible para el periodo @Model.Extraccion.Anio-@Model.Extraccion.Mes-@Model.Extraccion.Dia. Por favor realice la liquidación. Si desea reprocesar la extracción, seleccione Extraer. Si quiere liquidar otro periodo, seleccione otra fecha en el calendario.</h5>
+            </div>
+            <div id="mensaje3" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h5>No existe un proceso de extracción histórico.</h5>
             </div>
             <div id="mensaje4" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h5>Existe un proceso de extracción en histórico para el periodo @Model.Extraccion.Anio-@Model.Extraccion.Mes-@Model.Extraccion.Dia. Si desea liquidar con esta extracción seleccione "Usar". Si desea reprocesar la extracción, seleccione Extraer. Si quiere liquidar otro periodo, seleccione otra fecha en el calendario.</h5>
@@ -113,6 +117,59 @@ else
         </div>
     </div>
 
+    <br />
+    <br />
+    <h4>
+        Historicos extracciones
+    </h4>
+    <div>
+        <div class="dataTables_wrapper" id="tablaLista_wrapper">
+            <table id="historicos" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Código Extracción
+                        </th>
+                        <th>
+                            Estado
+                        </th>
+                        <th>
+                            Año
+                        </th>
+                        <th>
+                            Mes
+                        </th>
+                        <th>
+                            Día
+                        </th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaExtracciones)
+                    {
+                        <tr>
+                            <td>
+                                @Html.Raw(item.CodigoExtraccion.ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(item.EstadoExtraccionName.ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(item.Anio.ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(item.Mes.ToString())
+                            </td>
+                            <td>
+                                @Html.Raw(item.Dia.ToString())
+                            </td>                            
+                        </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div id="dialog-wait" title="Proceso en Ejecución">
         <div id="mensaje-dialog-wait">
             <p>
@@ -146,6 +203,13 @@ else
                 modal: true,
                 autoOpen: false,
                 buttons: {}
+            });
+
+            $('#historicos').dataTable({
+                "aaSorting": [[0, 'desc']],
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers",
+                "bStateSave": true
             });
 
             $('#FechaCorte').datepicker({
@@ -266,91 +330,23 @@ else
             }
 
             function consultarDescarga() {
+                var _FechaCorte = $("#FechaCorte").datepicker("getDate");
+                var year = _FechaCorte.getFullYear();
+                var month = _FechaCorte.getMonth() + 1;
+                var day = _FechaCorte.getDate();
 
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ConsultarExtraccion", "CalculoComision")',
+                    timeout: 1000000,
+                    data: { anio: year, mes: month, dia: day }
+                }).done(function (res) {
+                    // Actualiza los textos con la fecha correcta del modelo
+                    $('#mensaje2 h5').text("Existe un proceso de extracción disponible para el periodo " + res.Extraccion.Anio + "-" + res.Extraccion.Mes + "-" + res.Extraccion.Dia + ". Por favor realice la liquidación. Si desea reprocesar la extracción, seleccione Extraer. Si quiere liquidar otro periodo, seleccione otra fecha en el calendario.");
+                    $('#mensaje4 h5').text("Existe un proceso de extracción en histórico para el periodo " + res.Extraccion.Anio + "-" + res.Extraccion.Mes + "-" + res.Extraccion.Dia + ". Si desea liquidar con esta extracción seleccione 'Usar'. Si desea reprocesar la extracción, seleccione Extraer. Si quiere liquidar otro periodo, seleccione otra fecha en el calendario.");
+                    $('#mensaje5 h5').text("No existe un proceso de extracción histórico para el día seleccionado. La extracción disponible actualmente para liquidación corresponde al periodo " + res.Extraccion.Anio + "-" + res.Extraccion.Mes + "-" + res.Extraccion.Dia + ". Si quiere liquidar otro periodo, seleccione otra fecha en el calendario.");
 
-            var _FechaCorte=$("#FechaCorte").datepicker("getDate");
-            var year = _FechaCorte.getFullYear();
-            var month = _FechaCorte.getMonth() + 1;
-            var day = _FechaCorte.getDate();
-
-            $.ajax({
-            type: 'POST',
-            url: '@Url.Action("ConsultarExtraccion", "CalculoComision")',
-            timeout: 1000000,
-                data: { anio: year, mes: month, dia: day },
-                type: "POST",
-            }).done(function (res) {
-                if (res.Extraccion.EstadoExtraccion == 0) {
-                    $('#mensaje1').hide();
-                    $('#mensaje2').hide();
-                    $('#mensaje4').hide();
-                    $('#mensaje5').hide();
-                    $('#lblTipoLiquidacion').show();
-                    $('#divTipoLiquidacion').show();
-                    $('#btnDescarga').show();
-                    $('#btnHistorico').hide();
-                    $('#divLiquidacion').hide();
-                } else if (res.Extraccion.EstadoExtraccion == 1) {
-                    $('#mensaje1').show();
-                    $('#mensaje2').hide();
-                    $('#mensaje4').hide();
-                    $('#mensaje5').hide();
-                    $('#lblTipoLiquidacion').hide();
-                    $('#divTipoLiquidacion').hide();
-                    $('#btnDescarga').hide();
-                    $('#btnHistorico').hide();
-                    $('#divLiquidacion').hide();
-                    $('#FechaCorte').hide();
-                    $('#btnFecha').hide();
-                    $('#lblFecha').hide();
-                } else if (res.Extraccion.EstadoExtraccion == 2) {
-                    $('#mensaje1').hide();
-                    $('#mensaje2').show();
-                    $('#mensaje4').hide();
-                    $('#mensaje5').hide();
-                    $('#lblTipoLiquidacion').hide();
-                    $('#divTipoLiquidacion').hide();
-                    $('#btnDescarga').show();
-                    $('#btnHistorico').hide();
-                    $('#divLiquidacion').show();
-                } else if (res.Extraccion.EstadoExtraccion == 4) {
-                    $('#mensaje1').hide();
-                    $('#mensaje2').hide();
-                    $('#mensaje4').show();
-                    $('#mensaje5').hide();
-                    $('#lblTipoLiquidacion').hide();
-                    $('#divTipoLiquidacion').hide();
-                    $('#btnDescarga').hide();
-                    $('#btnHistorico').show();
-                    $('#divLiquidacion').hide();
-                } else if (res.Extraccion.EstadoExtraccion == 5) {
-                    $('#mensaje1').hide();
-                    $('#mensaje2').hide();
-                    $('#mensaje4').hide();
-                    $('#mensaje5').show();
-                    $('#lblTipoLiquidacion').hide();
-                    $('#divTipoLiquidacion').hide();
-                    $('#btnDescarga').hide();
-                    $('#btnHistorico').hide();
-                    $('#divLiquidacion').hide();
-                }
-                });
-            }
-
-            function consultarUltimaExtraccion() {
-
-            $.ajax({
-            type: 'POST',
-            url: '@Url.Action("ConsultarUltimaExtraccion", "CalculoComision")',
-            timeout: 1000000,
-                data: { },
-                type: "POST",
-            }).done(function (res) {
-                if (res.Extraccion.ExtraccionId > 0) {
-                    var fecha = new Date(res.Extraccion.Fecha);
-                    fecha.setMinutes(fecha.getMinutes() + fecha.getTimezoneOffset());
-                    $('#FechaCorte').datepicker("setDate", fecha);
-
+                    // Manejo de la visibilidad de los mensajes y botones
                     if (res.Extraccion.EstadoExtraccion == 0) {
                         $('#mensaje1').hide();
                         $('#mensaje2').hide();
@@ -405,6 +401,96 @@ else
                         $('#btnHistorico').hide();
                         $('#divLiquidacion').hide();
                     }
+                });
+            }
+
+
+
+            function consultarUltimaExtraccion() {
+
+            $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ConsultarUltimaExtraccion", "CalculoComision")',
+            timeout: 1000000,
+                data: { },
+                type: "POST",
+            }).done(function (res) {
+                if (res.Extraccion.ExtraccionId > 0) {
+                    var fecha = new Date(res.Extraccion.Fecha);
+                    fecha.setMinutes(fecha.getMinutes() + fecha.getTimezoneOffset());
+                    $('#FechaCorte').datepicker("setDate", fecha);
+
+                    if (res.Extraccion.EstadoExtraccion == 0) {
+                        $('#mensaje1').hide();
+                        $('#mensaje2').hide();
+                        $('#mensaje3').hide();
+                        $('#mensaje4').hide();
+                        $('#mensaje5').hide();
+                        $('#lblTipoLiquidacion').show();
+                        $('#divTipoLiquidacion').show();
+                        $('#btnDescarga').show();
+                        $('#btnHistorico').hide();
+                        $('#divLiquidacion').hide();
+                    } else if (res.Extraccion.EstadoExtraccion == 1) {
+                        $('#mensaje1').show();
+                        $('#mensaje2').hide();
+                        $('#mensaje3').hide();
+                        $('#mensaje4').hide();
+                        $('#mensaje5').hide();
+                        $('#lblTipoLiquidacion').hide();
+                        $('#divTipoLiquidacion').hide();
+                        $('#btnDescarga').hide();
+                        $('#btnHistorico').hide();
+                        $('#divLiquidacion').hide();
+                        $('#FechaCorte').hide();
+                        $('#btnFecha').hide();
+                        $('#lblFecha').hide();
+                    } else if (res.Extraccion.EstadoExtraccion == 2) {
+                        $('#mensaje1').hide();
+                        $('#mensaje2').show();
+                        $('#mensaje3').hide();
+                        $('#mensaje4').hide();
+                        $('#mensaje5').hide();
+                        $('#lblTipoLiquidacion').hide();
+                        $('#divTipoLiquidacion').hide();
+                        $('#btnDescarga').show();
+                        $('#btnHistorico').hide();
+                        $('#divLiquidacion').show();
+                    } else if (res.Extraccion.EstadoExtraccion == 4) {
+                        $('#mensaje1').hide();
+                        $('#mensaje2').hide();
+                        $('#mensaje3').hide();
+                        $('#mensaje4').show();
+                        $('#mensaje5').hide();
+                        $('#lblTipoLiquidacion').hide();
+                        $('#divTipoLiquidacion').hide();
+                        $('#btnDescarga').hide();
+                        $('#btnHistorico').show();
+                        $('#divLiquidacion').hide();
+                    } else if (res.Extraccion.EstadoExtraccion == 5) {
+                        $('#mensaje1').hide();
+                        $('#mensaje2').hide();
+                        $('#mensaje3').hide();
+                        $('#mensaje4').hide();
+                        $('#mensaje5').show();
+                        $('#lblTipoLiquidacion').hide();
+                        $('#divTipoLiquidacion').hide();
+                        $('#btnDescarga').hide();
+                        $('#btnHistorico').hide();
+                        $('#divLiquidacion').hide();
+                    }
+                }
+                else {
+                    $('#mensaje1').hide();
+                    $('#mensaje2').hide();
+                    $('#mensaje3').hide();
+                    $('#mensaje4').hide();
+                    $('#mensaje5').hide();
+                    $('#lblTipoLiquidacion').show();
+                    $('#divTipoLiquidacion').show();
+                    $('#btnDescarga').show();
+                    $('#btnHistorico').hide();
+                    $('#divLiquidacion').hide();
                 }
 
                 });

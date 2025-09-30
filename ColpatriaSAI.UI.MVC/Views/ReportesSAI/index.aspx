@@ -349,6 +349,7 @@
                 <li>
                     <%: Html.ActionLink("Generar Reportes", "Etl")%></li>
                 <li><a href="<%= ViewBag.FTPReportes%>" target="_blank">Ver Reportes</a></li>
+                <li><%: Html.ActionLink("Reportes FTP", "Reportesftp")%></li>
             </ul>
         </div>
     </div>

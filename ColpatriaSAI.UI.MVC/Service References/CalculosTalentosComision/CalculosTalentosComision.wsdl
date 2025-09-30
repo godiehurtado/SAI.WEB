@@ -115,6 +115,12 @@
   <wsdl:message name="ICalculos_ValidarUltimaExtraccion_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidarUltimaExtraccionResponse" />
   </wsdl:message>
+  <wsdl:message name="ICalculos_ConsultarHistoricoExtraccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarHistoricoExtraccion" />
+  </wsdl:message>
+  <wsdl:message name="ICalculos_ConsultarHistoricoExtraccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarHistoricoExtraccionResponse" />
+  </wsdl:message>
   <wsdl:message name="ICalculos_LiquidarComisiones_InputMessage">
     <wsdl:part name="parameters" element="tns:LiquidarComisiones" />
   </wsdl:message>
@@ -219,6 +225,10 @@
     <wsdl:operation name="ValidarUltimaExtraccion">
       <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ValidarUltimaExtraccion" message="tns:ICalculos_ValidarUltimaExtraccion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ValidarUltimaExtraccionResponse" message="tns:ICalculos_ValidarUltimaExtraccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarHistoricoExtraccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/ConsultarHistoricoExtraccion" message="tns:ICalculos_ConsultarHistoricoExtraccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICalculos/ConsultarHistoricoExtraccionResponse" message="tns:ICalculos_ConsultarHistoricoExtraccion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LiquidarComisiones">
       <wsdl:input wsaw:Action="http://tempuri.org/ICalculos/LiquidarComisiones" message="tns:ICalculos_LiquidarComisiones_InputMessage" />
@@ -393,6 +403,15 @@
     </wsdl:operation>
     <wsdl:operation name="ValidarUltimaExtraccion">
       <soap:operation soapAction="http://tempuri.org/ICalculos/ValidarUltimaExtraccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarHistoricoExtraccion">
+      <soap:operation soapAction="http://tempuri.org/ICalculos/ConsultarHistoricoExtraccion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
